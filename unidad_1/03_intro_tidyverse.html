@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Christian Ballejo, Andrea Silva y Tamara Ricardo">
+
+<title>3&nbsp; Introducción a tidyverse – Epidemiología: Nivel Avanzado</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../unidad_1/04_intro_dplyr.html" rel="next">
+<link href="../unidad_1/02_intro_RStudio.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-7ee6e43050f6221742af855db1000407.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-019764fb716a006092dc2bed2899202b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-7ee6e43050f6221742af855db1000407.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../style.css">
+</head>
+
+<body class="nav-sidebar docked quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../unidad_1/01_intro_R.html">Unidad 1</a></li><li class="breadcrumb-item"><a href="../unidad_1/03_intro_tidyverse.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introducción a <code>tidyverse</code></span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../logo_curso.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../logo_curso.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Epidemiología: Nivel Avanzado</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <div class="dropdown">
+      <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label=""><i class="bi bi-r-circle-fill"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://cran.rstudio.com/bin/windows/" target="_blank">
+              <i class="bi bi-windows pe-1"></i>
+            R para Windows
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://cran.rstudio.com/bin/macosx/" target="_blank">
+              <i class="bi bi-apple pe-1"></i>
+            R para macOS
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://cran.rstudio.com/bin/linux/" target="_blank">
+              <i class="bi bi-ubuntu pe-1"></i>
+            R para Linux
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://posit.co/download/rstudio-desktop/" target="_blank">
+              <i class="bi bi-terminal pe-1"></i>
+            RStudio Desktop
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://cran.r-project.org/bin/windows/Rtools/" target="_blank">
+              <i class="bi bi-terminal pe-1"></i>
+            RTools
+            </a>
+          </li>
+      </ul>
+    </div>
+    <div class="dropdown">
+      <a href="" title="" id="quarto-navigation-tool-dropdown-1" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label=""><i class="bi bi-file-zip"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-1">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="../files/paquetes_curso.zip" target="_blank">
+              <i class="bi bi-file-zip pe-1"></i>
+            Paquetes para el curso
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="../files/datos.zip">
+              <i class="bi bi-file-zip pe-1"></i>
+            Datos de ejemplo
+            </a>
+          </li>
+      </ul>
+    </div>
+    <div class="dropdown">
+      <a href="" title="Descargar" id="quarto-navigation-tool-dropdown-2" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Descargar"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-2">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="../epi_avanzada.pdf">
+              <i class="bi bi-file-pdf pe-1"></i>
+            Descargar PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="../epi_avanzada.epub">
+              <i class="bi bi-journal pe-1"></i>
+            Descargar ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link"><i class="bi bi-book" role="img">
+</i> 
+ <span class="menu-text">Prefacio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true"><i class="bi bi-file-earmark-bar-graph" role="img">
+</i> 
+ <span class="menu-text">Unidad 1</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unidad_1/01_intro_R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción a R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unidad_1/02_intro_RStudio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introducción a RStudio</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unidad_1/03_intro_tidyverse.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introducción a <code>tidyverse</code></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unidad_1/04_intro_dplyr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Gestión de datos con <code>dplyr</code></span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de contenidos</h2>
+   
+  <ul>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción"><span class="header-section-number">3.1</span> Introducción</a></li>
+  <li><a href="#dataframes-con-tibble" id="toc-dataframes-con-tibble" class="nav-link" data-scroll-target="#dataframes-con-tibble"><span class="header-section-number">3.2</span> <em>Dataframes</em> con <code>tibble</code></a></li>
+  <li><a href="#tuberías-con-magrittr" id="toc-tuberías-con-magrittr" class="nav-link" data-scroll-target="#tuberías-con-magrittr"><span class="header-section-number">3.3</span> Tuberías con <code>magrittr</code></a></li>
+  <li><a href="#archivos-de-texto-plano-con-readr" id="toc-archivos-de-texto-plano-con-readr" class="nav-link" data-scroll-target="#archivos-de-texto-plano-con-readr"><span class="header-section-number">3.4</span> Archivos de texto plano con <code>readr</code></a></li>
+  <li><a href="#lectura-de-hojas-de-cálculo-con-readxl" id="toc-lectura-de-hojas-de-cálculo-con-readxl" class="nav-link" data-scroll-target="#lectura-de-hojas-de-cálculo-con-readxl"><span class="header-section-number">3.5</span> Lectura de hojas de cálculo con <code>readxl</code></a></li>
+  <li><a href="#referencias" id="toc-referencias" class="nav-link" data-scroll-target="#referencias"><span class="header-section-number">3.6</span> Referencias</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../unidad_1/01_intro_R.html">Unidad 1</a></li><li class="breadcrumb-item"><a href="../unidad_1/03_intro_tidyverse.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introducción a <code>tidyverse</code></span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introducción a <code>tidyverse</code></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autores/as</div>
+    <div class="quarto-title-meta-contents">
+             <p>Christian Ballejo <a href="https://orcid.org/0000-0002-7346-5701" class="quarto-title-author-orcid" aria-label="ORCID profile for Christian Ballejo"> <img alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+             <p>Tamara Ricardo <a href="https://orcid.org/0000-0002-0921-2611" class="quarto-title-author-orcid" aria-label="ORCID profile for Tamara Ricardo"> <img alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../bg_images/tidyverse.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:44.0%"></p>
+</figure>
+</div>
+<section id="introducción" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="introducción"><span class="header-section-number">3.1</span> Introducción</h2>
+<p>Tidyverse es el nombre que recibe el conjunto de paquetes desarrollados y/o promovidos por <a href="https://en.wikipedia.org/wiki/Hadley_Wickham"><strong>Hadley Wickham</strong></a> (jefe científico en Posit/RStudio) y su equipo, orientado al trabajo de ciencia de datos con R <span class="citation" data-cites="tidyverse">(<a href="#ref-tidyverse" role="doc-biblioref">Wickham et&nbsp;al. 2019</a>)</span>. Estos paquetes están diseñados para integrarse de manera coherente, compartiendo una misma filosofía de diseño conocida como <a href="https://cran.r-project.org/web/packages/tidyverse/vignettes/manifesto.html"><strong><em>The tidy tools manifesto</em></strong></a>.</p>
+<p>Los cuatro principios básicos sobre los que se construye <em>tidyverse</em> son:</p>
+<ul>
+<li><p>Reutilización de estructuras de datos</p></li>
+<li><p>Resolución de problemas complejos combinando varias piezas sencillas</p></li>
+<li><p>Uso de programación funcional</p></li>
+<li><p>Diseño orientado a las personas</p></li>
+</ul>
+<p>Los paquetes incluidos cubren todas las etapas del análisis de datos dentro de R: importación y ordenamiento de los datos (<em>tidy data</em>), transformación, visualización, modelado y la posterior comunicación de resultados.</p>
+<p>La palabra <em>tidy</em> se traduce como “ordenado”, y hace referencia a una estructura específica que deben cumplir los datos:</p>
+<ul>
+<li>Cada <strong><em>variable</em></strong> es una <em>columna</em> de la tabla de datos.</li>
+<li>Cada <strong><em>observación</em></strong> es una <em>fila</em> de la tabla de datos.</li>
+<li>Cada <strong><em>tabla</em></strong> responde a una <em>unidad de observación o</em> análisis.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/tidy.PNG" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<p>Además de los paquetes principales, al instalar <code>tidyverse</code> se incluyen otros que permiten trabajar con fechas, cadenas de caracteres o factores, también siguiendo los mismos principios.</p>
+<p>Uno de los objetivos de los desarrolladores fue dotar a la sintaxis de estos paquetes de una <strong>gramática</strong> clara: funciones cuyos nombres y argumentos permiten construir “<em>frases</em>” que sean semánticamente comprensibles. Un ejemplo de esto se ve en el paquete <code>dplyr</code>, donde la mayoría de las funciones son verbos en inglés como <code>filter()</code>, <code>mutate()</code>, <code>summarise()</code>, lo que facilita su lectura y comprensión.</p>
+<p>El paquete <code>tidyverse</code> puede instalarse desde el repositorio oficial CRAN mediante el menú <em>Packages</em> de RStudio, o ejecutando el siguiente código:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Una vez instalado, se activa mediante:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Al activarlo, se muestra un mensaje con la versión instalada, la lista de paquetes que se cargan automáticamente y posibles conflictos de nombres entre funciones. Esto es habitual cuando se utilizan múltiples paquetes, ya que algunas funciones pueden llamarse igual. Por ejemplo, la función <code>filter()</code> existe tanto en el paquete <code>stats</code> como en <code>dplyr</code>. Al cargar <code>tidyverse</code>, R avisa de esta superposición:</p>
+<p><code>✖️dplyr::filter() masks stats::filter()</code></p>
+<p>Cuando necesitamos asegurarnos de que estamos usando la función de un paquete específico, se recomienda usar la notación <code>::</code>, por ejemplo:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Función filter() del paquete stats</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>stats<span class="sc">::</span><span class="fu">filter</span>()</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Función filter() del paquete tidyverse</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">filter</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Una estrategia útil cuando trabajamos con varios paquetes es cargar <code>tidyverse</code> al final de la lista de paquetes, para que sus funciones sobrescriban las de otros paquetes si fuese necesario:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stats)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Los paquetes que se instalan con la versión actual de <code>tidyverse</code> pueden consultarse ejecutando:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tidyverse_packages</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "broom"         "conflicted"    "cli"           "dbplyr"       
+ [5] "dplyr"         "dtplyr"        "forcats"       "ggplot2"      
+ [9] "googledrive"   "googlesheets4" "haven"         "hms"          
+[13] "httr"          "jsonlite"      "lubridate"     "magrittr"     
+[17] "modelr"        "pillar"        "purrr"         "ragg"         
+[21] "readr"         "readxl"        "reprex"        "rlang"        
+[25] "rstudioapi"    "rvest"         "stringr"       "tibble"       
+[29] "tidyr"         "xml2"          "tidyverse"    </code></pre>
+</div>
+</div>
+<p>Además, existen muchos otros paquetes que siguen la misma filosofía pero no están incluidos por defecto. En esos casos, deben instalarse y activarse individualmente.</p>
+<div class="callout callout-style-simple callout-warning">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Para profundizar el uso de <code>tidyverse</code>, se recomienda consultar:</p>
+<p>Sitio oficial: https://www.tidyverse.org/</p>
+<p>Libro <em>R para Ciencia de Datos</em>: https://es.r4ds.hadley.nz/</p>
+<p>Nueva versión (<em>r4ds 2e</em>): https://r4ds.hadley.nz/</p>
+<p>EpiRhandbook en español: https://www.epirhandbook.com/es/index.es.html</p>
+</div>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../bg_images/tibble.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:25.0%"></p>
+</figure>
+</div>
+</section>
+<section id="dataframes-con-tibble" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="dataframes-con-tibble"><span class="header-section-number">3.2</span> <em>Dataframes</em> con <code>tibble</code></h2>
+<p>Uno de los paquetes que forman parte del núcleo básico de <em>tidyverse</em> es <code>tibble</code> <span class="citation" data-cites="tibble">(<a href="#ref-tibble" role="doc-biblioref">Müller y Wickham 2026</a>)</span>, que introduce una versión moderna del objeto <code>data.frame</code>. Todas las funciones que generan tablas de datos en <em>tidyverse</em> devuelven objetos <em>tibble</em> (<code>tbl_df</code>), los cuales son más eficientes y amigables para el flujo de trabajo.</p>
+<p>Las principales ventajas de trabajar con <code>tibble</code> son:</p>
+<ul>
+<li><p>Impresión en consola más legible y controlada (muestran un número limitado de filas y columnas).</p></li>
+<li><p>No cambian automáticamente el tipo de datos.</p></li>
+<li><p>Permiten nombres de columnas con espacios o caracteres especiales si se encierran entre comillas invertidas <code>`</code> (aunque <strong>no se recomienda</strong>).</p></li>
+</ul>
+<p>Para crear un objeto <em>tibble</em> manualmente usamos el siguiente código:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">nombre =</span> <span class="fu">c</span>(<span class="st">"Ana"</span>, <span class="st">"Luis"</span>, <span class="st">"María"</span>),</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">edad =</span> <span class="fu">c</span>(<span class="dv">34</span>, <span class="dv">28</span>, <span class="dv">45</span>),</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">altura =</span> <span class="fu">c</span>(<span class="fl">1.65</span>, <span class="fl">1.80</span>, <span class="fl">1.70</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../bg_images/magrittr.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:25.0%"></p>
+</figure>
+</div>
+</section>
+<section id="tuberías-con-magrittr" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="tuberías-con-magrittr"><span class="header-section-number">3.3</span> Tuberías con <code>magrittr</code></h2>
+<p>Una de las incorporaciones más útiles y transversales del ecosistema <em>tidyverse</em> es el uso de “<em>tuberías”</em> o <em>pipe operators</em>. Una tubería conecta un bloque de código con otro, permitiendo encadenar operaciones de manera legible. El operador <code>%&gt;%</code>, proveniente del paquete <code>magrittr</code> <span class="citation" data-cites="magrittr">(<a href="#ref-magrittr" role="doc-biblioref">Bache y Wickham 2026</a>)</span>, transforma llamadas de funciones anidadas (con múltiples paréntesis) en una secuencia de pasos más simple de leer y escribir.</p>
+<p>A partir de la versión 4.1.0 de R, también se incorporó una <strong>tubería nativa</strong> (<code>|&gt;</code>), con un comportamiento muy similar. Ambas opciones son válidas y su uso es prácticamente equivalente.</p>
+<p>Este enfoque refleja el principio de que <em>cada función representa un paso en una secuencia lógica de transformación de datos</em>. La forma de trabajar se puede ver en el siguiente esquema general:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/pipe.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<p>A continuación, mostramos un ejemplo comparativo de cómo cambia la sintaxis usando el dataset incorporado en R <code>mtcars</code>, que contiene datos sobre autos:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">sqrt</span>(mtcars))</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                       mpg      cyl     disp        hp     drat       wt
+Mazda RX4         4.582576 2.449490 12.64911 10.488088 1.974842 1.618641
+Mazda RX4 Wag     4.582576 2.449490 12.64911 10.488088 1.974842 1.695582
+Datsun 710        4.774935 2.000000 10.39230  9.643651 1.962142 1.523155
+Hornet 4 Drive    4.626013 2.449490 16.06238 10.488088 1.754993 1.793042
+Hornet Sportabout 4.324350 2.828427 18.97367 13.228757 1.774824 1.854724
+Valiant           4.254409 2.449490 15.00000 10.246951 1.661325 1.860108
+                      qsec vs am     gear     carb
+Mazda RX4         4.057093  0  1 2.000000 2.000000
+Mazda RX4 Wag     4.125530  0  1 2.000000 2.000000
+Datsun 710        4.313931  1  1 2.000000 1.000000
+Hornet 4 Drive    4.409082  1  0 1.732051 1.000000
+Hornet Sportabout 4.125530  0  0 1.732051 1.414214
+Valiant           4.496665  1  0 1.732051 1.000000</code></pre>
+</div>
+</div>
+<p>En la línea de código anterior estamos pidiendo mostrar la cabecera (6 primeras observaciones de la tabla de datos) de la raíz cuadrada de los valores de la tabla <code>mtcars</code>, en formato del lenguaje clásico (anidado).</p>
+<p>Ahora activamos <code>magrittr</code> y ejecutamos la línea anterior en formato tubería:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Activa paquete</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magrittr)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Formato tubería</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sqrt</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                       mpg      cyl     disp        hp     drat       wt
+Mazda RX4         4.582576 2.449490 12.64911 10.488088 1.974842 1.618641
+Mazda RX4 Wag     4.582576 2.449490 12.64911 10.488088 1.974842 1.695582
+Datsun 710        4.774935 2.000000 10.39230  9.643651 1.962142 1.523155
+Hornet 4 Drive    4.626013 2.449490 16.06238 10.488088 1.754993 1.793042
+Hornet Sportabout 4.324350 2.828427 18.97367 13.228757 1.774824 1.854724
+Valiant           4.254409 2.449490 15.00000 10.246951 1.661325 1.860108
+                      qsec vs am     gear     carb
+Mazda RX4         4.057093  0  1 2.000000 2.000000
+Mazda RX4 Wag     4.125530  0  1 2.000000 2.000000
+Datsun 710        4.313931  1  1 2.000000 1.000000
+Hornet 4 Drive    4.409082  1  0 1.732051 1.000000
+Hornet Sportabout 4.125530  0  0 1.732051 1.414214
+Valiant           4.496665  1  0 1.732051 1.000000</code></pre>
+</div>
+</div>
+<p>Podemos hacer lo mismo con la tubería nativa de R sin activar ningún paquete (revisar que esté activada desde <code>Tools &gt; Global Options</code>):</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Tubería nativa</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">|&gt;</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sqrt</span>() <span class="sc">|&gt;</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                       mpg      cyl     disp        hp     drat       wt
+Mazda RX4         4.582576 2.449490 12.64911 10.488088 1.974842 1.618641
+Mazda RX4 Wag     4.582576 2.449490 12.64911 10.488088 1.974842 1.695582
+Datsun 710        4.774935 2.000000 10.39230  9.643651 1.962142 1.523155
+Hornet 4 Drive    4.626013 2.449490 16.06238 10.488088 1.754993 1.793042
+Hornet Sportabout 4.324350 2.828427 18.97367 13.228757 1.774824 1.854724
+Valiant           4.254409 2.449490 15.00000 10.246951 1.661325 1.860108
+                      qsec vs am     gear     carb
+Mazda RX4         4.057093  0  1 2.000000 2.000000
+Mazda RX4 Wag     4.125530  0  1 2.000000 2.000000
+Datsun 710        4.313931  1  1 2.000000 1.000000
+Hornet 4 Drive    4.409082  1  0 1.732051 1.000000
+Hornet Sportabout 4.125530  0  0 1.732051 1.414214
+Valiant           4.496665  1  0 1.732051 1.000000</code></pre>
+</div>
+</div>
+<p>Las tuberías le dan mucha mas claridad al código separándolo en partes, como si fuesen oraciones de un párrafo.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../bg_images/readr.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:25.0%"></p>
+</figure>
+</div>
+</section>
+<section id="archivos-de-texto-plano-con-readr" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="archivos-de-texto-plano-con-readr"><span class="header-section-number">3.4</span> Archivos de texto plano con <code>readr</code></h2>
+<p>El paquete <code>readr</code> <span class="citation" data-cites="readr">(<a href="#ref-readr" role="doc-biblioref">Wickham et&nbsp;al. 2026</a>)</span> contiene funciones similares a las de la familia <code>read.table()</code> de R base, pero desarrollados bajo el ecosistema <code>tidyverse</code>.</p>
+<p>Los archivos de texto plano (ASCII u otras codificaciones) son universalmente utilizados por la mayoría de los gestores de bases de datos y planillas de cálculo. Generalmente se encuentran con extensiones <code>.txt</code> o <code>.csv</code> (por <em>comma-separated values</em>) y son el tipo de archivo de datos más habitual en R.</p>
+<p>Estos datos planos tienen dos características principales:</p>
+<ul>
+<li>La cabecera (en inglés <em>header</em>).</li>
+<li>El carácter o símbolo separador que indica la separación de columnas: pueden estar separadas por comas, punto y coma, tabulación, etc.</li>
+</ul>
+<p>La presencia o no de una cabecera se maneja con los argumentos <code>col_names</code> y <code>skip</code>:</p>
+<ul>
+<li><p><code>col_names = TRUE</code> indica que la primera fila contiene los nombres de las columnas (cabecera).</p></li>
+<li><p><code>col_names = FALSE</code> indica que no hay cabecera y las columnas se nombran automáticamente (<code>X1</code>, <code>X2</code>, etc).</p></li>
+<li><p><code>skip = 0</code> (valor por defecto) lee los datos desde la primera fila, pero si hay encabezados complejos (por ejemplo, títulos y subtítulos ), se puede indicar cuántas filas deben omitirse. Ejemplo: <code>skip = 5</code> omite las primeras 5 filas del archivo.</p></li>
+</ul>
+<p>Otro aspecto a considerar es el carácter <strong>separador</strong> utilizado para indicar la separación entre columnas. Los separadores más comunes son:</p>
+<ul>
+<li><p>coma (<code>,</code>)</p></li>
+<li><p>punto y coma (<code>;</code>)</p></li>
+<li><p>tabulación (<code>TAB</code>)</p></li>
+<li><p>espacio (<code>" "</code>)</p></li>
+<li><p>barra vertical o <em>pipe</em> (<code>|</code>)</p></li>
+</ul>
+<section id="funciones-de-lectura" class="level4">
+<h4 class="anchored" data-anchor-id="funciones-de-lectura">Funciones de lectura</h4>
+<p>Algunas de las funciones del paquete asumen un separador particular. Por caso <code>read_csv()</code> lee separados por coma y <code>read_tsv()</code> separado por tabulaciones, pero la función <code>read_delim()</code> permite que definamos el separador a través del argumento <code>delim</code>.</p>
+<p>En forma detallada el paquete <code>readr</code> soporta siete formatos de archivo a partir de siete funciones:</p>
+<ul>
+<li><code>read_csv()</code>: archivos separados por comas (CSV).</li>
+<li><code>read_tsv()</code>: archivos separados por tabulaciones.</li>
+<li><code>read_delim()</code>: archivos separados con delimitadores generales.</li>
+<li><code>read_fwf()</code>: archivos con columnas de ancho fijo.</li>
+<li><code>read_table()</code>: archivos formato tabla con columnas separadas por espacios.</li>
+<li><code>read_log()</code>: archivos log web.</li>
+</ul>
+<p>En comparación con las funciones R <code>base</code>, las funciones de <code>readr</code>:</p>
+<ul>
+<li><p>Usan un esquema de nombres consistente de parámetros.</p></li>
+<li><p>Son más rápidas.</p></li>
+<li><p>Analizan eficientemente los formatos de datos comunes (especialmente fechas y horas).</p></li>
+<li><p>Muestra una barra de progreso para archivos grandes.</p></li>
+<li><p>Vienen incluidas dentro de <code>tidyverse</code> pero también pueden usarse de forma independiente:</p></li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>A modo de ejemplo, leeremos un archivo sin cabecera separado por comas bajo el nombre <code>datos</code>:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"datos/ejemplo-datos.csv"</span>, <span class="at">col_names =</span> F)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>datos</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 5
+     X1 X2       X3       X4    X5        
+  &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt; &lt;date&gt;    
+1     9 Leone    Fernando M     1958-12-24
+2    26 Garcia   Esteban  M     1954-01-21
+3    35 Salamone Nicolas  M     1993-06-27
+4    48 Gonzalez Viviana  F     1965-06-21</code></pre>
+</div>
+</div>
+<p>Leemos el mismo archivo con cabecera y separado por punto y comas, bajo el nombre <code>info</code>:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>info <span class="ot">&lt;-</span> <span class="fu">read_csv2</span>(<span class="st">"datos/ejemplo-datos-header.csv"</span>, <span class="at">col_names =</span> T)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>info</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 5
+   Iden Apellido Nombre   Sexo  FNac      
+  &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt; &lt;date&gt;    
+1     9 Leone    Fernando M     1958-12-24
+2    26 Garcia   Laura    M     1954-01-21
+3    35 Salamone Nicolas  M     1993-06-27
+4    48 Gonzalez Viviana  F     1965-06-21</code></pre>
+</div>
+</div>
+<p>En estos ejemplos:</p>
+<ul>
+<li><p><code>read_csv()</code> espera comas como separador</p></li>
+<li><p><code>read_csv2()</code> espera punto y coma como separador</p></li>
+</ul>
+<p>Al leer un archivo, <code>readr</code> intenta adivinar automáticamente el tipo de dato de cada columna (<em>parse</em>). Si no hay cabecera, los nombres de columna serán <code>X1</code>, <code>X2</code>, etc.</p>
+<p>Podemos inspeccionar la estructura de un <em>dataframe</em> con <code>glimpse()</code>:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(info)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 4
+Columns: 5
+$ Iden     &lt;dbl&gt; 9, 26, 35, 48
+$ Apellido &lt;chr&gt; "Leone", "Garcia", "Salamone", "Gonzalez"
+$ Nombre   &lt;chr&gt; "Fernando", "Laura", "Nicolas", "Viviana"
+$ Sexo     &lt;chr&gt; "M", "M", "M", "F"
+$ FNac     &lt;date&gt; 1958-12-24, 1954-01-21, 1993-06-27, 1965-06-21</code></pre>
+</div>
+</div>
+<p>Los tipos de datos posibles son:</p>
+<ul>
+<li><p><code>character</code> (<code>&lt;chr&gt;</code>)</p></li>
+<li><p><code>integer</code>, <code>double</code> o <code>numeric</code> (<code>&lt;int&gt;</code>, <code>&lt;dbl&gt;</code>)</p></li>
+<li><p><code>logical</code> (<code>&lt;lgl&gt;</code>)</p></li>
+<li><p><code>date</code>, <code>datetime</code>, etc.</p></li>
+</ul>
+<p>Por ejemplo, columnas con enteros pueden aparecer como <code>&lt;dbl&gt;</code> si se interpretan como <code>double</code>, y las fechas como <code>&lt;date&gt;</code>.</p>
+<p>Agregamos unos argumentos más y ejemplificamos la sintaxis con <code>read_delim()</code> para leer un archivo con cabecera compleja (la tabla comienza en la fila 9) separado por caracteres <code>|</code> (<em>pipes</em>).</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_delim</span>(</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"ejemplo-datos-header-skip.txt"</span>,</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">col_names =</span> T,</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">skip =</span> <span class="dv">8</span>,</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">delim =</span> <span class="st">"|"</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<blockquote class="blockquote">
+<p><strong>Importante:</strong> No olvides asignar la lectura a un nombre para guardar el <em>dataframe</em> dentro del entorno de trabajo (por ejemplo: <code>datos &lt;-</code>).</p>
+</blockquote>
+</section>
+<section id="funciones-de-escritura" class="level4">
+<h4 class="anchored" data-anchor-id="funciones-de-escritura">Funciones de escritura</h4>
+<p>El paquete también incluye funciones para escribir archivos de texto plano, con formatos espejo de las funciones de lectura más comunes:</p>
+<ul>
+<li><code>write_csv()</code>: escribe archivos separados por comas</li>
+<li><code>write_csv2()</code>: escribe archivos separados por punto y comas</li>
+<li><code>write_tsv()</code>: escribe archivos separados por tabulaciones</li>
+<li><code>write_delim()</code>: escribe archivos separados con delimitadores definidos por el usuario</li>
+</ul>
+<p>Los argumentos son generales y para el caso del último más extensos, dado que hay que definir cual es el separador que deseamos en el archivo. Podemos consultarlos con el siguiente código:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">args</span>(write_delim)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>function (x, file, delim = " ", na = "NA", append = FALSE, col_names = !append, 
+    quote = c("needed", "all", "none"), escape = c("double", 
+        "backslash", "none"), eol = "\n", num_threads = readr_threads(), 
+    progress = show_progress()) 
+NULL</code></pre>
+</div>
+</div>
+<p>Por ejemplo para exportar un conjunto de datos en texto plano al que denominaremos “<code>ejemplo.csv</code><strong>“</strong> con separador <strong>punto y coma</strong> y <strong>cabecera incluida</strong> podemos hacer:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_delim</span>(<span class="at">x =</span> datos, <span class="at">file =</span> <span class="st">"ejemplo.csv"</span>, <span class="at">delim =</span> <span class="st">";"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>o más sencillo, usando la función específica <code>write_csv2()</code>:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv2</span>(datos, <span class="st">"ejemplo.csv"</span>) <span class="co"># define cabecera y separador ;</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../bg_images/readxl.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:25.0%"></p>
+</figure>
+</div>
+</section>
+</section>
+<section id="lectura-de-hojas-de-cálculo-con-readxl" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="lectura-de-hojas-de-cálculo-con-readxl"><span class="header-section-number">3.5</span> Lectura de hojas de cálculo con <code>readxl</code></h2>
+<p>Uno de los formatos más comunes para almacenar datos son las hojas de cálculo, en particular las creadas con Microsoft Excel. El paquete <code>readxl</code> <span class="citation" data-cites="readxl">(<a href="#ref-readxl" role="doc-biblioref">Wickham y Bryan 2026</a>)</span>, parte del ecosistema <code>tidyverse</code>, permite leer este tipo de archivos.</p>
+<p><code>readxl</code> es compatible con hojas de cálculo de Excel 97-2003, con extensión <code>.xls</code>, y con versiones más recientes, con extensión <code>.xlsx</code>.</p>
+<p>Una primera función útil es <code>excel_sheets()</code>, que permite conocer y listar los nombres de las hojas contenidas en un archivo Excel (también llamado libro o <em>workbook</em>).</p>
+<p>Por ejemplo, supongamos que tenemos un archivo denominado “<code>datos.xlsx</code><strong>“</strong> y queremos saber por cuantas hojas está compuesto y que nombre tienen:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl) <span class="co"># hay que activarlo independientemente de tidyverse</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">excel_sheets</span>(<span class="st">"datos/datos.xlsx"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "diabetes"   "vigilancia" "mortalidad"</code></pre>
+</div>
+</div>
+<p>Esto devuelve, por ejemplo, tres hojas: <code>"diabetes"</code>, <code>"vigilancia"</code> y <code>"mortalidad"</code>.</p>
+<p>Para leer una de estas hojas utilizamos la función <code>read_excel()</code>, cuyos argumentos principales son:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">args</span>(read_excel)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>function (path, sheet = NULL, range = NULL, col_names = TRUE, 
+    col_types = NULL, na = "", trim_ws = TRUE, skip = 0, n_max = Inf, 
+    guess_max = min(1000, n_max), progress = readxl_progress(), 
+    .name_repair = "unique") 
+NULL</code></pre>
+</div>
+</div>
+<p>Entre los más relevantes encontramos:</p>
+<ul>
+<li><p><code>path</code>: nombre del archivo y su ubicación (entre comillas)</p></li>
+<li><p><code>sheet</code>: nombre de la hoja o su número de orden</p></li>
+<li><p><code>col_names</code>: si es <code>TRUE</code>, toma la primera fila como nombres de las columnas</p></li>
+<li><p><code>skip</code>: permite saltear un número determinado de filas antes de comenzar la lectura</p></li>
+</ul>
+<p>Al ejecutar <code>read_excel()</code>, internamente se utiliza la función <code>excel_format()</code> para detectar si el archivo es <code>.xls</code> o <code>.xlsx</code>, y luego se aplica la función específica para cada caso: <code>read_xls()</code> o <code>read_xlsx()</code>. Estas funciones también pueden usarse directamente si se desea.</p>
+<p>Supongamos ahora que queremos leer la hoja llamada <code>"diabetes"</code>:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>diabetes <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">path =</span> <span class="st">"datos/datos.xlsx"</span>,</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">sheet =</span> <span class="st">"diabetes"</span>,</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">col_names =</span> T</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="co"># mostramos las 6 primeras observaciones</span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(diabetes)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 8
+    A1C  hba1 GLUCB   SOG Tol_Glucosa    DM    SM  HOMA
+  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1  6.17   7.9   101   122 IFG             0     1  4.04
+2  5.58   7.2   103   100 IFG             0     0  5.03
+3  5.38   7.1   103    90 IFG             0     1  2.92
+4  5.38   6.6   109    96 IFG             0     1  4.79
+5  5.19   6.3   107    69 IFG             0     1  3.06
+6  4.89   6      NA   117 IFG             0     0  5.77</code></pre>
+</div>
+</div>
+<p>Observemos que en los argumentos escribimos el nombre del archivo que se encuentra en nuestro proyecto y por lo tanto en nuestra carpeta activa, el nombre de la hoja y nos aseguramos que la primer fila representa a la cabecera de la tabla (sus nombres de variables).</p>
+<p>Como <code>readxl</code> forma parte del ecosistema <code>tidyverse</code> el formato de salida es un <em>tibble</em>. En este caso de 23 observaciones por 8 variables.</p>
+<p>Ahora leamos la segunda hoja de nombre <code>"vigilancia"</code>:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>vigilancia <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="at">path =</span> <span class="st">"datos/datos.xlsx"</span>, <span class="at">sheet =</span> <span class="dv">2</span>, <span class="at">col_names =</span> F)</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="co"># mostramos las 6 primeras observaciones</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(vigilancia)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 9
+   ...1 ...2        ...3      ...4  ...5  ...6  ...7 ...8  ...9                 
+  &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;                
+1   875 09/28/2015  2015 544080000     1    31     1 F     VIGILANCIA EN SALUD …
+2   875 42317       2015 544080000     1    35     1 F     VIGILANCIA EN SALUD …
+3   875 42317       2015 544080000     1    47     1 F     VIGILANCIA EN SALUD …
+4   307 09/26/2015  2015 544005273     1    23     1 M     VIGILANCIA INTEGRADA…
+5   307 09/24/2015  2015 544005273     1    19     1 M     VIGILANCIA INTEGRADA…
+6   875 09/28/2015  2015 544080000     1    63     1 F     VIGILANCIA EN SALUD …</code></pre>
+</div>
+</div>
+<p>En este caso, en lugar del nombre de la hoja usamos un <code>2</code> que es su ubicación y especificamos <code>col_names = FALSE</code> porque el conjunto de datos no tiene cabecera. <code>readxl</code> asignará nombres genéricos como <code>...1</code>, <code>...2</code>, etc.</p>
+<p>Finalmente leamos la última hoja disponible del archivo:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>mortalidad <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">path =</span> <span class="st">"datos/datos.xlsx"</span>,</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">sheet =</span> <span class="st">"mortalidad"</span>,</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">col_names =</span> T,</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">skip =</span> <span class="dv">1</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="co"># mostramos las 6 primeras observaciones</span></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mortalidad)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 10
+  grupo_edad grupo.I.1.1 grupo.II.1.1 grupo.III.1.1 grupo.I.2.1 grupo.II.2.1
+  &lt;chr&gt;            &lt;dbl&gt;        &lt;dbl&gt;         &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;
+1 30-44               41          202           222         539         1438
+2 45-59               99         1071           181         759         6210
+3 60-69              114         1782           119         985         9238
+4 70-79              221         2336           119        1571        12369
+5 80+                362         2492            81        2523        14642
+# ℹ 4 more variables: grupo.III.2.1 &lt;dbl&gt;, grupo.I.3.1 &lt;dbl&gt;,
+#   grupo.II.3.1 &lt;dbl&gt;, grupo.III.3.1 &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<p>Lo novedoso de esta lectura es el argumento <code>skip = 1</code> que debimos incorporar dado que, en este caso, la hoja de Excel comienza con una línea de título que no pertenece al conjunto de datos. También que el argumento <code>sheet</code> permite el nombre de la hoja elegida entre comillas.</p>
+<p>Además de los argumentos generales de <code>read_xl()</code>, podemos mencionar estos otros:</p>
+<ul>
+<li><p><code>n_max</code>: número máximo de filas a leer.</p></li>
+<li><p><code>range</code>: rango de celdas a importar (como en Excel, por ejemplo <code>"B3:D87"</code>).</p></li>
+<li><p><code>col_types</code>: define el tipo de datos de cada columna. Valores posibles: <code>"numeric"</code>, <code>"logical"</code>, <code>"text"</code>, <code>"date"</code>, <code>"skip"</code> (no leer la columna), <code>"guess"</code> (modo predeterminado: la función decide automáticamente el tipo).</p></li>
+<li><p><code>na</code>: carácter o vector de caracteres que se deben interpretar como valores perdidos (<code>NA</code>). Por defecto, las celdas vacías se interpretan así.</p></li>
+</ul>
+<div class="callout callout-style-simple callout-warning">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>En los siguientes capítulos se abordarán dos componentes fundamentales del ecosistema <code>tidyverse</code>: <code>dplyr</code>, para la manipulación de datos y la construcción de tablas de resumen, y <code>ggplot2</code>, para la elaboración de gráficos estadísticos.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="referencias" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="referencias"><span class="header-section-number">3.6</span> Referencias</h2>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-magrittr" class="csl-entry" role="listitem">
+Bache, Stefan Milton, y Hadley Wickham. 2026. <em>magrittr: A Forward-Pipe Operator for R</em>. <a href="https://doi.org/10.32614/CRAN.package.magrittr">https://doi.org/10.32614/CRAN.package.magrittr</a>.
+</div>
+<div id="ref-tibble" class="csl-entry" role="listitem">
+Müller, Kirill, y Hadley Wickham. 2026. <em>tibble: Simple Data Frames</em>. <a href="https://doi.org/10.32614/CRAN.package.tibble">https://doi.org/10.32614/CRAN.package.tibble</a>.
+</div>
+<div id="ref-tidyverse" class="csl-entry" role="listitem">
+Wickham, Hadley, Mara Averick, Jennifer Bryan, et&nbsp;al. 2019. <span>«Welcome to the <span>tidyverse</span>»</span>. <em>Journal of Open Source Software</em> 4 (43): 1686. <a href="https://doi.org/10.21105/joss.01686">https://doi.org/10.21105/joss.01686</a>.
+</div>
+<div id="ref-readxl" class="csl-entry" role="listitem">
+Wickham, Hadley, y Jennifer Bryan. 2026. <em>readxl: Read Excel Files</em>. <a href="https://doi.org/10.32614/CRAN.package.readxl">https://doi.org/10.32614/CRAN.package.readxl</a>.
+</div>
+<div id="ref-readr" class="csl-entry" role="listitem">
+Wickham, Hadley, Jim Hester, y Jennifer Bryan. 2026. <em>readr: Read Rectangular Text Data</em>. <a href="https://doi.org/10.32614/CRAN.package.readr">https://doi.org/10.32614/CRAN.package.readr</a>.
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../unidad_1/02_intro_RStudio.html" class="pagination-link" aria-label="Introducción a RStudio">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introducción a RStudio</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../unidad_1/04_intro_dplyr.html" class="pagination-link" aria-label="Gestión de datos con `dplyr`">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Gestión de datos con <code>dplyr</code></span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>Este material fue creado en <a href="https://quarto.org/">Quarto</a> y forma parte del curso de Epidemiología - Nivel Avanzado © 2026 Instituto Nacional de Epidemiología “Dr.&nbsp;Juan H. Jara” (ANLIS)</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
