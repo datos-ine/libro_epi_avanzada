@@ -1,0 +1,26 @@
+/* Controlar tamaño logo en barra lateral */
+.sidebar-logo {
+    display: block;
+    margin: 10px auto;
+    max-height: 150px;
+  }
+
+
+  /* Oculta ícono original */
+  .quarto-color-scheme-toggle i {
+    display: none;
+  }
+  
+  /* Mismo ícono para ambos modos */
+  .quarto-color-scheme-toggle::before {
+    font-family: "bootstrap-icons";
+    content: "\F495";
+    text-decoration: none !important;
+    display: inline-block;
+  }
+
+  /* Mueve herramientas debajo del título */
+.sidebar-tools-main {
+  margin-top: 0.8rem;
+  width: 100%;
+}
