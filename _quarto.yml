@@ -1,0 +1,22 @@
+project:
+  type: book
+
+book:
+  title: "libro_epi_avanzada"
+  author: "Norah Jones"
+  date: "19/10/2026"
+  chapters:
+    - index.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme:
+      - cosmo
+      - brand
+  pdf:
+    documentclass: scrreprt
+
+
+
