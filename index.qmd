@@ -1,5 +1,36 @@
-# Preface {.unnumbered}
+---
+toc: false
+---
 
-This is a Quarto book.
+# ¡Les damos la bienvenida al curso! {.unnumbered}
 
-To learn more about Quarto books visit <https://quarto.org/docs/books>.
+Es un gusto recibirles en esta nueva edición del curso, diseñado para profundizar en el análisis de datos provenientes de distintos diseños de estudio mediante el uso de modelos estadísticos.
+
+A lo largo del curso, abordaremos herramientas analíticas avanzadas que nos permitirán modelar adecuadamente la relación entre exposiciones y desenlaces en estudios transversales, de casos y controles, de cohortes y experimentales. Nos enfocaremos en la aplicación práctica de estos modelos, en la interpretación de resultados y en los supuestos que los sustentan, promoviendo una mirada crítica sobre su uso en la investigación epidemiológica.
+
+Esperamos que este espacio sea una experiencia formativa enriquecedora y un nuevo impulso en su desarrollo como investigadoras e investigadores en salud.
+
+<!-- :::: {style="text-align: center;"}
+::: {style="font-size: 1.5em"} -->
+**El equipo docente**
+<!-- ::: -->
+
+Christian Ballejo [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-7346-5701)
+
+Andrea Silva [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-4791-9706)
+
+Tamara Ricardo [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-0921-2611)
+
+Ramiro Dana Smith [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0009-0001-2243-3419) 
+
+Julia Maxwell [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0009-0004-7410-1661)
+
+<!-- Micaela Gauto [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0003-3288-1108) -->
+<!-- :::: -->
+
+
+::: {.callout-warning appearance="simple"}
+## Declaración de uso de IA generativa
+
+Se utilizaron herramientas de inteligencia artificial generativa (ChatGPT, versión GPT-5.3) para la revisión gramatical y ortográfica del manuscrito. El contenido final fue evaluado, validado y editado manualmente por los/as autores/as, quienes asumen la responsabilidad por su integridad.
+:::

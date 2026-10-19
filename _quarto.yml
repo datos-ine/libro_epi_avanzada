@@ -1,22 +1,176 @@
 project:
-  type: book
+  type: book  
+  execute-dir: project
 
 book:
-  title: "libro_epi_avanzada"
-  author: "Norah Jones"
-  date: "19/10/2026"
-  chapters:
-    - index.qmd
+  title: "Epidemiología: Nivel Avanzado"
+  author: "Instituto Nacional de Epidemiología Dr. Juan H. Jara"
 
+  # ---- Footer ----
+  page-footer: 
+    center: Este material fue creado en <a href="https://quarto.org/">Quarto</a> y forma parte del curso de Epidemiología - Nivel Avanzado © 2026 Instituto Nacional de Epidemiología "Dr. Juan H. Jara" (ANLIS)
+  output-file: "epi_avanzada"
+  cover-image: logo_curso.png 
+  downloads: [pdf, epub]
+
+  # ---- Barra lateral ----
+  sidebar:
+    style: docked
+    logo: logo_curso.png
+    pinned: true
+    tools: 
+      - icon: r-circle-fill
+        menu: 
+          - text: R para Windows
+            icon: windows
+            target: _blank
+            href: https://cran.rstudio.com/bin/windows/
+          - text: R para macOS
+            icon: apple
+            target: _blank
+            href: https://cran.rstudio.com/bin/macosx/
+          - text: R para Linux
+            icon: ubuntu
+            target: _blank
+            href: https://cran.rstudio.com/bin/linux/
+          - text: RStudio Desktop
+            icon: terminal
+            target: _blank
+            href: https://posit.co/download/rstudio-desktop/
+          - text: RTools
+            icon: terminal
+            target: _blank
+            href: https://cran.r-project.org/bin/windows/Rtools/
+      - icon: file-zip
+        menu: 
+          - text: Paquetes para el curso
+            icon: file-zip
+            target: _blank
+            href: files/paquetes_curso.zip
+          - text: Datos de ejemplo
+            icon: file-zip
+            href: files/datos.zip
+      
+            
+  # ---- Capítulos ----
+  chapters:
+  - text: "Prefacio"
+    icon: book
+    href: index.qmd
+
+  - part: "Unidad 1"
+    icon: file-earmark-bar-graph
+    chapters:
+      - "unidad_1/01_intro_R.qmd"
+  #     - "unidad_1/02_intro_RStudio.qmd"
+  #     - "unidad_1/03_intro_tidyverse.qmd"
+  #     - "unidad_1/04_intro_dplyr.qmd"
+  #     - "unidad_1/05_intro_ggplot.qmd"
+  #     - "unidad_1/06_analisis_exploratorio.qmd"
+  #     - "unidad_1/07_hoja_estilo.qmd"
+
+  # - part: "Unidad 2"
+  #   icon: file-earmark-bar-graph
+  #   chapters: 
+  #       - "unidad_2/01_est_epidemiologicos.qmd"
+  #       - "unidad_2/02_est_transversales.qmd"
+  #       - "unidad_2/03_inferencia.qmd"
+  #       - "unidad_2/04_normalidad_heterocedasticidad.qmd"
+  #       - "unidad_2/05_muestreo.qmd"
+  #       - "unidad_2/06_fun_condicionales.qmd"
+  #       - "unidad_2/07_IC_complejos.qmd"
+  # - part: "Unidad 3"
+  #   icon: file-earmark-bar-graph
+  #   chapters: 
+  #       - "unidad_3/01_est_ecologicos.qmd"
+  #       - "unidad_3/02_mod_estadistico.qmd" 
+  #       - "unidad_3/03_covarianza_correlacion.qmd" 
+  #       - "unidad_3/04_reg_lineal.qmd" 
+  #       - "unidad_3/05_anova.qmd"
+  #       - "unidad_3/06_rol_variables.qmd"  
+  #       - "unidad_3/07_reg_lineal_multiple.qmd"
+  # - part: "Unidad 4"
+  #   icon: file-earmark-bar-graph
+  #   chapters: 
+  #       - "unidad_4/01_est_caso_control.qmd"
+  #       - "unidad_4/02_reg_logistica.qmd"
+  #       - "unidad_4/03_sep_datos.qmd"
+  #       - "unidad_4/04_reg_logistica_cond.qmd" 
+  #       - "unidad_4/05_mod_predict.qmd" 
+  # - part: "Unidad 5"
+  #   icon: file-earmark-bar-graph
+  #   chapters: 
+  #       - "unidad_5/01_est_cohortes.qmd" 
+  #       - "unidad_5/02_reg_poisson.qmd"  
+  #       - "unidad_5/03_dispersion.qmd" 
+  # - part: "Unidad 6"
+  #   icon: file-earmark-bar-graph
+  #   chapters:
+  #       - "unidad_6/01_est_experimentales.qmd"   
+  #       - "unidad_6/02_analisis_superv.qmd"
+  #       - "unidad_6/03_metodos_analisis_sup.qmd"
+  #       - "unidad_6/04_reg_cox.qmd"
+
+
+# ---- Botón de anterior/siguiente ----
+page-navigation: true
+  
+# ---- Botón de volver arriba ----
+back-to-top-navigation: true
+
+# ---- Números de sección ----
+number-sections: true
+number-depth: 2
+
+# ---- Referencias ----
 bibliography: references.bib
 
+# ---- Opciones de formato ----
 format:
   html:
-    theme:
-      - cosmo
-      - brand
-  pdf:
-    documentclass: scrreprt
+    # Tema claro y oscuro
+    theme: 
+     light: cosmo
+     dark: cyborg
+        
+    # CSS
+    css: style.css
+    
+    grid:
+      sidebar-width: 300px
 
+    author-meta: "Christian Ballejo, Andrea Silva y Tamara Ricardo"
 
+  epub:
+    cover-image: logo_curso.png
+
+  pdf: default
+
+# ---- Tipografía ----
+mainfont: "Calibri"
+
+# ---- Archivos para descargar ----
+resources: 
+  - files/
+  
+# ---- Idioma del documento ----
+lang: es
+
+# ---- Salida código de R ----
+execute: 
+  echo: true
+  warning: false
+  freeze: auto
+  
+# ---- Licencia ----
+license: CC BY-NC
+
+# ---- Autores ----
+author: 
+  - name: Christian Ballejo
+    orcid: 0000-0002-7346-5701
+  - name: Andrea Silva
+    orcid: 0000-0002-4791-9706
+  - name: Tamara Ricardo
+    orcid: 0000-0002-0921-2611  
 
