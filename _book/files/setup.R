@@ -9,20 +9,15 @@ knitr::opts_chunk$set(
 # paquetes
 pacman::p_load(
   patchwork,
-  igraph,
-  ggraph,
-  scico,
   performance,
   knitr,
   kableExtra,
-  webshot,
-  webshot2,
   janitor,
   tidyverse
 )
 
 # paleta colorblind-friendly
-pal <- scico::scico(n = 9, palette = "tokyo")
+# pal <- scico::scico(n = 9, palette = "tokyo")
 
 # Formato tabla
 kbl_format <- function(x) {

@@ -1,0 +1,439 @@
+---
+title: Introducción a `tidyverse`
+author:   
+  - name: Christian Ballejo
+    orcid: 0000-0002-7346-5701
+  - name: Tamara Ricardo
+    orcid: 0000-0002-0921-2611
+---
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| id: setup
+source("files/setup.R")
+```
+
+![](/bg_images/tidyverse.png){fig-align="center" width="44%"}
+
+## Introducción
+
+Tidyverse es el nombre que recibe el conjunto de paquetes desarrollados y/o promovidos por [**Hadley Wickham**](https://en.wikipedia.org/wiki/Hadley_Wickham) (jefe científico en Posit/RStudio) y su equipo, orientado al trabajo de ciencia de datos con R [@tidyverse]. Estos paquetes están diseñados para integrarse de manera coherente, compartiendo una misma filosofía de diseño conocida como [***The tidy tools manifesto***](https://cran.r-project.org/web/packages/tidyverse/vignettes/manifesto.html).
+
+Los cuatro principios básicos sobre los que se construye *tidyverse* son:
+
+- Reutilización de estructuras de datos
+
+- Resolución de problemas complejos combinando varias piezas sencillas
+
+- Uso de programación funcional
+
+- Diseño orientado a las personas
+
+Los paquetes incluidos cubren todas las etapas del análisis de datos dentro de R: importación y ordenamiento de los datos (*tidy data*), transformación, visualización, modelado y la posterior comunicación de resultados.
+
+La palabra *tidy* se traduce como “ordenado”, y hace referencia a una estructura específica que deben cumplir los datos:
+
+- Cada ***variable*** es una *columna* de la tabla de datos.
+- Cada ***observación*** es una *fila* de la tabla de datos.
+- Cada ***tabla*** responde a una *unidad de observación o* análisis.
+
+![](images/tidy.PNG){fig-align="center"}
+
+Además de los paquetes principales, al instalar `tidyverse` se incluyen otros que permiten trabajar con fechas, cadenas de caracteres o factores, también siguiendo los mismos principios.
+
+Uno de los objetivos de los desarrolladores fue dotar a la sintaxis de estos paquetes de una **gramática** clara: funciones cuyos nombres y argumentos permiten construir “*frases*” que sean semánticamente comprensibles. Un ejemplo de esto se ve en el paquete `dplyr`, donde la mayoría de las funciones son verbos en inglés como `filter()`, `mutate()`, `summarise()`, lo que facilita su lectura y comprensión.
+
+El paquete `tidyverse` puede instalarse desde el repositorio oficial CRAN mediante el menú *Packages* de RStudio, o ejecutando el siguiente código:
+
+```{r}
+#| eval: false
+#| id: cod1
+install.packages("tidyverse")
+```
+
+Una vez instalado, se activa mediante:
+
+```{r}
+#| message: true
+#| warning: true
+#| id: cod2
+library(tidyverse)
+```
+
+Al activarlo, se muestra un mensaje con la versión instalada, la lista de paquetes que se cargan automáticamente y posibles conflictos de nombres entre funciones. Esto es habitual cuando se utilizan múltiples paquetes, ya que algunas funciones pueden llamarse igual. Por ejemplo, la función `filter()` existe tanto en el paquete `stats` como en `dplyr`. Al cargar `tidyverse`, R avisa de esta superposición:
+
+`✖️dplyr::filter() masks stats::filter()`
+
+Cuando necesitamos asegurarnos de que estamos usando la función de un paquete específico, se recomienda usar la notación `::`, por ejemplo:
+
+```{r}
+#| eval: false
+#| id: cod3
+# Función filter() del paquete stats
+stats::filter()
+
+# Función filter() del paquete tidyverse
+dplyr::filter()
+```
+
+Una estrategia útil cuando trabajamos con varios paquetes es cargar `tidyverse` al final de la lista de paquetes, para que sus funciones sobrescriban las de otros paquetes si fuese necesario:
+
+```{r}
+#| eval: false
+#| id: cod4
+library(stats)
+library(tidyverse)
+```
+
+Los paquetes que se instalan con la versión actual de `tidyverse` pueden consultarse ejecutando:
+
+```{r}
+#| id: cod5
+tidyverse_packages()
+```
+
+Además, existen muchos otros paquetes que siguen la misma filosofía pero no están incluidos por defecto. En esos casos, deben instalarse y activarse individualmente.
+
+::: {.callout-warning appearance="simple"}
+Para profundizar el uso de `tidyverse`, se recomienda consultar:
+
+Sitio oficial: https://www.tidyverse.org/
+
+Libro *R para Ciencia de Datos*: https://es.r4ds.hadley.nz/
+
+Nueva versión (*r4ds 2e*): https://r4ds.hadley.nz/
+
+EpiRhandbook en español: https://www.epirhandbook.com/es/index.es.html
+:::
+
+![](/bg_images/tibble.png){fig-align="center" width="25%"}
+
+## *Dataframes* con `tibble`
+
+Uno de los paquetes que forman parte del núcleo básico de *tidyverse* es `tibble` [@tibble], que introduce una versión moderna del objeto `data.frame`. Todas las funciones que generan tablas de datos en *tidyverse* devuelven objetos *tibble* (`tbl_df`), los cuales son más eficientes y amigables para el flujo de trabajo.
+
+Las principales ventajas de trabajar con `tibble` son:
+
+- Impresión en consola más legible y controlada (muestran un número limitado de filas y columnas).
+
+- No cambian automáticamente el tipo de datos.
+
+- Permiten nombres de columnas con espacios o caracteres especiales si se encierran entre comillas invertidas `` ` `` (aunque **no se recomienda**).
+
+Para crear un objeto *tibble* manualmente usamos el siguiente código:
+
+```{r}
+#| id: cod6
+datos <- tibble(
+  nombre = c("Ana", "Luis", "María"),
+  edad = c(34, 28, 45),
+  altura = c(1.65, 1.80, 1.70)
+)
+```
+
+![](/bg_images/magrittr.png){fig-align="center" width="25%"}
+
+## Tuberías con `magrittr`
+
+Una de las incorporaciones más útiles y transversales del ecosistema *tidyverse* es el uso de "*tuberías"* o *pipe operators*. Una tubería conecta un bloque de código con otro, permitiendo encadenar operaciones de manera legible. El operador `%>%`, proveniente del paquete `magrittr` [@magrittr], transforma llamadas de funciones anidadas (con múltiples paréntesis) en una secuencia de pasos más simple de leer y escribir.
+
+A partir de la versión 4.1.0 de R, también se incorporó una **tubería nativa** (`|>`), con un comportamiento muy similar. Ambas opciones son válidas y su uso es prácticamente equivalente.
+
+Este enfoque refleja el principio de que *cada función representa un paso en una secuencia lógica de transformación de datos*. La forma de trabajar se puede ver en el siguiente esquema general:
+
+![](images/pipe.png){fig-align="center"}
+
+A continuación, mostramos un ejemplo comparativo de cómo cambia la sintaxis usando el dataset incorporado en R `mtcars`, que contiene datos sobre autos:
+
+```{r}
+#| id: cod7
+head(sqrt(mtcars))
+```
+
+En la línea de código anterior estamos pidiendo mostrar la cabecera (6 primeras observaciones de la tabla de datos) de la raíz cuadrada de los valores de la tabla `mtcars`, en formato del lenguaje clásico (anidado).
+
+Ahora activamos `magrittr` y ejecutamos la línea anterior en formato tubería:
+
+```{r}
+#| id: cod8
+# Activa paquete
+library(magrittr)
+
+# Formato tubería
+mtcars %>%
+  sqrt() %>%
+  head()
+```
+
+Podemos hacer lo mismo con la tubería nativa de R sin activar ningún paquete (revisar que esté activada desde `Tools > Global Options`):
+
+```{r}
+#| id: cod9
+# Tubería nativa
+mtcars |>
+  sqrt() |>
+  head()
+```
+
+Las tuberías le dan mucha mas claridad al código separándolo en partes, como si fuesen oraciones de un párrafo.
+
+![](/bg_images/readr.png){fig-align="center" width="25%"}
+
+## Archivos de texto plano con `readr`
+
+El paquete `readr` [@readr] contiene funciones similares a las de la familia `read.table()` de R base, pero desarrollados bajo el ecosistema `tidyverse`.
+
+Los archivos de texto plano (ASCII u otras codificaciones) son universalmente utilizados por la mayoría de los gestores de bases de datos y planillas de cálculo. Generalmente se encuentran con extensiones `.txt` o `.csv` (por *comma-separated values*) y son el tipo de archivo de datos más habitual en R.
+
+Estos datos planos tienen dos características principales:
+
+- La cabecera (en inglés *header*).
+- El carácter o símbolo separador que indica la separación de columnas: pueden estar separadas por comas, punto y coma, tabulación, etc.
+
+La presencia o no de una cabecera se maneja con los argumentos `col_names` y `skip`:
+
+- `col_names = TRUE` indica que la primera fila contiene los nombres de las columnas (cabecera).
+
+- `col_names = FALSE` indica que no hay cabecera y las columnas se nombran automáticamente (`X1`, `X2`, etc).
+
+- `skip = 0` (valor por defecto) lee los datos desde la primera fila, pero si hay encabezados complejos (por ejemplo, títulos y subtítulos ), se puede indicar cuántas filas deben omitirse. Ejemplo: `skip = 5` omite las primeras 5 filas del archivo.
+
+Otro aspecto a considerar es el carácter **separador** utilizado para indicar la separación entre columnas. Los separadores más comunes son:
+
+- coma (`,`)
+
+- punto y coma (`;`)
+
+- tabulación (`TAB`)
+
+- espacio (`" "`)
+
+- barra vertical o *pipe* (`|`)
+
+#### Funciones de lectura
+
+Algunas de las funciones del paquete asumen un separador particular. Por caso `read_csv()` lee separados por coma y `read_tsv()` separado por tabulaciones, pero la función `read_delim()` permite que definamos el separador a través del argumento `delim`.
+
+En forma detallada el paquete `readr` soporta siete formatos de archivo a partir de siete funciones:
+
+- `read_csv()`: archivos separados por comas (CSV).
+- `read_tsv()`: archivos separados por tabulaciones.
+- `read_delim()`: archivos separados con delimitadores generales.
+- `read_fwf()`: archivos con columnas de ancho fijo.
+- `read_table()`: archivos formato tabla con columnas separadas por espacios.
+- `read_log()`: archivos log web.
+
+En comparación con las funciones R `base`, las funciones de `readr`:
+
+- Usan un esquema de nombres consistente de parámetros.
+
+- Son más rápidas.
+
+- Analizan eficientemente los formatos de datos comunes (especialmente fechas y horas).
+
+- Muestra una barra de progreso para archivos grandes.
+
+- Vienen incluidas dentro de `tidyverse` pero también pueden usarse de forma independiente:
+
+```{r}
+#| eval: false
+#| id: cod10
+library(readr)
+```
+
+A modo de ejemplo, leeremos un archivo sin cabecera separado por comas bajo el nombre `datos`:
+
+```{r}
+#| message: false
+#| id: cod11
+datos <- read_csv("datos/ejemplo-datos.csv", col_names = F)
+datos
+```
+
+Leemos el mismo archivo con cabecera y separado por punto y comas, bajo el nombre `info`:
+
+```{r}
+#| message: false
+#| id: cod12
+info <- read_csv2("datos/ejemplo-datos-header.csv", col_names = T)
+info
+```
+
+En estos ejemplos:
+
+- `read_csv()` espera comas como separador
+
+- `read_csv2()` espera punto y coma como separador
+
+Al leer un archivo, `readr` intenta adivinar automáticamente el tipo de dato de cada columna (*parse*). Si no hay cabecera, los nombres de columna serán `X1`, `X2`, etc.
+
+Podemos inspeccionar la estructura de un *dataframe* con `glimpse()`:
+
+```{r}
+#| id: cod13
+glimpse(info)
+```
+
+Los tipos de datos posibles son:
+
+- `character` (`<chr>`)
+
+- `integer`, `double` o `numeric` (`<int>`, `<dbl>`)
+
+- `logical` (`<lgl>`)
+
+- `date`, `datetime`, etc.
+
+Por ejemplo, columnas con enteros pueden aparecer como `<dbl>` si se interpretan como `double`, y las fechas como `<date>`.
+
+Agregamos unos argumentos más y ejemplificamos la sintaxis con `read_delim()` para leer un archivo con cabecera compleja (la tabla comienza en la fila 9) separado por caracteres `|` (*pipes*).
+
+```{r}
+#| eval: false
+#| id: cod14
+read_delim(
+  "ejemplo-datos-header-skip.txt",
+  col_names = T,
+  skip = 8,
+  delim = "|"
+)
+```
+
+> **Importante:** No olvides asignar la lectura a un nombre para guardar el *dataframe* dentro del entorno de trabajo (por ejemplo: `datos <-`).
+
+#### Funciones de escritura
+
+El paquete también incluye funciones para escribir archivos de texto plano, con formatos espejo de las funciones de lectura más comunes:
+
+- `write_csv()`: escribe archivos separados por comas
+- `write_csv2()`: escribe archivos separados por punto y comas
+- `write_tsv()`: escribe archivos separados por tabulaciones
+- `write_delim()`: escribe archivos separados con delimitadores definidos por el usuario
+
+Los argumentos son generales y para el caso del último más extensos, dado que hay que definir cual es el separador que deseamos en el archivo. Podemos consultarlos con el siguiente código:
+
+```{r}
+#| id: cod15
+args(write_delim)
+```
+
+Por ejemplo para exportar un conjunto de datos en texto plano al que denominaremos "`ejemplo.csv`**"** con separador **punto y coma** y **cabecera incluida** podemos hacer:
+
+```{r}
+#| eval: false
+#| id: cod16
+write_delim(x = datos, file = "ejemplo.csv", delim = ";")
+```
+
+o más sencillo, usando la función específica `write_csv2()`:
+
+```{r}
+#| eval: false
+#| id: cod17
+write_csv2(datos, "ejemplo.csv") # define cabecera y separador ;
+```
+
+![](/bg_images/readxl.png){fig-align="center" width="25%"}
+
+## Lectura de hojas de cálculo con `readxl`
+
+Uno de los formatos más comunes para almacenar datos son las hojas de cálculo, en particular las creadas con Microsoft Excel. El paquete `readxl` [@readxl], parte del ecosistema `tidyverse`, permite leer este tipo de archivos.
+
+`readxl` es compatible con hojas de cálculo de Excel 97-2003, con extensión `.xls`, y con versiones más recientes, con extensión `.xlsx`.
+
+Una primera función útil es `excel_sheets()`, que permite conocer y listar los nombres de las hojas contenidas en un archivo Excel (también llamado libro o *workbook*).
+
+Por ejemplo, supongamos que tenemos un archivo denominado "`datos.xlsx`**"** y queremos saber por cuantas hojas está compuesto y que nombre tienen:
+
+```{r}
+#| id: cod18
+library(readxl) # hay que activarlo independientemente de tidyverse
+
+excel_sheets("datos/datos.xlsx")
+```
+
+Esto devuelve, por ejemplo, tres hojas: `"diabetes"`, `"vigilancia"` y `"mortalidad"`.
+
+Para leer una de estas hojas utilizamos la función `read_excel()`, cuyos argumentos principales son:
+
+```{r}
+#| id: cod19
+args(read_excel)
+```
+
+Entre los más relevantes encontramos:
+
+- `path`: nombre del archivo y su ubicación (entre comillas)
+
+- `sheet`: nombre de la hoja o su número de orden
+
+- `col_names`: si es `TRUE`, toma la primera fila como nombres de las columnas
+
+- `skip`: permite saltear un número determinado de filas antes de comenzar la lectura
+
+Al ejecutar `read_excel()`, internamente se utiliza la función `excel_format()` para detectar si el archivo es `.xls` o `.xlsx`, y luego se aplica la función específica para cada caso: `read_xls()` o `read_xlsx()`. Estas funciones también pueden usarse directamente si se desea.
+
+Supongamos ahora que queremos leer la hoja llamada `"diabetes"`:
+
+```{r}
+#| id: cod20
+diabetes <- read_excel(
+  path = "datos/datos.xlsx",
+  sheet = "diabetes",
+  col_names = T
+)
+
+# mostramos las 6 primeras observaciones
+head(diabetes)
+```
+
+Observemos que en los argumentos escribimos el nombre del archivo que se encuentra en nuestro proyecto y por lo tanto en nuestra carpeta activa, el nombre de la hoja y nos aseguramos que la primer fila representa a la cabecera de la tabla (sus nombres de variables).
+
+Como `readxl` forma parte del ecosistema `tidyverse` el formato de salida es un *tibble*. En este caso de 23 observaciones por 8 variables.
+
+Ahora leamos la segunda hoja de nombre `"vigilancia"`:
+
+```{r}
+#| id: cod21
+vigilancia <- read_excel(path = "datos/datos.xlsx", sheet = 2, col_names = F)
+
+# mostramos las 6 primeras observaciones
+head(vigilancia)
+```
+
+En este caso, en lugar del nombre de la hoja usamos un `2` que es su ubicación y especificamos `col_names = FALSE` porque el conjunto de datos no tiene cabecera. `readxl` asignará nombres genéricos como `...1`, `...2`, etc.
+
+Finalmente leamos la última hoja disponible del archivo:
+
+```{r}
+#| id: cod22
+mortalidad <- read_excel(
+  path = "datos/datos.xlsx",
+  sheet = "mortalidad",
+  col_names = T,
+  skip = 1
+)
+
+# mostramos las 6 primeras observaciones
+head(mortalidad)
+```
+
+Lo novedoso de esta lectura es el argumento `skip = 1` que debimos incorporar dado que, en este caso, la hoja de Excel comienza con una línea de título que no pertenece al conjunto de datos. También que el argumento `sheet` permite el nombre de la hoja elegida entre comillas.
+
+Además de los argumentos generales de `read_xl()`, podemos mencionar estos otros:
+
+- `n_max`: número máximo de filas a leer.
+
+- `range`: rango de celdas a importar (como en Excel, por ejemplo `"B3:D87"`).
+
+- `col_types`: define el tipo de datos de cada columna. Valores posibles: `"numeric"`, `"logical"`, `"text"`, `"date"`, `"skip"` (no leer la columna), `"guess"` (modo predeterminado: la función decide automáticamente el tipo).
+
+- `na`: carácter o vector de caracteres que se deben interpretar como valores perdidos (`NA`). Por defecto, las celdas vacías se interpretan así.
+
+::: {.callout-warning appearance="simple"}
+En los siguientes capítulos se abordarán dos componentes fundamentales del ecosistema `tidyverse`: `dplyr`, para la manipulación de datos y la construcción de tablas de resumen, y `ggplot2`, para la elaboración de gráficos estadísticos.
+:::
+
+## Referencias

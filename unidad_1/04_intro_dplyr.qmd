@@ -1,0 +1,525 @@
+---
+title: Gestión de datos con `dplyr`
+author:   
+  - name: Christian Ballejo
+    orcid: 0000-0002-7346-5701
+  - name: Tamara Ricardo
+    orcid: 0000-0002-0921-2611
+---
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| id: setup
+source("files/setup.R")
+```
+
+![](/bg_images/dplyr.png){fig-align="center" width="25%"}
+
+## Introducción
+
+El paquete `dplyr` [@dplyr] fue desarrollado por *Hadley Wickham* como una versión optimizada del paquete `plyr` [@plyr].
+
+Su principal contribución es ofrecer una *gramática* para la manipulación de datos, basada en funciones que actúan como verbos, lo que facilita la lectura y comprensión del código.
+
+Las funciones clave del paquete permiten realizar las siguientes acciones (verbos):
+
+- `select()`: selecciona un conjunto de columnas (variables)
+- `rename()`: renombra variables en un conjunto de datos
+- `filter()`: selecciona un conjunto de filas (observaciones) según una o varias condiciones lógicas
+- `arrange()`: reordena las filas de un conjunto de datos
+- `mutate()`: añade nuevas variables/columnas o transforma variables existentes
+- `summarise()`/ `summarize()`: genera resúmenes estadísticos de diferentes variables en el conjunto de datos
+- `group_by()`: agrupa las observaciones en función de una o más variables, lo que permite realizar operaciones por grupo
+- `count()`: contabiliza valores que se repiten, generando una tabla de frecuencias
+
+Además, al ser parte del ecosistema *tidyverse*, `dplyr` integra al operador *pipe* (`%>%`) formando una única secuencia de procesamiento o *pipeline*.
+
+### Argumentos comunes
+
+Todas las funciones, básicamente, tienen en común una serie de argumentos.
+
+1.  El primer argumento es el nombre del conjunto de datos (objeto donde esta nuestra tabla de datos).
+
+2.  Los otros argumentos describen que hacer con el conjunto de datos especificado en el primer argumento, podemos referirnos a las columnas en el objeto directamente sin utilizar el operador `$`, es decir sólo con el nombre de la columna/variable.
+
+3.  El valor de retorno es un nuevo conjunto de datos.
+
+4.  Los conjuntos de datos deben estar bien organizados/estructurados, es decir debe existir una observación por columna y, cada columna representar una variable, medida o característica de esa observación. Es decir, debe cumplir con *tidy data*.
+
+### Activación del paquete
+
+`dplyr` está incluído en el núcleo base de `tidyverse`, por lo que se encuentra disponible si tenemos activado a este último.
+
+También se puede activar en forma independiente:
+
+```{r}
+#| eval: false
+#| id: cod1
+library(dplyr)
+```
+
+### Conjunto de datos para ejemplo
+
+Para visualizar y comprender el funcionamiento de estos “verbos” de manipulación, resulta muy útil contar con ejemplos concretos. Por eso, en esta unidad trabajaremos con un conjunto de datos que nos permitirá practicar el uso de las funciones del paquete.
+
+> Recuerden que pueden [**descargar los datos**](../files/datos_y_paquetes.zip) utilizados en los ejemplos del curso y descomprimirlos en la carpeta donde tengan guardado su proyecto de RStudio.
+
+Uno de los archivos incluidos, "`noti-vih.csv`", contiene registros de notificaciones de VIH por jurisdicción en Argentina correspondientes a los años 2015 y 2016.
+
+```{r}
+#| id: cod2
+# asignamos la lectura a datos
+datos <- read_csv("datos/noti-vih.csv")
+
+# mostramos las 6 primeras observaciones
+head(datos)
+```
+
+## Función `select()`
+
+La función `select()` permite elegir columnas específicas de un conjunto de datos, devolviendo una versión "recortada por columnas" del mismo.
+
+A continuación, exploramos algunas formas útiles de seleccionar variables:
+
+Seleccionar todas las variables excepto `pob`:
+
+```{r}
+#| id: cod3
+datos |>
+  select(-pob)
+```
+
+Otra forma para el mismo resultado anterior (mediante el operador rango `:`):
+
+```{r}
+#| id: cod4
+datos |>
+  select(jurisdiccion:casos)
+```
+
+Seleccionar solamente las variables `jurisdiccion` y `casos`*:*
+
+```{r}
+#| id: cod5
+datos |>
+  select(jurisdiccion, casos)
+```
+
+Lo mismo que el ejemplo anterior, pero usando la posición de las columnas:
+
+```{r}
+#| id: cod6
+datos |>
+  select(1, 3)
+```
+
+Mover la variable `año` al inicio y mantener todas las demás:
+
+```{r}
+#| id: cod7
+datos |>
+  select("año", everything())
+```
+
+Cambiar el nombre de una de la variable año y mover al inicio:
+
+```{r}
+#| id: cod8
+datos |>
+  select(anio = año, everything())
+```
+
+Otros posibles argumentos son:
+
+- `starts_with()`: selecciona todas las columnas que comiencen con el patrón indicado.
+
+- `ends_with()`: selecciona todas las columnas que terminen con el patrón indicado.
+
+- `contains()`: selecciona las columnas que posean el patrón indicado.
+
+- `matches()`: similar a `contains()`, pero permite poner una expresión regular.
+
+- `all_of()`: selecciona las variables pasadas en un vector (todos los nombres deben estar presentes o devuelve un error).
+
+- `any_of()`: idem anterior excepto que no se genera ningún error para los nombres que no existen.
+
+- `num_range()`: selecciona variables con nombre combinados con caracteres y números (ejemplo: `num_range("x", 1:3)` selecciona las variables `x1`, `x2` y `x3`.
+
+- `where()`: aplica una función a todas las variables y selecciona aquellas para las cuales la función regresa TRUE (por ejemplo: `is.numeric()` para seleccionar todas las variables numéricas).
+
+## Función `rename()`
+
+La función `rename()` puede considerarse una extensión de `select()`. Si bien `select()` también permite renombrar variables, no resulta muy útil para este fin, ya que descarta todas las variables que no se mencionan explícitamente.
+
+En cambio, `rename()` permite cambiar el nombre de una o más variables sin eliminar las demás. Solo se modifican los nombres indicados, y el resto del conjunto de datos permanece sin cambios.
+
+Ejemplo: renombrar la variable `pob` como `población`:
+
+```{r}
+#| id: cod9
+datos |>
+  rename("población" = pob)
+```
+
+Se puede renombrar una serie de columnas usando `rename_with()`, por ejemplo para agregar el prefijo `"n_"` a las variables de conteo:
+
+```{r}
+#| id: cod10
+datos |>
+  rename_with(
+    .cols = c(casos, pob), # Columnas a renombrar
+    .fn = ~ paste0("n_", .x) # Función o vector para renombrar columnas
+  )
+```
+
+## Función `filter()`
+
+La función `filter()` permite seleccionar filas de un conjunto de datos, produciendo un subconjunto de observaciones.
+
+Veamos un ejemplo sencillo con nuestros datos:
+
+```{r}
+#| id: cod11
+datos |>
+  filter(jurisdiccion == "Tucuman")
+```
+
+Utiliza los mismos operadores de comparación propios del lenguaje R:
+
+```{r}
+#| echo: false
+#| id: tab1
+# Datos
+tibble(
+  Operador = c("<", ">", "<=", ">=", "==", "!=", "%in%", "is.na()", "!is.na()"),
+
+  "Descripción" = c(
+    "Menor que",
+    "Menor que",
+    "Menor o igual que",
+    "Mayor o igual que",
+    "Igual que",
+    "No igual que",
+    "Es parte de",
+    "Es un valor ausente",
+    "No es un valor ausente"
+  )
+) |>
+
+  # Tabla
+  kbl_format()
+```
+
+Lo mismo con los operadores lógicos que se utilizan como conectores entre las expresiones:
+
+```{r}
+#| echo: false
+#| id: tab2
+# Datos
+tibble(
+  Operador = c("&", "|", "xor()", "!", "any()", "all()"),
+
+  "Descripción" = c(
+    "AND booleano",
+    "OR booleano",
+    "OR exclusivo",
+    "NOT",
+    "cualquier TRUE",
+    "todos TRUE"
+  )
+) |>
+
+  # Tabla
+  kbl_format()
+```
+
+Cuando usamos múltiples argumentos separados por coma dentro de `filter()`, estas se combinan con un operador **AND** implícito, es decir, cada expresión debe ser verdadera para que la fila sea incluida en la salida.
+
+Por ejemplo, filtramos las observaciones que cumplan que `casos` sea mayor a 100 **y** que `pob` sea menor a 1.000.000:
+
+```{r}
+#| id: cod12
+datos |>
+  filter(casos > 100, pob < 1000000)
+```
+
+Para combinar condiciones dentro de una misma variable usamos el operador OR (`|`) o, de forma más práctica, `%in%`:
+
+```{r}
+#| id: cod13
+# Con OR
+datos |>
+  filter(jurisdiccion == "Buenos Aires" | jurisdiccion == "La Pampa")
+
+# Con %in%
+datos |>
+  filter(jurisdiccion %in% c("Buenos Aires", "La Pampa"))
+```
+
+En el siguiente ejemplo, filtramos observaciones del año 2016 con más de 200 casos. El uso de `&` es equivalente al uso de coma:
+
+```{r}
+#| id: cod14
+datos |>
+  filter(año == "2016" & casos > 200)
+```
+
+Por último, podemos usar `xor()` para seleccionar observaciones que cumplan **solo una** de las condiciones, pero no ambas. Por ejemplo, el siguiente filtro selecciona registros donde el año sea 2016 ó los casos sean mayores a 200, pero no ambos al mismo tiempo (es decir que no se den ambos en `TRUE`):
+
+```{r}
+#| id: cod15
+datos |>
+  filter(xor(año == "2016", casos > 200))
+```
+
+En las últimas versiones de `dplyr` se añadió la función `filter_out(),` que equivale a usar el operador `!` para negar una condición. Por ejemplo, si quisiéramos excluir todos los datos de la provincia de Mendoza:
+
+```{r}
+#| id: cod16
+datos |>
+  filter_out(jurisdiccion == "Mendoza")
+```
+
+## Función `arrange()`
+
+La función `arrange()` se utiliza para ordenar las filas de un conjunto de datos de acuerdo a una o varias columnas/variables. Por defecto, el ordenamiento es ascendente alfanumérico.
+
+Ordenamos la tabla por la variable `pob` (forma ascendente predeterminada):
+
+```{r}
+#| id: cod17
+datos |>
+  arrange(pob)
+```
+
+Para ordenar en forma descendente podemos utilizar `desc()` dentro de los argumentos de `arrange()`:
+
+```{r}
+#| id: cod18
+datos |>
+  arrange(desc(pob))
+```
+
+Que equivale a:
+
+```{r}
+#| id: cod19
+datos |>
+  arrange(-pob)
+```
+
+Podemos combinar ordenamientos. Por ejemplo, en forma alfabética ascendente para `jusrisdiccion` y luego numérica descendente para `casos`:
+
+```{r}
+#| id: cod20
+datos |>
+  arrange(jurisdiccion, desc(casos))
+```
+
+## Función `mutate()`
+
+Esta función nos permite transformar variables dentro de un conjunto de datos. A menudo tendremos la necesidad de modificar variables existentes o crear nuevas variables a partir de las ya disponibles. La función `mutate()` nos ofrece una forma clara y eficiente de realizar este tipo de operaciones.
+
+Por ejemplo, podríamos querer calcular tasas crudas para cada jurisdicción y año, en función del número de casos y de la población total:
+
+```{r}
+#| id: cod21
+datos |>
+  mutate(tasa = casos / pob * 100000)
+```
+
+En este caso, `mutate()` calcula la tasa cruda por 100.000 habitantes e incorpora una nueva variable (`tasa`) con los resultados correspondientes a cada observación.
+
+También se pueden construir múltiples variables en la misma expresión, solamente separadas por comas:
+
+```{r}
+#| id: cod22
+datos |>
+  mutate(
+    tasaxcien_mil = casos / pob * 100000,
+    tasaxdiez_mil = casos / pob * 10000
+  )
+```
+
+Si deseamos que estas nuevas variables se incorporen de forma permanente al conjunto de datos (y no solo se muestren en la consola), debemos utilizar el operador de asignación `<-`:
+
+```{r}
+#| eval: false
+#| id: cod23
+datos <- datos |>
+  mutate(
+    tasaxcien_mil = casos / pob * 100000,
+    tasaxdiez_mil = casos / pob * 10000
+  )
+```
+
+Un aspecto fundamental es que las funciones utilizadas dentro de `mutate()` deben estar *vectorizadas*: deben aceptar un vector de entrada y devolver otro vector del mismo tamaño como salida.
+
+Existen muchas funciones que se pueden utilizar dentro de `mutate()`. A continuación se presentan algunas útiles:
+
+- **Operadores aritméticos**: `+`, `-`, `*`, `/`, `^`.
+
+- **Aritmética modular**: `%/%` (división entera) y `%%` (resto), donde `x == y * (x %/% y) + (x %% y)`.
+
+- **Funciones matemáticas**: `log()`, `log2()`, `log10()`, `exp()`, `sqrt()`, `abs()`, entre otras.
+
+- **Valores acumulados**: `cumsum()`, `cumprod()`, `cummin()`, `cummax()` y `cummean()`.
+
+- **Clasificación o *ranking***: funciones como `min_rank()` permiten asignar rangos (1º, 2º, etc.). Por defecto, los valores más pequeños reciben rangos más bajos. Si se desea invertir el orden, puede utilizarse `desc(x)`.
+
+En versiones recientes de `dplyr`, `mutate()` incorpora argumentos que facilitan el trabajo con datos:
+
+- `.by`: permite aplicar transformaciones por grupos de manera **temporal**, sin necesidad de usar `group_by()`
+
+- `.before` / `.after`: permiten ubicar la nueva variable antes o después de otra columna del conjunto de datos
+
+Finalmente, si se utiliza en `mutate()` el mismo nombre de una variable que ya existe en la tabla, dicha variable será sobrescrita (por ejemplo, al cambiarle el tipo de `character` a `factor`). Si se desea crear una variable nueva, se debe utilizar un nombre que no esté previamente en el conjunto de datos.
+
+## Funciones `group_by()` y `summarise()`
+
+Estas dos funciones suelen utilizan en conjunto para calcular **resúmenes estadísticos por grupos**. En el caso de `summarise()` / `summarize()`, podemos reducir un conjunto de datos a uno o más valores resumen.
+
+Por ejemplo:
+
+```{r}
+#| id: cod24
+datos |>
+  summarise(
+    promedio_casos = mean(casos),
+    casos_totales = sum(casos)
+  )
+```
+
+Así, se obtiene una tabla con una sola fila que contiene el promedio y el total de casos en todo el conjunto de datos.
+
+La función `group_by()` permite definir grupos dentro del conjunto de datos según una o más variables. A partir de ese momento, las operaciones siguientes se aplican **de forma independiente dentro de cada grupo**.
+
+Por ejemplo, si queremos calcular los mismos indicadores por año:
+
+```{r}
+#| id: cod25
+datos |>
+  group_by(año) |>
+  summarise(
+    promedio_casos = mean(casos),
+    casos_totales = sum(casos)
+  )
+```
+
+El resultado es una tabla con una fila por cada año, mostrando los valores correspondientes a cada grupo.
+
+También es posible agrupar por más de una variable. Por ejemplo, calcular una tasa por jurisdicción y año:
+
+```{r}
+#| id: cod26
+datos |>
+  group_by(jurisdiccion, año) |>
+  summarise(
+    tasa = casos / pob * 100000
+  )
+```
+
+Después de usar `group_by()`, los datos permanecen agrupados. Si se desea continuar trabajando sin esa estructura, se puede utilizar la función `ungroup()` o el argumento `.groups = "drop"` dentro de `summarise()`:
+
+```{r}
+#| id: cod27
+# Descartar grupos con ungroup()
+datos |>
+  group_by(jurisdiccion, año) |>
+  summarise(
+    tasa = casos / pob * 100000
+  ) |>
+  ungroup()
+
+# Descartar grupos dentro de summarise()
+datos |>
+  group_by(jurisdiccion, año) |>
+  summarise(
+    tasa = casos / pob * 100000,
+    .groups = "drop"
+  )
+```
+
+### Funciones de resumen más frecuentes
+
+Algunas de las funciones del R `base` que se pueden utilizar dentro de los argumentos de esta función son:
+
+- `min()`: mínimo
+- `max()`: máximo
+- `mean()`: media
+- `median()`: mediana
+- `var()`: varianza
+- `sd()`: desvío
+- `sum()`: sumatoria
+
+Otras funciones que se pueden incorporar las provee el mismo paquete `dplyr`, por ejemplo:
+
+- `first()`: primer valor en el vector.
+- `last()`: último valor en el vector.
+- `n()`: número de valores en el vector.
+- `n_distinct()`: números de valores distintos en el vector.
+
+### Combinaciones
+
+En los ejemplos anteriores vimos cómo se van integrando algunas de las funciones mediante el uso del operador de tubería `%>%` o `|>`. La idea detrás de esta “*gramática de los datos*” que propone el paquete `dplyr` es poder encadenar acciones de forma legible y lógica, construyendo oraciones más complejas paso a paso.
+
+Veamos un ejemplo que integra muchas de las funciones vistas hasta ahora:
+
+> Obtener una nueva tabla con las tasas crudas de casos notificados de VIH, por año y jurisdicción, **mayores a 20 por 100.000 habitantes**, ordenadas de **mayor a menor**.
+
+```{r}
+#| id: cod28
+datos |> # siempre partimos de los datos
+  group_by(año, jurisdiccion) |> # agrupamos
+  summarise(tasa = casos / pob * 100000) |> # resumimos
+  filter(tasa > 20) |> # filtramos
+  arrange(desc(tasa)) # ordenamos
+```
+
+Una buena práctica para construir este tipo de código es escribir cada paso de la operación **en una línea separada**. Esto no solo mejora la legibilidad, sino que facilita la identificación de errores o la modificación de pasos específicos.
+
+Este ejemplo muestra claramente el poder y la claridad que se logran al combinar funciones como `group_by()`, `summarise()`, `filter()` y `arrange()` en una misma operación fluida y coherente.
+
+## Función `count()`
+
+Esta función permite contar rápidamente los valores únicos de una o más variables en un conjunto de datos. Es especialmente útil para crear tablas de frecuencias absolutas, que posteriormente pueden ser usadas para calcular frecuencias relativas.
+
+Tiene un par de argumentos opcionales:
+
+- `name`: Define el nombre de la columna que contendrá el conteo. Por defecto, esta columna se llama `n`.
+
+- `sort`: Ordena la tabla de frecuencias de mayor a menor (por defecto, no realiza ninguna ordenación).
+
+- `wt`: Permite incorporar una variable que funcione como ponderación (o factor de expansión) para el cálculo de la frecuencia.
+
+Un ejemplo básico de su uso es contar las observaciones por cada valor único de la variable `jurisdiccion` en el conjunto de datos:
+
+```{r}
+#| id: cod29
+datos |>
+  count(jurisdiccion)
+```
+
+Usando el argumento `wt` obtenemos el conteo de casos por jurisdicción:
+
+```{r}
+#| id: cod30
+datos |>
+  count(jurisdiccion, wt = casos)
+```
+
+Lo cual es equivalente a:
+
+```{r}
+#| id: cod31
+datos |>
+  group_by(jurisdiccion) |>
+  summarise(
+    n = sum(casos, na.rm = TRUE),
+    .groups = "drop"
+  )
+```
+
+## Referencias {.unnumbered}

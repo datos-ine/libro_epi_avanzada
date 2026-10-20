@@ -1,0 +1,378 @@
+---
+title: Hoja de Estilo del lenguaje R
+author: 
+  - name: Christian Ballejo
+    orcid: 0000-0002-7346-5701
+---
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| id: setup
+source("files/setup.R")
+```
+
+## Convenciones de estilo R
+
+R es bastante indulgente con la forma en que escribimos código, a diferencia de otros lenguajes como Python, donde un espacio mal puesto puede arruinar el script. Sin embargo, adoptar una guía de estilo mejora la legibilidad, facilita la colaboración y reduce errores.
+
+Las siguientes líneas de código producen el mismo resultado, pero no todas son igual de claras:
+
+```{r}
+#| eval: false
+#| id: cod1
+# Opción 1
+mpg |>
+  filter(cty > 10, class == "compact")
+
+# Opción 2
+mpg |> filter(cty > 10, class == "compact")
+
+# Opción 3
+mpg |>
+  filter(cty > 10, class == "compact")
+
+# Opción 4
+mpg |> filter(cty > 10, class == "compact")
+
+# Opción 5
+filter(mpg, cty > 10, class == "compact")
+
+# Opción 6
+mpg |>
+  filter(cty > 10, class == "compact")
+
+# Opción 7
+filter(mpg, cty > 10, class == "compact")
+```
+
+Las tres primeras versiones son más legibles. El resto, aunque válidas, son difíciles de seguir, especialmente en trabajos colaborativos o materiales docentes.
+
+## Guía de estilo de **`tidyverse`**
+
+Para ayudar a mejorar la legibilidad y facilitar el compartir código con otros, el equipo de Tidyverse publicó una guía concisa con ejemplos claros de buenas y malas formas de escribir código, nombres de variables, sangría, líneas largas, y más:
+
+➡️ [**https://style.tidyverse.org/**](https://style.tidyverse.org/){.uri}
+
+Además, RStudio incluye herramientas para aplicar estas convenciones automáticamente. Por ejemplo, seleccionando el código y presionando `Ctrl + i` (Windows) se puede reidentar el texto. No siempre es perfecto, pero es realmente útil para lograr la sangría correcta sin tener que presionar manualmente espacio muchas veces.
+
+### Espaciado
+
+Colocar espacios después de las comas:
+
+✔️ **Correcto**
+
+```{r}
+#| eval: false
+#| id: cod2
+filter(mpg, cty > 10)
+```
+
+✖️ **Incorrecto**
+
+```{r}
+#| eval: false
+#| id: cod3
+filter(mpg, cty > 10)
+
+filter(mpg, cty > 10)
+
+filter(mpg, cty > 10)
+```
+
+Colocar espacios después de comas y alrededor de operadores (`+`, `-`, `>`, `=`, etc.) mejora la legibilidad. También se deben evitar espacios innecesarios dentro de paréntesis:
+
+✔️ **Correcto**
+
+```{r}
+#| eval: false
+#| id: cod4
+filter(mpg, cty > 10)
+```
+
+✖️ **Incorrecto**
+
+```{r}
+#| eval: false
+#| id: cod5
+filter(mpg, cty > 10)
+
+filter(mpg, cty > 10)
+
+filter(mpg, cty > 10)
+```
+
+No colocar espacios alrededor de paréntesis que sean parte de funciones:
+
+✔️ **Correcto**
+
+```{r}
+#| eval: false
+#| id: cod6
+filter(mpg, cty > 10)
+```
+
+✖️ **Incorrecto**
+
+```{r}
+#| eval: false
+#| id: cod7
+filter(mpg, cty > 10)
+
+filter(mpg, cty > 10)
+
+filter(mpg, cty > 10)
+```
+
+### Líneas largas
+
+En general, es una buena práctica no tener líneas de código muy largas. Se recomienda limitar las líneas a **80 caracteres**. Para visualizarlo, en RStudio vamos a `Tools > Global Options > Code > Display`y seleccionamos la casilla **Show margin.**
+
+Se sugiere agregar saltos de línea dentro de las líneas de código más largas, los mismos deben colocarse luego de las comas y los argumentos se deben alinear dentro de la función:
+
+✔️ **Correcto**
+
+```{r}
+#| eval: false
+#| id: cod8
+filter(mpg, cty > 10, class == "compact")
+
+
+filter(mpg, cty > 10, class == "compact")
+
+
+filter(mpg, cty > 10, class == "compact")
+
+filter(
+  mpg,
+  cty > 10,
+  class %in%
+    c("compact", "pickup", "midsize", "subcompact", "suv", "2seater", "minivan")
+)
+```
+
+✖️ **Incorrecto**
+
+```{r}
+#| eval: false
+#| id: cod9
+filter(
+  mpg,
+  cty > 10,
+  class %in%
+    c("compact", "pickup", "midsize", "subcompact", "suv", "2seater", "minivan")
+)
+```
+
+### Tuberías y capas `ggplot2`
+
+Colocar cada paso de la tubería `(%>%` ó `|>`) en una línea separada, con sangría de dos espacios debajo del operador:
+
+✔️ **Correcto**
+
+```{r}
+#| eval: false
+#| id: cod10
+mpg |>
+  filter(cty > 10) |>
+  group_by(class) |>
+  summarize(avg_hwy = mean(hwy))
+```
+
+✖️ **Incorrecto**
+
+```{r}
+#| eval: false
+#| id: cod11
+# Mal
+mpg |> filter(cty > 10) |> group_by(class) |> 
+  summarize(avg_hwy = mean(hwy))
+
+# Muy mal
+mpg |> filter(cty > 10) |> group_by(class) |> summarize(avg_hwy = mean(hwy))
+
+# Tan mal que no funciona
+mpg |> 
+  filter(cty > 10)
+  |> group_by(class)
+  |> summarize(avg_hwy = mean(hwy))
+```
+
+Lo mismo aplica para las capas de gráficos de `ggplot2`, usando el conector `+` al final de la línea y debajo sangría de dos espacios:
+
+✔️ **Correcto**
+
+```{r}
+#| eval: false
+#| id: cod12
+ggplot(mpg, aes(x = cty, y = hwy, color = class)) +
+  geom_point() +
+  geom_smooth() +
+  theme_bw()
+
+# Mal
+ggplot(mpg, aes(x = cty, y = hwy, color = class)) +
+  geom_point() +
+  geom_smooth() +
+  theme_bw()
+
+# Muy mal
+ggplot(mpg, aes(x = cty, y = hwy, color = class)) +
+  geom_point() +
+  geom_smooth() +
+  theme_bw()
+
+# Tan mal que no funciona
+ggplot(mpg, aes(x = cty, y = hwy, color = class))
++geom_point()
++geom_smooth()
++theme_bw()
+```
+
+✖️ **Incorrecto**
+
+```{r}
+#| eval: false
+#| id: cod13
+# Mal
+ggplot(mpg, aes(x = cty, y = hwy, color = class)) +
+  geom_point() +
+  geom_smooth() +
+  theme_bw()
+
+# Muy mal
+ggplot(mpg, aes(x = cty, y = hwy, color = class)) +
+  geom_point() +
+  geom_smooth() +
+  theme_bw()
+
+# Tan mal que no funciona
+ggplot(mpg, aes(x = cty, y = hwy, color = class))
++geom_point()
++geom_smooth()
++theme_bw()
+```
+
+### Comentarios
+
+Los comentarios deben comenzar con `#` seguido de un espacio:
+
+✔️ **Correcto**
+
+```{r}
+#| eval: false
+#| id: cod14
+# Bien
+```
+
+✖️ **Incorrecto**
+
+```{r}
+#| eval: false
+#| id: cod15
+#Mal
+
+#Mal
+```
+
+Si el comentario es corto, se puede incluir en la misma línea, separado por al menos dos espacios para mejorar la legibilidad:
+
+```{r}
+#| eval: false
+#| id: cod16
+mpg |>
+  filter(cty > 10) |> # filtro filas donde cty es 10 o más
+  group_by(class) |> # estratifica por class
+  summarize(avg_hwy = mean(hwy)) # resume la media de hwy por cada grupo
+```
+
+Se puede agregar espacios adicionales para alinear los comentarios en línea, si lo deseamos:
+
+```{r}
+#| eval: false
+#| id: cod17
+mpg |>
+  filter(cty > 10) |> # filtro filas donde cty es 10 o más
+  group_by(class) |> # estratifica por class
+  summarize(avg_hwy = mean(hwy)) # resume la media de hwy por cada grupo
+```
+
+Si el comentario es muy largo, podemos dividirlo en varias líneas. RStudio incluye una herramienta útil para comentarios largos: `Code > Reflow Comment` los ajusta automáticamente al ancho deseado.
+
+### Nombres de columnas
+
+Se recomienda utilizar nombres de columnas en un formato consistente y compatible con el enfoque del ecosistema `tidyverse`. Esto facilita la manipulación de datos y reduce errores en el código.
+
+En particular, se sugiere evitar:
+
+- Nombres excesivamente largos
+
+- Uso de mayúsculas
+
+- Signos de puntuación, acentos y caracteres especiales
+
+- Espacios en blanco
+
+En su lugar, es recomendable utilizar:
+
+- Nombres breves pero descriptivos
+
+- Letras minúsculas
+
+palabras separadas por guiones bajos (`_`) o puntos (`.`)
+
+✔️ **Correcto**
+
+```{r}
+#| id: cod18
+names(mpg)
+```
+
+✖️ **Incorrecto**
+
+En bases de datos existentes:
+
+```{r}
+#| id: cod19
+names(iris)
+```
+
+Al crear un nuevo dataset:
+
+```{r}
+#| id: cod20
+datos <- tibble(
+  Jurisdicción = c(rep("Buenos Aires", 10), rep("CABA", 10)),
+  CasosTotales = sample(100, 20),
+  POBLACIÓN = c(rep(16626374, 10), rep(3054237, 10)),
+)
+
+names(datos)
+```
+
+Al crear una nueva variable o una tabla resumen:
+
+```{r}
+#| error: true
+#| id: cod21
+# Tan mal que da error
+datos  |> 
+summarise(tasa-incidencia(100k) = CasosTotales/POBLACIÓN * 100000)
+```
+
+En caso de que nuestros datos tengan nombres de columnas no compatibles con `tidyverse`, se recomienda usar la función `clean_names()` del paquete `janitor` para estandarizarlas:
+
+```{r}
+#| id: cod22
+library(janitor)
+
+iris |>
+  clean_names() |>
+  head(10)
+
+datos <- datos |>
+  clean_names()
+
+names(datos)
+```

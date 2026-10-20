@@ -14,7 +14,7 @@ author:
 source("files/setup.R")
 ```
 
-[![Artwork por \@allison_horst](/images/cracked_setwd.png){fig-align="center" width="500" height="300"}](https://allisonhorst.com/)
+[![Artwork por \@allison_horst](/bg_images/cracked_setwd.png){fig-align="center" width="500" height="300"}](https://allisonhorst.com/)
 
 ## Primeros pasos y generalidades
 
@@ -24,7 +24,7 @@ Es una herramienta **multiplataforma y de código abierto** que facilita la prog
 
 RStudio presenta una interfaz unificada compuesta por distintos paneles, lo que permite organizar el trabajo de forma clara y eficiente:
 
-![](/images/rstudio.png){fig-align="center" width="95%"}
+![](images/rstudio.png){fig-align="center" width="95%"}
 
 1.  **Editor de scripts** (*Source*): permite crear y editar scripts de R, así como documentos R Markdown o Quarto.
 
@@ -36,7 +36,7 @@ RStudio presenta una interfaz unificada compuesta por distintos paneles, lo que 
 
 Para garantizar la reproducibilidad de los resultados, es recomendable evitar el guardado automático del historial de objetos entre sesiones, ya que puede generar confusión. Para desactivar esta opción, ir a `Tools > Global Options` y desmarcar las casillas de las opciones **Workspace** y **History** como se muestra en la siguiente imagen:
 
-![](/images/global_opts.png){fig-align="center" width="600"}
+![](images/global_opts.png){fig-align="center" width="600"}
 
 ## Proyectos de RStudio
 
@@ -48,11 +48,11 @@ Trabajar con proyectos facilita la importación de datos y evita errores relacio
 
 Para crear un nuevo proyecto, se puede utilizar el menú `File > New Project...`. También accedemos a generar un proyecto nuevo a partir de pulsar el acceso directo `New Project...` ubicado en la esquina superior derecha de la interfaz:
 
-![](/images/proyecto01.png){fig-align="center" width="600"}
+![](images/proyecto01.png){fig-align="center" width="600"}
 
 En cualquiera de los dos casos aparecerá un cuadro de diálogo que presenta tres opciones para crear el **nuevo proyecto** de RStudio:
 
-![](/images/proyecto02.png){fig-align="center"}
+![](images/proyecto02.png){fig-align="center"}
 
 - **New Directory**: crea una nueva carpeta para el proyecto a la que deberemos asignarle un nombre, es la opción más habitual. Todos los archivos de configuración aparecerán asociados a esta nueva carpeta.
 
@@ -62,7 +62,7 @@ En cualquiera de los dos casos aparecerá un cuadro de diálogo que presenta tre
 
 Una vez que creamos un nuevo proyecto con la opción **New Directory**, aparecerá una pantalla con una lista de tipos de proyectos que se pueden crear en RStudio:
 
-![](/images/proyecto03.png){fig-align="center"}
+![](images/proyecto03.png){fig-align="center"}
 
 Durante este curso utilizaremos siempre la **primera opción** (**New Project**). Las demás opciones están pensadas para usos más específicos, como el desarrollo de paquetes de R, sitios web o documentos con Quarto o R Markdown.
 
@@ -72,7 +72,7 @@ Al seleccionar **New Project**, se abrirá una nueva ventana con los siguientes 
 
 - **Create project as subdirectory of:** este campo permite definir en qué ubicación del sistema de archivos se guardará el proyecto. Podemos hacer clic en el botón **Browse...** para abrir el explorador de archivos y seleccionar la carpeta contenedora. En nuestro ejemplo, lo ubicaremos dentro de **Mis Documentos**.
 
-![](/images/proyecto04.png){fig-align="center" width="479"}
+![](images/proyecto04.png){fig-align="center" width="479"}
 
 Una vez completados estos campos, hacemos clic en **Create Project**.
 
@@ -86,7 +86,7 @@ Echemos un vistazo a lo que RStudio realizó:
 
 - El otro cambio se observa en la parte superior derecha, que muestra el nombre del proyecto. Si hacemos click en él, se desplegará el menú de proyectos. Desde aquí se puede abrir y cerrar proyectos, navegar rápidamente a proyectos que se han abierto recientemente y configurar las opciones de RStudio para cada uno de ellos.
 
-![](/images/proyecto05.png){fig-align="center"}
+![](images/proyecto05.png){fig-align="center"}
 
 ### Abrir un proyecto existente
 
@@ -112,13 +112,13 @@ Tenemos varias formas de crear un script nuevo:
 
 - Con el atajo de teclado: `Ctrl + Shift + N`
 
-- Desde la barra de herramientas: presionando el ícono ![](/images/script_new.png)
+- Desde la barra de herramientas: presionando el ícono ![](images/script_new.png)
 
 ### Ejecutar scripts
 
 La forma habitual de ejecutar el contenido de un script es línea por línea, usando alguna de las siguientes opciones:
 
-- Presionando el botón ![](/images/script_run.png) del editor de código de RStudio
+- Presionando el botón ![](images/script_run.png) del editor de código de RStudio
 
 - Mediante el atajo de teclado `Ctrl + Enter`
 
@@ -188,28 +188,29 @@ Algunas de las herramientas fundamentales de RStudio son el asistente de código
 
 Al escribir en el editor o la consola, la tecla `Tab` activa el autocompletado de funciones, nombres de objetos y argumentos, agilizando la escritura y reduciendo errores de sintaxis. En versiones recientes, el asistente también permite la previsualización de colores en los gráficos, resaltar los paréntesis de cierre en funciones anidadas con distintos colores y gestionar automáticamente la indentación del código.
 
-![](/images/asistente.png){fig-align="center" width="600"}
+![](images/asistente.png){fig-align="center" width="600"}
 
 Muchas de estas opciones se pueden configurar desde el menú `Code` y desde `Tools > Global Options > Code`(pestañas **Editing** y **Display**).
 
-![](/images/code_display.png){fig-align="center"}
+![](images/code_display.png){fig-align="center"}
 
 ### Ayuda en línea
 
 Al posicionar el cursor sobre el nombre de una función en el editor y presionar `F1`, se accede directamente a la documentación correspondiente en el panel **Help** (habitualmente ubicado en la esquina inferior derecha).
 
-![](/images/help.png){fig-align="center" width="600"}
+![](images/help.png){fig-align="center" width="600"}
 
 ### Historial de comandos
 
 En la consola, al usar las teclas de flecha arriba/abajo, se puede navegar por los comandos ejecutados durante la sesión actual. Además, el panel **History** (parte superior derecha) almacena los comandos de todas las sesiones previas, permitiendo reutilizarlos con un clic en **To Console** (`Enter`) o **To Source** (`Shift + Enter`), según se desee insertarlos en la consola o en el script activo.
 
-![](/images/historial.png){fig-align="center" width="600"}
+![](images/historial.png){fig-align="center" width="600"}
 
 ## Atajos de teclado (Windows)
 
 ```{r}
 #| echo: false
+#| id: tab1
 tibble(
   "Menú" = c(
     "Archivo (File)",
@@ -272,16 +273,17 @@ Dentro del entorno de RStudio, la gestión de paquetes se realiza desde la pesta
 
 Para instalar un paquete nuevo, simplemente pulsamos el botón *Install* dentro de la pestaña *Packages*, lo cual abrirá una ventana emergente.
 
-![](/images/rstudio_paquetes01.png){fig-align="center"}
+![](images/rstudio_paquetes01.png){fig-align="center"}
 
 Allí podemos escribir el nombre del paquete que deseamos instalar. Para asegurarnos de que también se descarguen e instalen automáticamente los paquetes de los que depende, es importante tildar la opción *Install dependencies*.
 
-![](/images/rstudio_paquetes02.png){fig-align="center"}
+![](images/rstudio_paquetes02.png){fig-align="center"}
 
 Como alternativa, también podemos realizar la instalación desde el editor de scripts mediante el siguiente comando:
 
 ```{r}
 #| eval: false
+#| id: cod1
 install.packages("nombre_del_paquete", dependencies = TRUE)
 ```
 
@@ -319,6 +321,7 @@ Para cargar los datos desde un archivo de texto plano usamos el código:
 
 ```{r}
 #| eval: false
+#| id: cod2
 datos <- read.xxx("mis_datos.xxx")
 ```
 
@@ -328,6 +331,7 @@ R también permite cargar bases de datos incluidas en paquetes instalados median
 
 ```{r}
 #| eval: false
+#| id: cod3
 data(nombre_datos)
 
 datos <- nombre_datos
