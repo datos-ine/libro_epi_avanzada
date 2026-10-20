@@ -1,0 +1,454 @@
+---
+title: "Análisis de normalidad y homocedasticidad"
+author: 
+  - name: Christian Ballejo
+    orcid: 0000-0002-7346-5701
+---
+
+```{r}
+#| echo: false
+source("files/setup.R")
+```
+
+## Introducción
+
+Este material es una continuación del capítulo sobre **Análisis exploratorio de datos** de la **Unidad 1**. Recordemos que uno de los objetivos del EDA es conocer cómo se distribuyen los valores de las variables de interés.
+
+Las características fundamentales a la hora de decidir si utilizaremos métodos paramétricos o no paramétricos para la inferencia estadística, es que los datos se ajusten a una distribución normal y conocer si tienen una dispersión homogénea o heterogénea. Ahora que conocemos el funcionamiento interno de los test de hipótesis, podemos usar **pruebas de bondad de ajuste** para evaluar los supuestos de normalidad y homocedasticidad.
+
+## Normalidad
+
+Determinar que una distribución es aproximadamente normal nos permite decidirnos por test de comparaciones paramétricos.
+
+Existen tres enfoques que debemos analizar simultáneamente:
+
+- Métodos gráficos
+- Métodos analíticos
+- Pruebas de bondad de ajuste
+
+### Métodos gráficos
+
+El gráfico por excelencia para evaluar normalidad es el Q-Q Plot que consiste en comparar los cuantiles de la distribución observada con los cuantiles teóricos de una distribución normal con la misma media y desviación estándar que los datos.
+
+Cuanto más se aproximen los datos a una normal, más alineados están los puntos entorno a la recta.
+
+En el lenguaje R hay varios paquetes que tienen funciones para construirlos:
+
+```{r}
+library(dlookr)
+library(ggpubr)
+library(moments)
+library(nortest)
+library(car)
+library(tidyverse)
+```
+
+Cargamos datos de ejemplo:
+
+```{r}
+datos <- read_csv2("datos/datos_normalidad.csv")
+```
+
+Evaluación gráfica de normalidad usando la función `plot_normality()` del paquete `dlookr`:
+
+```{r}
+datos |>
+  plot_normality(peso)
+```
+
+A simple vista observamos que los puntos de la variable `peso` *se ajustan bastante bien a la recta*.
+
+También podemos generar el qqplot usando las funciones `geom_qq_line()` y `geom_qq()` de `ggplot2`:
+
+```{r}
+datos |>
+  ggplot(mapping = aes(sample = peso)) +
+  geom_qq_line() +
+  geom_qq() +
+  theme_minimal()
+```
+
+La función `ggqqplot()` del paquete `ggpubr` [@kassambara2016] nos permite agregar intervalos de confianza (zona gris alrededor de la recta) que nos orienta mejor sobre "donde caen" los puntos de la variable analizada:
+
+```{r}
+datos$peso |>
+  ggqqplot()
+```
+
+Un ejemplo donde la variable parece no cumplir con el supuesto de normalidad en estos datos de prueba es `edad`:
+
+```{r}
+datos$edad |>
+  ggqqplot()
+```
+
+### Métodos analíticos
+
+#### Medidas de forma
+
+Existen dos medidas de forma útiles que podemos calcular mediante funciones de R.
+
+- La curtosis (kurtosis)
+- La asimetría (skewness)
+
+La curtosis mide el grado de agudeza o achatamiento de una distribución con relación a la distribución normal.
+
+- $< 0$ Distribución platicúrtica (apuntamiento negativo): baja concentración de valores
+- $> 0$ Distribución leptocúrtica (apuntamiento positivo): gran concentración de valores
+- $= 0$ Distribución mesocúrtica (apuntamiento normal): concentración como en la distribución normal.
+
+El paquete `moments` [@moments:2005] posee algunas funciones interesantes para analizar medidas de forma, como el estimador de Pearson para curtosis:
+
+```{r}
+datos |>
+  summarise(
+    kurtosis_edad = kurtosis(edad, na.rm = T),
+    kurtosis_peso = kurtosis(peso, na.rm = T)
+  )
+```
+
+En los dos casos estamos frente a una *distribución leptocúrtica* pero de magnitudes bien diferentes. Muy alta en el caso de la variable `edad` (8,0) y mucho menor para la variable `peso` (2,7).
+
+El índice de asimetría es un indicador que permite establecer el *grado de asimetría* que presenta una distribución. Los valores menores que 0 indican distribución asimétrica negativa; los mayores a 0: distribución asimétrica positiva y cuando sea 0, o muy próximo a 0, distribución simétrica:
+
+```{r}
+datos |>
+  summarise(
+    asimetria_edad = skewness(edad, na.rm = T),
+    asimetria_peso = skewness(peso, na.rm = T)
+  )
+```
+
+Los valores obtenidos con la función `skewness()` del paquete `moments` nos informan que la distribución de la edad tienen una asimetría positiva (2,2) y que los valores de peso se distribuyen bastante simétricos (0,1).
+
+Estas características de las distribuciones también se pueden ver mediante histogramas o gráficos de densidad:
+
+```{r}
+datos |>
+  plot_normality(edad, col = "forestgreen")
+
+datos |>
+  plot_normality(peso, col = "royalblue")
+```
+
+Los histogramas que se acerquen a la clásica "campana de Gauss" tendrán curtosis y asimetrías alrededor del valor cero.
+
+### Pruebas de bondad de ajuste
+
+Una prueba de bondad de ajuste permite testear la hipótesis de que una variable aleatoria sigue cierta distribución de probabilidad y se utiliza en situaciones donde se requiere comparar una distribución observada con una teórica o hipotética.
+
+El mecanismo es idéntico a cualquier test de hipótesis salvo que aquí esperamos no descartar la hipótesis nula de igualdad, por lo que obtener valores *p* de probabilidad mayores a 0,05 es signo de que la distribución de la variable analizada se ajusta.
+
+A continuación, presentaremos los test de hipótesis más utilizados para analizar normalidad.
+
+#### Test de Shapiro-Wilk
+
+Lleva el nombre de sus autores (Samuel Shapiro y Martin Wilk) y es usado preferentemente para muestras de hasta 50 observaciones.
+
+La función se encuentra desarrollada en el paquete `stats` y se llama `shapiro.test()`:
+
+```{r}
+shapiro.test(datos$edad)
+
+shapiro.test(datos$peso)
+```
+
+**Interpretación**: Siendo la hipótesis nula que la población está distribuida normalmente, si el p-valor es menor a $\alpha$ (nivel de significancia, convencionalmente un 0,05) entonces la hipótesis nula es rechazada (se concluye que los datos no provienen de una distribución normal). Si el p-valor es mayor a $\alpha$, se concluye que no se puede rechazar dicha hipótesis.
+
+En función de esta interpretación (que es común a todos los test de hipótesis de normalidad), podemos decir que la distribución de la variable **edad** *no se ajusta a la normal* y no podemos rechazar que la distribución de la variable **peso** se ajuste.
+
+#### Test de Kolmogorov-Smirnov
+
+El test de **Kolmogorov-Smirnov** permite estudiar si una muestra procede de una población con una determinada distribución que no está limitado únicamente a la distribución normal.
+
+El test asume que se conoce la media y varianza poblacional, lo que en la mayoría de los casos no es posible. Para resolver este problema, se realizó una modificación conocida como test Lilliefors.
+
+#### Test de Lilliefors
+
+El test de **Lilliefors** asume que la media y varianza son desconocidas y está especialmente desarrollado para contrastar la normalidad.
+
+Es la alternativa al test de Shapiro-Wilk cuando el número de observaciones es mayor de 50.
+
+La función `lillie.test()` del paquete `nortest` [@gross2006] permite aplicarlo:
+
+```{r}
+lillie.test(datos$edad)
+
+lillie.test(datos$peso)
+```
+
+Los resultados son coincidentes con los obtenidos anteriormente.
+
+#### Test de D'agostino
+
+Esta prueba se basa en las transformaciones de la curtosis y la asimetría de la muestra, y solo tiene poder frente a las alternativas de que la distribución sea sesgada.
+
+El paquete `moments` la tiene implementada en `agostino.test()`:
+
+```{r}
+agostino.test(datos$edad)
+
+agostino.test(datos$peso)
+```
+
+Los resultados coinciden con la observación de asimetría que efectuamos con los métodos analíticos, confirmando que la variable `edad` *no se ajusta* a una curva simétrica y la variable `peso` si lo hace.
+
+Cuando estos test se emplean con la finalidad de verificar las condiciones de métodos paramétricos es importante tener en cuenta que, al tratarse de valores probabilidad, cuanto mayor sea el tamaño de la muestra más poder estadístico tienen y más fácil es encontrar evidencias en contra de la hipótesis nula de normalidad.
+
+Por otra parte, cuanto mayor sea el tamaño de la muestra, menos sensibles son los métodos paramétricos a la falta de normalidad. Por esta razón, es importante no basar las conclusiones únicamente en los resultados de los test, sino también considerar los otros métodos (gráfico y analítico) y no olvidar el tamaño de la muestra.
+
+## Homocedasticidad
+
+La homogeneidad de varianzas es un supuesto que considera constante la varianza en los distintos grupos que queremos comparar.
+
+Esta homogeneidad es condición necesaria antes de aplicar algunos test de hipótesis de comparaciones o bien para aplicar correcciones mediante los argumentos de las funciones de R.
+
+Existen diferentes test de bondad de ajuste que permiten evaluar la distribución de la varianza. Todos ellos consideran como $H_0$ que la varianza es igual entre los grupos y como $H_1$ que no lo es.
+
+La diferencia entre ellos es el estadístico de centralidad que utilizan:
+
+- Media de la varianza: son los más potentes pero se aplican en distribuciones que se aproximan a la normal.
+
+- Mediana de la varianza: son menos potentes pero consiguen mejores resultados en distribuciones asimétricas.
+
+### F-test
+
+Este test es un contraste de la razón de varianzas, mediante el estadístico F que sigue una distribución F-Snedecor.
+
+Se utiliza cuando las distribuciones se aproximan a la "normal" y en R base se la encuentra en la función `var.test()` que permite utilizar la sintaxis de fórmula:
+
+```{r}
+#| eval: false
+variable_cuantitativa ~ variable_categórica_grupos
+```
+
+Por ejemplo:
+
+```{r}
+var.test(formula = peso ~ sexo, data = datos)
+```
+
+Comparamos las varianzas de la variable peso entre el grupo de mujeres y hombres. El valor $p$ del test indica que no podemos descartar la igualdad de varianzas entre los grupos ($H_0$) o lo que es lo mismo el test no encuentra diferencias significativas entre las varianzas de los dos grupos.
+
+### Test de Bartlett
+
+Este test se puede utilizar como alternativa al F-test, sobre todo porque nos permite aplicarlo cuando tenemos más de 2 grupos de comparación. Al igual que el anterior es sensible a las desviaciones de la normalidad.
+
+La función en R `base` es `bartlett.test()` y también se pueden usar argumentos tipo fórmula:
+
+```{r}
+bartlett.test(formula = peso ~ sexo, data = datos)
+```
+
+El resultado es coincidente con el mostrado por `var.test()`. No se encuentran diferencias significativas entres las varianzas de los pesos en los dos grupos (Mujer - Varon)
+
+### Test de Levene
+
+El test de Levene sirve para comparar la varianza de 2 o más grupos pero además permite elegir distintos estadísticos de tendencia central. Por lo tanto, la podemos adaptar a distribuciones alejadas de la normalidad seleccionando por ejemplo la mediana.
+
+La función `leveneTest()` se encuentra disponible en el paquete `car`. La vemos aplicada sobre `peso` para los diferentes grupos de `sexo` y utilizando la **media** como estadístico de centralidad, dado que la distribución de `peso` se aproxima a la normal.
+
+```{r}
+leveneTest(y = peso ~ sexo, data = datos, center = "mean")
+```
+
+La conclusión es la misma que la encontrada anteriormente.
+
+Ahora vamos aplicarla sobre la variable `edad`, de la que habíamos descartado "normalidad". Lo hacemos usando el argumento `center` con `"mean"` (media) y con `"median"` (mediana).
+
+```{r}
+leveneTest(y = edad ~ sexo, data = datos, center = "mean")
+
+leveneTest(y = edad ~ sexo, data = datos, center = "median")
+```
+
+Los resultados son diferentes. Mientras con el centrado en la media nos da un *p* valor significativo menor a 0,05 con el centrado en la mediana no nos permite descartar homocedasticidad.
+
+Observamos aquí las distorsiones sobre la media y las formas paramétricas que devienen de distribuciones asimétricas y alejadas de la curva normal. El código correcto para este caso (variable `edad`) es usar el centrado en la mediana (`center = "median"`).
+
+## Ejemplo práctico en R
+
+La contaminación por plásticos ha alcanzado incluso las zonas más remotas del océano, fragmentándose en partículas microscópicas conocidas como microplásticos (\< 5 mm). Debido a su capacidad para filtrar grandes volúmenes de agua, los bivalvos como el mejillón (*Mytilus edulis*) actúan como bioindicadores de la salud ambiental y, al mismo tiempo, como una vía directa de transferencia de contaminantes hacia los seres humanos.
+
+En este ejercicio, analizaremos datos basados en la investigación pionera de @vancauwenberghe2014. Evaluaremos la carga promedio de microplásticos en muestras destinadas al consumo y estimaremos la magnitud de la proporción de bivalvos que superan los límites de seguridad.
+
+Los valores de concentración de microplásticos (medidos en partículas/g) hallados en estos bivalvos estudiados se encuentran almacenadas en el archivo **bivalvos.txt** y se nos pide realizar los siguientes items:
+
+a.  Lea el archivo y explore su contenido
+b.  Describa estadísticamente las mediciones
+c.  ¿Estos datos parecen tomados de una población de distribución normal?, ¿por qué?
+d.  ¿Cuáles son los intervalos de confianza de 90 y 95% para la concentración media de microplasticos por el método frecuentista tradicional (fórmulas)?
+e.  Construya la variable **umbral_excedido** tomando el valor de corte hipotético en 0,5 partículas/g (si concentración es menor o igual a 0,5 el umbral_excedido valdrá "No" y si es mayor valdrá "Si")
+f.  ¿Cuál es el intervalo de confianza del 95% de la proporcion de bivalvos con riesgo potencial para el consumo humano?
+
+Veamos como llevamos adelante estos pasos mediante el lenguaje R:
+
+### Lectura y exploración inicial
+
+```{r, message=F, warning=F}
+# Activamos paquetes necesarios y conocidos
+
+library(tidyverse)
+library(dlookr)
+
+# Leemos la tabla de datos
+
+bivalvos <- read_csv2("datos/bivalvos.txt")
+```
+
+Visualizamos la estructura de la tabla de datos
+
+```{r, message=F, warning=F}
+glimpse(bivalvos)
+```
+
+Tenemos una tabla con 50 observaciones (mediciones en bivalvos) y la variable de interés se llama concentracion (nos informan que está expresada como partículas/g de tejido húmedo)
+
+### Describa estadísticamente las mediciones
+
+Con la función `describe()` de **dlookr** podemos obtener los estadísticos de esta variable cuantitativa continua.
+
+```{r, message=F, warning=F}
+bivalvos |>
+  describe(concentracion)
+```
+
+La media (0,4556 partículas/g) y la mediana (0,44 partículas/g) son cercanas. El desvío estandar es de 0,138 partículas/g.
+
+### Test de distribución normal
+
+Aplicaremos el test de normalidad de Shapiro-Wilk (forma analítica)
+
+```{r, message=F, warning=F}
+shapiro.test(bivalvos$concentracion)
+```
+
+Un p-valor mayor a 0,05 habla de un ajuste a la curva normal (es su hipotesis nula de igualdad).
+
+Complementamos visualizandolo graficamente con un Q-QPlot.
+
+```{r, message=F, warning=F}
+bivalvos |>
+  plot_normality(concentracion)
+```
+
+Los puntos se desarrollan "alrededor" a la recta de normalidad.
+
+Con estos dos elementos podemos confirmar que la distribución se aproxima a la "Normal" y por lo tanto es confiable hacer uso de métodos paramétricos.
+
+Si bien con ayuda del Teorema del Límite Central (TCL) sabemos que si el tamaño de la muestra es suficientemente grande, la distribución de la media muestral (o del estadístico) tiende a una distribución normal, independientemente de la forma que tengan los datos originales. En este caso, la definición de "grande" depende de varios factores, pero generalmente se considera que 30 es un buen umbral.
+
+En la práctica, cuando trabajamos con variables continuas:
+
+- Muestras pequeñas ($n < 30$): Si podemos asumir que la población original es aproximadamente normal, utilizamos la distribución $t$ de Student con $n-1$ grados de libertad. Esta distribución es más 'ancha' en las colas, lo que penaliza nuestra incertidumbre por tener pocos datos.
+
+- Muestras grandes ($n \ge 30$): Por el TLC, la distribución del estadístico tiende a la normalidad ($z$). Sin embargo, dado que la distribución $t$ converge a la $z$ a medida que el tamaño de muestra aumenta, es una práctica estándar (y simplificadora) utilizar la distribución $t$ en toda la escala.Por eso, funciones en R como `t.test()` se usan universalmente: para un $n$ pequeño aplican la corrección necesaria, y para un $n$ grande los resultados son virtualmente idénticos a los de una distribución $z$.
+
+Es una buena oportunidad para mencionar que el número 30 es una convención histórica (una regla empírica). Actualmente, a veces con $n=30$ y datos muy sesgados, el TLC aún no ha "actuado" lo suficiente y hay que recurrir a métodos no paramétricos donde obtenemos IC más robustos y honestos que confiar ciegamente en la distribución $t$".
+
+### Calculo de IC paramétrica
+
+Estamos frente al calculo de IC de una muestra de n = 50 (mayor a 30 observaciones) y que cumple con el supuesto de normalidad, por lo tanto deciamos que podemos aplicar un método paramétrico basado en la distribución $t$ de Student.
+
+Podríamos hacer las operaciones y cálculos individuales utilizando las funciones que R tiene sobre esta distribución (familia TDist: `qt()`, etc), pero la idea de este ejercicio es mostrarles la forma operativa más sencilla de llevarlo a cabo.
+
+**Función t.test()**
+
+La función `t.test()`, incluída en el paquete stats de R base, sirve apara ejecutar test de hipótesis de medias de una y dos poblaciones (independientes o pareadas) pero además nos calcula automáticamente el intervalo de confianza requerido, basado en la distribución $t$ de Student.
+
+Para este ejemplo debemos utilizar como argumentos:
+
+- la variable de interés que contiene los valores de la muestra
+- el nivel de confianza con el que necesitamos el IC
+
+```{r, message=F, warning=F}
+t.test(x = bivalvos$concentracion, conf.level = 0.95)
+```
+
+En la lista de resultados devuelta debemos observar los valores que figuran debajo de “95 percent confidence interval:”. En este caso, el resultado es de una media de 0,4556 IC95%: 0,4163-0,4949 partículas/g
+
+Si cambiamos el argumento conf.level a 0.90 obtendremos el IC 90%:
+
+```{r, message=F, warning=F}
+t.test(x = bivalvos$concentracion, conf.level = 0.90)
+```
+
+Este va de 0,4228 a 0,4884 partículas/g, lógicamente más estrecho que el anterior porque redujimos el intervalo de confianza.
+
+La redacción correcta sería *"con un nivel de confianza del 90%, se estima que el verdadero valor de la media poblacional de la concentración de microplásticos en bivalvos se encuentra entre 0,4228 y 0,4884 partículas/g."*
+
+Técnicamente las funciones estadísticas de R base devuelven generalmente resultados en formato lista y reciben su entrada con formato vector o bien sintaxis fórmula. Ese formato no cumple con ser ordenado como el dataframe. Dado que la filosofía de trabajo del tidyverse (y por lo tanto todos sus paquetes que pertenecen al ecosistema) tienen como premisa recibir y devolver un dataframe, lo que permite usar tambien las características tuberías, @rstatix propuso el paquete **rstatix**.
+
+La idea central del paquete es ofrecer funciones que hacen lo mismo que las de R base pero en lugar de devolver una lista de valores como resultado lo haga mediante un dataframe.
+
+Veamos su uso:
+
+```{r, message=F, warning=F}
+library(rstatix)
+
+bivalvos |>
+  t_test(concentracion ~ 1, conf.level = 0.95, detailed = T) |>
+  select(estimate, conf.low, conf.high)
+```
+
+### Construcción de **umbral_excedido**
+
+Debemos proceder ahora a construir la variable categórica **umbral_excedido** con valores Si y No en función del valor de corte hipotético de 0,5.
+
+Podemos hacerlo simplemente con el condicional `if_else()`.
+
+```{r, message=F, warning=F}
+bivalvos <- bivalvos |>
+  mutate(umbral_excedido = if_else(concentracion > 0.5, "Si", "No"))
+
+bivalvos |>
+  count(umbral_excedido)
+```
+
+Observamos que 19 de los 50 bivalvos de nuestra muestra representa un riesgo sanitario para los consumidores.
+
+```{r, message=F, warning=F}
+bivalvos |>
+  count(umbral_excedido) |>
+  mutate(porcentaje = n / sum(n) * 100)
+```
+
+Eso representa el 38% de las observaciones que tenemos.
+
+### IC 95% de la proporción
+
+En este punto queremos construir el intervalo de confianza del 95% que acompañe a la estimación puntual anterior.
+
+Tenemos dos posibilidades que están implementadas en R base: la función `prop.test()` o `binom.test()`.
+
+`prop.test()` utiliza la aproximación de la distribución Normal (puntuación $z$) a la distribución Binomial. Podríamos decir que es el análogo categórico del `t.test(`). Los elementos necesarios son: **x** número de éxitos y **n** que es tamaño de la muestra.
+
+Se usa con muestras "grandes" ($n > 30$). Pero si en cambio el tamaño de la muestra es pequeño, la proporción es muy cercana a 0 o a 1, o quieres una precisión absoluta y no quieres depender de aproximaciones matemáticas ejecutamos `binom.test()`.
+
+La función aplica la prueba exacta de Clopper-Pearson, donde en **x** definimos cuántos bivalvos superaron el umbral y en **n** el tamaño total de la muestra.
+
+Ejecutamos las dos posibilidades:
+
+```{r, message=F, warning=F}
+prop.test(x = 19, n = 50)
+
+binom.test(x = 19, n = 50)
+```
+
+Los resultados son muy similares, dado que cumplimos con los supuestos necesarios para usar la aproximación del test de proporciones.
+
+Entonces podemos decir con un nivel de confianza del 95%, que estimamos que la proporción poblacional de bivalvos que exceden el límite de seguridad sanitaria se encuentra entre 0,25 y 0,53.
+
+Las dos funciones estan representadas en **rstatix**, con `prop_test()` y `binom_test()` respectivamente.
+
+Apredimos con este ejercicio que el lenguaje R siempre ofrece múltiples caminos, pero nuestro criterio es el que decide cuál usar y reportar.
+
+::: hidden
+@base
+
+@wickham2019
+:::
+
+## Referencias
+
+<!--#  -->
