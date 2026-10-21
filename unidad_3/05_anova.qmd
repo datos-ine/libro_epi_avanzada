@@ -15,17 +15,17 @@ El análisis de varianza (ANOVA) es una extensión del modelo lineal general que
 
 La hipótesis nula ($H_0$) del test estadístico establece que las medias de la variable dependiente son iguales en todos los grupos, mientras que la hipótesis alternativa ($H_1$) plantea que al menos dos medias difieren significativamente:
 
--   $H_0: \mu_1 = \mu_2 = ... = \mu_i$
+- H0: $\mu_1 = \mu_2 = ... = \mu_i $
 
--   $H_1$: al menos una $\mu_i \not= \mu_j$
+- H_1: al menos una $\mu_i \not= \mu_j $
 
 Por lo tanto, el ANOVA permite comparar múltiples medias, pero lo hace analizando la variabilidad entre y dentro de los grupos.
 
 La variabilidad total se descompone en dos componentes:
 
--   **Intervarianza (SSB):** Variabilidad entre los grupos.
+-  **Intervarianza (SSB):** Variabilidad entre los grupos.
 
--   **Intravarianza (SSE):** Variabilidad dentro de los grupos.
+-  **Intravarianza (SSE):** Variabilidad dentro de los grupos.
 
 El estadístico $F$ del ANOVA, que sigue una distribución F de Fisher-Snedecor, compara estas dos fuentes de variabilidad:
 
@@ -39,7 +39,7 @@ donde:
 
 -   $n$: número total de observaciones.
 
-Si se cumple $H_0$, el estadístico $F$ tiende a 1, ya que las varianzas entre y dentro de los grupos son similares. Si las medias difieren significativamente, la intervarianza será mayor que la intravarianza, resultando en valores de $F$ superiores a 1.
+Si se cumple H0, el estadístico $F$ tiende a 1, ya que las varianzas entre y dentro de los grupos son similares. Si las medias difieren significativamente, la intervarianza será mayor que la intravarianza, resultando en valores de $F$ superiores a 1.
 
 ## ANOVA de un factor o de una vía
 
@@ -159,7 +159,7 @@ Ahora veamos como es la distribución de la tasa de mortalidad por estado.
 datos |>
   ggplot(mapping = aes(x = tasa_mortalidad, fill = estado)) +
   geom_histogram(binwidth = 10, color = "white") +
-  scale_fill_scico_d() + # paleta colorblind-friendly
+  scale_fill_viridis_d() + # paleta colorblind-friendly
   facet_grid(estado ~ .) + # variable estado en filas
   theme_minimal() # tema claro
 
@@ -167,7 +167,7 @@ datos |>
 datos |>
   ggplot(mapping = aes(x = estado, y = tasa_mortalidad, fill = estado)) +
   geom_boxplot() +
-  scale_fill_scico_d() + # paleta colorblind-friendly
+  scale_fill_viridis_d() + # paleta colorblind-friendly
   theme_minimal() + # tema claro
   theme(axis.text.x = element_text(angle = 90)) # gira etiquetas eje x
 ```
@@ -271,7 +271,7 @@ Si las varianzas son homocedásticas pero los grupos difieren en tamaño, podemo
 
 ```{r}
 #| echo: false
-#| id: ej12
+#| id: tab1
 # Datos
 tibble(
   "Código" = c("***", "**", "*", ".", ""),
@@ -291,14 +291,14 @@ tibble(
 El paquete `emmeans` [@emmeans] es una herramienta muy versátil y poderosa para realizar comparaciones múltiples. Comenzaremos utilizando la función `emmeans()` con el argumento `specs = "estado"` para crear un objeto que contenga las medias marginales por grupo:
 
 ```{r}
-#| id: ej13
+#| id: ej12
 comp <- emmeans(modelo, specs = "estado")
 ```
 
 Para realizar las comparaciones múltiples mediante test de Tukey usamos el comando `contrast()` con el argumento `method = "pairwise"`:
 
 ```{r}
-#| id: ej14
+#| id: ej13
 contrast(comp, method = "pairwise")
 ```
 
@@ -307,7 +307,7 @@ Los resultados del test de Tukey nos muestran diferencias significativas en la t
 Para mayor claridad, podemos mostrar las comparaciones múltiples mediante un gráfico:
 
 ```{r}
-#| id: ej15
+#| id: ej14
 plot(comp) +
   theme_minimal() # tema claro
 ```
@@ -319,7 +319,7 @@ El rombo del medio representa la media marginal para cada grupo y el rectángulo
 El tamaño de efecto comúnmente utilizado para el caso de ANOVA es $\eta^2$ (*eta-cuadrado)*, que se calcula como el cociente de la suma de cuadrados del efecto sobre la suma de cuadrados total.
 
 ```{r}
-#| id: ej16
+#| id: ej15
 anova(modelo)
 
 # calculo eta-cuadrado
@@ -331,7 +331,7 @@ eta2
 Podemos llegar al mismo valor usando la función `r2()` del paquete `performance`:
 
 ```{r}
-#| id: ej17
+#| id: ej16
 r2(modelo)
 ```
 
@@ -342,7 +342,7 @@ Los test de potencia permiten determinar la probabilidad de encontrar diferencia
 En base al eta-cuadrado obtenido anteriormente, calculamos el tamaño de efecto convencional mediante la función `cohen.ES()` del paquete `pwr` [@pwr]:
 
 ```{r}
-#| id: ej18
+#| id: ej17
 cohen.ES(test = "anov", size = "small")
 ```
 
@@ -352,14 +352,14 @@ Para grupos de igual tamaño usamos el siguiente código:
 
 ```{r}
 #| eval: false
-#| id: ej19
+#| id: ej18
 pwr.anova.test(k = k, n = n, f = eta_cuadrado, sig.level = 0.05)
 ```
 
 En nuestro ejemplo, donde los tamaños de grupo son diferentes, primero debemos calcular el tamaño de grupo efectivo:
 
 ```{r}
-#| id: ej20
+#| id: ej19
 # Número de grupos
 k <- nlevels(datos$estado)
 
@@ -373,7 +373,7 @@ neff <- sum(n)^2 / sum(n^2)
 Calculamos la potencia:
 
 ```{r}
-#| id: ej21
+#| id: ej20
 pwr.anova.test(k = k, n = neff, f = eta2, sig.level = 0.05)
 ```
 
@@ -384,38 +384,38 @@ Para poder dar por válidos los resultados del ANOVA es necesario verificar que 
 Método gráfico con paquete `performance`:
 
 ```{r}
-#| id: ej22
+#| id: ej21
 check_model(modelo)
 ```
 
 Chequeo normalidad de residuales mediante test de Lilliefors:
 
 ```{r}
-#| id: ej23
+#| id: ej22
 lillie.test(modelo$residuals)
 ```
 
 Chequeo homocedasticidad (test de Breusch-Pagan):
 
 ```{r}
-#| id: ej24
+#| id: ej23
 check_heteroscedasticity(modelo)
 ```
 
 Chequeo presencia de outliers (distancia de Cook):
 
 ```{r}
-#| id: ej25
+#| id: ej24
 check_outliers(modelo)
 ```
 
 ## Conclusión
 
-Se ha realizado un ANOVA de una vía para comparar la tasa de mortalidad por cáncer en seis estados de Estados Unidos. Se encontraron diferencias estadísticamente significativas entre las medias de los grupos ($F = 3,71, p = 0.003$). El *eta-cuadrado* fue de 0.091, lo que indica que el estado de residencia explica un 9.1% de la varianza total en los valores de la tasa de mortalidad por cáncer. La potencia de la prueba estadística fue del 5.7%.
+Se ha realizado un ANOVA de una vía para comparar la tasa de mortalidad por cáncer en seis estados de Estados Unidos. Se encontraron diferencias estadísticamente significativas entre las medias de los grupos (F = 3,71, p = 0.003). El *eta-cuadrado* fue de 0.091, lo que indica que el estado de residencia explica un 9.1% de la varianza total en los valores de la tasa de mortalidad por cáncer. La potencia de la prueba estadística fue del 5.7%.
 
-Se realizó la prueba post hoc de Tukey HSD y se encontró que media de mortalidad para el estado de Maine fue estadísticamente superiror respecto de los estados de Massachusetts, New York y New Jersey ($p < 0.05$).
+Se realizó la prueba post hoc de Tukey HSD y se encontró que media de mortalidad para el estado de Maine fue estadísticamente superiror respecto de los estados de Massachusetts, New York y New Jersey (p < 0.05).
 
-::: {.hidden .only-html}
+::: {.hidden}
 @agresti2015
 
 @triola2018

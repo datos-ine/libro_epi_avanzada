@@ -87,10 +87,10 @@ book:
         - "unidad_3/01_est_ecologicos.qmd"
         - "unidad_3/02_mod_estadistico.qmd" 
         - "unidad_3/03_covarianza_correlacion.qmd" 
-        # - "unidad_3/04_reg_lineal.qmd" 
-        # - "unidad_3/05_anova.qmd"
-        # - "unidad_3/06_rol_variables.qmd"  
-        # - "unidad_3/07_reg_lineal_multiple.qmd"
+        - "unidad_3/04_reg_lineal.qmd" 
+        - "unidad_3/05_anova.qmd"
+        - "unidad_3/06_rol_variables.qmd"  
+        - "unidad_3/07_reg_lineal_multiple.qmd"
         
   # - part: "Unidad 4"
   #   icon: file-earmark-bar-graph
