@@ -48,11 +48,11 @@ Algunos autores consideran los estudios de CC como una estrategia alternativa pa
 
 La fuente de los controles quedará definida en la medida en que se definan claramente los criterios de selección de casos, así como la población hipotética de origen. Algunos puntos a considerar son los siguientes:
 
-a)  Los controles deben seleccionarse de la misma base poblacional (de la cohorte hipotética) de donde se originaron los casos. Si uno de estos controles desarrollara el evento en cuestión, pasaría a formar parte del grupo de los casos. Esto último implica que los controles estuvieron en riesgo de desarrollar el evento en forma simultánea a los casos.
-b)  Los controles deben seleccionarse independientemente de su condición de expuestos o no expuestos.
-c)  La probabilidad de selección para los controles debe ser proporcional al tiempo que el sujeto estuvo en riesgo de desarrollar el evento o enfermedad en estudio.
-d)  Para minimizar confusión, se pueden emparejar controles con casos en función de variables confusoras.
-e)  Los procedimientos para medir la exposición, deben ser los mismos, tanto en casos como en controles.
+-  Los controles deben seleccionarse de la misma base poblacional (de la cohorte hipotética) de donde se originaron los casos. Si uno de estos controles desarrollara el evento en cuestión, pasaría a formar parte del grupo de los casos. Esto último implica que los controles estuvieron en riesgo de desarrollar el evento en forma simultánea a los casos.
+-  Los controles deben seleccionarse independientemente de su condición de expuestos o no expuestos.
+-  La probabilidad de selección para los controles debe ser proporcional al tiempo que el sujeto estuvo en riesgo de desarrollar el evento o enfermedad en estudio.
+-  Para minimizar confusión, se pueden emparejar controles con casos en función de variables confusoras.
+-  Los procedimientos para medir la exposición, deben ser los mismos, tanto en casos como en controles.
 
 Las fuentes de controles pueden incluir población general, hospitales, vecindarios, registros de mortalidad, entre otros.
 
@@ -70,7 +70,7 @@ En los últimos tiempos, se ha profundizado en los aspectos metodológicos de lo
 
 -   **Estudios de caso-caso**. En esta estrategia se compara la historia de exposición en subgrupos de casos. En el caso de enfermedades infecciosas, es posible conformar diversos subgrupos de enfermedad, partiendo de datos de vigilancia epidemiológica.
 
-Quienes desean profundizar estos tópicos sobre el diseño de los CyC, pueden leer el capítulo correspondiente de *“Epidemiología. Diseño y análisis de estudios”* de @hernández-ávila2011 . Comenzaremos ahora con la parte de análisis de estos diseños.
+Quienes desean profundizar estos tópicos sobre el diseño de los CyC, pueden leer el capítulo correspondiente de *“Epidemiología. Diseño y análisis de estudios”* de @hernandez-avila2011. Comenzaremos ahora con la parte de análisis de estos diseños.
 
 ## Análisis de estudios de casos y controles
 
@@ -87,13 +87,13 @@ El modelo multivariado a utilizar para estudios de casos y controles no apareado
 
 @field2014
 
-@ortega_calvo_2002
+@ortega-calvo2002
 
-@rothman_2012
+@rothman2012
 
-@silva_aycaguer_excursion_1995
+@silva-aycaguer1995
 
-@thompson_1994
+@thompson1994
 :::
 
 ## Referencias {.unnumbered}

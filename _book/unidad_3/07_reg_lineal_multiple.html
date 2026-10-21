@@ -90,6 +90,7 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../unidad_4/01_est_caso_control.html" rel="next">
 <link href="../unidad_3/06_rol_variables.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -611,6 +612,48 @@ window.Quarto = {
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true"><i class="bi bi-file-earmark-bar-graph" role="img">
+</i> 
+ <span class="menu-text">Unidad 4</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unidad_4/01_est_caso_control.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Estudios de casos y controles</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unidad_4/02_reg_logistica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Regresión logística</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unidad_4/03_sep_datos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Separación de datos binomiales</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unidad_4/04_reg_logistica_cond.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Regresión logística condicional</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unidad_4/05_mod_predict.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Validación de modelos predictivos</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -828,7 +871,9 @@ F-statistic: 1.129 on 8 and 91 DF,  p-value: 0.3518</code></pre>
 <h3 class="anchored" data-anchor-id="test-f-parcial">Test F parcial</h3>
 <p>En un modelo de regresión, la estimación de los coeficientes se realiza partiendo de una muestra, lo que implica que diferentes muestras pueden generar distintos valores de los parámetros. El test F parcial evalúa la siguiente hipótesis:</p>
 <p><span class="math display">\[
-H_0 = \beta_1 = \beta_2 = ... \beta_n = 0  \\H_1 = \exists\beta_i \neq 0
+H_0 = \beta_1 = \beta_2 = ... \beta_n = 0
+\]</span> <span class="math display">\[
+H_1 = \exists\beta_i \neq 0
 \]</span></p>
 <p>Donde <span class="math inline">\(H_0\)</span> indica que todos los coeficientes de las variables independientes son cero, y <span class="math inline">\(H_1\)</span> implica que al menos uno de los coeficientes es diferente de cero. Este test evalúa la contribución de cada variable al modelo, es decir, si la inclusión de esa variable mejora significativamente la explicación de la variabilidad de <span class="math inline">\(Y\)</span>. En modelos de regresión lineales generalizados (GLM), el test de Wald cumple esta misma función, mientras que en los modelos de regresión lineales múltiplos, el test <span class="math inline">\(F\)</span> parcial cumple el mismo rol.</p>
 </section>
@@ -846,7 +891,7 @@ Variabilidad \ total = Variabilidad \ regresión \ + \ Variabilidad \ residual
 <p>De manera equivalente, la suma de cuadrados totales (SCT) se descompone en la suma de cuadrados de la regresión (SCR) y la suma de cuadrados residuales (SCE):</p>
 <p><span class="math display">\[
 \sum (y_i-\bar{y})^2 = \sum (\hat{y}-\bar{y})^2 + \sum (y_i -\hat{y}_i)^2
-\\
+\]</span> <span class="math display">\[
 SCT = SCR + SCE
 \]</span></p>
 <p>A continuación, mostramos cómo estos términos se distribuyen entre los grados de libertad y se obtienen los cuadrados medios correspondientes:</p>
@@ -886,7 +931,7 @@ SCT = SCR + SCE
 <p>El test <span class="math inline">\(F\)</span> global compara el modelo de regresión ajustado con el modelo nulo (sin variables independientes) y evalúa el efecto conjunto de todas las variables independientes. Su fórmula es:</p>
 <p><span class="math display">\[
 F = CMR/CME
-\\
+\]</span> <span class="math display">\[
 gl = (k -1, n - k - 1)
 \]</span></p>
 </section>
@@ -2168,6 +2213,9 @@ Zeileis, Achim, y Torsten Hothorn. 2002. <span>«Diagnostic Checking in Regressi
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../unidad_4/01_est_caso_control.html" class="pagination-link" aria-label="Estudios de casos y controles">
+        <span class="nav-page-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Estudios de casos y controles</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

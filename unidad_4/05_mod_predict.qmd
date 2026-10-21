@@ -20,7 +20,7 @@ Un modelo de predicción es una ecuación matemática que combina información d
 
 En la Figura 1, adaptada de @collins2015, se muestra que la principal diferencia entre los modelos predictivos con objetivo pronóstico o diagnóstico es el tiempo para el cual se estiman las probabilidades.
 
-![Figura 1. Adaptado de Collins, G.S., Reitsma, J.B., Altman, D.G. et al. Transparent reporting of a multivariable prediction model for individual prognosis or diagnosis (TRIPOD): the TRIPOD Statement. BMC Med 13, 1 (2015). https://doi.org/10.1186/s12916-014-0241-z](/images/tripod.png){fig-align="center"}
+![](images/tripod.png){fig-align="center"}
 
 En esta unidad del curso hemos aprendido a construir un modelo de regresión logística. Aprendimos también a evaluar la calidad de dicho modelo. Pero si reflexionamos acerca de la finalidad de un modelo predictivo, podemos pensar que consiste en predecir la variable respuesta en observaciones futuras o en observaciones que el modelo no ha “visto” antes. Consideraremos modelos de predicción que proporcionan predicciones para un resultado dicotómico, ya que son los más relevantes en aplicaciones médicas, por eso desarrollamos este tema en el contexto de la regresión logística. Con estos modelos, buscamos obtener al menos predicciones internamente válidas, es decir, predicciones válidas para sujetos de la población subyacente. Preferiblemente, las predicciones también deben ser generalizables a poblaciones plausiblemente relacionadas. En una estrategia de modelado para datos empíricos, es necesario considerar diversas cuestiones, tanto epidemiológicas como estadísticas. Es por eso que los modelos necesitan ser validados.
 
@@ -47,7 +47,9 @@ Al desarrollar un modelo, es evidente que se requiere cuantificar su rendimiento
 
 Lo podríamos expresar como:
 
-$$Optimismo = Desempeño - Desempeño~con~nuevos~datos$$
+$$
+Optimismo = Desempeño - Desempeño~con~nuevos~datos
+$$
 
 Supongamos un modelo de regresión logística para predecir mortalidad. En la muestra de desarrollo obtiene: $AUC = 0,91$
 

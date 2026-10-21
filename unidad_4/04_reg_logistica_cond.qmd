@@ -56,6 +56,7 @@ En R podemos ajustar modelos de regresión logística condicional usando la func
 Cargamos los paquetes necesarios:
 
 ```{r}
+#| id: ej1
 # Análisis estadístico
 library(gtsummary)
 library(survival)
@@ -75,6 +76,7 @@ library(tidyverse)
 Usaremos la base "`higado_graso.txt`" que contiene datos de un estudio de casos y controles apareados por sexo y edad para muertes por hígado graso no alcohólico:
 
 ```{r}
+#| id: ej2
 # Carga datos
 datos <- read_delim("datos/higado_graso.txt") |>
 
@@ -112,6 +114,7 @@ El dataset tiene `r nrow(datos)` observaciones y `r ncol(datos)` columnas. Las v
 Exploremos más en profundidad los datos usando la función `tabyl()` del paquete `janitor` y la función `skim()` del paquete `skimr`:
 
 ```{r}
+#| id: ej3
 # Número de casos y controles
 tabyl(datos$tipo) |>
   adorn_pct_formatting()
@@ -128,6 +131,7 @@ Las variables `p_sistolica` y `p_diastolica` tienen gran cantidad de valores aus
 Como no tenemos definido a que caso corresponde cada control, vamos a aparear casos y controles usando la función `matchit()` del paquete `MatchIt` [@MatchIt], especificando que queremos dos controles por caso con el argumento `ratio = 2`:
 
 ```{r}
+#| id: ej4
 # Aparea casos y controles por sexo y edad
 match <- matchit(tipo ~ edad + sexo, data = datos, exact = "sexo", ratio = 2)
 
@@ -138,6 +142,7 @@ summary(match)
 Obtenemos los datos apareados:
 
 ```{r}
+#| id: ej5
 datos <- match.data(match, drop.unmatched = T)
 
 names(datos)
@@ -146,6 +151,7 @@ names(datos)
 Ajustamos el modelo de regresión logística condicional, usando la variable `subclass` como variable de estratificación:
 
 ```{r}
+#| id: ej6
 mod_cond <- clogit(
   status ~ bmi + hdl + fuma + fib4_cat + strata(subclass),
   data = datos
@@ -155,12 +161,14 @@ mod_cond <- clogit(
 Revisemos la salida del modelo:
 
 ```{r}
+#| id: ej7
 summary(mod_cond)
 ```
 
 Probemos eliminar una de las variables explicativas no significativas a la vez:
 
 ```{r}
+#| id: ej8
 # (-) Tabaquismo
 mod_cond1 <- clogit(
   status ~ bmi + hdl + fib4_cat + strata(subclass),
@@ -183,6 +191,7 @@ mod_cond3 <- clogit(
 Comparamos los modelos
 
 ```{r}
+#| id: ej9
 # Compara modelos
 compare_performance(
   mod_cond,
@@ -206,6 +215,7 @@ compare_performance(
 El modelo sin `fuma` tiene mejor *performance* que el modelo saturado:
 
 ```{r}
+#| id: ej10
 # Salida modelo condicional 1
 summary(mod_cond1)
 
@@ -241,14 +251,15 @@ compare_performance(mod_cond1b, mod_cond1c, metrics = "common")
 Nos quedamos con el modelo que tiene solo `fib4_cat` como variable explicativa:
 
 ```{r}
+#| id: ej11
 tbl_regression(mod_cond1c, exponentiate = T)
 ```
 
-En el modelo final, las personas con alto riesgo de fibrosis hepática presentan 3,7 veces más probabilidades de morir ($95% IC: 2,45-5,57$) que aquellas sin la condición.
+En el modelo final, las personas con alto riesgo de fibrosis hepática presentan 3,7 veces más probabilidades de morir (95% IC: 2,45-5,57) que aquellas sin la condición.
 
 ::: hidden
 @agresti2015
-@wickham2019
+@tidyverse
 @easystats
 :::
 

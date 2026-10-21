@@ -28,7 +28,9 @@ Cuando la variable dependiente es dicotómica o binaria, es decir, tiene dos cat
 Teniendo en cuenta que nuestra variable respuesta es dicotómica:
 
 $$
-Y = 1 \rightarrow Si~el~hecho~ocurre \\
+Y = 1 \rightarrow Si~el~hecho~ocurre 
+$$
+$$
 Y  = 0 \rightarrow Si~el~hecho~no~ocurre
 $$
 
@@ -36,9 +38,9 @@ Si representáramos los datos con una función lineal, obtendríamos el siguient
 
 ```{r}
 #| echo: false
-#| id: rlog-1
+#| id: fig1
 
-# Genera datos
+# ---- Generar datos ----
 set.seed(123)
 
 dat <- tibble(
@@ -46,18 +48,20 @@ dat <- tibble(
   y = rbinom(1000, 1, .5)
 )
 
-# Plot
+# ---- Gráfico ----
 dat |>
   ggplot(mapping = aes(x = x, y = y)) +
 
-  geom_point(color = pal[7], alpha = .7) +
+  # --- Geometrías ---
+  geom_point(color = viridis::viridis(n = 1), alpha = .5) +
+  geom_smooth(
+    method = "lm",
+    se = FALSE,
+    color = viridis::viridis(n = 1)
+  ) +
 
-  geom_smooth(method = "lm", se = F, color = pal[4]) +
-
-  scale_color_viridis_d() +
-
+  # --- Tema ---
   labs(title = "Ajuste lineal de datos binarios") +
-
   theme_minimal()
 ```
 
@@ -65,19 +69,18 @@ Matemáticamente, la función exponencial representa mejor esta relación:
 
 ```{r}
 #| echo: false
-#| id: rlog-2
-
-# Genera datos
+#| id: fig2
+# ---- Generar datos ----
 dat_exp <- tibble(
   x = seq(-6, 6, by = .1),
   y = 1 / (1 + exp(-x))
 )
 
-# Plot función logística
+# ---- Grafico ----
 dat_exp |>
   ggplot(mapping = aes(x = x, y = y)) +
 
-  geom_line(color = pal[4], linewidth = 1) +
+  geom_line(color = viridis::viridis(n = 1), linewidth = 1) +
 
   labs(y = "F(x)", title = "Función de distribución") +
 
@@ -166,7 +169,7 @@ Al igual que en la regresión lineal múltiple (RLM), antes de adentrarnos en el
 
 ```{r}
 #| echo: false
-#| id: rlog-3
+#| id: cod1
 
 # Genera datos
 set.seed(123)
@@ -287,7 +290,7 @@ Para comparar dos o más modelos de regresión logística, se pueden utilizar la
 En R, realizamos la comparación con la función `AIC()`:
     
 ```{r}
-#| id: rlog-4
+#| id: cod2
 mod2 <- update(modelo, ~ . - x1)
 
 AIC(modelo, mod2)
@@ -299,14 +302,14 @@ AIC(modelo, mod2)
 La función `anova()` del paquete `stats` permite comparar modelos por si diferencia de varianzas:
 
 ```{r}
-#| id: rlog-5
+#| id: cod3
 anova(modelo, mod2, test = "Chisq")
 ```
 
 También podemos usar la función `test_lrt()` del paquete `performance`:
 
 ```{r}
-#| id: rlog-6
+#| id: cod4
 test_lrt(modelo, mod2)
 ```
 
@@ -319,36 +322,37 @@ En R, podemos calcular estos coeficientes utilizando el paquete `performance`:
 -   **Coeficiente de McFadden:** Es una de las medidas más utilizadas y se interpreta de manera similar al $R^2$ en regresión lineal:
 
 ```{r}
-#| id: rlog-7
+#| id: cod5
 r2_mcfadden(modelo)
 ```
 
 -   **Coeficiente de Cox y Snell:** Se basa en la razón de verosimilitud y es una generalización del $R^2$ en modelos lineales:
 
 ```{r}
-#| id: rlog-8
+#| id: cod6
 r2_coxsnell(modelo)
 ```
 
 -   **Coeficiente de Nagelkerke:** El coeficiente de Nagelkerke es una versión corregida del coeficiente de Cox y Snell, cuyo valor máximo es menor a 1 incluso para un modelo perfecto, corrigiendo así la tendencia de subestimación del coeficiente $R^2$.
 
 ```{r}
-#| id: rlog-9
+#| id: cod7
 r2_nagelkerke(modelo)
 ```
 
 -   **Coeficiente de Tjur:** Calcula el Coeficiente de Discriminación ($D$) para modelos lineales generalizados con variable respuesta binaria. Es el proporcionado por defecto para modelos de regresión logística en `performance`:
 
 ```{r}
-#| id: rlog-10
+#| id: cod8
 r2(modelo)
 ```
+
 -   **Test de Hosmer-Lemeshow**: Ninguno de los coeficientes anteriores mide directamente la calidad del ajuste del modelo. Para evaluar esto, utilizamos el **test de Hosmer-Lemeshow**, que compara las probabilidades predichas con las observadas.
 
 Este test calcula un estadístico de distribución $\chi^2$ con $n-2$ grados de libertad, utilizando varios grupos basados en los deciles de las probabilidades predichas. En R:
 
 ```{r}
-#| id: rlog-11
+#| id: cod9
 performance_hosmer(modelo)
 ```
 
@@ -378,7 +382,7 @@ La curva ROC es un gráfico que representa la sensibilidad en función de 1 meno
 
 ```{r}
 #| echo: false
-#| id: rlog-12
+#| id: fig3
 performance_roc(modelo) |>
   plot() +
   labs(x = "1 - Especificidad", y = "Sensibilidad", title = "Curva ROC") +
@@ -403,7 +407,7 @@ El ajuste de un modelo de regresión logística en R se realiza utilizando la fu
 
 ```{r}
 #| eval: false
-#| id: rlog-13
+#| id: cod10
 glm(formula, family = binomial(link = "logit"), data)
 ```
 
@@ -419,7 +423,7 @@ $$
 
     -   `binomial()`: Utilizada para variables dependientes binarias (0, 1). El enlace predeterminado es `logit`, que es el más común en la regresión logística. También admite enlaces como `probit`, `cauchit`, `log`, y `cloglog`.
 
-    -   `poisson()`: Usada para variables dependientes numéricas discretas. El enlace predeterminado es el logaritmo (`log)`, y también admite `identity` y `sqrt`.
+    -   `poisson()`: Usada para variables dependientes numéricas discretas. El enlace predeterminado es el logaritmo (`log`), y también admite `identity` y `sqrt`.
 
     -   Otras familias como `Gamma()`, `inverse.gaussian()`, `quasi()`, `quasipoisson()`, y `quasibinomial()` para diferentes distribuciones de errores que no abordaremos en el curso.
 
@@ -450,7 +454,7 @@ Debemos usar la función `levels()` de R `base` para consultar los niveles o cat
 Podemos modificar estos niveles de referencia mediante la función `relevel()` de R `base` o con `fct_rev()` de `tidyverse`, cuando estos se encuentren invertidos.
 
 ```{r}
-#| id: rlog-14
+#| id: cod11
 # Factor con dos categorías
 factor <- factor(c("1", "0", "1", "1", "0"))
 
@@ -464,7 +468,7 @@ fct_rev(factor)
 Este procesamiento es extensivo a las variables categóricas (dicotómica o politómicas) que se incluyen en los modelos de regresión como explicativas. En `tidyverse`, podemos cambiar los niveles de referencia de un factor con más de dos categorías con la función `fct_relevel()`.
 
 ```{r}
-#| id: rlog-15
+#| id: cod12
 # Factor con más de dos categorías
 factor <- factor(c("CONF", "DESC", "SOSP", "CONF", "DESC", "PROB"))
 
@@ -480,14 +484,14 @@ fct_relevel(factor, "DESC", after = 0)
 La razón de verosimilitud en un modelo de regresión puede calcularse restando la devianza del modelo con predictores de la del modelo nulo:
 
 ```{r}
-#| id: rlog-16
+#| id: cod13
 modelo$null.deviance - modelo$deviance
 ```
 
 En este cálculo, estamos comparando la *null deviance* (modelo sin predictores) con la *residual deviance* (modelo con predictores). Alternativamente, la función `anova()` proporciona una tabla detallada que desglosa la contribución de cada variable al modelo junto con sus respectivas devianzas.
 
 ```{r}
-#| id: rlog-17
+#| id: cod14
 anova(modelo)
 ```
 
@@ -505,7 +509,7 @@ Comencemos cargando en R los paquetes que utilizaremos:
 
 ```{r}
 #| message: false
-#| id: ej-1
+#| id: ej1
 
 # Tablas de coeficientes y regresiones simples
 library(gtsummary)
@@ -522,7 +526,7 @@ library(tidyverse)
 Cargamos los datos y exploramos su estructura. Vemos dos tipos de variable: Enteros `<int>` para las numéricas y caracter `<chr>` para las categóricas.
 
 ```{r}
-#| id: ej-2
+#| id: ej2
 # Carga datos
 datos <- read.csv2("datos/caminar.txt")
 
@@ -545,7 +549,7 @@ Las variables a considerar son:
 Coercionamos los tipos `character` a `factor`.
 
 ```{r}
-#| id: ej-3
+#| id: ej3
 datos <- datos |>
   mutate(
     camina = factor(camina),
@@ -557,7 +561,7 @@ datos <- datos |>
 Como las categorías de las tres variables convertidas son "0" y "1" o "Si" y "No", y el orden automático del lenguaje R es alfabético, el nivel de referencia será "0" y "No". Confirmémoslo mediante la visualización de los niveles:
 
 ```{r}
-#| id: ej-4
+#| id: ej4
 levels(datos$camina)
 
 levels(datos$pareja_est)
@@ -568,7 +572,7 @@ levels(datos$lacto_180)
 Efectuamos una breve descripción univariada usando el paquete `skimr`:
 
 ```{r}
-#| id: ej-5
+#| id: ej5
 datos |>
   # Omitimos identificador de paciente
   select(-id) |>
@@ -577,12 +581,12 @@ datos |>
 
 ### Selección de modelos
 
-A continuación iniciamos un proceso iterativo manual tipo *forward* basado en la selección de modelos propuesto en el capítulo 8 del libro de @silva_aycaguer_excursion_1995.
+A continuación iniciamos un proceso iterativo manual tipo *forward* basado en la selección de modelos propuesto en el capítulo 8 del libro de @silva-aycaguer1995.
 
 **Paso 1**: Se ajustan tantos modelos de regresión logística simple como posibles variables explicativas tengamos. Dos de las variables (`edad_dias` y `edad_meses`) son la misma expresada en unidades diferentes, por lo que intentaremos quedarnos con la que explique más y a su vez sea estadísticamente significativa..
 
 ```{r}
-#| id: ej-6
+#| id: ej6
 # edad en días
 mod1 <- glm(camina ~ edad_dias, data = datos, family = binomial)
 
@@ -599,7 +603,7 @@ mod4 <- glm(camina ~ lacto_180, data = datos, family = binomial)
 Se calcula el *Likelihood Ratio* de cada uno de ellos.
 
 ```{r}
-#| id: ej-7
+#| id: ej7
 mod1$null.deviance - mod1$deviance
 
 mod2$null.deviance - mod2$deviance
@@ -612,14 +616,14 @@ mod4$null.deviance - mod4$deviance
 Se identifica el mayor de estas $G^2$ (`mod4`) y se evalúa si es significativo
 
 ```{r}
-#| id: ej-8
+#| id: ej8
 test_lrt(mod4)
 ```
 
 **Paso 2**: Como la variable `lacto_180` es significativa, se incorpora como primer variable al modelo y a continuación se generan modelos de dos variables independientes combinando esta variable con cada una de las otras.
 
 ```{r}
-#| id: ej-9
+#| id: ej9
 # mod 4 + edad en días
 mod5_1 <- glm(camina ~ lacto_180 + edad_dias, data = datos, family = binomial)
 
@@ -633,7 +637,7 @@ mod5_3 <- glm(camina ~ lacto_180 + pareja_est, data = datos, family = binomial)
 Se identifica la pareja para la cual la deviance ($-2lnV_f$) es menor.
 
 ```{r}
-#| id: ej-10
+#| id: ej10
 mod5_1$deviance
 
 mod5_2$deviance
@@ -646,14 +650,14 @@ En este caso, el `mod5_1` con las variables `lacto_180` y `edad_dias` tiene una 
 Se evalúa si el agregado de la variable `edad_dias` es significativa respecto al modelo con la variable `lacto_180` sola.
 
 ```{r}
-#| id: ej-11
+#| id: ej11
 test_lrt(mod4, mod5_1)
 ```
 
 **Paso 3**: Como es significativa, se incorpora al modelo y a continuación se agrega la tercer y última variable posible en el modelo (dado que la variable `edad_meses` es la misma que `edad_dias` que ya está incorporada).
 
 ```{r}
-#| id: ej-12
+#| id: ej12
 mod6 <- glm(
   camina ~ lacto_180 + edad_dias + pareja_est,
   data = datos,
@@ -664,7 +668,7 @@ mod6 <- glm(
 Se evalúa la significación del agregado. Si es significativo el modelo quedaría con las tres variables, de lo contrario quedan las dos iniciales.
 
 ```{r}
-#| id: ej-13
+#| id: ej13
 test_lrt(mod5_1, mod6)
 ```
 
@@ -673,7 +677,7 @@ El proceso iterativo continúa de haber más variables para agregar.
 También se pueden utilizar métodos automáticos, al igual que vimos en la regresión lineal múltiple, partiendo por ejemplo de un modelo saturado y aplicando la función `step()`. Recuerden que estos modelos automáticos los utilizamos para comparar los procesos manuales y que se basan en únicamente en iteraciones con procesos matemático-estadísticos sin tener en cuenta la "relevancia" conceptual de las variables y las relaciones entre ellas.
 
 ```{r}
-#| id: ej-14
+#| id: ej14
 modelo_saturado <- glm(camina ~ . - id, data = datos, family = binomial)
 
 modelo_step <- step(modelo_saturado, direction = "both")
@@ -682,7 +686,7 @@ modelo_step <- step(modelo_saturado, direction = "both")
 En este caso la selección automática utiliza el AIC que funciona de manera similar a la regresión lineal y el seleccionado termina siendo el que tiene el AIC más bajo.
 
 ```{r}
-#| id: ej-15
+#| id: ej15
 summary(modelo_step)
 ```
 
@@ -691,7 +695,7 @@ En este ejemplo el modelo automático es coincidente con el *forward* manual que
 Aplicando `AIC()` a la serie de modelos que fuimos realizando de forma manual y automática podemos comparar:
 
 ```{r}
-#| id: ej-16
+#| id: ej16
 AIC(mod4)
 
 # modelo solo con lacto_180
@@ -709,14 +713,14 @@ El modelo final tiene el AIC más bajo (`r round(AIC(mod6), 1)`).
 Al igual que en RLM el paquete `performance` muestra en una tabla la comparación de índices AIC entre otros, para los modelos definidos.
 
 ```{r}
-#| id: ej-17
+#| id: ej17
 compare_performance(mod4, mod5_1, mod6, metrics = "AIC")
 ```
 
 Si añadimos el argumento `rank = TRUE` nos muestra los modelos ordenados por AIC:
 
 ```{r}
-#| id: ej-18
+#| id: ej18
 compare_performance(mod4, mod5_1, mod6, metrics = "AIC", rank = TRUE)
 ```
 
@@ -731,7 +735,7 @@ Existen diversas formas de medir la calidad de ajuste de un modelo de regresión
 Los coeficientes de determinación calculan el grado de "*explicación de la variabilidad de la variable de respuesta*" conseguido con el modelo a partir de las variables independientes. Como vimos anteriormente, pueden estimarse con funciones del paquete `performance`:
 
 ```{r}
-#| id: ej-19
+#| id: ej19
 r2_mcfadden(mod6)
 
 r2_coxsnell(mod6)
@@ -746,7 +750,7 @@ Estos coeficientes alcanzan el valor 1 cuando el vaticinio es perfecto (esto sig
 Respecto a test estadísticos, la prueba de razón de verosimilitud (LRT), recientemente utilizada en el proceso de selección de modelos, es una de las que podemos utilizar basada en la devianza.
 
 ```{r}
-#| id: ej-20
+#| id: ej20
 # R base
 anova(mod6, test = "Chisq")
 
@@ -759,7 +763,7 @@ Observamos que las dos funciones son complementarias. Mientras `test_lrt()` nos 
 Entre las pruebas de *bondad de ajuste* basadas en la agrupación de las probabilidades estimadas bajo el modelo de regresión, usaremos el test de Hosmer y Lemeshow. Si bien existen variados paquetes que proveen esta, nosotros utilizaremos la función `performance_hosmer()` del paquete `performance`.
 
 ```{r}
-#| id: ej-21
+#| id: ej21
 performance_hosmer(mod6)
 ```
 
@@ -770,7 +774,7 @@ El test de bondad de ajuste de Hosmer y Lemeshow nos da un *p*-valor para el `mo
 En R podemos graficar la curva ROC, que es una herramienta más específica de modelos predictivos, para comparar diferentes modelos. La función `performance_roc()` del paquete `performance` se aplica de la siguiente manera:
 
 ```{r}
-#| id: ej-22
+#| id: ej22
 performance_roc(mod6) |>
 
   # Genera gráfico
@@ -785,7 +789,7 @@ Cuanto mayor es el área bajo la curva, más eficiente es el modelo. Si el model
 Analíticamente podemos visualizar el valor del área bajo la curva (AUC de *Area under the curve*) e incorporar los intervalos de confianza al 95% con la función `performance_accuracy()`:
 
 ```{r}
-#| id: ej-23
+#| id: ej23
 performance_accuracy(mod6)
 ```
 
@@ -793,7 +797,7 @@ Los valores de AUC se pueden interpretar siguiendo el criterio:
 
 ```{r}
 #| echo: false
-#| id: roc-1
+#| id: tab1
 # Datos
 tibble(
   Valor = c("0.5-0.6", "0.6-0.75", "0.75-0.9", "0.9-0.97", "0.97-1"),
@@ -819,7 +823,7 @@ Los valores de *odds-ratio* se obtienen como el resultado de calcular el valor d
 El código de R para aplicar esta función al `mod6` (con redondeo de 2 decimales) es:
 
 ```{r}
-#| id: ej-24
+#| id: ej24
 coef(mod6) |>
   exp() |>
   round(2)
@@ -839,7 +843,7 @@ Podemos también, incorporar intervalos de confianza de los OR agregando la func
 
 ```{r}
 #| message: false
-#| id: ej-25
+#| id: ej25
 confint(mod6) |>
   exp() |>
   round(2)
@@ -848,7 +852,7 @@ confint(mod6) |>
 La función `tbl_regression()` del paquete `gtsummary` nos permite generar tablas de los coeficientes exponenciados, su intervalo de confianza y *p*-valor para cada variable del modelo:
 
 ```{r}
-#| id: ej-26
+#| id: ej26
 tbl_regression(mod6, exponentiate = T) |>
   kbl_format()
 ```
@@ -856,7 +860,7 @@ tbl_regression(mod6, exponentiate = T) |>
 Si quisiéramos representar gráficamente el modelo de regresión, podemos usar la función `model_parameters()` de `easystats`:
 
 ```{r}
-#| id: ej-27
+#| id: ej27
 model_parameters(mod6, exponentiate = T) |>
   plot()
 ```
@@ -879,7 +883,7 @@ Para buscar los casos conflictivos podemos fijarnos en lo siguiente:
 Los residuales se almacenan dentro del objeto de regresión del modelo bajo el nombre `residuals`. Se puede extraer los residuales estandarizados con la función `rstandar()` y luego clasificar por su valor absoluto y cuantificar. Además, la función `flextable()` del paquete `flextable` [@flextable] nos muestra la salida de manera visualmente atractiva:
 
 ```{r}
-#| id: ej-28
+#| id: ej28
 datos$rstandar <- rstandard(mod6)
 
 datos |>
@@ -901,7 +905,7 @@ Observamos que las proporciones de valores residuales estandarizados por encima 
 Podemos obtener el gráfico de las distancias de Cook usando el comando `check_outliers()` de `performance`:
 
 ```{r}
-#| id: ej-29
+#| id: ej29
 check_outliers(mod6) |>
   plot()
 ```
@@ -917,7 +921,7 @@ Se dice que existe colinealidad o multicolinealidad cuando dos o más de las cov
 Normalmente, se tolera una multicolinealidad moderada, es decir, una mínima correlación entre covariables. Si esta correlación fuese significativa, su efecto sería el incremento exagerado de los errores estándar y, en ocasiones, del valor estimado para los coeficientes de regresión, lo que hace las estimaciones poco creíbles. Podemos verificar este supuesto con el estadístico VIF (Variance Inflation Factor) utilizando el paquete `performance`:
 
 ```{r}
-#| id: ej-30
+#| id: ej30
 # Test de colinealidad
 check_collinearity(mod6)
 
@@ -937,7 +941,7 @@ Ante la pregunta de la existencia de una variable modificadora de efecto dentro 
 Tomemos, por ejemplo, las variables `lacto_180` y `pareja_est`. Ambas son estadísticamente significativas dentro del modelo `mod6`. Construyamos dos modelos que contengan `lacto_180` y `edad_dias`, aplicados en dos subgrupos de la tabla `datos`: uno con niños de madres con pareja estable y otro con madres sin pareja estable.
 
 ```{r}
-#| id: ej-31
+#| id: ej31
 # Crear subgrupos
 con_pareja <- datos %>% filter(pareja_est == "Si")
 
@@ -960,7 +964,7 @@ mod_sin_pareja <- glm(
 Ahora generemos las tablas de coeficientes para cada modelo con la función `tbl_regression()` de `gtsummary`
 
 ```{r}
-#| id: ej-32
+#| id: ej32
 # Comparar coeficientes entre los dos modelos
 tab_con_pareja <- tbl_regression(mod_con_pareja, exponentiate = T)
 
@@ -970,7 +974,7 @@ tab_sin_pareja <- tbl_regression(mod_sin_pareja, exponentiate = T)
 Podemos colocar las tablas una al lado de la otra con la función `tbl_merge()` del mismo paquete:
 
 ```{r}
-#| id: ej-33
+#| id: ej33
 tbl_merge(
   tbls = list(tab_con_pareja, tab_sin_pareja),
   tab_spanner = c("Pareja estable", "Sin pareja estable")
@@ -983,7 +987,7 @@ Al analizar los coeficientes de los modelos ajustados para cada subgrupo, podemo
 En R, la forma de incluir y probar un término de interacción dentro de un modelo es mediante el uso del símbolo de multiplicación (`*`) en lugar del `+`. Esto provoca que se tengan en cuenta cada una de las variables individualmente y la interacción entre ellas.
 
 ```{r}
-#| id: ej-34
+#| id: ej34
 mod_interaccion <- glm(
   camina ~ edad_dias + lacto_180 * pareja_est,
   data = datos,
@@ -994,14 +998,14 @@ mod_interaccion <- glm(
 Comparo los modelos con y sin interacción usando `performance`:
 
 ```{r}
-#| id: ej-35
+#| id: ej35
 compare_performance(mod6, mod_interaccion, metrics = "common")
 ```
 
 Observamos que el modelo con interacción tiene mejor AIC y $R^2$ que el `mod6`. Visualicemos ahora sus coeficientes:
 
 ```{r}
-#| id: tab1
+#| id: tab2
 tbl_regression(mod6, exponentiate = T) |>
   kbl_format()
 ```
@@ -1010,7 +1014,7 @@ El término de interacción es significativo e implica el exceso de la variabili
 
 ### Tamaño de la muestra y número de variables independientes
 
-En el ámbito epidemiológico, es fundamental asegurarse de que el tamaño de la muestra sea adecuado para obtener estimaciones confiables en un modelo de regresión logística. Una regla general para determinar el tamaño de muestra es la fórmula propuesta por @freeman_1987, que establece que el tamaño de muestra debería ser 10 veces el número de variables independientes a estimar, más uno.
+En el ámbito epidemiológico, es fundamental asegurarse de que el tamaño de la muestra sea adecuado para obtener estimaciones confiables en un modelo de regresión logística. Una regla general para determinar el tamaño de muestra es la fórmula propuesta por @freeman1987, que establece que el tamaño de muestra debería ser 10 veces el número de variables independientes a estimar, más uno.
 
 $$
 n = 10*(k+1)
@@ -1033,7 +1037,7 @@ Para nuestro ejemplo:
 Aplicando la fórmula de Freeman:
 
 ```{r}
-#| id: ej-36
+#| id: ej36
 n_min <- 10 * (4 + 1)
 
 n_min
@@ -1044,7 +1048,7 @@ Dado que el modelo incluye 4 variables independientes, la fórmula sugiere que s
 Verifiquemos ahora si existen al menos 10 casos para cada valor de la variable respuesta:
 
 ```{r}
-#| id: ej-37
+#| id: ej37
 datos |>
   count(camina)
 ```
@@ -1052,22 +1056,23 @@ datos |>
 La base de datos tiene 419 casos donde la variable de respuesta es 1 y 381 casos donde es 0. Esto cumple con la recomendación de tener al menos 10 casos para cada valor de la variable dicotómica de respuesta, garantizando que las estimaciones sean confiables.
 
 ::: hidden
-@epidat4
+@epidat
 
 @royo-bordonada2009
 
 @field2014
 
-@hernández-ávila2011
+@hernandez-avila2011
 
-@ortega_calvo_2002
+@ortega-calvo2002
 
-@rothman_2012
+@rothman2012
 
-@silva_aycaguer_excursion_1995
-@thompson_1994
+@silva-aycaguer1995
 
-@wickham2019
+@thompson1994
+
+@tidyverse
 @easystats
 @gtsummary
 @skimr

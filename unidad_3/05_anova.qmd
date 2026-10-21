@@ -385,7 +385,7 @@ Método gráfico con paquete `performance`:
 
 ```{r}
 #| id: ej21
-check_model(modelo)
+check_model(modelo, panel = FALSE)
 ```
 
 Chequeo normalidad de residuales mediante test de Lilliefors:

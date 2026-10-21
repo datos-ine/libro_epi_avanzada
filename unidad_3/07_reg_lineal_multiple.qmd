@@ -219,7 +219,10 @@ En la salida obtenida, encontramos varios términos clave para interpretar:
 En un modelo de regresión, la estimación de los coeficientes se realiza partiendo de una muestra, lo que implica que diferentes muestras pueden generar distintos valores de los parámetros. El test F parcial evalúa la siguiente hipótesis:
 
 $$
-H_0 = \beta_1 = \beta_2 = ... \beta_n = 0  \\H_1 = \exists\beta_i \neq 0
+H_0 = \beta_1 = \beta_2 = ... \beta_n = 0
+$$
+$$
+H_1 = \exists\beta_i \neq 0
 $$
 
 Donde $H_0$ indica que todos los coeficientes de las variables independientes son cero, y $H_1$ implica que al menos uno de los coeficientes es diferente de cero. Este test evalúa la contribución de cada variable al modelo, es decir, si la inclusión de esa variable mejora significativamente la explicación de la variabilidad de $Y$. En modelos de regresión lineales generalizados (GLM), el test de Wald cumple esta misma función, mientras que en los modelos de regresión lineales múltiplos, el test $F$ parcial cumple el mismo rol.
@@ -242,7 +245,8 @@ De manera equivalente, la suma de cuadrados totales (SCT) se descompone en la su
 
 $$
 \sum (y_i-\bar{y})^2 = \sum (\hat{y}-\bar{y})^2 + \sum (y_i -\hat{y}_i)^2
-\\
+$$
+$$
 SCT = SCR + SCE
 $$
 
@@ -267,7 +271,8 @@ El test $F$ global compara el modelo de regresión ajustado con el modelo nulo (
 
 $$ 
 F = CMR/CME 
-\\ 
+$$
+$$
 gl = (k -1, n - k - 1) 
 $$
 

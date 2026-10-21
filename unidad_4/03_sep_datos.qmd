@@ -32,6 +32,7 @@ Tomemos como ejemplo la base "`covid_cancer.txt`", que contiene datos de un estu
 Cargamos paquetes necesarios:
 
 ```{r}
+#| id: cod1
 library(gtsummary)
 library(janitor)
 library(tidyverse)
@@ -40,6 +41,7 @@ library(tidyverse)
 Cargamos datos:
 
 ```{r}
+#| id: cod2
 # Carga datos
 datos <- read_delim("datos/covid_cancer.txt")
 
@@ -79,6 +81,7 @@ Nuestra variable dependiente es si el/la paciente falleció a causa del COVID-19
 
 ```{r}
 #| warning: false
+#| id: tab1
 
 # Regresiones logísticas simples
 datos |>
@@ -96,6 +99,7 @@ Al ejecutar este código aparecerá el siguiente mensaje de advertencia: `Warnin
 Al observar la tabla generada, notamos que las variables `disnea`, `neumonia_severa`, `inf_secundaria`, `asist_resp` y `tr_quimioterapia` presentan intervalos de confianza excesivamente amplios, lo que sugiere la presencia de separación parcial. Si generamos tablas de 2x2 de cada variable explicativa en función de la variable `fallecido`, podemos visualizar este fenómeno:
 
 ```{r}
+#| id: cod3
 # disnea
 datos |>
   tabyl(disnea, fallecido, show_na = F) |>
@@ -132,6 +136,7 @@ Estos análisis muestran que variables como `disnea`, `neumonia_severa`, `inf_se
 Si evaluamos las variables `complicaciones` y `cancer_tipo`:
 
 ```{r}
+#| id: cod4
 # complicaciones
 datos |>
   tabyl(complicaciones, fallecido, show_na = F) |>
@@ -150,6 +155,7 @@ Observamos que todos los pacientes sin complicaciones o con cáncer hematológic
 Ahora, ajustemos un modelo para evaluar el efecto de la interacción entre el tipo de cáncer y haber recibido quimioterapia en los 30 días previos, controlando por la presencia de neumonía severa y asistencia respiratoria:
 
 ```{r}
+#| id: cod5
 fit1 <- glm(
   fallecido ~ cancer_tipo * tr4_quimioterapia + neumonia_severa + asist_resp,
   data = datos,
@@ -164,6 +170,7 @@ El resumen del modelo muestra el mensaje: `Coefficients: (1 not defined because 
 
 ```{r}
 #| warning: false
+#| id: tab2
 tbl_regression(fit1, exponentiate = T)
 ```
 
@@ -172,6 +179,7 @@ Recibirás advertencias como: `Warning: glm.fit: fitted probabilities numericall
 Para evaluar separación de estos datos, podemos crear una nueva variable que represente el cruce entre tipo de cáncer y quimioterapia usando la función `fct_cross()` de `tidyverse`:
 
 ```{r}
+#| id: cod6
 datos |>
   mutate(tipo_ca_quim = fct_cross(cancer_tipo, tr4_quimioterapia)) |>
   tabyl(tipo_ca_quim, fallecido, show_na = F) |>
@@ -184,6 +192,7 @@ Este análisis muestra que ninguno de los pacientes con cáncer hematológico re
 Finalmente, para evaluar la separación de datos de manera más formal, utilizamos el paquete `detectseparation` [@detectseparation]. Ajustamos nuevamente el modelo con el argumento `method = "detect_separation"`:
 
 ```{r}
+#| id: cod7
 library(detectseparation)
 
 # Tipo de cáncer
@@ -230,11 +239,9 @@ Los **modelos de** ***pseudo-likelihood***, como la regresión logística condic
 ::: hidden
 @agresti2015
 
-@base
+@tidyverse
 
-@wickham2019
-
-@firke2016
+@janitor
 :::
 
 ## Referencias {.unnumbered}

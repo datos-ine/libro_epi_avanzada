@@ -1162,7 +1162,9 @@ var.test(datos1$peso, datos2$peso)
 Como las varianzas son iguales, aplicamos un $t$ test para comparar medias de dos poblaciones independientes con varianzas iguales planteando un contraste bilateral:
 
 $$
-H_0: \mu_1 = \mu_2 \\
+H_0: \mu_1 = \mu_2
+$$
+$$
 H_1: \mu_1 \neq \mu_2
 $$
 
@@ -1179,7 +1181,9 @@ t.test(
 O también podríamos plantear un contraste unilateral, si consideramos que nuestra hipótesis de trabajo es que el peso de los bebés de madres que no consumen cocaína es mayor que aquellos de madres que sí consumen.
 
 $$
-H_0: \mu_1 = \mu_2 \\
+H_0: \mu_1 = \mu_2
+$$
+$$
 H_1: \mu_1 > \mu_2 \quad ó \quad \mu_1 - \mu_2 > 0
 $$
 
