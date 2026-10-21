@@ -23,28 +23,30 @@ Las siguientes líneas de código producen el mismo resultado, pero no todas son
 #| eval: false
 #| id: cod1
 # Opción 1
-mpg |>
+mpg |> 
   filter(cty > 10, class == "compact")
 
 # Opción 2
 mpg |> filter(cty > 10, class == "compact")
 
 # Opción 3
-mpg |>
-  filter(cty > 10, class == "compact")
+mpg |> 
+  filter(cty > 10, 
+         class == "compact")
 
 # Opción 4
-mpg |> filter(cty > 10, class == "compact")
+mpg |> filter(cty>10, class=="compact")
 
 # Opción 5
-filter(mpg, cty > 10, class == "compact")
+filter(mpg,cty>10,class=="compact")
 
 # Opción 6
-mpg |>
-  filter(cty > 10, class == "compact")
+mpg |> 
+filter(cty > 10, 
+                        class == "compact")
 
 # Opción 7
-filter(mpg, cty > 10, class == "compact")
+filter ( mpg,cty>10,     class=="compact" )
 ```
 
 Las tres primeras versiones son más legibles. El resto, aunque válidas, son difíciles de seguir, especialmente en trabajos colaborativos o materiales docentes.
@@ -74,11 +76,11 @@ filter(mpg, cty > 10)
 ```{r}
 #| eval: false
 #| id: cod3
-filter(mpg, cty > 10)
+filter(mpg , cty > 10)
 
-filter(mpg, cty > 10)
+filter(mpg ,cty > 10)
 
-filter(mpg, cty > 10)
+filter(mpg,cty > 10)
 ```
 
 Colocar espacios después de comas y alrededor de operadores (`+`, `-`, `>`, `=`, etc.) mejora la legibilidad. También se deben evitar espacios innecesarios dentro de paréntesis:
@@ -96,11 +98,11 @@ filter(mpg, cty > 10)
 ```{r}
 #| eval: false
 #| id: cod5
-filter(mpg, cty > 10)
+filter(mpg, cty>10)
 
-filter(mpg, cty > 10)
+filter(mpg, cty> 10)
 
-filter(mpg, cty > 10)
+filter(mpg, cty >10)
 ```
 
 No colocar espacios alrededor de paréntesis que sean parte de funciones:
@@ -118,11 +120,11 @@ filter(mpg, cty > 10)
 ```{r}
 #| eval: false
 #| id: cod7
-filter(mpg, cty > 10)
+filter (mpg, cty > 10)
 
-filter(mpg, cty > 10)
+filter ( mpg, cty > 10)
 
-filter(mpg, cty > 10)
+filter( mpg, cty > 10 )
 ```
 
 ### Líneas largas
@@ -139,17 +141,18 @@ Se sugiere agregar saltos de línea dentro de las líneas de código más largas
 filter(mpg, cty > 10, class == "compact")
 
 
-filter(mpg, cty > 10, class == "compact")
+filter(mpg, cty > 10, 
+       class == "compact")
 
 
-filter(mpg, cty > 10, class == "compact")
+filter(mpg,
+       cty > 10,
+       class == "compact")
 
-filter(
-  mpg,
-  cty > 10,
-  class %in%
-    c("compact", "pickup", "midsize", "subcompact", "suv", "2seater", "minivan")
-)
+filter(mpg, 
+       cty > 10, 
+       class %in% c("compact", "pickup", "midsize", "subcompact", 
+                    "suv", "2seater", "minivan"))
 ```
 
 ✖️ **Incorrecto**
@@ -157,12 +160,7 @@ filter(
 ```{r}
 #| eval: false
 #| id: cod9
-filter(
-  mpg,
-  cty > 10,
-  class %in%
-    c("compact", "pickup", "midsize", "subcompact", "suv", "2seater", "minivan")
-)
+filter(mpg, cty > 10, class %in% c("compact", "pickup", "midsize", "subcompact", "suv", "2seater", "minivan"))
 ```
 
 ### Tuberías y capas `ggplot2`
@@ -174,9 +172,9 @@ Colocar cada paso de la tubería `(%>%` ó `|>`) en una línea separada, con san
 ```{r}
 #| eval: false
 #| id: cod10
-mpg |>
-  filter(cty > 10) |>
-  group_by(class) |>
+mpg |> 
+  filter(cty > 10) |> 
+  group_by(class) |> 
   summarize(avg_hwy = mean(hwy))
 ```
 
@@ -210,24 +208,6 @@ ggplot(mpg, aes(x = cty, y = hwy, color = class)) +
   geom_point() +
   geom_smooth() +
   theme_bw()
-
-# Mal
-ggplot(mpg, aes(x = cty, y = hwy, color = class)) +
-  geom_point() +
-  geom_smooth() +
-  theme_bw()
-
-# Muy mal
-ggplot(mpg, aes(x = cty, y = hwy, color = class)) +
-  geom_point() +
-  geom_smooth() +
-  theme_bw()
-
-# Tan mal que no funciona
-ggplot(mpg, aes(x = cty, y = hwy, color = class))
-+geom_point()
-+geom_smooth()
-+theme_bw()
 ```
 
 ✖️ **Incorrecto**
@@ -237,21 +217,17 @@ ggplot(mpg, aes(x = cty, y = hwy, color = class))
 #| id: cod13
 # Mal
 ggplot(mpg, aes(x = cty, y = hwy, color = class)) +
-  geom_point() +
-  geom_smooth() +
+  geom_point() + geom_smooth() +
   theme_bw()
 
 # Muy mal
-ggplot(mpg, aes(x = cty, y = hwy, color = class)) +
-  geom_point() +
-  geom_smooth() +
-  theme_bw()
+ggplot(mpg, aes(x = cty, y = hwy, color = class)) + geom_point() + geom_smooth() + theme_bw()
 
 # Tan mal que no funciona
 ggplot(mpg, aes(x = cty, y = hwy, color = class))
-+geom_point()
-+geom_smooth()
-+theme_bw()
+  + geom_point()
+  + geom_smooth() 
+  + theme_bw()
 ```
 
 ### Comentarios
@@ -273,7 +249,7 @@ Los comentarios deben comenzar con `#` seguido de un espacio:
 #| id: cod15
 #Mal
 
-#Mal
+      #Mal
 ```
 
 Si el comentario es corto, se puede incluir en la misma línea, separado por al menos dos espacios para mejorar la legibilidad:
@@ -281,10 +257,10 @@ Si el comentario es corto, se puede incluir en la misma línea, separado por al 
 ```{r}
 #| eval: false
 #| id: cod16
-mpg |>
-  filter(cty > 10) |> # filtro filas donde cty es 10 o más
-  group_by(class) |> # estratifica por class
-  summarize(avg_hwy = mean(hwy)) # resume la media de hwy por cada grupo
+mpg |> 
+  filter(cty > 10) |>  # filtro filas donde cty es 10 o más
+  group_by(class) |>  # estratifica por class
+  summarize(avg_hwy = mean(hwy))  # resume la media de hwy por cada grupo
 ```
 
 Se puede agregar espacios adicionales para alinear los comentarios en línea, si lo deseamos:
@@ -292,10 +268,10 @@ Se puede agregar espacios adicionales para alinear los comentarios en línea, si
 ```{r}
 #| eval: false
 #| id: cod17
-mpg |>
-  filter(cty > 10) |> # filtro filas donde cty es 10 o más
-  group_by(class) |> # estratifica por class
-  summarize(avg_hwy = mean(hwy)) # resume la media de hwy por cada grupo
+mpg |> 
+  filter(cty > 10) |>             # filtro filas donde cty es 10 o más
+  group_by(class) |>              # estratifica por class
+  summarize(avg_hwy = mean(hwy))  # resume la media de hwy por cada grupo
 ```
 
 Si el comentario es muy largo, podemos dividirlo en varias líneas. RStudio incluye una herramienta útil para comentarios largos: `Code > Reflow Comment` los ajusta automáticamente al ancho deseado.
@@ -376,3 +352,15 @@ datos <- datos |>
 
 names(datos)
 ```
+
+::: {.callout-warning appearance="simple"}
+## Importante
+
+Las versiones recientes de RStudio y Positron (el nuevo entorno de desarrollo de Posit) incorporan soporte para [**Air**](https://posit-dev.github.io/air/), un formateador de código de alto rendimiento desarrollado en Rust. Esta herramienta aplica de manera automática los estándares de estilo recomendados por el ecosistema de `tidyverse`, lo que optimiza la legibilidad y simplifica el mantenimiento de los scripts.
+
+Para habilitar esta función en RStudio hay que entrar a:
+
+`Tools > Global Options > Code > Formatter`
+
+Y habilitar las opciones correspondientes.
+:::

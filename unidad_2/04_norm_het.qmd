@@ -7,6 +7,7 @@ author:
 
 ```{r}
 #| echo: false
+#| id: setup
 source("files/setup.R")
 ```
 
@@ -35,6 +36,7 @@ Cuanto más se aproximen los datos a una normal, más alineados están los punto
 En el lenguaje R hay varios paquetes que tienen funciones para construirlos:
 
 ```{r}
+#| id: cod1
 library(dlookr)
 library(ggpubr)
 library(moments)
@@ -46,12 +48,14 @@ library(tidyverse)
 Cargamos datos de ejemplo:
 
 ```{r}
+#| id: cod2
 datos <- read_csv2("datos/datos_normalidad.csv")
 ```
 
 Evaluación gráfica de normalidad usando la función `plot_normality()` del paquete `dlookr`:
 
 ```{r}
+#| id: cod3
 datos |>
   plot_normality(peso)
 ```
@@ -61,6 +65,7 @@ A simple vista observamos que los puntos de la variable `peso` *se ajustan basta
 También podemos generar el qqplot usando las funciones `geom_qq_line()` y `geom_qq()` de `ggplot2`:
 
 ```{r}
+#| id: cod4
 datos |>
   ggplot(mapping = aes(sample = peso)) +
   geom_qq_line() +
@@ -68,9 +73,10 @@ datos |>
   theme_minimal()
 ```
 
-La función `ggqqplot()` del paquete `ggpubr` [@kassambara2016] nos permite agregar intervalos de confianza (zona gris alrededor de la recta) que nos orienta mejor sobre "donde caen" los puntos de la variable analizada:
+La función `ggqqplot()` del paquete `ggpubr` [@ggpubr] nos permite agregar intervalos de confianza (zona gris alrededor de la recta) que nos orienta mejor sobre "donde caen" los puntos de la variable analizada:
 
 ```{r}
+#| id: cod5
 datos$peso |>
   ggqqplot()
 ```
@@ -78,6 +84,7 @@ datos$peso |>
 Un ejemplo donde la variable parece no cumplir con el supuesto de normalidad en estos datos de prueba es `edad`:
 
 ```{r}
+#| id: cod6
 datos$edad |>
   ggqqplot()
 ```
@@ -97,9 +104,10 @@ La curtosis mide el grado de agudeza o achatamiento de una distribución con rel
 - $> 0$ Distribución leptocúrtica (apuntamiento positivo): gran concentración de valores
 - $= 0$ Distribución mesocúrtica (apuntamiento normal): concentración como en la distribución normal.
 
-El paquete `moments` [@moments:2005] posee algunas funciones interesantes para analizar medidas de forma, como el estimador de Pearson para curtosis:
+El paquete `moments` [@moments] posee algunas funciones interesantes para analizar medidas de forma, como el estimador de Pearson para curtosis:
 
 ```{r}
+#| id: cod7
 datos |>
   summarise(
     kurtosis_edad = kurtosis(edad, na.rm = T),
@@ -112,6 +120,7 @@ En los dos casos estamos frente a una *distribución leptocúrtica* pero de magn
 El índice de asimetría es un indicador que permite establecer el *grado de asimetría* que presenta una distribución. Los valores menores que 0 indican distribución asimétrica negativa; los mayores a 0: distribución asimétrica positiva y cuando sea 0, o muy próximo a 0, distribución simétrica:
 
 ```{r}
+#| id: cod8
 datos |>
   summarise(
     asimetria_edad = skewness(edad, na.rm = T),
@@ -124,6 +133,7 @@ Los valores obtenidos con la función `skewness()` del paquete `moments` nos inf
 Estas características de las distribuciones también se pueden ver mediante histogramas o gráficos de densidad:
 
 ```{r}
+#| id: cod9
 datos |>
   plot_normality(edad, col = "forestgreen")
 
@@ -148,6 +158,7 @@ Lleva el nombre de sus autores (Samuel Shapiro y Martin Wilk) y es usado prefere
 La función se encuentra desarrollada en el paquete `stats` y se llama `shapiro.test()`:
 
 ```{r}
+#| id: cod10
 shapiro.test(datos$edad)
 
 shapiro.test(datos$peso)
@@ -169,9 +180,10 @@ El test de **Lilliefors** asume que la media y varianza son desconocidas y está
 
 Es la alternativa al test de Shapiro-Wilk cuando el número de observaciones es mayor de 50.
 
-La función `lillie.test()` del paquete `nortest` [@gross2006] permite aplicarlo:
+La función `lillie.test()` del paquete `nortest` [@nortest] permite aplicarlo:
 
 ```{r}
+#| id: cod11
 lillie.test(datos$edad)
 
 lillie.test(datos$peso)
@@ -186,6 +198,7 @@ Esta prueba se basa en las transformaciones de la curtosis y la asimetría de la
 El paquete `moments` la tiene implementada en `agostino.test()`:
 
 ```{r}
+#| id: cod12
 agostino.test(datos$edad)
 
 agostino.test(datos$peso)
@@ -219,12 +232,14 @@ Se utiliza cuando las distribuciones se aproximan a la "normal" y en R base se l
 
 ```{r}
 #| eval: false
+#| id: cod13
 variable_cuantitativa ~ variable_categórica_grupos
 ```
 
 Por ejemplo:
 
 ```{r}
+#| id: cod14
 var.test(formula = peso ~ sexo, data = datos)
 ```
 
@@ -237,6 +252,7 @@ Este test se puede utilizar como alternativa al F-test, sobre todo porque nos pe
 La función en R `base` es `bartlett.test()` y también se pueden usar argumentos tipo fórmula:
 
 ```{r}
+#| id: cod15
 bartlett.test(formula = peso ~ sexo, data = datos)
 ```
 
@@ -249,6 +265,7 @@ El test de Levene sirve para comparar la varianza de 2 o más grupos pero ademá
 La función `leveneTest()` se encuentra disponible en el paquete `car`. La vemos aplicada sobre `peso` para los diferentes grupos de `sexo` y utilizando la **media** como estadístico de centralidad, dado que la distribución de `peso` se aproxima a la normal.
 
 ```{r}
+#| id: cod16
 leveneTest(y = peso ~ sexo, data = datos, center = "mean")
 ```
 
@@ -257,6 +274,7 @@ La conclusión es la misma que la encontrada anteriormente.
 Ahora vamos aplicarla sobre la variable `edad`, de la que habíamos descartado "normalidad". Lo hacemos usando el argumento `center` con `"mean"` (media) y con `"median"` (mediana).
 
 ```{r}
+#| id: cod17
 leveneTest(y = edad ~ sexo, data = datos, center = "mean")
 
 leveneTest(y = edad ~ sexo, data = datos, center = "median")
@@ -285,20 +303,24 @@ Veamos como llevamos adelante estos pasos mediante el lenguaje R:
 
 ### Lectura y exploración inicial
 
-```{r, message=F, warning=F}
+```{r}
+#| message: false
+#| warning: false
+#| id: cod18
 # Activamos paquetes necesarios y conocidos
-
 library(tidyverse)
 library(dlookr)
 
 # Leemos la tabla de datos
-
 bivalvos <- read_csv2("datos/bivalvos.txt")
 ```
 
 Visualizamos la estructura de la tabla de datos
 
-```{r, message=F, warning=F}
+```{r}
+#| message: false
+#| warning: false
+#| id: cod19
 glimpse(bivalvos)
 ```
 
@@ -308,7 +330,10 @@ Tenemos una tabla con 50 observaciones (mediciones en bivalvos) y la variable de
 
 Con la función `describe()` de **dlookr** podemos obtener los estadísticos de esta variable cuantitativa continua.
 
-```{r, message=F, warning=F}
+```{r}
+#| message: false
+#| warning: false
+#| id: cod20
 bivalvos |>
   describe(concentracion)
 ```
@@ -319,7 +344,10 @@ La media (0,4556 partículas/g) y la mediana (0,44 partículas/g) son cercanas. 
 
 Aplicaremos el test de normalidad de Shapiro-Wilk (forma analítica)
 
-```{r, message=F, warning=F}
+```{r}
+#| message: false
+#| warning: false
+#| id: cod21
 shapiro.test(bivalvos$concentracion)
 ```
 
@@ -327,7 +355,10 @@ Un p-valor mayor a 0,05 habla de un ajuste a la curva normal (es su hipotesis nu
 
 Complementamos visualizandolo graficamente con un Q-QPlot.
 
-```{r, message=F, warning=F}
+```{r}
+#| message: false
+#| warning: false
+#| id: cod22
 bivalvos |>
   plot_normality(concentracion)
 ```
@@ -361,7 +392,10 @@ Para este ejemplo debemos utilizar como argumentos:
 - la variable de interés que contiene los valores de la muestra
 - el nivel de confianza con el que necesitamos el IC
 
-```{r, message=F, warning=F}
+```{r}
+#| message: false
+#| warning: false
+#| id: cod23
 t.test(x = bivalvos$concentracion, conf.level = 0.95)
 ```
 
@@ -369,7 +403,10 @@ En la lista de resultados devuelta debemos observar los valores que figuran deba
 
 Si cambiamos el argumento conf.level a 0.90 obtendremos el IC 90%:
 
-```{r, message=F, warning=F}
+```{r}
+#| message: false
+#| warning: false
+#| id: cod24
 t.test(x = bivalvos$concentracion, conf.level = 0.90)
 ```
 
@@ -383,7 +420,10 @@ La idea central del paquete es ofrecer funciones que hacen lo mismo que las de R
 
 Veamos su uso:
 
-```{r, message=F, warning=F}
+```{r}
+#| message: false
+#| warning: false
+#| id: cod25
 library(rstatix)
 
 bivalvos |>
@@ -397,7 +437,10 @@ Debemos proceder ahora a construir la variable categórica **umbral_excedido** c
 
 Podemos hacerlo simplemente con el condicional `if_else()`.
 
-```{r, message=F, warning=F}
+```{r}
+#| message: false
+#| warning: false
+#| id: cod26
 bivalvos <- bivalvos |>
   mutate(umbral_excedido = if_else(concentracion > 0.5, "Si", "No"))
 
@@ -407,7 +450,10 @@ bivalvos |>
 
 Observamos que 19 de los 50 bivalvos de nuestra muestra representa un riesgo sanitario para los consumidores.
 
-```{r, message=F, warning=F}
+```{r}
+#| message: false
+#| warning: false
+#| id: cod27
 bivalvos |>
   count(umbral_excedido) |>
   mutate(porcentaje = n / sum(n) * 100)
@@ -429,7 +475,10 @@ La función aplica la prueba exacta de Clopper-Pearson, donde en **x** definimos
 
 Ejecutamos las dos posibilidades:
 
-```{r, message=F, warning=F}
+```{r}
+#| message: false
+#| warning: false
+#| id: cod28
 prop.test(x = 19, n = 50)
 
 binom.test(x = 19, n = 50)
@@ -444,11 +493,7 @@ Las dos funciones estan representadas en **rstatix**, con `prop_test()` y `binom
 Apredimos con este ejercicio que el lenguaje R siempre ofrece múltiples caminos, pero nuestro criterio es el que decide cuál usar y reportar.
 
 ::: hidden
-@base
-
-@wickham2019
+@tidyverse
 :::
 
 ## Referencias
-
-<!--#  -->

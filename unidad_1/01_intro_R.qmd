@@ -299,59 +299,57 @@ log(-1)
 
 la función genera una advertencia porque el logaritmo de un número negativo no está definido en los reales, y R devuelve un valor `NaN` (*Not a Number*).
 
-#### Resumiendo...
+### Resumiendo...
 
-```{r}
-#| echo: false
-#| id: fig1
-# --- Datos ---
-tibble(
-  x = c(1, 2.5),
-  t1 = c("Errores", "Advertencias"),
-  t2 = c(
-    "Error de sintaxis \n Error de objeto no encontrado \n Otros errores",
-    "Prestar atención, \n puede generar \n resultados erróneos"
-  ),
-  t3 = c(
-    "Detiene la ejecución \n del código",
-    "No detiene la \n ejecución del código"
-  ),
-  color = c("1", "2")
-) |>
+```{dot}
+//| echo: false
+//| id: fig1
+digraph G{
+  node[
+    shape = "rectangle"
+    style="filled"
+    color = "none"
+    fontname="Calibri"
+    fontsize=16
+    fontface="bold"
+    width=3
+  ]
 
-  # --- Diagrama ---
-  ggplot() +
+  a[
+    label = "Errores"
+    fillcolor="#430154"
+    fontcolor=white
+    ]
 
-  # --- Cajas ---
-  geom_tile(aes(x = x, y = 3, fill = color), width = 1, height = 0.5) +
-  geom_tile(aes(x = x, y = 1, fill = color), width = 1, height = 0.5) +
+a1 [
+    label = "Errores de sintaxis \n Error de objeto no encontrado \n Otros errores" 
+    ]
 
-  # --- Flechas ---
-  geom_segment(
-    aes(x = x, xend = x, y = 3, yend = 1.25, color = color),
-    linewidth = 1,
-    arrow = arrow(length = unit(3, "mm"), type = "closed")
-  ) +
+  a2[
+    label = "Detienen la \n ejecución del código"
+    fillcolor="#430154"
+    fontcolor=white
+    ]
 
-  # --- Texto ---
-  geom_text(aes(x = x, y = 3, label = t1), fontface = "bold", color = "white") +
-  geom_label(
-    aes(x = x, y = 2, label = t2),
-    size = 4,
-    # hjust = 0,
-    fill = "white"
-  ) +
-  geom_text(
-    aes(x = x, y = 1, label = t3),
-    size = 3.5,
-    fontface = "bold",
-    color = "white"
-  ) +
 
-  # --- Layout ---
-  scale_fill_viridis_d(aesthetics = c("fill", "color"), begin = .2, end = .9) +
-  theme_void() +
-  theme(legend.position = "none")
+
+  b[
+    label = "Advertencias"
+    fillcolor="#90D743"
+    ]
+
+   b1 [
+    label = "Prestar atención, \n puede generar \n resultados erróneos"
+    ]
+
+  b2[
+    label = "No detienen la \n ejecución del código"
+    fillcolor="#90D743"
+    ]
+
+  a -> a1  -> a2
+  b -> b1 -> b2 
+}
 ```
 
 ## Creación de objetos
@@ -394,63 +392,57 @@ Los objetos contenedores de datos más simples pertenecen a cinco clases atómic
 
 - `logical` (valores lógicos: `TRUE` o `FALSE`)
 
-```{r}
-#| echo: false
-#| id: fig2
-# --- Datos ---
-tibble(
-  x = c(0, 2.5, 5),
-  t0 = c("", "Tipo básico de datos", ""),
-  t1 = c("Numérico", "Caracter", "Lógico"),
-  t2 = c(
-    "Integer \n Numeric \n Complex",
-    "Character",
-    "Logical"
-  ),
-  color = c("1", "2", "3")
-) |>
+```{dot}
+//| echo: false
+//| id: fig2
+digraph G{
+  node[
+    shape=rectangle
+    color=none
+    style="filled"
+    fontname="Calibri"
+    fontsize=16
+    ]
 
-  # --- Diagrama ---
-  ggplot() +
+  a[
+    label = "Tipo básico de datos"
+    fillcolor = "#443983"
+    fontcolor=white
+    ]
 
-  # --- Flechas ---
-  geom_segment(
-    aes(x = x, xend = x, y = 2.95, yend = 1.25, color = color),
-    linewidth = 1,
-    arrow = arrow(length = unit(3, "mm"), type = "closed")
-  ) +
+  b[
+    label = "Numérico"
+    fillcolor = "#21918C"
+    ]
 
-  # --- Cajas ---
-  geom_tile(aes(x = x, y = 3), height = 0.25, fill = "grey50") +
-  geom_tile(aes(x = x, y = 2, fill = color), width = 1.25, height = 0.5) +
-  geom_tile(aes(x = x, y = 1, fill = color), width = 1.25, height = 0.5) +
+  c[
+    label = "Caracter"
+    fillcolor="#35B779"
+    ] 
+  
+  d[
+    label="Lógico"
+    fillcolor = "#90D743"
+    ]
 
-  # --- Texto ---
-  geom_text(
-    aes(x = 2.5, y = 3, label = t0),
-    size = 4.5,
-    fontface = "bold",
-    color = "white"
-  ) +
+  b1[label = "numeric"]
 
-  geom_text(
-    aes(x = x, y = 2, label = t1),
-    size = 3.5,
-    fontface = "bold",
-    color = "white"
-  ) +
+  b2[label = "integer"]
 
-  geom_text(
-    aes(x = x, y = 1, label = t2),
-    size = 3.5,
-    fontface = "bold",
-    color = "white"
-  ) +
+  b3[label = "complex"]
 
-  # --- Layout ---
-  scale_fill_viridis_d(aesthetics = c("fill", "color"), begin = .2, end = .9) +
-  theme_void() +
-  theme(legend.position = "none")
+  c1[label = "character"]
+
+  d1[label = "logical"]
+
+  a -> {b c d}
+
+  b -> {b1 b2 b3}
+
+  c -> c1
+
+  d -> d1
+}
 ```
 
 Sin embargo, cada una de estas clases de datos no se encuentran de manera aislada, sino encapsuladas dentro de la clase de objeto más básica de R, a la que se denomina **vector**.

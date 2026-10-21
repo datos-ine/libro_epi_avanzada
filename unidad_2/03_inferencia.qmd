@@ -910,7 +910,7 @@ A continuación presentamos un esquema que sirve de guía para potenciales situa
 //| echo: false
 //| id: fig9
 digraph G {
-    rankdir = TB
+    rankdir = LR
     node [shape = box, style = filled, fontname = "Calibri", color = none]
 
     n1 [label = "Variable respuesta \n cuantitativa", 
@@ -1242,7 +1242,7 @@ t.test(x = enfermos$V1, alternative = "less", mu = 165, conf.level = 0.95)
 
 Dado que $p < 0.05$, rechazamos la hipótesis nula y concluimos que, con un nivel de confianza del 95%, el nuevo fármaco **reduce significativamente la presión arterial** en estos pacientes.
 
-::: hidden
+::: {.hidden}
 @rodriguez2018
 
 @hernandez-avila2011

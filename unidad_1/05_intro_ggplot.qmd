@@ -33,7 +33,98 @@ La estructura para construir un gráfico es la siguiente:
 
 La construcción de gráficos en `ggplot2` se organiza a partir de una gramática que puede entenderse a través de sus componentes fundamentales:
 
-![](images/ggplot_comp.png){fig-align="center" width="50%"}
+```{dot}
+//| echo: false
+//| id: fig1
+digraph G {
+  compound=true;
+  ranksep = .1
+  node [
+    shape=rectangle,
+    style=filled,
+    fillcolor = none,
+    width = 3,
+    color=none,
+    margin=0.2,
+    fontname="Calibri"
+  ];
+
+  a [
+    label = <
+    <table border="0">
+    <tr>
+    <td> ggplot( data =  </td>
+    <td bgcolor = "#4301548e" >  [datos] </td>
+    <td>) +</td>
+    </tr>
+    </table>
+    >
+    ];
+
+
+    b[
+      label = <
+      <table border="0">
+      <tr>
+      <td bgcolor = "#4301548e"> [Función geom_] </td>
+      <td align = "left"> (</td> 
+      </tr>
+      <tr>
+      <td align = "right">mapping = </td>
+      <td bgcolor = "#4301548e"> aes( [estéticas] )</td>
+      <td>, </td>
+      </tr>
+      <tr>
+      <td align = "right"> stat = </td>
+      <td bgcolor="#90D7437c"> [stats] </td>
+      <td> , </td>
+      </tr>
+      <tr>
+      <td align = "right"> position = </td>
+      <td bgcolor="#90D7437c"> [posición] </td>
+      </tr>
+      <tr>
+      <td align = "right"> ) + </td>
+      </tr>
+      </table>
+      >
+    ]
+  c [
+    label="<función coord_>( ) +"
+    fillcolor="#90D7437c"
+    ];
+  d [
+    label="<función facet_>( ) +"
+    fillcolor="#90D7437c"
+    ];
+  e [
+    label="<función scale_>( ) +"
+    fillcolor="#90D7437c"
+    ];
+  f [
+    label="<función theme_>( )"
+    fillcolor="#90D7437c"
+    ];
+
+  // Conexiones secuenciales del flujo de capas
+  a -> b -> c -> d -> e -> f   [style = invis];
+
+ t1[label = <
+    <table border="0" cellborder = "1" cellspacing  ="0">
+    <tr>
+    <td width="20" height="20" bgcolor="#4301548e"></td>
+    <td> Requerido </td>
+    </tr>   
+    <tr>
+    <td width="20" height="20" bgcolor="#90D7437c"></td>
+    <td>     No requerido</td>
+    </tr>
+    </table>
+    >,
+    fillcolor="none"
+    ]
+}
+```
 
 - `data`: el conjunto de datos que vamos a graficar, debe contener toda la información necesaria.
 - `aes()`: el mapeo estético (*aesthetic mapping*) es donde se declaran las variables que se representarán en el gráfico (por ejemplo, los ejes X e Y o cómo se asignarán los colores).

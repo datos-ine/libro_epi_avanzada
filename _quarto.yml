@@ -76,10 +76,10 @@ book:
         - "unidad_2/01_est_epidemiologicos.qmd"
         - "unidad_2/02_est_transversales.qmd"
         - "unidad_2/03_inferencia.qmd"
-  #       - "unidad_2/04_normalidad_heterocedasticidad.qmd"
-  #       - "unidad_2/05_muestreo.qmd"
-  #       - "unidad_2/06_fun_condicionales.qmd"
-  #       - "unidad_2/07_IC_complejos.qmd"
+        - "unidad_2/04_norm_het.qmd"
+        - "unidad_2/05_muestreo.qmd"
+        - "unidad_2/06_fun_condic.qmd"
+        - "unidad_2/07_IC_complejos.qmd"
   
   # - part: "Unidad 3"
   #   icon: file-earmark-bar-graph
@@ -147,11 +147,15 @@ format:
     cover-image: logo_curso.png
 
   pdf:
+    documentclass: scrbook
     papersize: a4
     geometry:
-      - top=30mm
+      - top=20mm
       - left=20mm
       - heightrounded
+    toc: true
+    biblatexoptions:
+      - refsection=chapter
 
 # ---- Tipografía ----
 mainfont: "Calibri"

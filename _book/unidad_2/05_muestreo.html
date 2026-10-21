@@ -1,0 +1,2862 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Christian Ballejo, Andrea Silva y Tamara Ricardo">
+
+<title>12&nbsp; Selección de la muestra – Epidemiología: Nivel Avanzado</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../unidad_2/06_fun_condic.html" rel="next">
+<link href="../unidad_2/04_norm_het.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-7ee6e43050f6221742af855db1000407.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-019764fb716a006092dc2bed2899202b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-7ee6e43050f6221742af855db1000407.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../style.css">
+</head>
+
+<body class="nav-sidebar docked quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../unidad_2/01_est_epidemiologicos.html">Unidad 2</a></li><li class="breadcrumb-item"><a href="../unidad_2/05_muestreo.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Selección de la muestra</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../logo_curso.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../logo_curso.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Epidemiología: Nivel Avanzado</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <div class="dropdown">
+      <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label=""><i class="bi bi-r-circle-fill"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://cran.rstudio.com/bin/windows/" target="_blank">
+              <i class="bi bi-windows pe-1"></i>
+            R para Windows
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://cran.rstudio.com/bin/macosx/" target="_blank">
+              <i class="bi bi-apple pe-1"></i>
+            R para macOS
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://cran.rstudio.com/bin/linux/" target="_blank">
+              <i class="bi bi-ubuntu pe-1"></i>
+            R para Linux
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://posit.co/download/rstudio-desktop/" target="_blank">
+              <i class="bi bi-terminal pe-1"></i>
+            RStudio Desktop
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://cran.r-project.org/bin/windows/Rtools/" target="_blank">
+              <i class="bi bi-terminal pe-1"></i>
+            RTools
+            </a>
+          </li>
+      </ul>
+    </div>
+    <div class="dropdown">
+      <a href="" title="" id="quarto-navigation-tool-dropdown-1" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label=""><i class="bi bi-file-zip"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-1">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="../files/paquetes_curso.zip" target="_blank">
+              <i class="bi bi-file-zip pe-1"></i>
+            Paquetes para el curso
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="../files/datos.zip">
+              <i class="bi bi-file-zip pe-1"></i>
+            Datos de ejemplo
+            </a>
+          </li>
+      </ul>
+    </div>
+    <div class="dropdown">
+      <a href="" title="Descargar" id="quarto-navigation-tool-dropdown-2" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Descargar"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-2">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="../epi_avanzada.pdf">
+              <i class="bi bi-file-pdf pe-1"></i>
+            Descargar PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="../epi_avanzada.epub">
+              <i class="bi bi-journal pe-1"></i>
+            Descargar ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link"><i class="bi bi-book" role="img">
+</i> 
+ <span class="menu-text">Prefacio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true"><i class="bi bi-file-earmark-bar-graph" role="img">
+</i> 
+ <span class="menu-text">Unidad 1</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unidad_1/01_intro_R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción a R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unidad_1/02_intro_RStudio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introducción a RStudio</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unidad_1/03_intro_tidyverse.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introducción a <code>tidyverse</code></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unidad_1/04_intro_dplyr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Gestión de datos con <code>dplyr</code></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unidad_1/05_intro_ggplot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Gráficos estadísticos con <code>ggplot2</code></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unidad_1/06_analisis_exploratorio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Análisis exploratorio de datos</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unidad_1/07_hoja_estilo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Hoja de Estilo del lenguaje R</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true"><i class="bi bi-file-earmark-bar-graph" role="img">
+</i> 
+ <span class="menu-text">Unidad 2</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unidad_2/01_est_epidemiologicos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Estudios epidemiológicos</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unidad_2/02_est_transversales.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Estudios de corte transversal</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unidad_2/03_inferencia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Inferencia estadística</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unidad_2/04_norm_het.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Análisis de normalidad y homocedasticidad</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unidad_2/05_muestreo.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Selección de la muestra</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unidad_2/06_fun_condic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Funciones condicionales en R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unidad_2/07_IC_complejos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Intervalos de confianza en muestras complejas</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de contenidos</h2>
+   
+  <ul>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción"><span class="header-section-number">12.1</span> Introducción</a></li>
+  <li><a href="#cálculo-del-tamaño-muestral" id="toc-cálculo-del-tamaño-muestral" class="nav-link" data-scroll-target="#cálculo-del-tamaño-muestral"><span class="header-section-number">12.2</span> Cálculo del tamaño muestral</a></li>
+  <li><a href="#conceptos-generales-sobre-muestreo" id="toc-conceptos-generales-sobre-muestreo" class="nav-link" data-scroll-target="#conceptos-generales-sobre-muestreo"><span class="header-section-number">12.3</span> Conceptos generales sobre muestreo</a>
+  <ul class="collapse">
+  <li><a href="#muestreo-aleatorio-simple-mas" id="toc-muestreo-aleatorio-simple-mas" class="nav-link" data-scroll-target="#muestreo-aleatorio-simple-mas">Muestreo aleatorio simple (MAS)</a></li>
+  <li><a href="#muestreo-sistemático-ms" id="toc-muestreo-sistemático-ms" class="nav-link" data-scroll-target="#muestreo-sistemático-ms">Muestreo sistemático (MS)</a></li>
+  <li><a href="#muestreo-aleatorio-estratificado-mae" id="toc-muestreo-aleatorio-estratificado-mae" class="nav-link" data-scroll-target="#muestreo-aleatorio-estratificado-mae">Muestreo aleatorio estratificado (MAE)</a></li>
+  <li><a href="#muestreo-por-conglomerados-monoetápico" id="toc-muestreo-por-conglomerados-monoetápico" class="nav-link" data-scroll-target="#muestreo-por-conglomerados-monoetápico">Muestreo por conglomerados monoetápico</a></li>
+  <li><a href="#muestreo-por-conglomerados-bietápico" id="toc-muestreo-por-conglomerados-bietápico" class="nav-link" data-scroll-target="#muestreo-por-conglomerados-bietápico">Muestreo por conglomerados bietápico</a></li>
+  <li><a href="#implicaciones-en-la-estimación-y-ponderación" id="toc-implicaciones-en-la-estimación-y-ponderación" class="nav-link" data-scroll-target="#implicaciones-en-la-estimación-y-ponderación">Implicaciones en la Estimación y Ponderación</a></li>
+  </ul></li>
+  <li><a href="#ejemplo-práctico" id="toc-ejemplo-práctico" class="nav-link" data-scroll-target="#ejemplo-práctico"><span class="header-section-number">12.4</span> Ejemplo práctico</a>
+  <ul class="collapse">
+  <li><a href="#cálculo-de-las-probabilidades-de-selección-y-ponderaciones" id="toc-cálculo-de-las-probabilidades-de-selección-y-ponderaciones" class="nav-link" data-scroll-target="#cálculo-de-las-probabilidades-de-selección-y-ponderaciones">Cálculo de las Probabilidades de Selección y Ponderaciones</a></li>
+  </ul></li>
+  <li><a href="#referencias" id="toc-referencias" class="nav-link" data-scroll-target="#referencias"><span class="header-section-number">12.5</span> Referencias</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../unidad_2/01_est_epidemiologicos.html">Unidad 2</a></li><li class="breadcrumb-item"><a href="../unidad_2/05_muestreo.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Selección de la muestra</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Selección de la muestra</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>Andrea Silva <a href="https://orcid.org/0000-0002-4791-9706" class="quarto-title-author-orcid" aria-label="ORCID profile for Andrea Silva"> <img alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introducción" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="introducción"><span class="header-section-number">12.1</span> Introducción</h2>
+<p>Toda investigación epidemiológica requiere, en principio, la selección de una muestra representativa de la población objeto de estudio. Esto implica:</p>
+<ul>
+<li><p>Determinar el tamaño de la muestra.</p></li>
+<li><p>Definir cómo se seleccionarán los sujetos (es decir, las unidades de análisis).</p></li>
+<li><p>Calcular la incertidumbre que introduce este proceso de muestreo en nuestras estimaciones.</p></li>
+</ul>
+<p>El tamaño de la muestra se establece en la fase de diseño del estudio, habitualmente cuando se redacta el protocolo de investigación. Es importante considerar que este tamaño es, en cierto sentido, orientador, ya que su cálculo depende de factores que en ocasiones pueden ser subjetivos o estar limitados por la información previa disponible. Además, las exigencias varían según el objetivo del estudio. Por ejemplo:</p>
+<ul>
+<li><p>En un estudio transversal, donde se estima una prevalencia, se puede aceptar una precisión menor.</p></li>
+<li><p>En un estudio experimental, donde se compara la eficacia de un fármaco frente a un placebo, el tamaño de la muestra debe ser suficiente para detectar una “diferencia significativa” entre los grupos.</p></li>
+</ul>
+<p>Cuando el objetivo de la investigación incluye la estimación de un intervalo de confianza (IC) para alguna variable, se busca que dicho IC tenga alta confiabilidad y sea lo más estrecho posible.</p>
+<p>En el caso de los estudios de corte transversal, que se orientan a estimar una proporción, se formulan preguntas como:<br>
+— ¿Cuál es la prevalencia, proporción o porcentaje del fenómeno en estudio?</p>
+<p>Al tomar una muestra para estimar lo que sucede en la realidad, debemos aceptar que la medición obtenida reflejará la situación poblacional, pero siempre con cierto grado de variabilidad (o error). La <strong>precisión</strong> es ese grado de variabilidad aceptable y se expresa a través de los intervalos de confianza, que definen los límites inferior y superior dentro de los cuales se espera encontrar el verdadero valor del parámetro.</p>
+</section>
+<section id="cálculo-del-tamaño-muestral" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="cálculo-del-tamaño-muestral"><span class="header-section-number">12.2</span> Cálculo del tamaño muestral</h2>
+<p>Como se mencionó anteriormente, se requiere conocer algunos datos para el cálculo del tamaño de muestra requerido, entre los que destacan:</p>
+<ul>
+<li><p><strong>La proporción esperada del evento:</strong> Aunque resulte paradójico, ya que es el parámetro que se desea estimar, el investigador suele contar con información previa que permite delimitar sus posibles valores. Si no fuera el caso, se utiliza el peor escenario, es decir, una proporción del 50%, ya que este valor maximiza el producto <span class="math inline">\(p(1-p)\)</span> y, por ende, exige el mayor tamaño muestral. De esta forma, muchas veces se recurre a esto para tener al menos una idea del “límite superior” que estaríamos manejando.</p></li>
+<li><p><strong>El nivel de confianza deseado:</strong> Habitualmente se emplea un 95% (lo que equivale a un <span class="math inline">\(\alpha\)</span> de 0.05). Este valor indica la probabilidad de que el intervalo calculado contenga el parámetro poblacional verdadero. A mayor nivel de confianza (es decir, menor <span class="math inline">\(\alpha\)</span>), mayor es el coeficiente de confiabilidad y, por ende, mayor el tamaño muestral requerido.</p></li>
+<li><p><strong>La precisión (</strong><span class="math inline">\(\delta\)</span><strong>) deseada:</strong> Se refiere a la amplitud aceptable del intervalo de confianza. Cuanta más precisión se exija (es decir, un intervalo más estrecho), mayor será el tamaño de la muestra necesario.</p></li>
+</ul>
+<p>La fórmula para el cálculo es la siguiente:</p>
+<p><span class="math display">\[
+N = \frac{p.q.(Z\alpha)^2}{\delta^2}
+\]</span></p>
+<p>Donde: - <span class="math inline">\(N\)</span> es el tamaño muestra requerido. - <span class="math inline">\(p\)</span> es la proporción esperada de sujetos portadores del evento. - <span class="math inline">\(q = 1 – p\)</span> es la proporción complementaria (sujetos que no tienen la variable en estudio). - <span class="math inline">\(\delta\)</span> es la precisión o magnitud de error aceptable. - <span class="math inline">\(Z\alpha\)</span> es el valor crítico de la distribución normal asociado al nivel de significancia. Se obtiene de tablas de distribución normal de probabilidades y habitualmente se utiliza un valor <span class="math inline">\(\alpha\)</span> de 0.05, al que le corresponde un valor <span class="math inline">\(Z\)</span> de 1.96</p>
+<p>Cuando se conoce el tamaño de la población, es necesario aplicar una corrección por población finita:</p>
+<p><span class="math display">\[
+N =\frac{n^1}{1+\frac{n^1}{Población}}
+\]</span></p>
+<p>donde <span class="math inline">\(n^1\)</span> es el <span class="math inline">\(N\)</span> calculado con la ecuación anterior.</p>
+<p>Es fundamental entender que el tamaño de la muestra dependerá de <span class="math inline">\(p\)</span> de <span class="math inline">\(\alpha\)</span> y de la precisión deseada, más que de la complejidad de la fórmula en sí. Existen numerosos softwares que calculan tamaños de muestra. Algunos están especializados en esta tarea (por ejemplo, <strong>EpiDat</strong>, <strong>EpiInfo</strong>, <strong>OpenEp</strong>i), mientras que otros lo incluyen como una opción dentro de un paquete más amplio de análisis. En el lenguaje R, funciones como <code>power.prop.test()</code> (para comparación de proporciones) y <code>power.t.test()</code> (para pruebas de medias basadas en la distribución <span class="math inline">\(t\)</span> de Student) están incluidas en el paquete <code>stats</code>. Otros paquetes útiles incluyen <code>samplingbook</code> <span class="citation" data-cites="samplingbook">(<a href="#ref-samplingbook" role="doc-biblioref">Manitz et&nbsp;al. 2021</a>)</span>, <code>samplesize</code>, <code>pwr</code> <span class="citation" data-cites="pwr">(<a href="#ref-pwr" role="doc-biblioref">Champely 2020</a>)</span> y <code>epiR</code> <span class="citation" data-cites="epiR">(<a href="#ref-epiR" role="doc-biblioref">Stevenson y Sergeant 2026</a>)</span>.</p>
+<p>A continuación, se presenta un ejemplo práctico utilizando la función <code>sample.size.prop()</code> del paquete <code>samplingbook</code>. Supongamos que queremos estimar la prevalencia de diabetes en una ciudad de 600,000 habitantes, donde estudios previos sugieren una prevalencia cercana al 10.2%. El objetivo es determinar el tamaño de la muestra en un muestreo aleatorio simple.</p>
+<p>Comenzamos cargando el paquete requerido:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(samplingbook)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Calculamos el tamaño muestral en base a los siguientes argumentos:</p>
+<ul>
+<li><code>e</code>: número positivo que especifica la precisión que es la mitad del ancho del intervalo de confianza</li>
+<li><code>p:</code> proporción esperada de eventos con dominio entre los valores 0 y 1.</li>
+<li><code>N</code>: número entero positivo para el tamaño de la población. El valor predeterminado es <code>Inf</code>, lo que significa que los cálculos se realizan sin <em>corrección de población finita</em>.</li>
+<li><code>level</code>: nivel de confianza para los intervalos de confianza. El valor predeterminado es 95%.</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample.size.prop</span>(<span class="at">e =</span> <span class="fl">0.02</span>, <span class="at">P =</span> <span class="fl">0.102</span>, <span class="at">N =</span> <span class="dv">600000</span>, <span class="at">level =</span> <span class="fl">0.95</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+sample.size.prop object: Sample size for proportion estimate
+With finite population correction: N=6e+05, precision e=0.02 and expected proportion P=0.102
+
+Sample size needed: 879</code></pre>
+</div>
+</div>
+<p>El resultado, tras aplicar la corrección por población finita, indica que se requieren 879 sujetos en la muestra. Por simplicidad, es habitual considerar infinita a la población objetivo, ya que hacerlo así minimiza los riesgos estadísticos:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample.size.prop</span>(<span class="at">e =</span> <span class="fl">0.02</span>, <span class="at">P =</span> <span class="fl">0.102</span>, <span class="at">N =</span> <span class="cn">Inf</span>, <span class="at">level =</span> <span class="fl">0.95</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+sample.size.prop object: Sample size for proportion estimate
+Without finite population correction: N=Inf, precision e=0.02 and expected proportion P=0.102
+
+Sample size needed: 880</code></pre>
+</div>
+</div>
+<p>Si se considera una población infinita, el tamaño muestral calculado es de 880 personas, apenas una unidad más, lo que demuestra que el ajuste por población finita en este caso es mínimo. En cambio, si no se conoce o no se confía en el valor de prevalencia y se opta por el peor escenario (<span class="math inline">\(p = 0.5\)</span>):</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample.size.prop</span>(<span class="at">e =</span> <span class="fl">0.02</span>, <span class="at">P =</span> <span class="fl">0.5</span>, <span class="at">N =</span> <span class="dv">600000</span>, <span class="at">level =</span> <span class="fl">0.95</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+sample.size.prop object: Sample size for proportion estimate
+With finite population correction: N=6e+05, precision e=0.02 and expected proportion P=0.5
+
+Sample size needed: 2392</code></pre>
+</div>
+</div>
+<p>En este caso, el tamaño muestral aumenta considerablemente hasta 2392 unidades, lo que refleja un enfoque más conservador.</p>
+<p>Además del cálculo del tamaño muestral, es esencial planificar la forma en que se seleccionarán los individuos. En estudios de corte transversal se debe realizar un muestreo probabilístico, ya que la técnica de muestreo influirá en los factores de expansión necesarios para generalizar los resultados a la población. Aunque el proceso de muestreo no se detalla en este curso, es vital considerarlo para garantizar la validez externa de la investigación.</p>
+</section>
+<section id="conceptos-generales-sobre-muestreo" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="conceptos-generales-sobre-muestreo"><span class="header-section-number">12.3</span> Conceptos generales sobre muestreo</h2>
+<p>Un muestreo se considera <strong>probabilístico</strong> cuando se cumplen dos condiciones fundamentales:</p>
+<ul>
+<li><p>Es posible conocer de antemano la probabilidad de selección que tiene cada elemento de la población.</p></li>
+<li><p>Esta probabilidad es mayor que cero para todos los elementos.</p></li>
+</ul>
+<p>Solo con un muestreo probabilístico se puede medir el grado de precisión de las estimaciones realizadas, ya que se conocen las probabilidades de inclusión. Algunos de los métodos más usados son: Muestreo aleatorio simple, muestreo sistemático en fases, Muestreo aleatorio estratificado, muestreo por conglomerados, etc.</p>
+<section id="muestreo-aleatorio-simple-mas" class="level3">
+<h3 class="anchored" data-anchor-id="muestreo-aleatorio-simple-mas">Muestreo aleatorio simple (MAS)</h3>
+<p>En el MAS, cada elemento de la población tiene la misma probabilidad de ser seleccionado (es decir, es un método <strong>equiprobabilístico</strong>). La probabilidad de inclusión se expresa como:</p>
+<p><span class="math display">\[
+P = \frac{n}{N}
+\]</span></p>
+<p>donde:</p>
+<ul>
+<li><p><span class="math inline">\(n\)</span> es el tamaño de la muestra,</p></li>
+<li><p><span class="math inline">\(N\)</span> es el tamaño de la población.</p></li>
+</ul>
+<p>Este método requiere contar con un listado completo de la población y se utiliza principalmente en poblaciones cerradas (por ejemplo, escuelas, cárceles, hospitales o muestras de laboratorio), donde los elementos pueden identificarse y numerarse fácilmente.</p>
+</section>
+<section id="muestreo-sistemático-ms" class="level3">
+<h3 class="anchored" data-anchor-id="muestreo-sistemático-ms">Muestreo sistemático (MS)</h3>
+<p>El muestreo sistemático es un procedimiento alternativo al MAS, adecuado para la selección de muestras equiprobabilísticas de poblaciones organizadas según algún orden conocido. Sus ventajas incluyen no requerir necesariamente un listado completo de todas las unidades, lo que resulta útil, por ejemplo, para seleccionar a los usuarios que llegan a un servicio hospitalario durante un período determinado.</p>
+<p>El procedimiento consiste en:</p>
+<ol type="1">
+<li><p>Asignar a cada elemento de la población un número del 1 a <span class="math inline">\(N\)</span>.</p></li>
+<li><p>Calcular el intervalo de selección:</p></li>
+</ol>
+<p><span class="math display">\[
+k = \frac{N}{n}
+\]</span></p>
+<ol start="3" type="1">
+<li><p>Seleccionar aleatoriamente un número <span class="math inline">\(r\)</span> entre 1 y <span class="math inline">\(k\)</span>.</p></li>
+<li><p>Elegir los elementos que ocupan las posiciones: <span class="math inline">\(r, r+k, r + 2k,...\)</span>, es decir, la secuencia <span class="math inline">\(r, r+jk\)</span> con <span class="math inline">\(j = 0, 1, 2, \dots\)</span>.</p></li>
+</ol>
+<p>La probabilidad de ser seleccionado es igual que en el MAS</p>
+<p><span class="math display">\[
+P = \frac{n}{N}
+\]</span></p>
+</section>
+<section id="muestreo-aleatorio-estratificado-mae" class="level3">
+<h3 class="anchored" data-anchor-id="muestreo-aleatorio-estratificado-mae">Muestreo aleatorio estratificado (MAE)</h3>
+<p>Este método se emplea cuando la población puede dividirse en subgrupos o <strong>estratos</strong> que difieren en las características de interés (por ejemplo, edad, sexo o nivel socioeconómico). La idea es asegurar que cada estrato esté representado en la muestra. El proceso habitual consiste en:</p>
+<ul>
+<li><p>Elaborar listas separadas para cada estrato.</p></li>
+<li><p>Seleccionar una submuestra de cada uno de ellos.</p></li>
+</ul>
+<p>La probabilidad de selección en cada estrato es:</p>
+<p><span class="math display">\[
+P \ estrato = \frac{n \ estrato}{N \ estrato}
+\]</span></p>
+<p>Si se aplica un muestreo proporcional, el tamaño de la muestra en cada estrato se calcula como:</p>
+<p><span class="math display">\[
+n \ estrato = n\frac{N \ estrato}{N}
+\]</span></p>
+<p>El objetivo es obtener una muestra cuya variabilidad interna se asemeje a la de la población, logrando que los estratos sean internamente homogéneos y heterogéneos entre sí.</p>
+</section>
+<section id="muestreo-por-conglomerados-monoetápico" class="level3">
+<h3 class="anchored" data-anchor-id="muestreo-por-conglomerados-monoetápico">Muestreo por conglomerados monoetápico</h3>
+<p>El muestreo por conglomerados es ideal cuando la población es difícil de delimitar o está muy dispersa. Se divide la población en <strong>conglomerados</strong> (o grupos) que actúan como unidades de primera etapa (UPE) y no deben solaparse.</p>
+<p>La población se divide en grupos (por ejemplo, áreas geográficas, instituciones o servicios). Se selecciona una muestra de <span class="math inline">\(n\)</span> conglomerados y se incluyen <strong>todos</strong> las unidades de análisis de los conglomerados seleccionados. El tamaño del conglomerado se refiere al número de unidades elementales que contiene, pudiendo ser de igual o distinto tamaño. Los conglomerados deberían ser lo más heterogéneos dentro de ellos y lo más homogéneos entre ellos.</p>
+</section>
+<section id="muestreo-por-conglomerados-bietápico" class="level3">
+<h3 class="anchored" data-anchor-id="muestreo-por-conglomerados-bietápico">Muestreo por conglomerados bietápico</h3>
+<p>Se utiliza cuando existe gran variabilidad en el tamaño de los conglomerados o la población es muy grande. En este caso, después de dividir la población en conglomerados y seleccionar algunos de ellos como UPE, se realiza una subselección (muestreo secundario) de los elementos dentro de los conglomerados elegidos.</p>
+<p>Existen más posibilidades, que no abordaremos aquí, pero sí nos detendremos en discutir qué implicaciones tiene el muestreo en el proceso de estimación.</p>
+</section>
+<section id="implicaciones-en-la-estimación-y-ponderación" class="level3">
+<h3 class="anchored" data-anchor-id="implicaciones-en-la-estimación-y-ponderación">Implicaciones en la Estimación y Ponderación</h3>
+<p>En métodos equiprobabilísticos (como el MAS o el MS), cada elemento tiene la misma probabilidad de selección. Sin embargo, en diseños muestrales más complejos (como el muestreo estratificado o por conglomerados), las probabilidades de selección pueden variar entre individuos.</p>
+<p>En estos casos, la probabilidad total de selección de un individuo es el producto de las probabilidades de selección en cada etapa del muestreo. Una vez conocida esta probabilidad, se calcula el peso (o <strong>factor de expansión</strong>) como su inverso. Este peso se interpreta como el número de individuos en la población que representa cada individuo de la muestra.</p>
+<blockquote class="blockquote">
+<p>El factor de expansión se interpreta como <em>la cantidad de personas en la población, que representa una persona en la muestra</em>.</p>
+</blockquote>
+<p>El factor de expansión se utiliza para extrapolar los resultados obtenidos en la muestra a la población total. Por ejemplo, para estimar un total poblacional para una variable, se pondera el valor medido en cada individuo por su factor de expansión y se suman dichos valores.</p>
+</section>
+</section>
+<section id="ejemplo-práctico" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="ejemplo-práctico"><span class="header-section-number">12.4</span> Ejemplo práctico</h2>
+<p>Supongamos que queremos estimar la prevalencia de sobrepeso/obesidad en estudiantes de enseñanza media de una localidad. Se tiene la siguiente información:</p>
+<ul>
+<li><p><strong>Población total de alumnos:</strong> 966</p></li>
+<li><p><strong>Número de escuelas (conglomerados):</strong> 21</p></li>
+<li><p><strong>Tamaño de la muestra global (ya calculado):</strong> 120 alumnos</p></li>
+</ul>
+<p>Si se realizara un <strong>muestreo aleatorio simple (MAS)</strong>, se necesitaría disponer del listado completo de los 966 alumnos y, mediante un sorteo, seleccionar 120 individuos. En ese caso, la probabilidad de selección para cada alumno sería:</p>
+<p><span class="math display">\[
+P = \frac{n}{N} = \frac{120}{966}=0,124
+\]</span></p>
+<p>Supongamos ahora que decide realizar un muestreo por conglomerados biétapico. Cada escuela se considera un conglomerado; se seleccionan 10 de las 21 escuelas por MAS y, dentro de cada escuela seleccionada, se elige una submuestra de estudiantes también mediante MAS. Se decide que el número de estudiantes elegidos en cada conglomerado sea igual para todos.</p>
+<p>Los datos globales quedan de la siguiente forma:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="uybnisfaka" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#uybnisfaka table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#uybnisfaka thead, #uybnisfaka tbody, #uybnisfaka tfoot, #uybnisfaka tr, #uybnisfaka td, #uybnisfaka th {
+  border-style: none;
+}
+
+#uybnisfaka p {
+  margin: 0;
+  padding: 0;
+}
+
+#uybnisfaka .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#uybnisfaka .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#uybnisfaka .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#uybnisfaka .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#uybnisfaka .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#uybnisfaka .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uybnisfaka .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#uybnisfaka .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#uybnisfaka .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#uybnisfaka .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#uybnisfaka .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#uybnisfaka .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#uybnisfaka .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#uybnisfaka .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#uybnisfaka .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#uybnisfaka .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#uybnisfaka .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#uybnisfaka .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#uybnisfaka .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#uybnisfaka .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#uybnisfaka .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#uybnisfaka .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#uybnisfaka .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#uybnisfaka .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#uybnisfaka .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#uybnisfaka .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uybnisfaka .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#uybnisfaka .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#uybnisfaka .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uybnisfaka .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#uybnisfaka .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uybnisfaka .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#uybnisfaka .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#uybnisfaka .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#uybnisfaka .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#uybnisfaka .gt_left {
+  text-align: left;
+}
+
+#uybnisfaka .gt_center {
+  text-align: center;
+}
+
+#uybnisfaka .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#uybnisfaka .gt_font_normal {
+  font-weight: normal;
+}
+
+#uybnisfaka .gt_font_bold {
+  font-weight: bold;
+}
+
+#uybnisfaka .gt_font_italic {
+  font-style: italic;
+}
+
+#uybnisfaka .gt_super {
+  font-size: 65%;
+}
+
+#uybnisfaka .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#uybnisfaka .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#uybnisfaka .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#uybnisfaka .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#uybnisfaka .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#uybnisfaka .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#uybnisfaka .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#uybnisfaka .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#uybnisfaka div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="a-" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"></th>
+<th id="Población" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Población</th>
+<th id="Muestra" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Muestra</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers=" ">Tamaño total</td>
+<td class="gt_row gt_right" headers="Población">966</td>
+<td class="gt_row gt_right" headers="Muestra">120</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers=" ">Número de conglomerados</td>
+<td class="gt_row gt_right" headers="Población">21</td>
+<td class="gt_row gt_right" headers="Muestra">10</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>La decisión de cuántos conglomerados forman parte de la muestra, es una decisión del investigador: a veces puede ser necesario fijar un número, a veces puede ser más conveniente fijar el tamaño de la muestra en cada conglomerado. Por otra parte, puede que decidamos que el número de sujetos seleccionados en cada conglomerado sea igual para todos; que sea una fracción fija o algo a definir.</p>
+<p>Dentro de los conglomerados seleccionados, se obtiene la siguiente distribución (en este ejemplo, la suma de los tamaños de los conglomerados seleccionados es 480 y en cada uno se eligen 12 alumnos):</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="spwcupgmqt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#spwcupgmqt table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#spwcupgmqt thead, #spwcupgmqt tbody, #spwcupgmqt tfoot, #spwcupgmqt tr, #spwcupgmqt td, #spwcupgmqt th {
+  border-style: none;
+}
+
+#spwcupgmqt p {
+  margin: 0;
+  padding: 0;
+}
+
+#spwcupgmqt .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#spwcupgmqt .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#spwcupgmqt .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#spwcupgmqt .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#spwcupgmqt .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#spwcupgmqt .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#spwcupgmqt .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#spwcupgmqt .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#spwcupgmqt .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#spwcupgmqt .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#spwcupgmqt .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#spwcupgmqt .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#spwcupgmqt .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#spwcupgmqt .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#spwcupgmqt .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#spwcupgmqt .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#spwcupgmqt .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#spwcupgmqt .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#spwcupgmqt .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#spwcupgmqt .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#spwcupgmqt .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#spwcupgmqt .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#spwcupgmqt .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#spwcupgmqt .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#spwcupgmqt .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#spwcupgmqt .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#spwcupgmqt .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#spwcupgmqt .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#spwcupgmqt .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#spwcupgmqt .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#spwcupgmqt .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#spwcupgmqt .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#spwcupgmqt .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#spwcupgmqt .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#spwcupgmqt .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#spwcupgmqt .gt_left {
+  text-align: left;
+}
+
+#spwcupgmqt .gt_center {
+  text-align: center;
+}
+
+#spwcupgmqt .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#spwcupgmqt .gt_font_normal {
+  font-weight: normal;
+}
+
+#spwcupgmqt .gt_font_bold {
+  font-weight: bold;
+}
+
+#spwcupgmqt .gt_font_italic {
+  font-style: italic;
+}
+
+#spwcupgmqt .gt_super {
+  font-size: 65%;
+}
+
+#spwcupgmqt .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#spwcupgmqt .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#spwcupgmqt .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#spwcupgmqt .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#spwcupgmqt .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#spwcupgmqt .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#spwcupgmqt .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#spwcupgmqt .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#spwcupgmqt div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="Conglomerado" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Conglomerado</th>
+<th id="Tamaño" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Tamaño</th>
+<th id="Muestra" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Muestra</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="Conglomerado">5.1</td>
+<td class="gt_row gt_right" headers="Tamaño">48</td>
+<td class="gt_row gt_right" headers="Muestra">12</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Conglomerado">1.3</td>
+<td class="gt_row gt_right" headers="Tamaño">28</td>
+<td class="gt_row gt_right" headers="Muestra">12</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Conglomerado">2.3</td>
+<td class="gt_row gt_right" headers="Tamaño">64</td>
+<td class="gt_row gt_right" headers="Muestra">12</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Conglomerado">2.2</td>
+<td class="gt_row gt_right" headers="Tamaño">43</td>
+<td class="gt_row gt_right" headers="Muestra">12</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Conglomerado">3.1</td>
+<td class="gt_row gt_right" headers="Tamaño">37</td>
+<td class="gt_row gt_right" headers="Muestra">12</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Conglomerado">5.3</td>
+<td class="gt_row gt_right" headers="Tamaño">86</td>
+<td class="gt_row gt_right" headers="Muestra">12</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Conglomerado">1.4</td>
+<td class="gt_row gt_right" headers="Tamaño">37</td>
+<td class="gt_row gt_right" headers="Muestra">12</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Conglomerado">3.3</td>
+<td class="gt_row gt_right" headers="Tamaño">56</td>
+<td class="gt_row gt_right" headers="Muestra">12</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Conglomerado">2.4</td>
+<td class="gt_row gt_right" headers="Tamaño">48</td>
+<td class="gt_row gt_right" headers="Muestra">12</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Conglomerado">1.5</td>
+<td class="gt_row gt_right" headers="Tamaño">33</td>
+<td class="gt_row gt_right" headers="Muestra">12</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Conglomerado">Total</td>
+<td class="gt_row gt_right" headers="Tamaño">480</td>
+<td class="gt_row gt_right" headers="Muestra">120</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<section id="cálculo-de-las-probabilidades-de-selección-y-ponderaciones" class="level3">
+<h3 class="anchored" data-anchor-id="cálculo-de-las-probabilidades-de-selección-y-ponderaciones">Cálculo de las Probabilidades de Selección y Ponderaciones</h3>
+<p>Para que un individuo sea seleccionado en este diseño, debe ocurrir primero que su conglomerado sea escogido y, posteriormente, que él sea seleccionado dentro de ese conglomerado. Si asumimos que:</p>
+<blockquote class="blockquote">
+<p><em>“Dos sucesos son independientes si la probabilidad de que ocurran ambos simultáneamente es igual al producto de las probabilidades de que ocurra cada uno de ellos”</em>.</p>
+</blockquote>
+<p>La probabilidad total de selección es el producto de:</p>
+<ol type="1">
+<li>La probabilidad de que el conglomerado sea seleccionado:</li>
+</ol>
+<p><span class="math display">\[
+P_{conglomerado} = \frac{10}{21}
+\]</span></p>
+<ol start="2" type="1">
+<li>La probabilidad de que un individuo sea seleccionado dentro de su conglomerado:</li>
+</ol>
+<p><span class="math display">\[
+P_{dentro} = \frac{N°~alumnos~en~la~muestra~del~conglomerado}{Tamaño~del~conglomerado}
+\]</span></p>
+<p>Para los individuos del conglomerado 5.1; la probabilidad de selección será:</p>
+<p><span class="math display">\[
+P_{5.1} = \frac{10}{21}*\frac{12}{48} \approx 0,1190 \quad (11.9\%)
+\]</span></p>
+<p>La ponderación o <strong>factor de expansión</strong> se obtiene como el inverso de la probabilidad de selección:</p>
+<p><span class="math display">\[
+w = \frac{1}{P}
+\]</span></p>
+<p>Es decir:</p>
+<p><span class="math display">\[
+w_{5.1} = \frac{1}{1.190} \approx 8.4
+\]</span></p>
+<p>Esto significa que cada alumno seleccionado del conglomerado 5.1 representa aproximadamente a 8 alumnos de la población.</p>
+<p>Si se realizan los cálculos para cada uno de los conglomerados, se obtiene la siguiente tabla:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="uxpahkssem" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#uxpahkssem table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#uxpahkssem thead, #uxpahkssem tbody, #uxpahkssem tfoot, #uxpahkssem tr, #uxpahkssem td, #uxpahkssem th {
+  border-style: none;
+}
+
+#uxpahkssem p {
+  margin: 0;
+  padding: 0;
+}
+
+#uxpahkssem .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#uxpahkssem .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#uxpahkssem .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#uxpahkssem .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#uxpahkssem .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#uxpahkssem .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uxpahkssem .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#uxpahkssem .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#uxpahkssem .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#uxpahkssem .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#uxpahkssem .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#uxpahkssem .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#uxpahkssem .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#uxpahkssem .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#uxpahkssem .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#uxpahkssem .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#uxpahkssem .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#uxpahkssem .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#uxpahkssem .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#uxpahkssem .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#uxpahkssem .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#uxpahkssem .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#uxpahkssem .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#uxpahkssem .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#uxpahkssem .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#uxpahkssem .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uxpahkssem .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#uxpahkssem .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#uxpahkssem .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uxpahkssem .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#uxpahkssem .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uxpahkssem .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#uxpahkssem .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#uxpahkssem .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#uxpahkssem .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#uxpahkssem .gt_left {
+  text-align: left;
+}
+
+#uxpahkssem .gt_center {
+  text-align: center;
+}
+
+#uxpahkssem .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#uxpahkssem .gt_font_normal {
+  font-weight: normal;
+}
+
+#uxpahkssem .gt_font_bold {
+  font-weight: bold;
+}
+
+#uxpahkssem .gt_font_italic {
+  font-style: italic;
+}
+
+#uxpahkssem .gt_super {
+  font-size: 65%;
+}
+
+#uxpahkssem .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#uxpahkssem .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#uxpahkssem .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#uxpahkssem .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#uxpahkssem .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#uxpahkssem .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#uxpahkssem .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#uxpahkssem .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#uxpahkssem div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="Conglomerado" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Conglomerado</th>
+<th id="Probabilidad" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Probabilidad</th>
+<th id="Ponderación" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Ponderación</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_right" headers="Conglomerado">5.1</td>
+<td class="gt_row gt_right" headers="Probabilidad">11.90</td>
+<td class="gt_row gt_right" headers="Ponderación">8.40</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Conglomerado">1.3</td>
+<td class="gt_row gt_right" headers="Probabilidad">20.41</td>
+<td class="gt_row gt_right" headers="Ponderación">4.90</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="Conglomerado">2.3</td>
+<td class="gt_row gt_right" headers="Probabilidad">8.93</td>
+<td class="gt_row gt_right" headers="Ponderación">11.20</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Conglomerado">2.2</td>
+<td class="gt_row gt_right" headers="Probabilidad">13.29</td>
+<td class="gt_row gt_right" headers="Ponderación">7.53</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="Conglomerado">3.1</td>
+<td class="gt_row gt_right" headers="Probabilidad">15.44</td>
+<td class="gt_row gt_right" headers="Ponderación">6.48</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Conglomerado">5.3</td>
+<td class="gt_row gt_right" headers="Probabilidad">6.65</td>
+<td class="gt_row gt_right" headers="Ponderación">15.05</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="Conglomerado">1.4</td>
+<td class="gt_row gt_right" headers="Probabilidad">15.44</td>
+<td class="gt_row gt_right" headers="Ponderación">6.48</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Conglomerado">3.3</td>
+<td class="gt_row gt_right" headers="Probabilidad">10.20</td>
+<td class="gt_row gt_right" headers="Ponderación">9.80</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="Conglomerado">2.4</td>
+<td class="gt_row gt_right" headers="Probabilidad">11.90</td>
+<td class="gt_row gt_right" headers="Ponderación">8.40</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Conglomerado">1.5</td>
+<td class="gt_row gt_right" headers="Probabilidad">17.32</td>
+<td class="gt_row gt_right" headers="Ponderación">5.78</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Cada individuo seleccionado en el estudio tiene una probabilidad de inclusión que depende tanto de la probabilidad de que su escuela (conglomerado) sea seleccionada como de la probabilidad de que él sea elegido dentro de su escuela. La ponderación resultante (el inverso de esta probabilidad) se utiliza para “expandir” el resultado del estudio, de manera que cada alumno en la muestra represente a un número determinado de alumnos en la población total.</p>
+<p>Por ejemplo, en el conglomerado 5.1, cada alumno seleccionado representa aproximadamente a 8 alumnos de la población. De este modo, al calcular la prevalencia de sobrepeso/obesidad en la muestra, se aplican estos factores de expansión para obtener estimaciones que sean representativas de los 966 alumnos de la localidad.</p>
+<p>Este proceso es fundamental en estudios basados en muestreos complejos, ya que permite corregir posibles diferencias en las probabilidades de selección y garantizar que las estimaciones sean válidas y precisas para toda la población.</p>
+<div class="hidden">
+<p><span class="citation" data-cites="hernandez-avila2011">Hernández-Ávila (<a href="#ref-hernandez-avila2011" role="doc-biblioref">2011</a>)</span></p>
+<p><span class="citation" data-cites="daniel2002">Daniel (<a href="#ref-daniel2002" role="doc-biblioref">2002</a>)</span></p>
+<p><span class="citation" data-cites="rodriguez2018">Rodríguez y Mendivelso (<a href="#ref-rodriguez2018" role="doc-biblioref">2018</a>)</span></p>
+<p><span class="citation" data-cites="rius_diaz2012">Ríus Díaz et&nbsp;al. (<a href="#ref-rius_diaz2012" role="doc-biblioref">2012</a>)</span></p>
+<p><span class="citation" data-cites="triola2018">Triola (<a href="#ref-triola2018" role="doc-biblioref">2018</a>)</span></p>
+<p><span class="citation" data-cites="norman1996">Norman, GR y Streiner, DL (<a href="#ref-norman1996" role="doc-biblioref">1996</a>)</span></p>
+<p><span class="citation" data-cites="rodriguez2003">Rodríguez et&nbsp;al. (<a href="#ref-rodriguez2003" role="doc-biblioref">2003</a>)</span></p>
+<p><span class="citation" data-cites="epidat"><em><span>EPIDAT</span> 4.2 - <span>Consellería</span> de <span>Sanidade</span> - <span>Servizo</span> <span>Galego</span> de <span>Saúde</span></em> (<a href="#ref-epidat" role="doc-biblioref">s.&nbsp;f.</a>)</span></p>
+<p><span class="citation" data-cites="vonelm2008">Elm et&nbsp;al. (<a href="#ref-vonelm2008" role="doc-biblioref">2008</a>)</span></p>
+<p><span class="citation" data-cites="schulz2010">Schulz et&nbsp;al. (<a href="#ref-schulz2010" role="doc-biblioref">2010</a>)</span></p>
+<p><span class="citation" data-cites="alvarez_caceres2007">Álvarez Cáceres (<a href="#ref-alvarez_caceres2007" role="doc-biblioref">2007</a>)</span></p>
+<p><span class="citation" data-cites="glantz2006">Glantz, S (<a href="#ref-glantz2006" role="doc-biblioref">2006</a>)</span></p>
+<p><span class="citation" data-cites="field2014">Field et&nbsp;al. (<a href="#ref-field2014" role="doc-biblioref">2014</a>)</span></p>
+</div>
+</section>
+</section>
+<section id="referencias" class="level2" data-number="12.5">
+<h2 data-number="12.5" class="anchored" data-anchor-id="referencias"><span class="header-section-number">12.5</span> Referencias</h2>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-alvarez_caceres2007" class="csl-entry" role="listitem">
+Álvarez Cáceres, Rafael. 2007. <em>Estadística aplicada a las ciencias de la salud</em>. Ediciones Díaz de Santos.
+</div>
+<div id="ref-pwr" class="csl-entry" role="listitem">
+Champely, Stephane. 2020. <em>pwr: Basic Functions for Power Analysis</em>. <a href="https://doi.org/10.32614/CRAN.package.pwr">https://doi.org/10.32614/CRAN.package.pwr</a>.
+</div>
+<div id="ref-daniel2002" class="csl-entry" role="listitem">
+Daniel, Wayne W. 2002. <em>Bioestadística: <span>Base</span> para el análisis de las ciencias de la salud</em>. 4.ª ed. Limusa Wiley.
+</div>
+<div id="ref-vonelm2008" class="csl-entry" role="listitem">
+Elm, Erik von, Douglas G. Altman, Matthias Egger, Stuart J. Pocock, Peter C. Gøtzsche, y Jan P. Vandenbroucke. 2008. <span>«The Strengthening the Reporting of Observational Studies in Epidemiology (STROBE) Statement: Guidelines for Reporting Observational Studies»</span>. <em>Journal of Clinical Epidemiology</em> 61 (4): 344-49. <a href="https://doi.org/10.1016/j.jclinepi.2007.11.008">https://doi.org/10.1016/j.jclinepi.2007.11.008</a>.
+</div>
+<div id="ref-epidat" class="csl-entry" role="listitem">
+<em><span>EPIDAT</span> 4.2 - <span>Consellería</span> de <span>Sanidade</span> - <span>Servizo</span> <span>Galego</span> de <span>Saúde</span></em>. s.&nbsp;f. Accedido 11 de junio de 2024. <a href="https://www.sergas.es/Saude-publica/EPIDAT-4-2">https://www.sergas.es/Saude-publica/EPIDAT-4-2</a>.
+</div>
+<div id="ref-field2014" class="csl-entry" role="listitem">
+Field, Andy, Jeremy Miles, y Zoë Field. 2014. <em>Discovering statistics using <span>R</span></em>. Repr. Sage.
+</div>
+<div id="ref-glantz2006" class="csl-entry" role="listitem">
+Glantz, S. 2006. <em>Bioestadística</em>. 6.ª ed. McGraw Hill.
+</div>
+<div id="ref-hernandez-avila2011" class="csl-entry" role="listitem">
+Hernández-Ávila, Mauricio. 2011. <em>Epidemiología: diseño y análisis de estudios</em>. Editorial Médica Panamericana.
+</div>
+<div id="ref-samplingbook" class="csl-entry" role="listitem">
+Manitz, Juliane, Mark Hempelmann, Goeran Kauermann, et&nbsp;al. 2021. <em>samplingbook: Survey Sampling Procedures</em>. <a href="https://doi.org/10.32614/CRAN.package.samplingbook">https://doi.org/10.32614/CRAN.package.samplingbook</a>.
+</div>
+<div id="ref-norman1996" class="csl-entry" role="listitem">
+Norman, GR, y Streiner, DL. 1996. <em>Bioestadística</em>. Mosby/Doyma Libros.
+</div>
+<div id="ref-rius_diaz2012" class="csl-entry" role="listitem">
+Ríus Díaz, Francisca, Francisco Javier Barón Lopez, Elisa Sánchez Font, y Luis Parras Guijosa. 2012. <em>Bioestadística: <span>Métodos</span> y <span>Aplicaciones</span></em>. <a href="http://virtual.uptc.edu.co/ova/estadistica/docs/libros/ftp.bioestadistica.uma.es/libro/">http://virtual.uptc.edu.co/ova/estadistica/docs/libros/ftp.bioestadistica.uma.es/libro/</a>.
+</div>
+<div id="ref-rodriguez2018" class="csl-entry" role="listitem">
+Rodríguez, Milena, y Fredy Mendivelso. 2018. <span>«Diseño de investigación de corte transversal»</span>. <em>Revista Médica Sanitas</em> 21 (3): 141-47. <a href="https://revistas.unisanitas.edu.co/index.php/rms/article/view/368">https://revistas.unisanitas.edu.co/index.php/rms/article/view/368</a>.
+</div>
+<div id="ref-rodriguez2003" class="csl-entry" role="listitem">
+Rodríguez, VM, Verónica A Martínez Ordaz, José Roiz Hernández, Francisco Huazano García, y Armando Nieves Rentería. 2003. <span>«Muestreo y tamaño de la muestra»</span>. <em>Una guía práctica. Coahuila, México: El Cid Editor</em>.
+</div>
+<div id="ref-schulz2010" class="csl-entry" role="listitem">
+Schulz, K. F, D. G Altman, y D. Moher. 2010. <span>«CONSORT 2010 Statement: Updated Guidelines for Reporting Parallel Group Randomised Trials»</span>. <em>BMJ</em> 340 (mar23 1): c332-32. <a href="https://doi.org/10.1136/bmj.c332">https://doi.org/10.1136/bmj.c332</a>.
+</div>
+<div id="ref-epiR" class="csl-entry" role="listitem">
+Stevenson, Mark, y Evan Sergeant. 2026. <em>epiR: Tools for the Analysis of Epidemiological Data</em>. <a href="https://doi.org/10.32614/CRAN.package.epiR">https://doi.org/10.32614/CRAN.package.epiR</a>.
+</div>
+<div id="ref-triola2018" class="csl-entry" role="listitem">
+Triola, Mario F. 2018. <em><span>ESTADÍSTICA</span> <span>Decimosegunda</span> <span>Edicion</span></em>. Pearson Educación de México, SA de CV.
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../unidad_2/04_norm_het.html" class="pagination-link" aria-label="Análisis de normalidad y homocedasticidad">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Análisis de normalidad y homocedasticidad</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../unidad_2/06_fun_condic.html" class="pagination-link" aria-label="Funciones condicionales en R">
+        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Funciones condicionales en R</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>Este material fue creado en <a href="https://quarto.org/">Quarto</a> y forma parte del curso de Epidemiología - Nivel Avanzado © 2026 Instituto Nacional de Epidemiología “Dr.&nbsp;Juan H. Jara” (ANLIS)</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
