@@ -30,7 +30,7 @@ datos <- datos |>
 
 Frecuentemente necesitaremos agrupar, resumir o **discretizar variables continuas**, dividiendo su rango en categorías que pueden ser **dicotómicas** o **politómicas**, según los objetivos del análisis.
 
-## **Condicional simple:** `if_else()`
+## Condicional simple: `if_else()`
 
 Para obtener salidas dicotómicas, podemos usar la función condicional `if_else()` del paquete `dplyr`. Esta función es una versión simplificada y segura del clásico condicional `if` que existe en la mayoría de los lenguajes de programación, así como en hojas de cálculo como *Microsoft Excel®* y *Google Sheets®*, entre otras.
 
