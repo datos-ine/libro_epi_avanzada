@@ -67,8 +67,12 @@ datos |>
   ggplot(mapping = aes(x = x, y = y)) +
 
   # puntos
-  geom_point(color = pal[2], size = 3, alpha = .8) +
-  geom_smooth(method = "lm", se = F, color = pal[1]) +
+  geom_point(color = viridis::viridis(n = 1), size = 3, alpha = .5) +
+  geom_smooth(
+    method = "lm",
+    se = FALSE,
+    color = viridis::viridis(n = 1, begin = .25)
+  ) +
 
   # líneas de referencia
   geom_vline(xintercept = mean(datos$x), linetype = "dashed") +
@@ -99,8 +103,12 @@ datos |>
   ggplot(mapping = aes(x = x, y = y)) +
 
   # puntos
-  geom_point(color = pal[2], size = 3, alpha = .8) +
-  geom_smooth(method = "lm", se = F, color = pal[1]) +
+  geom_point(color = viridis::viridis(n = 1), size = 3, alpha = .5) +
+  geom_smooth(
+    method = "lm",
+    se = FALSE,
+    color = viridis::viridis(n = 1, begin = .25)
+  ) +
 
   # líneas de referencia
   geom_vline(xintercept = mean(datos$x), linetype = "dashed") +
@@ -134,8 +142,12 @@ datos |>
   ggplot(mapping = aes(x = x, y = y)) +
 
   # puntos
-  geom_point(color = pal[2], size = 3, alpha = .8) +
-  geom_smooth(method = "lm", se = F, color = pal[2]) +
+  geom_point(color = viridis::viridis(n = 1), size = 3, alpha = .5) +
+  geom_smooth(
+    method = "lm",
+    se = FALSE,
+    color = viridis::viridis(n = 1, begin = .25)
+  ) +
 
   # líneas de referencia
   geom_vline(xintercept = mean(datos$x), linetype = "dashed") +
@@ -205,26 +217,28 @@ El coeficiente de correlación $r$ entonces se interpreta como:
 ```{r}
 #| echo: false
 #| id: cor-1
-# Genera datos
+# ---- Generar datos ----
 datos <- tibble(
   x = 1:100,
   y = x
 )
 
-# coeficiente
-cor <- with(datos, round(cor(x, y), 3))
-
-# Gráfico
+# ---- Gráfico ----
 datos |>
   ggplot(mapping = aes(x = x, y = y)) +
 
-  # puntos
-  geom_point(color = pal[2], size = 3, alpha = .8) +
+  # --- Puntos ---
+  geom_point(color = viridis::viridis(n = 1), size = 3, alpha = .5) +
 
-  # añade coeficiente de correlación
-  annotate("text", x = 10, y = 85, label = paste0("R² = ", cor)) +
+  # --- Añade coeficiente de correlación ---
+  annotate(
+    "text",
+    x = 10,
+    y = 85,
+    label = paste0("R² = ", with(datos, round(cor(x, y), 3)))
+  ) +
 
-  # tema
+  # --- Tema ---
   theme_minimal() +
   theme(
     title = element_text(size = 10, face = "bold"),
@@ -237,28 +251,35 @@ datos |>
 ```{r}
 #| echo: false
 #| id: cor-2
+# ---- Generar datos ----
 set.seed(123)
 
-# Datos
 datos <- tibble(
   x = 1:100,
   y = x + rnorm(100, mean = 0, sd = 20)
 )
 
-# coeficiente
-cor <- with(datos, round(cor(x, y), 3))
 
-# Gráfico
+# ---- Gráfico ----
 datos |>
   ggplot(mapping = aes(x = x, y = y)) +
 
-  # puntos
-  geom_point(color = pal[2], size = 3, alpha = .8) +
+  # --- Puntos ---
+  geom_point(
+    color = viridis::viridis(n = 1),
+    size = 3,
+    alpha = .5
+  ) +
 
-  # añade coeficiente de correlación
-  annotate("text", x = 10, y = 85, label = paste0("R² = ", cor)) +
+  # --- Coeficiente de correlación ---
+  annotate(
+    "text",
+    x = 10,
+    y = 85,
+    label = paste0("R² = ", with(datos, round(cor(x, y), 3)))
+  ) +
 
-  # tema
+  # --- Tema ---
   theme_minimal() +
   theme(
     title = element_text(size = 10, face = "bold"),
@@ -271,28 +292,34 @@ datos |>
 ```{r}
 #| echo: false
 #| id: cor-3
+# ---- Generar datos ----
 set.seed(123)
 
-# Datos
 datos <- tibble(
   x = 1:100,
   y = x + rnorm(100, mean = 0, sd = 40)
 )
 
-# coeficiente
-cor <- with(datos, round(cor(x, y), 3))
-
-# Gráfico
+# ---- Gráfico ----
 datos |>
   ggplot(mapping = aes(x = x, y = y)) +
 
-  # puntos
-  geom_point(color = pal[2], size = 3, alpha = .8) +
+  # --- Puntos ---
+  geom_point(
+    color = viridis::viridis(n = 1),
+    size = 3,
+    alpha = .5
+  ) +
 
-  # añade coeficiente de correlación
-  annotate("text", x = 10, y = 100, label = paste0("R² = ", cor)) +
+  # --- Coeficiente de correlación ---
+  annotate(
+    "text",
+    x = 10,
+    y = 100,
+    label = paste0("R² = ", with(datos, round(cor(x, y), 3)))
+  ) +
 
-  # tema
+  # --- Tema ---
   theme_minimal() +
   theme(
     title = element_text(size = 10, face = "bold"),
@@ -305,26 +332,32 @@ datos |>
 ```{r}
 #| echo: false
 #| id: cor-4
-# Genera datos
+# ---- Generar datos ----
 datos <- tibble(
   x = 1:100,
   y = -x
 )
 
-# coeficiente
-cor <- with(datos, round(cor(x, y), 3))
-
-# Gráfico
+# ---- Gráfico ----
 datos |>
   ggplot(mapping = aes(x = x, y = y)) +
 
-  # puntos
-  geom_point(color = pal[2], size = 3, alpha = .8) +
+  # --- Puntos ----
+  geom_point(
+    color = viridis::viridis(n = 1),
+    size = 3,
+    alpha = .5
+  ) +
 
-  # añade coeficiente de correlación
-  annotate("text", x = 10, y = 85, label = paste0("R² = ", cor)) +
+  # --- Coeficiente de correlación ---
+  annotate(
+    "text",
+    x = 10,
+    y = 85,
+    label = paste0("R² = ", with(datos, round(cor(x, y), 3)))
+  ) +
 
-  # tema
+  # --- Tema ---
   theme_minimal() +
   theme(
     title = element_text(size = 10, face = "bold"),
@@ -337,28 +370,34 @@ datos |>
 ```{r}
 #| echo: false
 #| id: cor-5
+# ---- Generar datos ----
 set.seed(123)
 
-# Genera datos
 datos <- tibble(
   x = 1:100,
   y = -x + rnorm(100, mean = 0, sd = 15)
 )
 
-# coeficiente
-cor <- with(datos, round(cor(x, y), 3))
-
-# Gráfico
+# ---- Gráfico ----
 datos |>
   ggplot(mapping = aes(x = x, y = y)) +
 
-  # puntos
-  geom_point(color = pal[2], size = 3, alpha = .8) +
+  # --- Puntos ---
+  geom_point(
+    color = viridis::viridis(n = 1),
+    size = 3,
+    alpha = .5
+  ) +
 
-  # añade coeficiente de correlación
-  annotate("text", x = 10, y = 85, label = paste0("R² = ", cor)) +
+  # --- Coeficiente de correlación ---
+  annotate(
+    "text",
+    x = 10,
+    y = 85,
+    label = paste0("R² = ", with(datos, round(cor(x, y), 3)))
+  ) +
 
-  # tema
+  # --- Tema ---
   theme_minimal() +
   theme(
     title = element_text(size = 10, face = "bold"),
@@ -371,28 +410,34 @@ datos |>
 ```{r}
 #| echo: false
 #| id: cor-6
+# ---- Generar datos ----
 set.seed(123)
 
-# Genera datos
 datos <- tibble(
   x = 1:100,
   y = -x + rnorm(100, mean = 0, sd = 40)
 )
 
-# coeficiente
-cor <- with(datos, round(cor(x, y), 3))
-
-# Gráfico
+# ---- Gráfico ----
 datos |>
   ggplot(mapping = aes(x = x, y = y)) +
 
-  # puntos
-  geom_point(color = pal[2], size = 3, alpha = .8) +
+  # --- Puntos ---
+  geom_point(
+    color = viridis::viridis(n = 1),
+    size = 3,
+    alpha = .5
+  ) +
 
-  # añade coeficiente de correlación
-  annotate("text", x = 10, y = 85, label = paste0("R² = ", cor)) +
+  # --- Coeficiente de correlación ---
+  annotate(
+    "text",
+    x = 10,
+    y = 85,
+    label = paste0("R² = ", with(datos, round(cor(x, y), 3)))
+  ) +
 
-  # tema
+  # --- Tema ---
   theme_minimal() +
   theme(
     title = element_text(size = 10, face = "bold"),
@@ -405,28 +450,34 @@ datos |>
 ```{r}
 #| echo: false
 #| id: cor-7
+# ---- Generar datos ----
 set.seed(123)
 
-# Genera datos
 datos <- tibble(
   x = 1:100,
   y = rnorm(100, mean = 0, sd = 10)
 )
 
-# coeficiente
-cor <- with(datos, round(cor(x, y), 3))
-
-# Gráfico
+# ---- Gráfico ----
 datos |>
   ggplot(mapping = aes(x = x, y = y)) +
 
-  # puntos
-  geom_point(color = pal[2], size = 3, alpha = .8) +
+  # --- Puntos ---
+  geom_point(
+    color = viridis::viridis(n = 1),
+    size = 3,
+    alpha = .5
+  ) +
 
-  # añade coeficiente de correlación
-  annotate("text", x = 10, y = 85, label = paste0("R² = ", cor)) +
+  # --- Coeficiente de correlación ---
+  annotate(
+    "text",
+    x = 10,
+    y = 85,
+    label = paste0("R² = ", with(datos, round(cor(x, y), 3)))
+  ) +
 
-  # tema
+  # --- Tema ---
   theme_minimal() +
   theme(
     title = element_text(size = 10, face = "bold"),
@@ -439,28 +490,34 @@ datos |>
 ```{r}
 #| echo: false
 #| id: cor-8
+# ---- Generar datos ----
 set.seed(123)
 
-# Genera datos
 datos <- tibble(
   x = seq(-10, 10, by = 0.2),
   y = -x^2 + rnorm(length(x), mean = 0, sd = 20)
 )
 
-# coeficiente
-cor <- with(datos, round(cor(x, y), 3))
-
-# Gráfico
+# ---- Gráfico ----
 datos |>
   ggplot(mapping = aes(x = x, y = y)) +
 
-  # puntos
-  geom_point(color = pal[2], size = 3, alpha = .8) +
+  # --- Puntos ---
+  geom_point(
+    color = viridis::viridis(n = 1),
+    size = 3,
+    alpha = .5
+  ) +
 
-  # añade coeficiente de correlación
-  annotate("text", x = -7.5, y = 85, label = paste0("R² = ", cor)) +
+  # --- Coeficiente de correlación ---
+  annotate(
+    "text",
+    x = -7.5,
+    y = 85,
+    label = paste0("R² = ", with(datos, round(cor(x, y), 3)))
+  ) +
 
-  # tema
+  # --- Tema ---
   theme_minimal() +
   theme(
     title = element_text(size = 10, face = "bold"),
@@ -470,7 +527,7 @@ datos |>
 
 #### Correlogramas
 
-Los correlogramas son gráficos que muestra la relación entre cada par de variables numéricas en un conjunto de datos. Se utiliza para analizar la correlación entre variables, identificar patrones y controlar la aleatoriedad de los datos. Existen diversos paquetes en R que permiten generar correlogramas, como `correlation`, que forma parte del ecosistema de paquetes `easystats` [@easystats], o `GGally`[@schloerke2010] que usa como base el paquete `ggplot2`.
+Los correlogramas son gráficos que muestra la relación entre cada par de variables numéricas en un conjunto de datos. Se utiliza para analizar la correlación entre variables, identificar patrones y controlar la aleatoriedad de los datos. Existen diversos paquetes en R que permiten generar correlogramas, como `correlation`, que forma parte del ecosistema de paquetes `easystats` [@easystats], o `GGally`[@GGally] que usa como base el paquete `ggplot2`.
 
 ### Correlación de Spearman
 
@@ -505,6 +562,7 @@ Tomemos como ejemplo la base `cancer_USA.txt` que contiene información sobre la
 Comenzaremos por cargar los paquetes necesarios para el análisis:
 
 ```{r}
+#| id: ej1
 # Gráficos de correlación
 library(easystats)
 
@@ -517,7 +575,7 @@ library(tidyverse)
 Cargamos los datos y exploramos su estructura:
 
 ```{r}
-#| id: ej-1
+#| id: ej2
 # Carga de datos
 datos <- read_csv2("datos/cancer_USA.txt")
 
@@ -546,14 +604,14 @@ La base de datos tiene `r nrow(datos)` observaciones y `r ncol(datos)` variables
 La función `cor()` estima la correlación entre dos variables. El método predeterminado devuelve la correlación de Pearson y puede modificarse el argumento `method` para obtener la correlación de Kendall o Spearman:
 
 ```{r}
-#| id: ej-2
+#| id: ej3
 cor(datos$tasa_mortalidad, datos$pct_pobreza, method = "pearson")
 ```
 
 La función `cor.test()` determina si la prueba de correlación de Pearson calculada es significativa mediante el estadístico $t$ de Student:
 
 ```{r}
-#| id: ej-3
+#| id: ej4
 cor.test(datos$tasa_mortalidad, datos$pct_pobreza)
 ```
 
@@ -574,10 +632,10 @@ Los argumentos predeterminados para la función `cor.test()` son:
 
 ### Gráficos de correlación
 
-Podemos generar diagramas de dispersión para cada par de variables numéricas usando la función `ggpairs()` del paquete `GGally` [@schloerke2010]:
+Podemos generar diagramas de dispersión para cada par de variables numéricas usando la función `ggpairs()` del paquete `GGally` [@GGally]:
 
 ```{r}
-#| id: ej-4
+#| id: ej5
 datos |>
   # selecciono soloamente las variables numéricas
   select(where(is.numeric)) |>
@@ -589,7 +647,7 @@ datos |>
 Podemos generar los correlogramas con el paquete `correlation` usando el siguiente código:
 
 ```{r}
-#| id: ej-5
+#| id: ej6
 datos |>
   correlation() |>
   summary() |>
@@ -599,7 +657,7 @@ datos |>
 El comando `ggcorr()` del paquete `GGally` también nos permite generar correlogramas:
 
 ```{r}
-#| id: ej-6
+#| id: ej7
 datos |>
   # selecciono soloamente las variables numéricas
   select(where(is.numeric)) |>
@@ -611,7 +669,7 @@ datos |>
 Podemos hacerlos más atractivos visualmente modificando los argumentos `nbreaks`, `geom`, `size`, `max_size` y `palette`:
 
 ```{r}
-#| id: ej-7
+#| id: ej8
 datos |>
   # selecciono soloamente las variables numéricas
   select(where(is.numeric)) |>
@@ -632,7 +690,7 @@ Observamos que la variable dependiente (`tasa_mortalidad`) tiene correlación ne
 Para visualizar el correlograma con el coeficiente de Spearman, añadimos el argumento `method = c("pairwise", "spearman")` al código del ejemplo anterior:
 
 ```{r}
-#| id: ej-8
+#| id: ej9
 datos |>
   # selecciono soloamente las variables numéricas
   select(where(is.numeric)) |>
@@ -652,7 +710,7 @@ datos |>
 De igual modo, si queremos aplicar el coeficiente de Spearman, añadimos el argumento `method = c("pairwise", "kendall")`:
 
 ```{r}
-#| id: ej-9
+#| id: ej10
 datos |>
   # selecciono soloamente las variables numéricas
   select(where(is.numeric)) |>
@@ -676,9 +734,7 @@ Para explicar la forma de esta correlación e incluso predecir los valores que p
 
 @agresti2015
 
-@base
-
-@wickham2019
+@tidyverse
 :::
 
 ## Referencias {.unnumbered}

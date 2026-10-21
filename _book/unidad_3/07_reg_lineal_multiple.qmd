@@ -6,9 +6,6 @@ title: "Regresión lineal múltiple"
 #| echo: false
 #| id: setup
 source("files/setup.R")
-
-# paquetes extra
-library(plotly)
 ```
 
 ## Introducción
@@ -43,8 +40,8 @@ Donde $\beta_0$, $\beta_1$, $\beta_2$,...,$\beta_k$ son los parámetros de la re
 
 ```{r}
 #| echo: false
-#| id: rlm-1
-## Sample data
+#| id: fig1
+# ---- Generar datos ----
 set.seed(1234)
 
 dat <- tibble(
@@ -64,7 +61,7 @@ dat <- tibble(
   mutate(res = residuals(lm(y ~ x)))
 
 
-## Compute normal densities for each section
+# --- Distribución para cada sección ---
 normal_dens <- do.call(
   rbind,
   lapply(split(dat, dat$section), function(x) {
@@ -79,12 +76,11 @@ normal_dens <- do.call(
 )
 normal_dens$section <- rep(levels(dat$section), each = 50)
 
-## Plot
-ggplot() +
+## ---- Gráfico ---
+ggplot(data = dat, mapping = aes(x = x, y = y), ) +
 
+  # --- Geometrías ---
   geom_smooth(
-    data = dat,
-    mapping = aes(x = x, y = y),
     method = "lm",
     se = FALSE,
     color = "grey5"
@@ -97,18 +93,20 @@ ggplot() +
     alpha = .7
   ) +
 
-  scale_color_manual(values = pal) +
+  annotate(
+    geom = "text",
+    x = 40,
+    y = 100,
+    label = "y == alpha + beta * x",
+    parse = TRUE
+  ) +
 
+  # --- Tema
+  scale_colour_viridis_d() +
   scale_x_continuous(
     breaks = c(11, 24, 36, 46),
     labels = c("X1", "X2", "X3", "X4")
   ) +
-
-  geom_text(
-    aes(x = 40, y = 100, label = "y == alpha + beta * x"),
-    parse = TRUE
-  ) +
-
   theme_minimal() +
   theme(legend.position = "none")
 ```
@@ -123,61 +121,8 @@ $$
 
 En este caso, la relación podría representarse en un plano tridimensional (3D), donde los ejes corresponden a $X_1$, $X_2$ y la variable dependiente $Y$. En este plano, la superficie de ajuste es un plano que describe la relación entre las tres variables, y la orientación de dicho plano estará determinada por los coeficientes $\beta_1$ y $\beta_2$.
 
-```{r}
-#| echo: false
-#| id: rlm-2
-# Sample data
-set.seed(123)
+![](images/rlm.jpg){fig-align="center"}
 
-data <- tibble(
-  x1 = rnorm(100),
-  x2 = rnorm(100),
-  y = 2 * x1 + 3 * x2 + rnorm(100)
-)
-
-error <- rnorm(100, mean = 0, sd = 0.5)
-
-# Fit multiple linear regression model
-model <- lm(y ~ x1 + x2, data = data)
-
-# Generate points for the plane
-x1_range <- range(data$x1)
-
-x2_range <- range(data$x2)
-
-x1_grid <- seq(x1_range[1], x1_range[2], length.out = 20)
-
-x2_grid <- seq(x2_range[1], x2_range[2], length.out = 20)
-
-grid <- expand.grid(x1 = x1_grid, x2 = x2_grid)
-
-grid$y <- predict(model, newdata = grid)
-
-# Plot
-plot_ly(data = data, x = ~x1, y = ~x2, z = ~y) |>
-
-  add_markers(
-    error_x = list(array = error),
-    error_y = list(array = error),
-    showlegend = F
-  ) |>
-
-  add_surface(
-    x = ~x1_grid,
-    y = ~x2_grid,
-    z = ~ matrix(grid$y, nrow = length(x1_grid), ncol = length(x2_grid)),
-    showscale = F,
-    opacity = .75
-  ) |>
-
-  layout(
-    scene = list(
-      xaxis = list(title = "X1"),
-      yaxis = list(title = "X2"),
-      zaxis = list(title = "Y")
-    )
-  )
-```
 
 En forma similar a la RLS, la interpretación de cada parámetro $\beta$ de la regresión es:
 
@@ -205,9 +150,9 @@ $$
 
 - Modelo con términos cuadráticos
 
-  $$
-  Y = \beta_0 + \beta_1X_1 + \beta_2X_2 + \beta_3X_1^2 + \beta_4X_2^2 
-  $$
+$$
+Y = \beta_0 + \beta_1X_1 + \beta_2X_2 + \beta_3X_1^2 + \beta_4X_2^2 
+$$
 
 ### Homocedasticidad
 
@@ -229,7 +174,7 @@ Comenzaremos aprendiendo cómo interpretar un modelo de regresión lineal múlti
 
 ```{r}
 #| echo: false
-#| id: rlm-3
+#| id: cod1
 # Genera datos
 set.seed(123)
 n <- 100 # número de observaciones
@@ -305,7 +250,7 @@ A continuación, mostramos cómo estos términos se distribuyen entre los grados
 
 ```{r}
 #| echo: false
-#| id: rlm-4
+#| id: tab1
 # Datos
 tibble(
   " " = c("SCT", "SCR", "SCE"),
@@ -378,7 +323,7 @@ La transformación de las categorías sería:
 
 ```{r}
 #| echo: false
-#| id: rlm-5
+#| id: tab2
 # Datos
 tibble(
   "Región" = c("NE (basal)", "N", "CO"),
@@ -581,7 +526,7 @@ Si luego de la `~` incluímos **un punto** como notación de "todas", estamos cr
 
 ```{r}
 #| eval: false
-#| id: ej-1
+#| id: ej1
 lm(y ~ ., data = datos)
 ```
 
@@ -591,7 +536,7 @@ También se puede descartar alguna o algunas variables explicativas en particula
 
 ```{r}
 #| eval: false
-#| id: ej-2
+#| id: ej2
 lm(y ~ . - x2, data = datos)
 ```
 
@@ -604,7 +549,7 @@ Usaremos para el ejemplo el dataset "`cancer_USA.txt`", que contiene informació
 Para comenzar, cargamos los paquetes de R necesarios para el análisis:
 
 ```{r}
-#| id: ej-3
+#| id: ej3
 # correlogramaas
 library(GGally)
 
@@ -621,7 +566,7 @@ library(tidyverse)
 A continuación leemos los datos y realizamos una exploración rápida
 
 ```{r}
-#| id: ej-4
+#| id: ej4
 # Carga datos
 datos <- read_csv2("datos/cancer_USA.txt")
 
@@ -636,7 +581,7 @@ La base de datos tiene `r nrow(data)` observaciones y `r ncol(data)` variables. 
 Analizaremos la relación entre las variables explicativas numéricas y la variable dependiente mediante un correlograma con el paquete `GGally`:
 
 ```{r}
-#| id: ej-5
+#| id: ej5
 datos |>
   # selecciono variables numéricas
   select(where(is.numeric)) |>
@@ -656,7 +601,7 @@ Como vimos anteriormente, la selección de variables se puede hacer mediante mé
 el lenguaje R ofrece una variedad de funciones para abordar y facilitar la tarea de seleccionar el mejor modelo de regresión (más parsimonioso). Como existe correlación fuerte entre `mediana_ingresos`, `pct_pobreza` y `pct_salud_publica` sólo usaremos la que presente mayor correlación con `tasa_mortalidad`.
 
 ```{r}
-#| id: ej-6
+#| id: ej6
 # Modelo saturado
 mod_full <- lm(
   tasa_mortalidad ~ mediana_ingresos +
@@ -686,7 +631,7 @@ mod5 <- lm(tasa_mortalidad ~ estado, data = datos)
 Mediante `summary()` observamos sus resultados:
 
 ```{r}
-#| id: ej-7
+#| id: ej7
 # Modelo saturado
 summary(mod_full)
 
@@ -709,7 +654,7 @@ En los resúmenes observamos que todos los coeficientes de las variables involuc
 El comando `compare_performance()` del paquete `performance` permite comparar de manera sencilla entre modelos anidados:
 
 ```{r}
-#| id: ej-9
+#| id: ej8
 compare_performance(mod_full, mod1, mod2, mod3, mod4, mod5, metrics = "common")
 ```
 
@@ -728,7 +673,7 @@ Las métricas comunes extraídas de los objetos de regresión, presentadas en un
 También podemos ordenar los modelos de mejor a peor con el argumento `rank = TRUE`:
 
 ```{r}
-#| id: ej-10
+#| id: ej9
 compare_performance(
   mod_full,
   mod1,
@@ -754,7 +699,7 @@ Hay varias maneras de detectar la presencia de colinealidad entre variables inde
 Cuando hemos intuido que tenemos multicolinealidad y queremos comprobar, el paquete `performance` nos ofrece la función `check_collinearity()` que implementa el método de factor de inflación de la varianza (VIF):
 
 ```{r}
-#| id: ej-11
+#| id: ej10
 check_collinearity(mod_full)
 ```
 
@@ -765,7 +710,7 @@ Los resultados del ejemplo muestra VIF de entre 1.28 y 2.52 (no hay colinealidad
 Como vimos para la regresión lineal simple, podemos analizar gráficamente los residuales con la función `check_model()` del paquete `performance`:
 
 ```{r}
-#| id: ej-12
+#| id: ej11
 check_model(mod_full)
 ```
 
@@ -774,28 +719,28 @@ Por otra parte, también tenemos las funciones de análisis para los supuestos (
 - **Independencia:** El paquete `lmtest` permite evaluar independencia según estadístico de Durbin-Watson.
 
 ```{r}
-#| id: ej-13
+#| id: ej12
 dwtest(mod_full)
 ```
 
 - **Linealidad:** El paquete `lmtest` implementa el *Ramsey's RESET* bajo la función `resettest()`
 
 ```{r}
-#| id: ej-14
+#| id: ej13
 resettest(mod_full)
 ```
 
 - **Normalidad:** El paquete `nortest` permite chequear normalidad mediante test de Lilliefors.
 
 ```{r}
-#| id: ej-15
+#| id: ej14
 lillie.test(mod_full$residuals)
 ```
 
 - **Homocedasticidad:** El paquete `performance` permite chequear homocedasticidad con el test de Breush-Pagan.
 
 ```{r}
-#| id: ej-16
+#| id: ej15
 check_heteroscedasticity(mod_full)
 ```
 
@@ -804,14 +749,14 @@ Finalmente presentamos un paquete interesante para validar supuestos de modelos 
 Si el procedimiento global indica una violación de al menos uno de los supuestos, los componentes se pueden utilizar para obtener información sobre qué supuestos se han violado.
 
 ```{r}
-#| id: ej-17
+#| id: ej16
 gvlma(mod_full)
 ```
 
 ### Resumen del mejor modelo elegido
 
 ```{r}
-#| id: ej-18
+#| id: ej17
 summary(mod_full)
 ```
 
@@ -835,7 +780,7 @@ El uso de la función `step()` se enmarca en los procedimientos automáticos y p
 
 ```{r}
 #| eval: false
-#| id: ej-19
+#| id: ej18
 step(object = modelo, direction = c("both", "backward", "forward"))
 ```
 
@@ -847,14 +792,14 @@ donde:
 Generalmente conviene partir del modelo saturado y utilizar la dirección por defecto, donde se usan ambas direcciones.
 
 ```{r}
-#| id: ej-20
+#| id: ej19
 modelo_step <- step(mod_full, direction = "both")
 ```
 
 Observamos que el proceso automático nos indica que debemos eliminar las variables explicativas `pct_sec_incompleta` y `estado`.
 
 ```{r}
-#| id: ej-21
+#| id: ej20
 summary(modelo_step)
 ```
 
@@ -887,9 +832,9 @@ Para evitar estos inconvenientes, es recomendable usar métodos alternativos de 
 Estos dos últimos métodos escapan al alcance del curso. Sin embargo, invitamos a quienes tengan interés a explorar las múltiples posibilidades que ofrecen, en particular al momento de analizar datasets grandes y con múltiples variables explicativas.
 
 ::: hidden
-@deirala2001
+@de_irala2001a
 
-@deirala2001a
+@de_irala2001b
 
 @gordis2017
 
@@ -899,15 +844,9 @@ Estos dos últimos métodos escapan al alcance del curso. Sin embargo, invitamos
 
 @macmahon1972
 
-@base
+@GGally
 
-@wickham2019
-
-@schloerke2010
-
-@easystats
-
-@zeileis2002
+@lmtest
 :::
 
 ## Referencias {.unnumbered}

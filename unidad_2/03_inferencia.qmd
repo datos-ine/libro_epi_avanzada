@@ -895,7 +895,7 @@ Para sistematizar los contrastes de hipótesis, es útil responder dos preguntas
 
 Cuando la variable de interés es cuantitativa, la comparación de grupos generalmente se traduce en comparar las medias de dichos grupos. En este contexto, se deben responder una tercera pregunta y es si dicha variable se *distribuye normalmente*, porque si no fuera así, debemos recurrir a los contrastes *no paramétricos*.
 
-> En la [**siguiente sección**](04_normalidad_heterocedasticidad.qmd) detallaremos las pruebas de normalidad y heterogeneidad de varianzas y su aplicación en R.
+> En la [**siguiente sección**](04_norm_het.qmd) detallaremos las pruebas de normalidad y heterogeneidad de varianzas y su aplicación en R.
 
 Por ejemplo, para comparar dos grupos se plantearía:
 

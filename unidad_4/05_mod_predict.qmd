@@ -1,0 +1,115 @@
+---
+title: "Validación de modelos predictivos"
+author: 
+  - name: Andrea Silva
+    orcid: 0000-0002-4791-9706
+---
+
+```{r}
+#| echo: false
+#| id: setup
+source("files/setup.R")
+```
+
+## ¿Qué es un modelo predictivo?
+
+Un modelo de predicción es una ecuación matemática que combina información de múltiples predictores o variables observadas o medidas en un individuo para predecir la probabilidad de presencia (diagnóstico) o aparición futura (pronóstico) de un resultado específico. Desde una perspectiva de investigación, el diagnóstico y el pronóstico constituyen un desafío similar: el médico dispone de cierta información y desea saber cómo se relaciona con el verdadero estado del paciente, ya sea que este se pueda conocer en el momento actual (diagnóstico) o solo en algún momento futuro (pronóstico). Para muchas de las aplicaciones médicas, el resultado de interés es binario y la información puede expresarse como predicciones probabilísticas. Los modelos predictivos se emplean en dos contextos o entornos distintos:
+
+- **Entorno pronóstico:** En el cual se desea determinar la probabilidad de que un evento específico ocurrirá en el futuro. Es decir que, estiman la probabilidad de un resultado o evento particular (por ejemplo, mortalidad, aparición o recurrencia de una enfermedad, complicación) dentro de un período determinado en el futuro (horas, días, semanas o años), por ejemplo, para planificar decisiones terapéuticas o de estilo de vida.
+- **Entorno diagnóstico:** donde el objetivo se centra en la probabilidad de que cierta condición o enfermedad esté presente o ausente en el momento de la predicción. Como ejemplos podemos considerar un modelo para informar sobre la derivación de pacientes para pruebas adicionales o un modelo para iniciar el tratamiento directamente.
+
+En la Figura 1, adaptada de @collins2015, se muestra que la principal diferencia entre los modelos predictivos con objetivo pronóstico o diagnóstico es el tiempo para el cual se estiman las probabilidades.
+
+![Figura 1. Adaptado de Collins, G.S., Reitsma, J.B., Altman, D.G. et al. Transparent reporting of a multivariable prediction model for individual prognosis or diagnosis (TRIPOD): the TRIPOD Statement. BMC Med 13, 1 (2015). https://doi.org/10.1186/s12916-014-0241-z](/images/tripod.png){fig-align="center"}
+
+En esta unidad del curso hemos aprendido a construir un modelo de regresión logística. Aprendimos también a evaluar la calidad de dicho modelo. Pero si reflexionamos acerca de la finalidad de un modelo predictivo, podemos pensar que consiste en predecir la variable respuesta en observaciones futuras o en observaciones que el modelo no ha “visto” antes. Consideraremos modelos de predicción que proporcionan predicciones para un resultado dicotómico, ya que son los más relevantes en aplicaciones médicas, por eso desarrollamos este tema en el contexto de la regresión logística. Con estos modelos, buscamos obtener al menos predicciones internamente válidas, es decir, predicciones válidas para sujetos de la población subyacente. Preferiblemente, las predicciones también deben ser generalizables a poblaciones plausiblemente relacionadas. En una estrategia de modelado para datos empíricos, es necesario considerar diversas cuestiones, tanto epidemiológicas como estadísticas. Es por eso que los modelos necesitan ser validados.
+
+## ¿En qué consiste la validación de modelos predictivos?
+
+Cuando hacemos un análisis de residuos, estamos evaluando el error que comete el modelo en predecir observaciones que ya ha “visto”. Pero ¿cómo funcionará con observaciones que nunca “vio”? La validación de un modelo predictivo es el proceso mediante el cual se evalúa qué tan bien funcionará el modelo cuando se aplique a nuevos individuos o nuevas observaciones, distintos de aquellos utilizados para desarrollarlo. Su objetivo principal es responder la pregunta: ¿El modelo mantiene su capacidad predictiva fuera de la muestra con la que fue construido? La validación permite determinar si el modelo es generalizable o si, por el contrario, está sobreajustado (*overfitting*). Cuando hablamos de validación, debemos considerar dos instancias:
+
+- **Validación externa**: es la validación más estricta, consiste en emplear el modelo predictivo desarrollado en otra muestra de pacientes.
+- **Validación interna**: es menos estricta pues usa los datos de los sujetos a partir de los cuales se ha desarrollado el modelo predictivo, pero no necesita del esfuerzo añadido de reclutar nuevos individuos y, por tanto, está al alcance del propio investigador en el momento que desarrolla el modelo.
+
+Para garantizar que los estudios sobre modelos de predicción sean claros, completos y replicables, y que, a su vez, se permita a los lectores evaluar su validez y aplicabilidad clínica, se elaboró la Guía TRIPOD.
+
+### **Declaración TRIPOD**
+
+La declaración TRIPOD **(**Transparent Reporting of multivariable prediction model for Individual Prognosis or Diagnosis) se publicó en 2015 para proporcionar las recomendaciones mínimas de presentación de informes para estudios que desarrollan o evalúan el rendimiento de un modelo de predicción en ciencias biomédicas. Entre otras cosas, contenía dos listas de chequeo, una para el desarrollo de modelos predictivos y otra para validación.
+
+Desde entonces, los avances metodológicos en el campo de la predicción han incluido el uso generalizado de la inteligencia artificial (IA) mediante métodos de aprendizaje automático para desarrollar modelos de predicción.
+
+Por lo tanto, fue necesaria una actualización de la declaración TRIPOD. TRIPOD+IA proporciona una guía armonizada para la presentación de informes sobre estudios de modelos de predicción, independientemente de su naturaleza. En la página web <https://www.tripod-statement.org/> podrán encontrar información y guías para profundizar la temática.
+
+Validar un modelo predictivo desarrollado implica evaluar su rendimiento. Para evaluar el rendimiento de un modelo de regresión logística, concretamente, son dos los aspectos principales que se deben valorar: la discriminación y la calibración. Como ya hemos visto, la discriminación de un modelo de regresión logística puede ser evaluada mediante el área bajo la curva ROC (AUC), ya que refleja la probabilidad de que, seleccionados al azar un par de individuos, uno con el evento y otro sin el evento, el modelo asigne la probabilidad más alta al individuo con el evento. Recordamos también que la prueba estadística que evalúa la calibración del modelo es el test de Hosmer-Lemeshow. Tiene el inconveniente, como todos los test frecuentistas, que ante tamaños muestrales grandes por pequeñas diferencias que aparezcan estas resultan estadísticamente significativas.
+
+Al desarrollar un modelo, es evidente que se requiere cuantificar su rendimiento para poder determinar si es adecuado para su propósito o si es mejor que un modelo existente. El rendimiento aparente del modelo en este conjunto de entrenamiento será mejor que el rendimiento en otro conjunto de datos, incluso si el último conjunto de prueba consta de pacientes de la misma población. El optimismo de un modelo es la diferencia entre el desempeño que un modelo muestra en los datos con los que fue desarrollado y el desempeño que realmente tendrá cuando se aplique a datos nuevos de la misma población.
+
+Lo podríamos expresar como:
+
+$$Optimismo = Desempeño - Desempeño~con~nuevos~datos$$
+
+Supongamos un modelo de regresión logística para predecir mortalidad. En la muestra de desarrollo obtiene: $AUC = 0,91$
+
+Al realizar la validación se obtiene: $AUC = 0,84$
+
+Entonces: $Optimismo=0.91−0.84=0.07$
+
+Es decir, el modelo había sobreestimado su capacidad discriminativa en 0,07 unidades de AUC.
+
+Validación y optimismo son conceptos que están estrechamente relacionados: el optimismo es la diferencia entre el rendimiento aparente y el esperado en datos nuevos. La validación busca estimar ese rendimiento esperado.
+
+## Descripción de los diferentes métodos de validación interna
+
+Como se exponía anteriormente la validación interna es menos estricta, pues usa los datos de los sujetos a partir de los cuales se ha desarrollado el modelo predictivo. Las técnicas más usadas son:
+
+- *Data splitting* o división de los datos
+
+- *Cross-validation* o validación cruzada. Una extensión de las técnicas de *splitting* que reduce el sesgo y la variabilidad de la estimación del rendimiento.
+
+- *Bootstrap validation*. Este método, como la validación cruzada, utiliza todos los datos empleados en el desarrollo del modelo. Además, nos permite cuantificar el “optimismo” del modelo de predicción final.
+
+### Data splitting
+
+El método más simple de validación consiste en dividir de forma aleatoria la muestra original en dos submuestras, una donde se desarrolla el modelo (*training*) y otra donde se valida (*test*). El objetivo es estimar el desempeño predictivo sobre datos no utilizados durante el ajuste, reduciendo el riesgo de sobreajuste (*overfitting*).
+
+La base de datos se divide aleatoriamente en dos subconjuntos independientes: un conjunto de entrenamiento (*training set*), utilizado para desarrollar y ajustar el modelo de regresión logística, y un conjunto de validación o prueba (*test set*), empleado exclusivamente para evaluar su capacidad predictiva. Habitualmente, entre el 70% y el 80% de las observaciones se destinan al entrenamiento y el 20%–30% restante a la validación, procurando mantener una proporción similar del desenlace en ambos conjuntos mediante un muestreo estratificado cuando la frecuencia del evento es baja. El desempeño del modelo en el conjunto de validación se evalúa mediante medidas de discriminación, calibración y medidas globales de desempeño.
+
+Actualmente, las guías metodológicas para modelos predictivos (como TRIPOD y las recomendaciones de Harrell y Steyerberg) consideran que el *data splitting* es una estrategia menos eficiente que otros métodos de validación interna porque: reduce el tamaño efectivo de la muestra disponible para desarrollar el modelo; aumenta la variabilidad de las estimaciones, especialmente en muestras pequeñas o moderadas; los resultados dependen de una única partición aleatoria de los datos.
+
+Por ello, cuando el tamaño muestral lo permite, suele recomendarse utilizar métodos de remuestreo, como la validación cruzada (*k-fold cross-validation*) o el *bootstrap*, que aprovechan toda la información disponible y proporcionan estimaciones más estables del desempeño del modelo.
+
+En general para muestras grandes (\>500–1000 eventos), el método de *data splitting* puede ser adecuado. En muestras pequeñas o moderadas se recomienda preferentemente *bootstrap* o validación cruzada, ya que ofrecen estimaciones más precisas y con menor sesgo del desempeño del modelo.
+
+### *Cross-validation* o validación cruzada
+
+Es una extensión de las técnicas de *splitting* que reduce el sesgo y la variabilidad de la estimación del rendimiento.
+
+Se desarrolla el modelo empleando todos los datos disponibles, posteriormente, se segmenta el conjunto de datos en dos grupos de igual tamaño. Se plantea el modelo en uno de ellos (*training*) y se evalúa el rendimiento en el restante (*test*). A continuación, se repite el proceso intercambiando la función de los subconjuntos. El rendimiento del modelo se obtiene como el promedio del rendimiento en cada subconjunto de validación. Este método de validación cruzada tiene su extensión en el **k-folds cross validation**. Consiste en dividir o segmentar el conjunto de datos en k grupos de igual (o similar) tamaño. Y se sigue la misma metodología que se ha explicado en el método de *cross-validation* básico. Se utilizan k-1 subconjuntos para el desarrollo del modelo y el subconjunto restante se utiliza como grupo de validación. Se repite este procedimiento k veces, hasta que cada uno de los subconjuntos ha sido utilizado una vez como grupo de validación. Finalmente, obtenemos la medida de rendimiento como el promedio de las k medidas calculadas.
+
+### Bootstrap
+
+Las técnicas de validación *bootstrap* incluyen los siguientes pasos:
+
+1.  Desarrollar el modelo predictivo usando todos los datos disponibles y calcular el rendimiento aparente.
+2.  Generar n muestras bootstrap con reemplazo desde la muestra original y del mismo tamaño que esta.
+3.  Desarrollar un modelo predictivo en la primera muestra *bootstrap* aplicando las mismas estrategias empleadas en el desarrollo del modelo original.
+4.  Determinar el rendimiento aparente del modelo en la muestra *bootstrap*, lo que se conoce con el nombre de rendimiento *bootstrap*.
+5.  Determinar el rendimiento del modelo *bootstrap* en la muestra original, llamado test de rendimiento.
+6.  Calcular el optimismo como la diferencia entre el rendimiento *bootstrap* (paso 4) y el test de rendimiento (paso 5).
+7.  Repetir los pasos 4, 5 y 6 en cada una de las n muestras *bootstrap*, al menos 100 muestras.
+8.  Obtener la estimación del rendimiento ajustada por el optimismo restando al rendimiento aparente (calculado en el paso 1) la media del optimismo obtenido en las n muestras *bootstrap*.
+
+La parte práctica la encontrarán en la video clase correspondiente a validación: allí realizaremos la validación del modelo que obtuvimos para el dataset de Titanic, usando un set de datos de testeo.
+
+::: hidden
+@steyerberg2001
+
+@collins2015
+
+@fernandez2018
+
+@harrell2015
+:::
+
+## Referencias {.unnumbered}

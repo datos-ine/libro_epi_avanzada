@@ -41,77 +41,84 @@ Ahora vamos a concentrarnos en la relación entre la varianza de la muestra, a t
 
 ```{r}
 #| echo: false
-#| id: rls-1
-# Semilla para reproducibilidad
+#| id: fig1
+# ---- Generar datos ----
 set.seed(123)
 
-# genera datos
-datos1 <- as_tibble(mvrnorm(
-  n = 100,
-  mu = c(0, 0),
-  Sigma = matrix(c(1000^2, 1000^2 * .99, 1000^2 * .99, 1000^2), nrow = 2)
-)) |>
-  rename(x = V1, y = V2)
+datos <- bind_rows(
+  # --- Datos 1 ---
+  as_tibble(mvrnorm(
+    n = 100,
+    mu = c(0, 0),
+    Sigma = matrix(
+      c(1000^2, 1000^2 * .99, 1000^2 * .99, 1000^2),
+      nrow = 2
+    )
+  )),
 
-datos2 <- as_tibble(mvrnorm(
-  n = 100,
-  mu = c(0, 0),
-  Sigma = matrix(c(1300^2, 1300^2 * .89, 1300^2 * .89, 1300^2), nrow = 2)
-)) |>
-  rename(x = V1, y = V2)
+  # --- Datos 2 ---
+  as_tibble(mvrnorm(
+    n = 100,
+    mu = c(0, 0),
+    Sigma = matrix(
+      c(1300^2, 1300^2 * .89, 1300^2 * .89, 1300^2),
+      nrow = 2
+    )
+  )),
 
-datos3 <- as_tibble(mvrnorm(
-  n = 100,
-  mu = c(0, 0),
-  Sigma = matrix(c(1500^2, 1500^2 * .59, 1500^2 * .59, 1500^2), nrow = 2)
-)) |>
-  rename(x = V1, y = V2)
+  # --- Datos 3 ---
+  as_tibble(mvrnorm(
+    n = 100,
+    mu = c(0, 0),
+    Sigma = matrix(
+      c(1500^2, 1500^2 * .59, 1500^2 * .59, 1500^2),
+      nrow = 2
+    )
+  )),
 
-datos4 <- as_tibble(mvrnorm(
-  n = 100,
-  mu = c(0, 0),
-  Sigma = matrix(c(1700^2, 1700^2 * .28, 1700^2 * .28, 1700^2), nrow = 2)
-)) |>
-  rename(x = V1, y = V2)
+  # --- Datos 4 ---
+  as_tibble(mvrnorm(
+    n = 100,
+    mu = c(0, 0),
+    Sigma = matrix(c(1700^2, 1700^2 * .28, 1700^2 * .28, 1700^2), nrow = 2)
+  )),
 
-# plots
-g1 <- datos1 |>
-  ggplot(mapping = aes(x = x, y = y)) +
-  geom_point(color = pal[3], size = 3, alpha = .8) +
-  geom_smooth(method = "lm", se = F, color = pal[1]) +
-  labs(caption = "ds = 1000, r = 0,99") +
+  .id = "id"
+) |>
+
+  # --- Cambiar niveles id ---
+  mutate(
+    id = fct_relabel(
+      id,
+      ~ c(
+        "ds = 1000, r = 0,99",
+        "ds = 1300, r = 0,89",
+        "ds = 1500, r = 0,59",
+        "ds = 1700, r = 0,28"
+      )
+    )
+  )
+
+# ---- Gráfico ----
+datos |>
+  ggplot(mapping = aes(x = V1, y = V2, color = id)) +
+
+  # --- Facets ---
+  facet_wrap(~id) +
+
+  # --- Geometrías ---
+  geom_point(size = 3) +
+  geom_smooth(method = "lm", se = FALSE) +
+
+  # --- Tema ---
+  labs(x = "X", y = "Y") +
+  scale_colour_viridis_d(end = .85) +
   theme_minimal() +
-  theme(axis.text = element_blank())
+  theme(
+    axis.text = element_blank(),
+    legend.position = "none"
+  )
 
-g2 <- datos2 |>
-  ggplot(mapping = aes(x = x, y = y)) +
-  geom_point(color = pal[3], size = 3, alpha = .8) +
-  geom_smooth(method = "lm", se = F, color = pal[1]) +
-  labs(caption = "ds = 1300, r = 0,89") +
-  theme_minimal() +
-  theme(axis.text = element_blank())
-
-g3 <- datos3 |>
-  ggplot(mapping = aes(x = x, y = y)) +
-  geom_point(color = pal[3], size = 3, alpha = .8) +
-  geom_smooth(method = "lm", se = F, color = pal[1]) +
-  labs(caption = "ds = 1500, r = 0,59") +
-  theme_minimal() +
-  theme(axis.text = element_blank())
-
-g4 <- datos4 |>
-  ggplot(mapping = aes(x = x, y = y)) +
-  geom_point(color = pal[3], size = 3, alpha = .8) +
-  geom_smooth(method = "lm", se = F, color = pal[1]) +
-  labs(caption = "ds = 1700, r = 0,28") +
-  theme_minimal() +
-  theme(axis.text = element_blank())
-
-# Une gráficos
-g1 + g2 + g3 + g4 + plot_annotation(tag_levels = "A")
-
-# Limpia environment
-rm(list = setdiff(ls(), "pal"))
 ```
 
 Podemos observar que cuanto mayor es la varianza en una muestra:
@@ -146,22 +153,22 @@ Gráficamente:
 ```{r}
 #| echo: false
 #| id: rls-2
-# Create a sample dataset with 7 points
+# ---- Generar datos ----
 set.seed(123)
 datos <- tibble(
   x = c(1, 2, 3, 4, 5, 6, 7),
   y = c(2.5, 4, 3, 5, 4, 5.5, 3.5)
 )
 
-# Fit a linear model
+# --- Ajustar lm ---
 model <- lm(y ~ x, data = datos)
 
-# add predicted
+# --- Añadir predichos ---
 datos <- datos |>
   mutate(fitted = predict(model))
 
-# Function to calculate perpendicular residuals
-get_perpendicular_points <- function(x, y, coef) {
+# --- Calcular residuos perpendiculares ----
+get_points <- function(x, y, coef) {
   slope <- coef[2]
   intercept <- coef[1]
 
@@ -172,57 +179,62 @@ get_perpendicular_points <- function(x, y, coef) {
   tibble(x_proj = x_proj, y_proj = y_proj)
 }
 
-# Calculate the perpendicular points
-perpendicular_points <- datos |>
+#  --- Calcular puntos perpendiculares ---
+points <- datos |>
   rowwise() |>
-  mutate(get_perpendicular_points(x, y, coef(model))) |>
+  mutate(get_points(x, y, coef(model))) |>
   ungroup()
 
-# Combine the original datos with the perpendicular points
+# --- Añadir puntos ---
 datos <- datos |>
-  left_join(perpendicular_points, by = c("x", "y", "fitted"))
+  left_join(points, by = c("x", "y", "fitted"))
 
-# Plot
+# ---- Gráfico ----
 datos |>
   ggplot(mapping = aes(x = x, y = y)) +
-  # add geoms
+
+  # --- Geometrías ---
   geom_segment(
     mapping = aes(xend = x_proj, yend = y_proj),
     linetype = "dashed",
     alpha = .5
   ) +
-  geom_point(color = pal[7], size = 4, alpha = .7) +
+
+  geom_point(size = 4, alpha = .5, color = viridis::viridis(n = 1)) +
+
   geom_abline(
     intercept = coef(model)[1],
-    slope = coef(model)[2],
-    color = pal[2]
+    slope = coef(model)[2]
   ) +
 
-  # axis
-  scale_x_continuous(limits = c(0, max(datos$x) + 1), n.breaks = 7) +
-  scale_y_continuous(limits = c(0, max(datos$y) + 1), labels = function(y) {
-    y * 1000
-  }) +
+  # --- Ejes ---
+  scale_x_continuous(
+    limits = c(0, max(datos$x) + 1),
+    n.breaks = 7
+  ) +
 
-  # add text labels (usar parse = TRUE)
+  scale_y_continuous(
+    limits = c(0, max(datos$y) + 1),
+    labels = function(y) {
+      y * 1000
+    }
+  ) +
+
+  # --- Etiquetas texto ---
   annotate(
     geom = "text",
-    x = 4,
-    y = 2.5,
-    label = "hat(Y) == b[0] + b[1] * x",
+    x = c(4, 7, 7, 7.5),
+    y = c(2.5, 3, 5, 4.1),
+    label = c(
+      "hat(Y) == b[0] + b[1] * x",
+      "y[7]",
+      "hat(y)[7]",
+      "y - hat(y) == e"
+    ),
     parse = TRUE
   ) +
-  annotate(
-    geom = "text",
-    x = 7.5,
-    y = 4.1,
-    label = "y - hat(y) == e",
-    parse = TRUE
-  ) +
-  annotate(geom = "text", x = 7, y = 3, label = "y[7]", parse = TRUE) +
-  annotate(geom = "text", x = 7, y = 5, label = "hat(y)[7]", parse = TRUE) +
 
-  # theme
+  # --- Tema ---
   theme_minimal()
 ```
 
@@ -302,7 +314,9 @@ $$
 \sum (y_i-\bar{y})^2 = \sum (\hat{y}-\bar{y})^2 + \sum (y_i -\hat{y}_i)^2 
 $$
 
-$$\frac{Suma \; de \; cuadrados}{totales \; (SCT)} \; \frac{Suma \; de \; cuadrados}{de \; la \; regresion \; (SCR)} \; \frac{Suma \; de \; cuadrados}{residuales \; (SCE)}$$
+$$
+\frac{Suma \; de \; cuadrados}{totales \; (SCT)} \; \frac{Suma \; de \; cuadrados}{de \; la \; regresion \; (SCR)} \; \frac{Suma \; de \; cuadrados}{residuales \; (SCE)}
+$$
 
 Cuanto mayor sea la variabilidad que logre explicar la regresión en relación a los residuos, tanto mejor será el modelo. Este es el fundamento para el cálculo del coeficiente de determinación ($R^2$)
 
@@ -327,7 +341,7 @@ Para llevar a cabo el análisis en R y presentar las funciones y paquetes que no
 Comenzaremos por cargar los paquetes necesarios para el análisis:
 
 ```{r}
-#| id: ej-1
+#| id: ej1
 # Tablas de coeficientes
 library(gtsummary)
 
@@ -346,7 +360,7 @@ library(tidyverse)
 Cargamos los datos y revisamos la estructura de la tabla:
 
 ```{r}
-#| id: ej-2
+#| id: ej2
 # Carga datos
 datos <- read_csv2("datos/cancer_USA.txt")
 
@@ -365,7 +379,7 @@ La **independencia** (o ausencia de autocorrelación) puede determinarse, en gra
 La **linealidad** se refiere a la relación entre las variables `tasa_mortalidad` y `mediana_ingresos`. Para comprobarla, se puede utilizar un diagrama de dispersión:
 
 ```{r}
-#| id: ej-3
+#| id: ej3
 datos |>
 
   ggplot(mapping = aes(x = mediana_ingresos, y = tasa_mortalidad)) +
@@ -380,7 +394,7 @@ datos |>
 Observamos en el gráfico una clara relación inversa entre las variables, dado que los condados donde las personas tienen mayores ingresos la mortalidad por cáncer es menor y viceversa. Podemos dibujar la recta de regresión lineal sobre el diagrama de dispersión adicionando una capa más al gráfico mediante `geom_smooth()` e indicando `method = "lm"` como método. Además de la recta se puede ver el intervalo de confianza (zona gris alrededor de ella).
 
 ```{r}
-#| id: ej-4
+#| id: ej4
 datos |>
   ggplot(mapping = aes(x = mediana_ingresos, y = tasa_mortalidad)) +
 
@@ -397,14 +411,14 @@ datos |>
 Usaremos la función `cor()` para estimar la correlación entre las dos variables:
 
 ```{r}
-#| id: ej-5
+#| id: ej5
 cor(datos$mediana_ingresos, datos$tasa_mortalidad, method = "pearson")
 ```
 
 El valor es negativo, lo que confirma lo observado en la nube de puntos anterior. Para poder descartar que esta **correlación negativa** se debe al azar, debemos calcular su significancia:
 
 ```{r}
-#| id: ej-6
+#| id: ej6
 cor.test(datos$mediana_ingresos, datos$tasa_mortalidad)
 ```
 
@@ -415,14 +429,14 @@ La **homocedasticidad** implica que la varianza de los residuos se mantiene apro
 Finalmente, la **normalidad** de los residuos se puede evaluar mediante el **test de Lilliefors**, disponible en el paquete `nortest` [@nortest]:
 
 ```{r}
-#| id: ej-7
+#| id: ej7
 lillie.test(datos$tasa_mortalidad)
 ```
 
 También se puede verificar gráficamente con un **QQ plot**:
 
 ```{r}
-#| id: ej-8
+#| id: ej8
 datos |>
   ggplot(mapping = aes(sample = tasa_mortalidad)) +
 
@@ -444,7 +458,7 @@ Tanto el test de hipótesis como los gráficos de cuantiles nos informan que las
 Como vimos [**anteriormente**](02_mod_estadistico.qmd), la función `lm()` del paquete `stats` nos permite ajustar modelos de regresión lineal:
 
 ```{r}
-#| id: ej-9
+#| id: ej9
 lm(tasa_mortalidad ~ mediana_ingresos, data = datos)
 ```
 
@@ -452,21 +466,25 @@ En este caso, `Intercept` representa el valor de `mediana_ingresos` cuando `tasa
 
 Estos resultados obtenidos y aplicados en la fórmula del modelo simple quedarían así:
 
-$$\operatorname{tasa mortalidad} = \alpha + \beta_{1}(\operatorname{mediana ingresos}) + \epsilon$$
+$$
+\operatorname{tasa mortalidad} = \alpha + \beta_{1}(\operatorname{mediana ingresos}) + \epsilon
+$$
 
-$$\operatorname{tasa mortalidad} = 201.4128 + -0.0005*\operatorname{mediana ingresos} + \epsilon$$
+$$
+\operatorname{tasa mortalidad} = 201.4128 + -0.0005*\operatorname{mediana ingresos} + \epsilon
+$$
 
 Guardamos el modelo como un objeto:
 
 ```{r}
-#| id: ej-10
+#| id: ej10
 modelo <- lm(tasa_mortalidad ~ mediana_ingresos, data = datos)
 ```
 
 Podemos acceder a la salida del modelo mediante la función `summary()`:
 
 ```{r}
-#| id: ej-11
+#| id: ej11
 summary(modelo)
 ```
 
@@ -475,7 +493,7 @@ La asociación entre la tasa de mortalidad por cáncer y la mediana de ingresos 
 Todos los ajustes de modelos lineales que produce la función `lm()` tienen la forma de una lista.La manera de conocer su clase es `class()` y su estructura mediante `str()`
 
 ```{r}
-#| id: ej-12
+#| id: ej12
 class(modelo)
 str(modelo)
 ```
@@ -483,7 +501,7 @@ str(modelo)
 La función `tbl_regression()` del paquete `gtsummary` [@gtsummary], nos permite generar una tabla con los coeficientes del modelo. El nivel de confianza puede ajustarse con el argumento `conf.level` y el argumento `intercept` muestra u oculta el intercepto:
 
 ```{r}
-#| id: ej-13
+#| id: ej13
 tbl_regression(modelo, intercept = T, conf.level = .95)
 ```
 
@@ -499,7 +517,7 @@ Los residuales se almacenan en el objeto de regresión y pueden visualizarse med
 
 ```{r}
 #| eval: false
-#| id: ej-14
+#| id: ej14
 resid(modelo)
 ```
 
@@ -508,7 +526,7 @@ Cuanto mayor sea la **sumatoria de los cuadrados de los residuales**, menor ser�
 Un análisis gráfico resulta muy útil para evaluar los supuestos del modelo. Aplicando la función `plot()` al objeto de regresión:
 
 ```{r}
-#| id: ej-15
+#| id: ej15
 par(mfrow = c(2, 2))
 plot(modelo)
 ```
@@ -526,24 +544,24 @@ Esta función genera cuatro gráficos automáticos:
 Otra opción para evaluar gráficamente los supuestos del modelo es la función `check_model()` del paquete `performance` , el cual forma parte del ecosistema `easystats` [@easystats]:
 
 ```{r}
-#| id: ej-16
+#| id: ej16
 check_model(modelo)
 ```
 
 Podemos elegir que gráficos visualizar usando el argumento `check`:
 
 ```{r}
-#| id: ej-17
+#| id: ej17
 check_model(
   modelo,
   check = c("normality", "qq", "linearity", "homogeneity", "outliers")
 )
 ```
 
-Para evaluar la linealidad se puede aplicar el test RESET de Ramsey, mediante la función `resettest()` del paquete `lmtest` [@zeileis2002]:
+Para evaluar la linealidad se puede aplicar el test RESET de Ramsey, mediante la función `resettest()` del paquete `lmtest` [@lmtest]:
 
 ```{r}
-#| id: ej-18
+#| id: ej18
 resettest(modelo)
 ```
 
@@ -552,7 +570,7 @@ La hipótesis nula indica que las variables se relacionan de forma lineal; un $p
 Otro supuesto fundamental es que los residuales deben distribuirse de forma normal (con media 0). Además del QQ-plot, se puede aplicar el test de Lilliefors:
 
 ```{r}
-#| id: ej-19
+#| id: ej19
 lillie.test(modelo$residuals)
 ```
 
@@ -561,7 +579,7 @@ Con un *p*-valor de `r round(lillie.test(modelo$residuals)$p.value, 3)` se confi
 El test de Breusch-Pagan, implementado en `lmtest` y `performance`, evalúa si la varianza de los residuos es constante. Parte de la hipótesis nula de **homocedasticidad** o varianza constante en las perturbaciones y la enfrenta a la alternativa de varianza variable, por lo que es válido decir que cumple con el supuesto de homocedasticidad si el valor $p>0,05$:
 
 ```{r}
-#| id: ej-20
+#| id: ej20
 # paquete lmtest
 bptest(modelo)
 
@@ -576,7 +594,7 @@ Para ello se pueden analizar los residuales estandarizados y los residuales estu
 Estos dos procesos sobre los residuales se pueden calcular en R mediante las funciones `rstandar()` y `rstudent()`:
 
 ```{r}
-#| id: ej-21
+#| id: ej21
 # Creación del dataset de residuales
 residuales <- tibble(
   residuales = residuals(modelo),
@@ -588,7 +606,7 @@ residuales <- tibble(
 Podemos visualizar la comparación de estos residuales mediante un *boxplot* usando *facets*:
 
 ```{r}
-#| id: ej-22
+#| id: ej22
 residuales |>
 
   # Pasa a formato long
@@ -609,14 +627,14 @@ residuales |>
 Si encontramos residuales con valores absolutos superiores a 3 en el gráfico de residuales estudentizados, es recomendable investigarlos más a fondo. Podemos identificarlos con:
 
 ```{r}
-#| id: ej-23
+#| id: ej23
 table(rstudent(modelo) > 3)
 ```
 
 Para evaluar la influencia de observaciones, se utiliza la **distancia de Cook**, que combina la magnitud del residual y el *leverage*. Valores superiores a 1 se consideran generalmente influyentes. Esto se puede visualizar mediante:
 
 ```{r}
-#| id: ej-24
+#| id: ej24
 plot(modelo, which = 5)
 ```
 
@@ -625,7 +643,7 @@ Al observar el gráfico, se debe prestar especial atención a los puntos situado
 Además, el paquete `performance` incluye la función `check_outliers()` para detectar valores atípicos según su distancia de Cook:
 
 ```{r}
-#| id: ej-25
+#| id: ej25
 check_outliers(modelo)
 ```
 
@@ -638,7 +656,7 @@ Una vez ajustado un modelo, es necesario verificar su eficiencia, ya que, aun si
 Podemos acceder al valor de $R^2$ del modelo usando la función `r2()` del paquete `performance`:
 
 ```{r}
-#| id: ej-26
+#| id: ej26
 r2(modelo)
 ```
 
@@ -649,7 +667,7 @@ La salida de `summary()` también incluye un estadístico $F$ de Snedecor y su $
 Otra forma de verificar de manera independiente la significación del modelo es mediante la función `anova()`, que plantea el contraste de la regresión mediante el [**análisis de la varianza**](05_anova.qmd):
 
 ```{r}
-#| id: ej-27
+#| id: ej27
 anova(modelo)
 ```
 
@@ -666,23 +684,15 @@ El coeficiente de pendiente para la mediana de ingresos fue de\
 Finalmente, la gráfica de dispersión de los valores pronosticados estandarizados frente a los residuos estandarizados evidenció que se cumplen los supuestos de homogeneidad de varianza y linealidad, y que los residuos se distribuyen de forma aproximadamente normal. Se cumplieron todos los presupuestos necesarios para validar la regresión y no se encontraron valores atípicos influyentes.
 
 ::: hidden
-@ballesterdíez2003
+@ballester-diez2003
 
 @daniel2002
 
-@hernández-ávila2011
+@hernandez-avila2011
 
 @weisberg2005
 
-@zeileis2002
-
-@base
-
-@wickham2019
-
 @royo-bordonada2009
-
-@schloerke2010
 :::
 
 ## Referencias {.unnumbered}

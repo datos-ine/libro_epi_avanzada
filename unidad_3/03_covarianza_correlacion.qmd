@@ -632,7 +632,7 @@ Los argumentos predeterminados para la función `cor.test()` son:
 
 ### Gráficos de correlación
 
-Podemos generar diagramas de dispersión para cada par de variables numéricas usando la función `ggpairs()` del paquete `GGally` [@schloerke2010]:
+Podemos generar diagramas de dispersión para cada par de variables numéricas usando la función `ggpairs()` del paquete `GGally` [@GGally]:
 
 ```{r}
 #| id: ej5

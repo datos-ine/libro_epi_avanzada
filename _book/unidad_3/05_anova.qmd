@@ -66,7 +66,7 @@ Nuevamente vamos a trabajar con el conjunto de datos "`cancer_USA.txt`", que con
 Comenzaremos por cargar los paquetes necesarios:
 
 ```{r}
-#| id: ej-1
+#| id: ej1
 # tablas salida del modelo
 library(gtsummary)
 
@@ -93,7 +93,7 @@ library(tidyverse)
 Cargamos y exploramos los datos:
 
 ```{r}
-#| id: ej-2
+#| id: ej2
 # Carga datos
 datos <- read_csv2("datos/cancer_USA.txt")
 
@@ -106,7 +106,7 @@ La base de datos tiene `r nrow(data)` observaciones y `r ncol(data)` variables. 
 Exploremos más en profundidad la estructura de los datos usando la función `skim()` del paquete `skimr`:
 
 ```{r}
-#| id: ej-3
+#| id: ej3
 # Resumen de los datos
 skim(datos)
 
@@ -119,7 +119,7 @@ Observamos que la variable `estado` tiene 9 niveles y ningún valor ausente (`n_
 Los estados con menos observaciones (Connecticut, New Hampshire y Rhode Island) serán excluidos para evitar sesgos en el análisis. También convertiremos la variable estado a un factor ordenado con el comando `fct_relevel()` del paquete `tidyverse`:
 
 ```{r}
-#| id: ej-4
+#| id: ej4
 # Filtramos estados con pocas observaciones y convertimos a factor
 datos <- datos |>
   filter(!estado %in% c("New Hampshire", "Rhode Island", "Connecticut")) |>
@@ -135,7 +135,7 @@ levels(datos$estado)
 Graficamos la distribución de la variable dependiente mediante un histograma y un *boxplot*:
 
 ```{r}
-#| id: ej-5
+#| id: ej5
 # histograma
 datos |>
   ggplot(mapping = aes(x = tasa_mortalidad)) +
@@ -154,7 +154,7 @@ La distribución global es simétrica pareciera existir un valor atípico.
 Ahora veamos como es la distribución de la tasa de mortalidad por estado.
 
 ```{r}
-#| id: ej-6
+#| id: ej6
 # Histograma por grupos
 datos |>
   ggplot(mapping = aes(x = tasa_mortalidad, fill = estado)) +
@@ -183,7 +183,7 @@ Si bien es más recomendable y habitual realizar el análisis de supuestos a par
 Usamos el test de Kolmogorov-Smirnov con corrección de Lilliefors para grupos con más de 50 observaciones con la función `lillie.test()` del paquete `nortest`. Como algunos grupos tienen menos de 50 observaciones, también podríamos utilizar el test de Shapiro-Wilk mediante la función `shapiro.test()` de R `base`:
 
 ```{r}
-#| id: ej-7
+#| id: ej7
 datos |>
   filter(estado == "New York") |>
   pull(tasa_mortalidad) |> # con pull() extraemos datos de tasa_mortalidad como vector
@@ -218,7 +218,7 @@ datos |>
 Podemos graficar el comportamiento de la variable dependiente en cada grupo mediante Q-Q plots usando el paquete `ggplot2`:
 
 ```{r}
-#| id: ej-8
+#| id: ej8
 datos |>
   ggplot() +
   geom_qq(mapping = aes(sample = tasa_mortalidad)) +
@@ -232,7 +232,7 @@ datos |>
 Verificamos la homogeneidad de varianzas por grupo con el test de Bartlett:
 
 ```{r}
-#| id: ej-9
+#| id: ej9
 bartlett.test(
   tasa_mortalidad ~ estado, # utiliza sintaxis fórmula
   data = datos
@@ -246,14 +246,14 @@ La variable respuesta cumple con el supuesto de homocedasticidad ($p = 0.438$).
 Si bien podemos realizar un test ANOVA mediante la función `aov()` de R `base`, en el contexto de este curso utilizaremos la función `lm()` del paquete `stats` que usamos anteriormente para ajustar el modelo de [**regresión lineal simple**](04_reg_lineal.qmd)**:**
 
 ```{r}
-#| id: ej-10
+#| id: ej10
 lm(tasa_mortalidad ~ estado, data = datos)
 ```
 
 Siempre que trabajemos con modelos, conviene que asignemos los resultados a objetos que luego nos servirán para aplicar otras funciones. Como nuestra variable explicativa es categórica y nuestro principal interés es conocer si existen diferencias significativas entre grupos, no analizaremos los coeficientes del modelo con `summary()`, sino la significancia del test F mediante la función `anova()`.
 
 ```{r}
-#| id: ej-11
+#| id: ej11
 # ANOVA
 modelo <- lm(tasa_mortalidad ~ estado, data = datos)
 
@@ -271,7 +271,7 @@ Si las varianzas son homocedásticas pero los grupos difieren en tamaño, podemo
 
 ```{r}
 #| echo: false
-#| id: ej-12
+#| id: ej12
 # Datos
 tibble(
   "Código" = c("***", "**", "*", ".", ""),
@@ -291,14 +291,14 @@ tibble(
 El paquete `emmeans` [@emmeans] es una herramienta muy versátil y poderosa para realizar comparaciones múltiples. Comenzaremos utilizando la función `emmeans()` con el argumento `specs = "estado"` para crear un objeto que contenga las medias marginales por grupo:
 
 ```{r}
-#| id: ej-13
+#| id: ej13
 comp <- emmeans(modelo, specs = "estado")
 ```
 
 Para realizar las comparaciones múltiples mediante test de Tukey usamos el comando `contrast()` con el argumento `method = "pairwise"`:
 
 ```{r}
-#| id: ej-14
+#| id: ej14
 contrast(comp, method = "pairwise")
 ```
 
@@ -307,7 +307,7 @@ Los resultados del test de Tukey nos muestran diferencias significativas en la t
 Para mayor claridad, podemos mostrar las comparaciones múltiples mediante un gráfico:
 
 ```{r}
-#| id: ej-15
+#| id: ej15
 plot(comp) +
   theme_minimal() # tema claro
 ```
@@ -319,7 +319,7 @@ El rombo del medio representa la media marginal para cada grupo y el rectángulo
 El tamaño de efecto comúnmente utilizado para el caso de ANOVA es $\eta^2$ (*eta-cuadrado)*, que se calcula como el cociente de la suma de cuadrados del efecto sobre la suma de cuadrados total.
 
 ```{r}
-#| id: ej-16
+#| id: ej16
 anova(modelo)
 
 # calculo eta-cuadrado
@@ -331,7 +331,7 @@ eta2
 Podemos llegar al mismo valor usando la función `r2()` del paquete `performance`:
 
 ```{r}
-#| id: ej-17
+#| id: ej17
 r2(modelo)
 ```
 
@@ -339,10 +339,10 @@ r2(modelo)
 
 Los test de potencia permiten determinar la probabilidad de encontrar diferencias significativas entre las medias para un determinado nivel de significancia indicando el tamaño de los grupos.
 
-En base al eta-cuadrado obtenido anteriormente, calculamos el tamaño de efecto convencional mediante la función `cohen.ES()` del paquete `pwr` [@champely2006]:
+En base al eta-cuadrado obtenido anteriormente, calculamos el tamaño de efecto convencional mediante la función `cohen.ES()` del paquete `pwr` [@pwr]:
 
 ```{r}
-#| id: ej-18
+#| id: ej18
 cohen.ES(test = "anov", size = "small")
 ```
 
@@ -352,14 +352,14 @@ Para grupos de igual tamaño usamos el siguiente código:
 
 ```{r}
 #| eval: false
-#| id: ej-19
+#| id: ej19
 pwr.anova.test(k = k, n = n, f = eta_cuadrado, sig.level = 0.05)
 ```
 
 En nuestro ejemplo, donde los tamaños de grupo son diferentes, primero debemos calcular el tamaño de grupo efectivo:
 
 ```{r}
-#| id: ej-20
+#| id: ej20
 # Número de grupos
 k <- nlevels(datos$estado)
 
@@ -373,7 +373,7 @@ neff <- sum(n)^2 / sum(n^2)
 Calculamos la potencia:
 
 ```{r}
-#| id: ej-21
+#| id: ej21
 pwr.anova.test(k = k, n = neff, f = eta2, sig.level = 0.05)
 ```
 
@@ -384,28 +384,28 @@ Para poder dar por válidos los resultados del ANOVA es necesario verificar que 
 Método gráfico con paquete `performance`:
 
 ```{r}
-#| id: ej-22
+#| id: ej22
 check_model(modelo)
 ```
 
 Chequeo normalidad de residuales mediante test de Lilliefors:
 
 ```{r}
-#| id: ej-23
+#| id: ej23
 lillie.test(modelo$residuals)
 ```
 
 Chequeo homocedasticidad (test de Breusch-Pagan):
 
 ```{r}
-#| id: ej-24
+#| id: ej24
 check_heteroscedasticity(modelo)
 ```
 
 Chequeo presencia de outliers (distancia de Cook):
 
 ```{r}
-#| id: ej-25
+#| id: ej25
 check_outliers(modelo)
 ```
 
@@ -420,21 +420,15 @@ Se realizó la prueba post hoc de Tukey HSD y se encontró que media de mortalid
 
 @triola2018
 
-@wickham2019
-
 @gtsummary
 
 @easystats
 
 @nortest
 
-@firke2016
-
 @dlookr
 
 @skimr
-
-@emmeans
 :::
 
 ## Referencias {.unnumbered}
