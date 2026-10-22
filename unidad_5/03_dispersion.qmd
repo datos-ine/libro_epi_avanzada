@@ -1,0 +1,364 @@
+---
+title: "Dispersión de datos"
+author:
+  - name: Tamara Ricardo
+    orcid: 0000-0002-0921-2611
+---
+
+```{r}
+#| echo: false
+#| id: setup
+
+source("files/setup.R")
+```
+
+## Introducción
+
+En modelos de regresión Poisson se parte del supuesto de **equidispersión**, lo cual implica que la varianza de la variable dependiente coincide con su media esperada:
+
+$$
+var(Y) =  \mu
+$$
+
+Para evaluar si un modelo cumple con este supuesto, se suele analizar el cociente entre la devianza residual y los grados de libertad residuales. Si el modelo ajusta adecuadamente con la distribución elegida, este valor debería rondar la unidad.
+
+Sin embargo, en la práctica, esta suposición frecuentemente no se cumple. Cuando la varianza observada supera a la media se habla de **sobredispersión**, mientras que si es menor se denomina **subdispersión**; esta relación se puede expresar formalmente incorporando un parámetro de dispersión ($\theta$).
+
+Adicionalmente, los recuentos pueden contener un exceso de ceros estructurales que el modelo de Poisson tradicional no logra ajustar adecuadamente. Ignorar estos fenómenos subestima los errores estándar y conduce a inferencias incorrectas, por lo que resulta indispensable diagnosticarlos y controlarlos mediante alternativas analíticas robustas.
+
+## Sobredispersión
+
+La sobredispersión es un fenómeno muy común en los datos de conteo que puede ser causado por diversos factores, tales como la heterogeneidad no observada, la correlación entre observaciones o una alta incidencia de valores extremos. Este problema tiende a inflar los errores estándar, lo que conduce sistemáticamente a una subestimación de la significancia estadística. Matemáticamente, la condición de sobredispersión se expresa como:
+
+$$
+Var(Y) > \mu
+$$
+
+Para detectar si un modelo tiene sobredispersión, se puede calcular el **ratio de dispersión**, que es el cociente entre la devianza del modelo y los grados de libertad. Un ratio significativamente mayor que 1 indica sobredispersión.
+
+En el entorno de R, la función `check_overdispersion()` del paquete `performance` permite evaluar este cociente de forma directa en un modelo ajustado. Como se vió en el [**ejemplo de regresión Poisson**](02_reg_poisson.qmd), cuando el cociente del modelo final es cercano a 1, se descarta la sobredispersión y se concluye que la distribución seleccionada ajusta adecuadamente los datos.
+
+### Ejemplo en R
+
+Analizaremos un caso práctico basado en los registros de casos de dengue reportados en los departamentos de la Costa Atlántica de la provincia de Buenos Aires (PBA)[^03_dispersion-1] entre las semanas epidemiológicas 1 y 20 de 2024[^03_dispersion-2]. Estos registros se encuentran almacenados en el archivo "dengue_costa.txt".
+
+[^03_dispersion-1]: Fuente: <https://es.wikipedia.org/wiki/Localidades_balnearias_del_mar_Argentino>
+
+[^03_dispersion-2]: Fuente: Vigilancia de las enfermedades por virus del Dengue y Zika. Datos Abiertos del Ministerio de Salud. Disponible en: <http://datos.salud.gob.ar/dataset/vigilancia-de-dengue-y-zika>
+
+Comenzaremos por cargar los paquetes necesarios para el análisis:
+
+```{r}
+#| id: disp-1
+# Ajuste de modelos
+library(glmmTMB)
+
+# Chequeo de supuestos
+library(easystats)
+library(DHARMa)
+
+# Coeficientes
+library(gtsummary)
+
+# Manejo de datos
+library(janitor)
+library(tidyverse)
+```
+
+Una vez cargadas las librerías, importamos los datos utilizando funciones del ecosistema `tidyverse` y exploramos su estructura general:
+
+```{r}
+#| message: false
+#| id: disp-2
+# Carga datos
+datos <- read_delim("datos/dengue_costa.txt")
+
+# Explora datos
+glimpse(datos)
+```
+
+Las variables de interés incluidas en la base son las siguientes:
+
+- `semana_epi`: semana epidemiológica en la que se reportaron los casos.
+
+- `grupo_edad_cat`: grupo etario de los pacientes afectados.
+
+- `casos`: número de casos reportados por departamento, semana epidemiológica y grupo etario (variable dependiente).
+
+A continuación, ajustamos un modelo de regresión de Poisson incorporando todas las variables explicativas de interés:
+
+```{r}
+#| id: disp-3
+fit_pois <- glm(
+  casos ~ semana_epi + grupo_edad_cat,
+  data = datos,
+  family = poisson
+)
+
+# Salida del modelo
+summary(fit_pois)
+```
+
+Cabe destacar que el modelo ajustado no incluye un término *offset*, ya que este recurso se utiliza en situaciones donde es necesario ajustar la tasa de eventos en función de una variable de tiempo o de tamaño poblacional. Para los datos del ejemplo, podemos asumir que la población de cada departamento permanece constante durante el período estudiado; además, dado que una misma persona puede contraer la infección por el virus del dengue en más de una ocasión, no se requiere un término de ajuste adicional por sujeto.
+
+Para finalizar, evaluamos de forma empírica la presencia de sobredispersión :
+
+```{r}
+#| id: disp-4
+check_overdispersion(fit_pois)
+```
+
+Otra forma de chequear sobredispersión es utilizando la función `testDispersion()` del paquete DHARMa [@dharma], que compara la varianza de los valores observados con la de residuales simulados por bootstrap:
+
+```{r}
+#| id: disp-5
+testDispersion(fit_pois)
+```
+
+El cociente de dispersión alcanza un valor de `r round(check_overdispersion(fit_pois)$dispersion_ratio,2)`. Dado que este valor supera ampliamente la unidad, se confirma la existencia de sobredispersión, lo que evidencia que el modelo de Poisson no resulta adecuado para representar la variabilidad de estos datos.
+
+## Subdispersión
+
+La subdispersión, aunque menos frecuente que la sobredispersión, puede ocurrir en conjuntos de datos de conteo donde las observaciones están fuertemente controladas o sujetas a restricciones estructurales. Este fenómeno provoca que la variabilidad observada sea menor que la esperada bajo el modelo teórico, lo que a su vez puede sesgar los errores estándar y llevar a una sobreestimación de la significancia estadística. Matemáticamente, esta condición se expresa de la siguiente manera:
+
+$$
+Var(Y) < \mu
+$$
+
+De manera similar a lo que ocurre con la sobredispersión, para diagnosticar este comportamiento se emplea el *ratio* de dispersión. Un valor de este cociente que resulte significativamente menor que 1 constituye un indicador clave de la presencia de subdispersión en el modelo ajustado.
+
+## Control de sobredispersión y subdispersión
+
+### Modelos *quasi*-Poisson
+
+Una forma común de manejar la sobredispersión en los datos de conteo consiste en el uso de modelos *quasi*-Poisson. Estos modelos ajustan los errores estándar de los coeficientes sin modificar la media predicha, incorporando un parámetro adicional que permite que la varianza difiera de la media. Aunque resultan útiles para corregir la subestimación de la variabilidad, presentan importantes limitaciones: no abordan las causas estructurales subyacentes de la sobredispersión, no son adecuados para manejar escenarios con subdispersión o un exceso de ceros, y su estimación de parámetros tiende a ser menos eficiente al asumir que la sobredispersión es constante en toda la muestra. Debido a estas restricciones metodológicas, no profundizaremos en su uso.
+
+### Distribución binomial negativa
+
+Dentro del marco de los modelos lineales generalizados (GLM), la distribución binomial negativa representa una de las herramientas más robustas y difundidas para corregir la sobredispersión en datos discretos. Esta parametrización aporta una gran flexibilidad analítica, mejora las inferencias estadísticas mediante estimaciones más precisas de los errores estándar y permite su extensión hacia componentes avanzados como la inflación de ceros.
+
+Dado que la familia binomial negativa no está integrada por defecto en la función `glm()` del paquete `stats`, utilizaremos el paquete `glmmTMB` [@glmmTMB]. La función base `glmmTMB()` permite ajustar desde regresiones lineales y modelos lineales generalizados (GLMs) hasta modelos mucho más complejos, lo que lo convierte en una herramienta poderosa para manejar una amplia variedad de estructuras de datos.
+
+A modo de ejemplo, ajustaremos el modelo Poisson anterior con `glmmTMB()`:
+
+```{r}
+#| id: disp-6
+fit_pois_tmb <- glmmTMB(
+  casos ~ semana_epi + grupo_edad_cat,
+  data = datos,
+  family = poisson
+)
+
+# Salida modelo
+summary(fit_pois_tmb)
+```
+
+Al cotejar la salida de glmmTMB con la obtenida previamente mediante el paquete stats, se observa que los coeficientes estimados y los valores de AIC son prácticamente idénticos. A continuación, procedemos a ajustar el modelo de regresión binomial negativa utilizando el argumento `family = nbinom2`, el cual emplea por defecto la función de enlace logarítmica `(link = "log")`:
+
+```{r}
+#| id: disp-7
+# Modelo binomial negativo
+fit_nb <- glmmTMB(
+  casos ~ semana_epi + grupo_edad_cat,
+  data = datos,
+  family = nbinom2
+)
+
+# Salida del modelo
+summary(fit_nb)
+```
+
+Si comparamos los coeficientes de ambos modelos, veremos que presentan trayectorias similares, aunque los intervalos de confianza se ajustan de manera más realista gracias a la flexibilidad de la binomial negativa:
+
+```{r}
+#| echo: false 
+#| warning: false
+#| message: false
+#| id: disp-8
+# Tablas coeficientes
+tbl_merge(
+  tbls = list(
+    tbl_regression(fit_pois_tmb, exponentiate = T),
+    tbl_regression(fit_nb, exponentiate = T)
+  ),
+  tab_spanner = c("Poisson", "Binomial negativa")
+)
+```
+
+A pesar de sus múltiples ventajas, la regresión binomial negativa comparte la limitación de no ser adecuada para escenarios con subdispersión. Asimismo, su complejidad computacional exige precaución frente a estructuras de datos muy específicas que puedan comprometer la estabilidad numérica de las estimaciones.
+
+::: {.callout-warning appearance="minimal"}
+La distribución `"nbinom1` del paquete `glmmTMB` tiene la particularidad de que la varianza es un múltiplo de la media:
+
+$$
+Var(Y) = \mu(1+\theta)
+$$
+
+Al igual que los modelos quasi-Poisson no forma parte de la familia exponencial. Sin embargo, a diferencia de aquellos, se fundamenta en una función de verosimilitud completa, lo que permite calcular criterios de información como el AIC y realizar comparaciones de modelos robustas.
+:::
+
+### Distribución Conway-Maxwell Poisson
+
+Otra alternativa a la regresión de Poisson, que permite controlar tanto sobredispersión como subdispersión y exceso de ceros es el modelo Conway-Maxwell Poisson (COM-Poisson). El mismo ofrece una generalización del modelo Poisson estándar, introduciendo un parámetro adicional que permite ajustar de forma independiente la media y la varianza.
+
+Podemos ajustar estos modelos con la función `glmmTMB()` especificando el argumento `family = compois()`, que tiene como función de enlace por defecto el logaritmo `(link = "log")`:
+
+```{r}
+#| eval: false
+#| id: disp-9
+# Modelo COMPOIS
+fit_compois <- glmmTMB(
+  casos ~ semana_epi + grupo_edad_cat,
+  data = datos,
+  family = compois
+)
+
+# Salida del modelo
+summary(fit_compois)
+```
+
+Una desventaja de estos modelos es que son computacionalmente complejos y están implementados en pocos programas estadísticos y paquetes de R. Por otro lado, los parámetros son menos intuitivos de interpretar, y pueden presentar dificultades en el proceso de estimación, especialmente en casos de datos limitados o de baja calidad.
+
+## Exceso de ceros (*zero-inflation)*
+
+El exceso de ceros ocurre cuando se observa una cantidad de ceros en los datos de conteo sustancialmente mayor a la que predecirían teóricamente los modelos de Poisson o binomial negativa. Este fenómeno es muy frecuente en la investigación epidemiológica y sanitaria debido a la propia naturaleza de los registros de vigilancia.
+
+Para identificar un exceso de ceros, se puede utilizar la función `check_zeroinflation()` del paquete `performance`:
+
+```{r}
+#| id: zi-1
+check_zeroinflation(fit_pois_tmb)
+```
+
+Como alternativa complementaria, la función `testZeroInflation()` del paquete `DHARMa` permite evaluar el mismo supuesto mediante la simulación de residuos normalizados:
+
+```{r}
+#| id: z1-2
+testZeroInflation(fit_pois_tmb)
+```
+
+Cuando los resultados de estas pruebas indican un desajuste significativo, es necesario implementar modelos de regresión con inflación de ceros (*zero-inflated*). Estos modelos asumen que los ceros observados pueden provenir de dos fuentes diferentes:
+
+- Ceros estructurales: generados por una condición intrínseca que impide por completo la ocurrencia del evento
+
+- Ceros muestrales: generados por azar en unidades que, bajo otras circunstancias, habrían tenido la posibilidad de presentar el evento.
+
+Para explorar el origen de este comportamiento en nuestro ejemplo práctico, comenzamos examinando la distribución de los casos agregados por semana epidemiológica:
+
+```{r}
+#| id: zi-3
+datos |>
+  group_by(semana_epi) |>
+  summarise(casos = sum(casos))
+```
+
+Como se puede observar, se reportaron casos de dengue en todas las semanas epidemiológicas analizadas. A continuación, evaluamos la distribución de los casos agrupados por departamento:
+
+```{r}
+#| id: zi-4
+datos |>
+  group_by(departamento) |>
+  summarise(casos = sum(casos))
+```
+
+Nuevamente, todos los departamentos de la región reportaron al menos un caso de dengue durante el período de estudio. Para comprender mejor el origen de los ceros, procedemos a cruzar ambas dimensiones espaciales y temporales:
+
+```{r}
+#| id: zi-5
+datos |>
+  group_by(semana_epi, departamento) |>
+  summarise(casos = sum(casos)) |>
+  print(n = 20) # Muestra las primeras 20 observaciones
+```
+
+Al analizar esta tabla detallada, se advierte que no todos los departamentos reportaron casos en todas las semanas epidemiológicas. Adicionalmente, dado que los datos se encuentran desagregados por grupo etario, es completamente esperable encontrar una alta proporción de combinaciones sin eventos registrados.
+
+Para cuantificar con precisión este fenómeno, generamos una tabla de frecuencias absolutas y relativas para los valores de la variable dependiente:
+
+```{r}
+#| id: zi-6
+tabyl(datos$casos) |>
+  adorn_pct_formatting()
+```
+
+Los resultados indican que un porcentaje elevado de las observaciones (78.4%) corresponden a recuentos de cero casos, un comportamiento habitual en contextos de vigilancia epidemiológica donde muchas unidades espaciales o temporales no registran eventos activos en períodos específicos.
+
+Para incorporar este comportamiento en el modelado estadístico, podemos emplear la regresión binomial negativa con inflación de ceros mediante la función `glmmTMB()`. Añadiendo el argumento `zi = ~ 1`, especificamos un modelo donde la probabilidad de ceros adicionales se rige por un intercepto único, sin incluir predictores adicionales en la componente de ceros:
+
+```{r}
+#| id: zi-7
+# Modelo zero-inflated
+fit_zi_nb <- glmmTMB(
+  casos ~ semana_epi + grupo_edad_cat,
+  zi = ~1,
+  data = datos,
+  family = nbinom2
+)
+
+# Salida del modelo
+summary(fit_zi_nb)
+```
+
+La salida de estos modelos se divide en tres partes que incluyen:
+
+- `Conditional model`: contiene los coeficientes, errores estándar, estadísticos z y valores de significancia correspondientes al modelo de recuento de la familia binomial negativa.
+
+- `Zero-inflation model`: detalla los coeficientes asociados a la probabilidad de observar un cero estructural adicional, incluyendo sus respectivos errores estándar y pruebas de significancia. En este caso, si el intercepto no resulta estadísticamente significativo, sugiere que la probabilidad de ceros adicionales no es uniforme y requiere una parametrización más compleja.
+
+- Estadísticas globales del modelo: incluye los criterios de información (AIC, BIC), la devianza, el logaritmo de verosimilitud y los grados de libertad residuales.
+
+Para flexibilizar el componente de inflación de ceros y capturar de manera más realista la estructura de los datos, por lo general resulta conveniente incorporar las variables independientes también en la fórmula de la componente `zi`:
+
+```{r}
+#| id: zi-8
+# Modelo zero-inflated
+fit_zi_nb2 <- glmmTMB(
+  casos ~ semana_epi + grupo_edad_cat,
+  zi = ~ semana_epi + grupo_edad_cat,
+  data = datos,
+  family = nbinom2
+)
+
+# Comparar con modelo intercepto
+compare_performance(
+  fit_nb,
+  fit_zi_nb,
+  fit_zi_nb2,
+  metrics = "common",
+  rank = TRUE
+)
+```
+
+En este caso, el modelo que incorpora las variables independientes a la fórmula de *zero inflation* tiene mejor *performance* que el modelo que solo incorpora el intercepto y el modelo binomial negativo sin inflación de ceros.
+
+::: {.callout-warning appearance="minimal"}
+## Modelos *hurdle*
+
+Como alternativa , los **modelos *hurdle*** dividen el análisis en dos etapas independientes: un modelo binario para evaluar la probabilidad de que ocurra el evento (cero frente a positivo) y un modelo de conteo truncado en cero para analizar la frecuencia de los casos en las observaciones positivas. No desarrollaremos ejemplos prácticos de esta aproximación por exceder los objetivos y alcances de este curso.
+:::
+
+## Resumen
+
+Existen diversas soluciones para tratar la sobredispersión, subdispersión y exceso de ceros en modelos de conteo. En este documento, nos enfocamos en las estrategias más comunes que pueden ser abordadas mediante modelos lineales generalizados utilizando el paquete `glmmTMB`.
+
+| Problema | Modelo |
+|------------------------------------|------------------------------------|
+| Sobredispersión | `glmmTMB(formula, family = nbinom2)` |
+| Subdispersión | `glmmTMB(formula, family = compois)` |
+| Sobredispersión + Exceso de Ceros | `glmmTMB(formula, family = nbinom2, zi = ~1)` |
+
+::: hidden
+@tidyverse
+
+@easystats
+
+@janitor
+
+@gtsummary
+
+@agresti2015
+
+@salinas-rodriguez2009
+:::
+
+## Referencias {.unnumbered}
