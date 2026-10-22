@@ -792,7 +792,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>El análisis de supervivencia dispone también de <strong>modelos de regresión</strong>, que permiten identificar y evaluar la relación entre un conjunto de variables explicativas y el tiempo de supervivencia (variable respuesta), por lo que se la considera parte de los modelos lineales generalizados. A continuación, presentaremos uno de los modelos más usados en salud: el modelo de <strong>regresión de Cox</strong>, llamado así en honor a su creador <span class="citation" data-cites="cox1972">(<a href="#ref-cox1972" role="doc-biblioref"><strong>cox1972?</strong></a>)</span>.</p>
+<p>El análisis de supervivencia dispone también de <strong>modelos de regresión</strong>, que permiten identificar y evaluar la relación entre un conjunto de variables explicativas y el tiempo de supervivencia (variable respuesta), por lo que se la considera parte de los modelos lineales generalizados. A continuación, presentaremos uno de los modelos más usados en salud: el modelo de <strong>regresión de Cox</strong>, llamado así en honor a su creador <span class="citation" data-cites="cox1972">(<a href="#ref-cox1972" role="doc-biblioref">Cox 1972</a>)</span>.</p>
 <p>La regresión de Cox, también llamada <em>modelo de riesgos proporcionales</em> (<em>proportional hazards model</em>) es una técnica muy difundida. Está indicado su uso cuando la variable dependiente esté relacionada con la <strong>supervivencia de un grupo de sujetos</strong> o, en general, con el <strong>tiempo que trascurre hasta que se produce en ellos un suceso o evento</strong>. Como ya dijimos, el evento de interés no tiene por qué ser la muerte, puede ser otro tipo de suceso, por ejemplo, el fallo de una prótesis, la incidencia de una enfermedad o la ocurrencia de una complicación en quien ya tiene una patología de base. Se usa para valorar simultáneamente el efecto independiente de una serie de variables explicativas o factores pronósticos sobre esta supervivencia (es decir, sobre la tasa de mortalidad) o sobre la tasa de ocurrencia de otro fenómeno que vaya ocurriendo tras un periodo de tiempo variable en cada sujeto. Como en cualquier modelo de regresión, las variables explicativas pueden ser tanto cuantitativas como categóricas.</p>
 <p>La <strong>regresión de Cox</strong> es la extensión multivariada del <a href="02_analisis_superv.html"><strong>análisis de supervivencia</strong></a> para evaluar de manera general variables dependientes del tipo “tiempo hasta un suceso o evento” y usa modelos de regresión, próximos al modelo de <a href="unidad_4/02_reg_logistica.html"><strong>regresión logística</strong></a>. Es una técnica que permite identificar y evaluar la relación entre un conjunto de variables explicativas y la tasa de ocurrencia del suceso de interés.</p>
 <p>La mayor utilidad del modelo de regresión de Cox radica en que permite <em>predecir las probabilidades de supervivencia</em> (o, en general de permanencia libre del evento) para un determinado sujeto a partir del patrón de valores que presenten sus variables pronósticas.</p>
@@ -1095,7 +1095,7 @@ Score (logrank) test = 38.43  on 4 df,   p=9e-08</code></pre>
 <div class="cell" data-layout-align="center">
 <div class="cell-output cell-output-stdout">
 <pre><code>Surv(tiempo, status) ~ fase + decr + deag + sexo
-&lt;environment: 0x0000017d4a09d230&gt;</code></pre>
+&lt;environment: 0x000002071e099ee0&gt;</code></pre>
 </div>
 </div>
 <p>En general, el criterio que se utiliza para “sacar” variables del modelo, es sacar aquellas cuyo <span class="math inline">\(\beta\)</span> haya resultado no significativo. En el caso de <code>m3</code> serían los <span class="math inline">\(\beta\)</span> correspondientes a las variables <code>sexo</code> y <code>fase</code>.</p>
@@ -1182,7 +1182,7 @@ Score (logrank) test = 38.43  on 3 df,   p=2e-08</code></pre>
 <div class="cell" data-layout-align="center">
 <div class="cell-output cell-output-stdout">
 <pre><code>Surv(tiempo, status) ~ fase + decr + deag
-&lt;environment: 0x0000017d45b25770&gt;</code></pre>
+&lt;environment: 0x0000020719a881c8&gt;</code></pre>
 </div>
 </div>
 <p>Saco <code>fase</code>, dado que su coeficiente resultó no significativo.</p>
@@ -1870,7 +1870,7 @@ n= \frac{(z_{1-\alpha/2}+z_{1+\beta})^2}{(logHR)^2*(1-\%C)*(1-p)*p}*\frac {1}{1-
 <p>Siguiendo con el ejemplo, posiblemente el tratamiento aplicado a cada enfermo dependerá de las características clínicas particulares del mismo, y recibirá una u otra terapia en función, por ejemplo, del estadío del tumor. En términos estadísticos, podrá entonces decirse que el factor tratamiento se encuentra “<em>correlacionado</em>” con esta característica. Supongamos, por ejemplo, que la correlación existente entre el nuevo tratamiento y el estadío del tumor es de 0,25. Este dato lo podremos obtener a partir de un estudio piloto o de otros trabajos sobre el tema. En caso de desconocerse, deberemos asumir una correlación suficientemente alta para así asegurar un poder suficiente.</p>
 <p>El cálculo del tamaño muestral, por tanto, permite al investigador precisar el número de pacientes a estudiar para detectar como significativos efectos de una magnitud determinada. El no hacerlo, o el no conocer cuántos pacientes necesitamos para detectar un efecto como significativo podría llevarnos a cometer un error de tipo II, es decir, no encontrar diferencias cuando sí las hay.</p>
 <div class="hidden">
-<p><span class="citation" data-cites="harrell_1996">(<a href="#ref-harrell_1996" role="doc-biblioref"><strong>harrell_1996?</strong></a>)</span></p>
+<p><span class="citation" data-cites="harrell1996">Harrell et&nbsp;al. (<a href="#ref-harrell1996" role="doc-biblioref">1996</a>)</span></p>
 <p><span class="citation" data-cites="hernandez-avila2011">Hernández-Ávila (<a href="#ref-hernandez-avila2011" role="doc-biblioref">2011</a>)</span></p>
 <p><span class="citation" data-cites="royo-bordonada2009">Royo-Bordonada et&nbsp;al. (<a href="#ref-royo-bordonada2009" role="doc-biblioref">2009</a>)</span></p>
 <p><span class="citation" data-cites="woodward2005">Woodward (<a href="#ref-woodward2005" role="doc-biblioref">2005</a>)</span></p>
@@ -1884,6 +1884,9 @@ n= \frac{(z_{1-\alpha/2}+z_{1+\beta})^2}{(logHR)^2*(1-\%C)*(1-p)*p}*\frac {1}{1-
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-cox1972" class="csl-entry" role="listitem">
+Cox, D. R. 1972. <span>«Regression <span>Models</span> and <span>Life</span>-<span>Tables</span>»</span>. <em>Journal of the Royal Statistical Society Series B: Statistical Methodology</em> 34 (2): 187-202. <a href="https://doi.org/10.1111/j.2517-6161.1972.tb00899.x">https://doi.org/10.1111/j.2517-6161.1972.tb00899.x</a>.
+</div>
 <div id="ref-harrell1996" class="csl-entry" role="listitem">
 Harrell, Frank E., Kerry L. Lee, y Daniel B. Mark. 1996. <span>«<span>MULTIVARIABLE</span> <span>PROGNOSTIC</span> <span>MODELS</span>: <span>ISSUES</span> <span>IN</span> <span>DEVELOPING</span> <span>MODELS</span>, <span>EVALUATING</span> <span>ASSUMPTIONS</span> <span>AND</span> <span>ADEQUACY</span>, <span>AND</span> <span>MEASURING</span> <span>AND</span> <span>REDUCING</span> <span>ERRORS</span>»</span>. <em>Statistics in Medicine</em> 15 (4): 361-87. <a href="https://doi.org/10.1002/(SICI)1097-0258(19960229)15:4<361::AID-SIM168>3.0.CO;2-4">https://doi.org/10.1002/(SICI)1097-0258(19960229)15:4&lt;361::AID-SIM168&gt;3.0.CO;2-4</a>.
 </div>
