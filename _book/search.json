@@ -384,11 +384,11 @@
     ]
   },
   {
-    "objectID": "unidad_1/03_intro_tidyverse.html#referencias",
-    "href": "unidad_1/03_intro_tidyverse.html#referencias",
+    "objectID": "unidad_1/03_intro_tidyverse.html#section",
+    "href": "unidad_1/03_intro_tidyverse.html#section",
     "title": "3  Introducción a tidyverse",
-    "section": "3.6 Referencias",
-    "text": "3.6 Referencias\n\n\n\n\nBache, Stefan Milton, y Hadley Wickham. 2026. magrittr: A Forward-Pipe Operator for R. https://doi.org/10.32614/CRAN.package.magrittr.\n\n\nMüller, Kirill, y Hadley Wickham. 2026. tibble: Simple Data Frames. https://doi.org/10.32614/CRAN.package.tibble.\n\n\nWickham, Hadley, Mara Averick, Jennifer Bryan, et al. 2019. «Welcome to the tidyverse». Journal of Open Source Software 4 (43): 1686. https://doi.org/10.21105/joss.01686.\n\n\nWickham, Hadley, y Jennifer Bryan. 2026. readxl: Read Excel Files. https://doi.org/10.32614/CRAN.package.readxl.\n\n\nWickham, Hadley, Jim Hester, y Jennifer Bryan. 2026. readr: Read Rectangular Text Data. https://doi.org/10.32614/CRAN.package.readr.",
+    "section": "",
+    "text": "Bache, Stefan Milton, y Hadley Wickham. 2026. magrittr: A Forward-Pipe Operator for R. https://doi.org/10.32614/CRAN.package.magrittr.\n\n\nMüller, Kirill, y Hadley Wickham. 2026. tibble: Simple Data Frames. https://doi.org/10.32614/CRAN.package.tibble.\n\n\nWickham, Hadley, Mara Averick, Jennifer Bryan, et al. 2019. «Welcome to the tidyverse». Journal of Open Source Software 4 (43): 1686. https://doi.org/10.21105/joss.01686.\n\n\nWickham, Hadley, y Jennifer Bryan. 2026. readxl: Read Excel Files. https://doi.org/10.32614/CRAN.package.readxl.\n\n\nWickham, Hadley, Jim Hester, y Jennifer Bryan. 2026. readr: Read Rectangular Text Data. https://doi.org/10.32614/CRAN.package.readr.",
     "crumbs": [
       "Unidad 1",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Introducción a `tidyverse`</span>"
@@ -494,11 +494,11 @@
     ]
   },
   {
-    "objectID": "unidad_1/04_intro_dplyr.html#referencias",
-    "href": "unidad_1/04_intro_dplyr.html#referencias",
+    "objectID": "unidad_1/04_intro_dplyr.html#section",
+    "href": "unidad_1/04_intro_dplyr.html#section",
     "title": "4  Gestión de datos con dplyr",
-    "section": "Referencias",
-    "text": "Referencias\n\n\n\n\nWickham, Hadley. 2011. «The Split-Apply-Combine Strategy for Data Analysis». Journal of Statistical Software 40 (1): 1-29. https://www.jstatsoft.org/v40/i01/.\n\n\nWickham, Hadley, Romain François, Lionel Henry, Kirill Müller, y Davis Vaughan. 2026. dplyr: A Grammar of Data Manipulation. https://doi.org/10.32614/CRAN.package.dplyr.",
+    "section": "",
+    "text": "Wickham, Hadley. 2011. «The Split-Apply-Combine Strategy for Data Analysis». Journal of Statistical Software 40 (1): 1-29. https://www.jstatsoft.org/v40/i01/.\n\n\nWickham, Hadley, Romain François, Lionel Henry, Kirill Müller, y Davis Vaughan. 2026. dplyr: A Grammar of Data Manipulation. https://doi.org/10.32614/CRAN.package.dplyr.",
     "crumbs": [
       "Unidad 1",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Gestión de datos con `dplyr`</span>"
@@ -615,11 +615,11 @@
     ]
   },
   {
-    "objectID": "unidad_1/05_intro_ggplot.html#referencias",
-    "href": "unidad_1/05_intro_ggplot.html#referencias",
+    "objectID": "unidad_1/05_intro_ggplot.html#section",
+    "href": "unidad_1/05_intro_ggplot.html#section",
     "title": "5  Gráficos estadísticos con ggplot2",
-    "section": "Referencias",
-    "text": "Referencias\n\n\n\n\nHorikoshi, Masaaki, y Yuan Tang. 2018. ggfortify: Data Visualization Tools for Statistical Analysis Results. https://CRAN.R-project.org/package=ggfortify.\n\n\nKassambara, Alboukadel. 2026. ggpubr: ’ggplot2’ Based Publication Ready Plots. https://CRAN.R-project.org/package=ggpubr.\n\n\nKassambara, Alboukadel, Marcin Kosinski, y Przemyslaw Biecek. 2026. survminer: Drawing Survival Curves using ’ggplot2’. https://doi.org/10.32614/CRAN.package.survminer.\n\n\nLüdecke, Daniel, Indrajeet Patil, Mattan S. Ben-Shachar, Brenton M. Wiernik, Philip Waggoner, y Dominique Makowski. 2021. «see: An R Package for Visualizing Statistical Models». Journal of Open Source Software 6 (64): 3393. https://doi.org/10.21105/joss.03393.\n\n\nMeyer, Fanny, y Victor Perrier. 2025. esquisse: Explore and Visualize Your Data Interactively. https://doi.org/10.32614/CRAN.package.esquisse.\n\n\nPedersen, Thomas Lin. 2025. patchwork: The Composer of Plots. https://doi.org/10.32614/CRAN.package.patchwork.\n\n\nPedersen, Thomas Lin, y Fabio Crameri. 2023. scico: Colour Palettes Based on the Scientific Colour-Maps. https://doi.org/10.32614/CRAN.package.scico.\n\n\nSchloerke, Barret, Di Cook, Joseph Larmarange, et al. 2025. GGally: Extension to ’ggplot2’. https://doi.org/10.32614/CRAN.package.GGally.\n\n\nTennekes, Martijn, y Marco J. H. Puts. 2023. «cols4all: a color palette analysis tool». EuroVis (Short Papers). https://doi.org/10.2312/evs.20231040.\n\n\nWickham, Hadley. 2016. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York. https://ggplot2.tidyverse.org.",
+    "section": "",
+    "text": "Horikoshi, Masaaki, y Yuan Tang. 2018. ggfortify: Data Visualization Tools for Statistical Analysis Results. https://CRAN.R-project.org/package=ggfortify.\n\n\nKassambara, Alboukadel. 2026. ggpubr: ’ggplot2’ Based Publication Ready Plots. https://CRAN.R-project.org/package=ggpubr.\n\n\nKassambara, Alboukadel, Marcin Kosinski, y Przemyslaw Biecek. 2026. survminer: Drawing Survival Curves using ’ggplot2’. https://doi.org/10.32614/CRAN.package.survminer.\n\n\nLüdecke, Daniel, Indrajeet Patil, Mattan S. Ben-Shachar, Brenton M. Wiernik, Philip Waggoner, y Dominique Makowski. 2021. «see: An R Package for Visualizing Statistical Models». Journal of Open Source Software 6 (64): 3393. https://doi.org/10.21105/joss.03393.\n\n\nMeyer, Fanny, y Victor Perrier. 2025. esquisse: Explore and Visualize Your Data Interactively. https://doi.org/10.32614/CRAN.package.esquisse.\n\n\nPedersen, Thomas Lin. 2025. patchwork: The Composer of Plots. https://doi.org/10.32614/CRAN.package.patchwork.\n\n\nPedersen, Thomas Lin, y Fabio Crameri. 2023. scico: Colour Palettes Based on the Scientific Colour-Maps. https://doi.org/10.32614/CRAN.package.scico.\n\n\nSchloerke, Barret, Di Cook, Joseph Larmarange, et al. 2025. GGally: Extension to ’ggplot2’. https://doi.org/10.32614/CRAN.package.GGally.\n\n\nTennekes, Martijn, y Marco J. H. Puts. 2023. «cols4all: a color palette analysis tool». EuroVis (Short Papers). https://doi.org/10.2312/evs.20231040.\n\n\nWickham, Hadley. 2016. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York. https://ggplot2.tidyverse.org.",
     "crumbs": [
       "Unidad 1",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Gráficos estadísticos con `ggplot2`</span>"
@@ -692,11 +692,11 @@
     ]
   },
   {
-    "objectID": "unidad_1/06_analisis_exploratorio.html#referencias",
-    "href": "unidad_1/06_analisis_exploratorio.html#referencias",
+    "objectID": "unidad_1/06_analisis_exploratorio.html#section",
+    "href": "unidad_1/06_analisis_exploratorio.html#section",
     "title": "6  Análisis exploratorio de datos",
-    "section": "Referencias",
-    "text": "Referencias\n\n\n\n\nFirke, Sam. 2024. janitor: Simple Tools for Examining and Cleaning Dirty Data. https://doi.org/10.32614/CRAN.package.janitor.\n\n\nRyu, Choonghyun. 2025. dlookr: Tools for Data Diagnosis, Exploration, Transformation. https://CRAN.R-project.org/package=dlookr.\n\n\nWaring, Elin, Michael Quinn, Amelia McNamara, Eduardo Arino de la Rubia, Hao Zhu, y Shannon Ellis. 2026. skimr: Compact and Flexible Summaries of Data. https://doi.org/10.32614/CRAN.package.skimr.",
+    "section": "",
+    "text": "Firke, Sam. 2024. janitor: Simple Tools for Examining and Cleaning Dirty Data. https://doi.org/10.32614/CRAN.package.janitor.\n\n\nRyu, Choonghyun. 2025. dlookr: Tools for Data Diagnosis, Exploration, Transformation. https://CRAN.R-project.org/package=dlookr.\n\n\nWaring, Elin, Michael Quinn, Amelia McNamara, Eduardo Arino de la Rubia, Hao Zhu, y Shannon Ellis. 2026. skimr: Compact and Flexible Summaries of Data. https://doi.org/10.32614/CRAN.package.skimr.",
     "crumbs": [
       "Unidad 1",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Análisis exploratorio de datos</span>"
@@ -758,11 +758,11 @@
     ]
   },
   {
-    "objectID": "unidad_2/01_est_epidemiologicos.html#referencias",
-    "href": "unidad_2/01_est_epidemiologicos.html#referencias",
+    "objectID": "unidad_2/01_est_epidemiologicos.html#section",
+    "href": "unidad_2/01_est_epidemiologicos.html#section",
     "title": "8  Estudios epidemiológicos",
-    "section": "8.3 Referencias",
-    "text": "8.3 Referencias\n\n\n\n\nElm, Erik von, Douglas G. Altman, Matthias Egger, Stuart J. Pocock, Peter C. Gøtzsche, y Jan P. Vandenbroucke. 2008. «The Strengthening the Reporting of Observational Studies in Epidemiology (STROBE) Statement: Guidelines for Reporting Observational Studies». Journal of Clinical Epidemiology 61 (4): 344-49. https://doi.org/10.1016/j.jclinepi.2007.11.008.\n\n\nHernández-Ávila, Mauricio. 2011. Epidemiología: diseño y análisis de estudios. Editorial Médica Panamericana.\n\n\nSchulz, K. F, D. G Altman, y D. Moher. 2010. «CONSORT 2010 Statement: Updated Guidelines for Reporting Parallel Group Randomised Trials». BMJ 340 (mar23 1): c332-32. https://doi.org/10.1136/bmj.c332.",
+    "section": "",
+    "text": "Elm, Erik von, Douglas G. Altman, Matthias Egger, Stuart J. Pocock, Peter C. Gøtzsche, y Jan P. Vandenbroucke. 2008. «The Strengthening the Reporting of Observational Studies in Epidemiology (STROBE) Statement: Guidelines for Reporting Observational Studies». Journal of Clinical Epidemiology 61 (4): 344-49. https://doi.org/10.1016/j.jclinepi.2007.11.008.\n\n\nHernández-Ávila, Mauricio. 2011. Epidemiología: diseño y análisis de estudios. Editorial Médica Panamericana.\n\n\nSchulz, K. F, D. G Altman, y D. Moher. 2010. «CONSORT 2010 Statement: Updated Guidelines for Reporting Parallel Group Randomised Trials». BMJ 340 (mar23 1): c332-32. https://doi.org/10.1136/bmj.c332.",
     "crumbs": [
       "Unidad 2",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Estudios epidemiológicos</span>"
@@ -802,11 +802,11 @@
     ]
   },
   {
-    "objectID": "unidad_2/02_est_transversales.html#referencias",
-    "href": "unidad_2/02_est_transversales.html#referencias",
+    "objectID": "unidad_2/02_est_transversales.html#section",
+    "href": "unidad_2/02_est_transversales.html#section",
     "title": "9  Estudios de corte transversal",
-    "section": "9.3 Referencias",
-    "text": "9.3 Referencias\n\n\n\n\nHernández-Ávila, Mauricio. 2011. Epidemiología: diseño y análisis de estudios. Editorial Médica Panamericana.\n\n\nRodríguez, Milena, y Fredy Mendivelso. 2018. «Diseño de investigación de corte transversal». Revista Médica Sanitas 21 (3): 141-47. https://revistas.unisanitas.edu.co/index.php/rms/article/view/368.",
+    "section": "",
+    "text": "Hernández-Ávila, Mauricio. 2011. Epidemiología: diseño y análisis de estudios. Editorial Médica Panamericana.\n\n\nRodríguez, Milena, y Fredy Mendivelso. 2018. «Diseño de investigación de corte transversal». Revista Médica Sanitas 21 (3): 141-47. https://revistas.unisanitas.edu.co/index.php/rms/article/view/368.",
     "crumbs": [
       "Unidad 2",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Estudios de corte transversal</span>"
@@ -868,11 +868,11 @@
     ]
   },
   {
-    "objectID": "unidad_2/03_inferencia.html#referencias",
-    "href": "unidad_2/03_inferencia.html#referencias",
+    "objectID": "unidad_2/03_inferencia.html#section",
+    "href": "unidad_2/03_inferencia.html#section",
     "title": "10  Inferencia estadística",
-    "section": "Referencias",
-    "text": "Referencias\n\n\n\n\nÁlvarez Cáceres, Rafael. 2007. Estadística aplicada a las ciencias de la salud. Ediciones Díaz de Santos.\n\n\nChampely, Stephane. 2020. pwr: Basic Functions for Power Analysis. https://doi.org/10.32614/CRAN.package.pwr.\n\n\nDaniel, Wayne W. 2002. Bioestadística: Base para el análisis de las ciencias de la salud. 4.ª ed. Limusa Wiley.\n\n\nEPIDAT 4.2 - Consellería de Sanidade - Servizo Galego de Saúde. s. f. Accedido 11 de junio de 2024. https://www.sergas.es/Saude-publica/EPIDAT-4-2.\n\n\nGlantz, S. 2006. Bioestadística. 6.ª ed. McGraw Hill.\n\n\nHernández-Ávila, Mauricio. 2011. Epidemiología: diseño y análisis de estudios. Editorial Médica Panamericana.\n\n\nManitz, Juliane, Mark Hempelmann, Goeran Kauermann, et al. 2021. samplingbook: Survey Sampling Procedures. https://doi.org/10.32614/CRAN.package.samplingbook.\n\n\nNorman, GR, y Streiner, DL. 1996. Bioestadística. Mosby/Doyma Libros.\n\n\nRíus Díaz, Francisca, Francisco Javier Barón Lopez, Elisa Sánchez Font, y Luis Parras Guijosa. 2012. Bioestadística: Métodos y Aplicaciones. http://virtual.uptc.edu.co/ova/estadistica/docs/libros/ftp.bioestadistica.uma.es/libro/.\n\n\nRodríguez, Milena, y Fredy Mendivelso. 2018. «Diseño de investigación de corte transversal». Revista Médica Sanitas 21 (3): 141-47. https://revistas.unisanitas.edu.co/index.php/rms/article/view/368.\n\n\nRodríguez, VM, Verónica A Martínez Ordaz, José Roiz Hernández, Francisco Huazano García, y Armando Nieves Rentería. 2003. «Muestreo y tamaño de la muestra». Una guía práctica. Coahuila, México: El Cid Editor.\n\n\nRyu, Choonghyun. 2025. dlookr: Tools for Data Diagnosis, Exploration, Transformation. https://CRAN.R-project.org/package=dlookr.\n\n\nTriola, Mario F. 2018. ESTADÍSTICA Decimosegunda Edicion. Pearson Educación de México, SA de CV.",
+    "section": "",
+    "text": "Álvarez Cáceres, Rafael. 2007. Estadística aplicada a las ciencias de la salud. Ediciones Díaz de Santos.\n\n\nChampely, Stephane. 2020. pwr: Basic Functions for Power Analysis. https://doi.org/10.32614/CRAN.package.pwr.\n\n\nDaniel, Wayne W. 2002. Bioestadística: Base para el análisis de las ciencias de la salud. 4.ª ed. Limusa Wiley.\n\n\nEPIDAT 4.2 - Consellería de Sanidade - Servizo Galego de Saúde. s. f. Accedido 11 de junio de 2024. https://www.sergas.es/Saude-publica/EPIDAT-4-2.\n\n\nGlantz, S. 2006. Bioestadística. 6.ª ed. McGraw Hill.\n\n\nHernández-Ávila, Mauricio. 2011. Epidemiología: diseño y análisis de estudios. Editorial Médica Panamericana.\n\n\nManitz, Juliane, Mark Hempelmann, Goeran Kauermann, et al. 2021. samplingbook: Survey Sampling Procedures. https://doi.org/10.32614/CRAN.package.samplingbook.\n\n\nNorman, GR, y Streiner, DL. 1996. Bioestadística. Mosby/Doyma Libros.\n\n\nRíus Díaz, Francisca, Francisco Javier Barón Lopez, Elisa Sánchez Font, y Luis Parras Guijosa. 2012. Bioestadística: Métodos y Aplicaciones. http://virtual.uptc.edu.co/ova/estadistica/docs/libros/ftp.bioestadistica.uma.es/libro/.\n\n\nRodríguez, Milena, y Fredy Mendivelso. 2018. «Diseño de investigación de corte transversal». Revista Médica Sanitas 21 (3): 141-47. https://revistas.unisanitas.edu.co/index.php/rms/article/view/368.\n\n\nRodríguez, VM, Verónica A Martínez Ordaz, José Roiz Hernández, Francisco Huazano García, y Armando Nieves Rentería. 2003. «Muestreo y tamaño de la muestra». Una guía práctica. Coahuila, México: El Cid Editor.\n\n\nRyu, Choonghyun. 2025. dlookr: Tools for Data Diagnosis, Exploration, Transformation. https://CRAN.R-project.org/package=dlookr.\n\n\nTriola, Mario F. 2018. ESTADÍSTICA Decimosegunda Edicion. Pearson Educación de México, SA de CV.",
     "crumbs": [
       "Unidad 2",
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>Inferencia estadística</span>"
@@ -923,11 +923,11 @@
     ]
   },
   {
-    "objectID": "unidad_2/04_norm_het.html#referencias",
-    "href": "unidad_2/04_norm_het.html#referencias",
+    "objectID": "unidad_2/04_norm_het.html#section",
+    "href": "unidad_2/04_norm_het.html#section",
     "title": "11  Análisis de normalidad y homocedasticidad",
-    "section": "11.5 Referencias",
-    "text": "11.5 Referencias\n\n\n\n\nGross, Juergen, y Uwe Ligges. 2015. nortest: Tests for Normality. https://doi.org/10.32614/CRAN.package.nortest.\n\n\nKassambara, Alboukadel. 2026a. ggpubr: ’ggplot2’ Based Publication Ready Plots. https://CRAN.R-project.org/package=ggpubr.\n\n\nKassambara, Alboukadel. 2026b. rstatix: Pipe-Friendly Framework for Basic Statistical Tests. https://doi.org/10.32614/CRAN.package.rstatix.\n\n\nKomsta, Lukasz, y Frederick Novomestky. 2022. moments: Moments, Cumulants, Skewness, Kurtosis and Related Tests. https://doi.org/10.32614/CRAN.package.moments.\n\n\nVan Cauwenberghe, Lisbeth, y Colin R. Janssen. 2014. «Microplastics in Bivalves Cultured for Human Consumption». Environmental Pollution 193 (octubre): 65-70. https://doi.org/10.1016/j.envpol.2014.06.010.\n\n\nWickham, Hadley, Mara Averick, Jennifer Bryan, et al. 2019. «Welcome to the tidyverse». Journal of Open Source Software 4 (43): 1686. https://doi.org/10.21105/joss.01686.",
+    "section": "",
+    "text": "Gross, Juergen, y Uwe Ligges. 2015. nortest: Tests for Normality. https://doi.org/10.32614/CRAN.package.nortest.\n\n\nKassambara, Alboukadel. 2026a. ggpubr: ’ggplot2’ Based Publication Ready Plots. https://CRAN.R-project.org/package=ggpubr.\n\n\nKassambara, Alboukadel. 2026b. rstatix: Pipe-Friendly Framework for Basic Statistical Tests. https://doi.org/10.32614/CRAN.package.rstatix.\n\n\nKomsta, Lukasz, y Frederick Novomestky. 2022. moments: Moments, Cumulants, Skewness, Kurtosis and Related Tests. https://doi.org/10.32614/CRAN.package.moments.\n\n\nVan Cauwenberghe, Lisbeth, y Colin R. Janssen. 2014. «Microplastics in Bivalves Cultured for Human Consumption». Environmental Pollution 193 (octubre): 65-70. https://doi.org/10.1016/j.envpol.2014.06.010.\n\n\nWickham, Hadley, Mara Averick, Jennifer Bryan, et al. 2019. «Welcome to the tidyverse». Journal of Open Source Software 4 (43): 1686. https://doi.org/10.21105/joss.01686.",
     "crumbs": [
       "Unidad 2",
       "<span class='chapter-number'>11</span>  <span class='chapter-title'>Análisis de normalidad y homocedasticidad</span>"
@@ -989,11 +989,11 @@
     ]
   },
   {
-    "objectID": "unidad_2/05_muestreo.html#referencias",
-    "href": "unidad_2/05_muestreo.html#referencias",
+    "objectID": "unidad_2/05_muestreo.html#section",
+    "href": "unidad_2/05_muestreo.html#section",
     "title": "12  Selección de la muestra",
-    "section": "12.5 Referencias",
-    "text": "12.5 Referencias\n\n\n\n\nÁlvarez Cáceres, Rafael. 2007. Estadística aplicada a las ciencias de la salud. Ediciones Díaz de Santos.\n\n\nChampely, Stephane. 2020. pwr: Basic Functions for Power Analysis. https://doi.org/10.32614/CRAN.package.pwr.\n\n\nDaniel, Wayne W. 2002. Bioestadística: Base para el análisis de las ciencias de la salud. 4.ª ed. Limusa Wiley.\n\n\nElm, Erik von, Douglas G. Altman, Matthias Egger, Stuart J. Pocock, Peter C. Gøtzsche, y Jan P. Vandenbroucke. 2008. «The Strengthening the Reporting of Observational Studies in Epidemiology (STROBE) Statement: Guidelines for Reporting Observational Studies». Journal of Clinical Epidemiology 61 (4): 344-49. https://doi.org/10.1016/j.jclinepi.2007.11.008.\n\n\nEPIDAT 4.2 - Consellería de Sanidade - Servizo Galego de Saúde. s. f. Accedido 11 de junio de 2024. https://www.sergas.es/Saude-publica/EPIDAT-4-2.\n\n\nField, Andy, Jeremy Miles, y Zoë Field. 2014. Discovering statistics using R. Repr. Sage.\n\n\nGlantz, S. 2006. Bioestadística. 6.ª ed. McGraw Hill.\n\n\nHernández-Ávila, Mauricio. 2011. Epidemiología: diseño y análisis de estudios. Editorial Médica Panamericana.\n\n\nManitz, Juliane, Mark Hempelmann, Goeran Kauermann, et al. 2021. samplingbook: Survey Sampling Procedures. https://doi.org/10.32614/CRAN.package.samplingbook.\n\n\nNorman, GR, y Streiner, DL. 1996. Bioestadística. Mosby/Doyma Libros.\n\n\nRíus Díaz, Francisca, Francisco Javier Barón Lopez, Elisa Sánchez Font, y Luis Parras Guijosa. 2012. Bioestadística: Métodos y Aplicaciones. http://virtual.uptc.edu.co/ova/estadistica/docs/libros/ftp.bioestadistica.uma.es/libro/.\n\n\nRodríguez, Milena, y Fredy Mendivelso. 2018. «Diseño de investigación de corte transversal». Revista Médica Sanitas 21 (3): 141-47. https://revistas.unisanitas.edu.co/index.php/rms/article/view/368.\n\n\nRodríguez, VM, Verónica A Martínez Ordaz, José Roiz Hernández, Francisco Huazano García, y Armando Nieves Rentería. 2003. «Muestreo y tamaño de la muestra». Una guía práctica. Coahuila, México: El Cid Editor.\n\n\nSchulz, K. F, D. G Altman, y D. Moher. 2010. «CONSORT 2010 Statement: Updated Guidelines for Reporting Parallel Group Randomised Trials». BMJ 340 (mar23 1): c332-32. https://doi.org/10.1136/bmj.c332.\n\n\nStevenson, Mark, y Evan Sergeant. 2026. epiR: Tools for the Analysis of Epidemiological Data. https://doi.org/10.32614/CRAN.package.epiR.\n\n\nTriola, Mario F. 2018. ESTADÍSTICA Decimosegunda Edicion. Pearson Educación de México, SA de CV.",
+    "section": "",
+    "text": "Álvarez Cáceres, Rafael. 2007. Estadística aplicada a las ciencias de la salud. Ediciones Díaz de Santos.\n\n\nChampely, Stephane. 2020. pwr: Basic Functions for Power Analysis. https://doi.org/10.32614/CRAN.package.pwr.\n\n\nDaniel, Wayne W. 2002. Bioestadística: Base para el análisis de las ciencias de la salud. 4.ª ed. Limusa Wiley.\n\n\nElm, Erik von, Douglas G. Altman, Matthias Egger, Stuart J. Pocock, Peter C. Gøtzsche, y Jan P. Vandenbroucke. 2008. «The Strengthening the Reporting of Observational Studies in Epidemiology (STROBE) Statement: Guidelines for Reporting Observational Studies». Journal of Clinical Epidemiology 61 (4): 344-49. https://doi.org/10.1016/j.jclinepi.2007.11.008.\n\n\nEPIDAT 4.2 - Consellería de Sanidade - Servizo Galego de Saúde. s. f. Accedido 11 de junio de 2024. https://www.sergas.es/Saude-publica/EPIDAT-4-2.\n\n\nField, Andy, Jeremy Miles, y Zoë Field. 2014. Discovering statistics using R. Repr. Sage.\n\n\nGlantz, S. 2006. Bioestadística. 6.ª ed. McGraw Hill.\n\n\nHernández-Ávila, Mauricio. 2011. Epidemiología: diseño y análisis de estudios. Editorial Médica Panamericana.\n\n\nManitz, Juliane, Mark Hempelmann, Goeran Kauermann, et al. 2021. samplingbook: Survey Sampling Procedures. https://doi.org/10.32614/CRAN.package.samplingbook.\n\n\nNorman, GR, y Streiner, DL. 1996. Bioestadística. Mosby/Doyma Libros.\n\n\nRíus Díaz, Francisca, Francisco Javier Barón Lopez, Elisa Sánchez Font, y Luis Parras Guijosa. 2012. Bioestadística: Métodos y Aplicaciones. http://virtual.uptc.edu.co/ova/estadistica/docs/libros/ftp.bioestadistica.uma.es/libro/.\n\n\nRodríguez, Milena, y Fredy Mendivelso. 2018. «Diseño de investigación de corte transversal». Revista Médica Sanitas 21 (3): 141-47. https://revistas.unisanitas.edu.co/index.php/rms/article/view/368.\n\n\nRodríguez, VM, Verónica A Martínez Ordaz, José Roiz Hernández, Francisco Huazano García, y Armando Nieves Rentería. 2003. «Muestreo y tamaño de la muestra». Una guía práctica. Coahuila, México: El Cid Editor.\n\n\nSchulz, K. F, D. G Altman, y D. Moher. 2010. «CONSORT 2010 Statement: Updated Guidelines for Reporting Parallel Group Randomised Trials». BMJ 340 (mar23 1): c332-32. https://doi.org/10.1136/bmj.c332.\n\n\nStevenson, Mark, y Evan Sergeant. 2026. epiR: Tools for the Analysis of Epidemiological Data. https://doi.org/10.32614/CRAN.package.epiR.\n\n\nTriola, Mario F. 2018. ESTADÍSTICA Decimosegunda Edicion. Pearson Educación de México, SA de CV.",
     "crumbs": [
       "Unidad 2",
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>Selección de la muestra</span>"
@@ -1044,11 +1044,11 @@
     ]
   },
   {
-    "objectID": "unidad_2/06_fun_condic.html#referencias",
-    "href": "unidad_2/06_fun_condic.html#referencias",
+    "objectID": "unidad_2/06_fun_condic.html#section",
+    "href": "unidad_2/06_fun_condic.html#section",
     "title": "13  Funciones condicionales en R",
-    "section": "Referencias",
-    "text": "Referencias\n\n\n\n\nSpina, Alexander, Zhian N. Kamvar, y Dirk Schumacher. 2025. epikit: Miscellaneous Helper Tools for Epidemiologists. https://doi.org/10.32614/CRAN.package.epikit.",
+    "section": "",
+    "text": "Spina, Alexander, Zhian N. Kamvar, y Dirk Schumacher. 2025. epikit: Miscellaneous Helper Tools for Epidemiologists. https://doi.org/10.32614/CRAN.package.epikit.",
     "crumbs": [
       "Unidad 2",
       "<span class='chapter-number'>13</span>  <span class='chapter-title'>Funciones condicionales en R</span>"
@@ -1110,11 +1110,11 @@
     ]
   },
   {
-    "objectID": "unidad_2/07_IC_complejos.html#referencias",
-    "href": "unidad_2/07_IC_complejos.html#referencias",
+    "objectID": "unidad_2/07_IC_complejos.html#section",
+    "href": "unidad_2/07_IC_complejos.html#section",
     "title": "14  Intervalos de confianza en muestras complejas",
-    "section": "14.5 Referencias",
-    "text": "14.5 Referencias\n\n\n\n\nAycaguer, Luis Carlos Silva. 2000. Diseño razonado de muestras y captación de datos para la investigación sanitaria. Ediciones Díaz de Santos.\n\n\nBell, Bethany A., Anthony J. Onwuegbuzie, John M. Ferron, Qun G. Jiao, Susan T. Hibbard, y Jeffrey D. Kromrey. 2012. «Use of Design Effects and Sample Weights in Complex Health Survey Data: A Review of Published Articles Using Data From 3 Commonly Used Adolescent Health Surveys». American Journal of Public Health 102 (7): 1399-405. https://doi.org/10.2105/AJPH.2011.300398.\n\n\nEPIDAT 4.2 - Consellería de Sanidade - Servizo Galego de Saúde. s. f. Accedido 11 de junio de 2024. https://www.sergas.es/Saude-publica/EPIDAT-4-2.\n\n\nFreedman Ellis, Greg, y Ben Schneider. 2026. srvyr: ’dplyr’-Like Syntax for Summary Statistics of Survey Data. https://doi.org/10.32614/CRAN.package.srvyr.\n\n\nGutiérrez, Andrés, Xavier Mancero, Alvaro Fuentes, Felipe López, y Felipe Molina. 2020. Criterios de calidad en la estimación de indicadores a partir de encuestas de hogares: una aplicación a la migración internacional.\n\n\nLumley, Thomas. 2010. Complex Surveys: A Guide to Analysis Using R: A Guide to Analysis Using R. John Wiley; Sons.\n\n\nNational Research Council; Division of Behavioral and Social Sciences and Education. 2015. Realizing the Potential of the American Community Survey: Challenges, Tradeoffs, and Opportunities. National Academies Press. https://doi.org/10.17226/21653.\n\n\nSakshaug, Joseph W., y Brady T. West. 2014. «Important Considerations When Analyzing Health Survey Data Collected Using a Complex Sample Design». American Journal of Public Health 104 (1): 15-16. https://doi.org/10.2105/AJPH.2013.301515.",
+    "section": "",
+    "text": "Aycaguer, Luis Carlos Silva. 2000. Diseño razonado de muestras y captación de datos para la investigación sanitaria. Ediciones Díaz de Santos.\n\n\nBell, Bethany A., Anthony J. Onwuegbuzie, John M. Ferron, Qun G. Jiao, Susan T. Hibbard, y Jeffrey D. Kromrey. 2012. «Use of Design Effects and Sample Weights in Complex Health Survey Data: A Review of Published Articles Using Data From 3 Commonly Used Adolescent Health Surveys». American Journal of Public Health 102 (7): 1399-405. https://doi.org/10.2105/AJPH.2011.300398.\n\n\nEPIDAT 4.2 - Consellería de Sanidade - Servizo Galego de Saúde. s. f. Accedido 11 de junio de 2024. https://www.sergas.es/Saude-publica/EPIDAT-4-2.\n\n\nFreedman Ellis, Greg, y Ben Schneider. 2026. srvyr: ’dplyr’-Like Syntax for Summary Statistics of Survey Data. https://doi.org/10.32614/CRAN.package.srvyr.\n\n\nGutiérrez, Andrés, Xavier Mancero, Alvaro Fuentes, Felipe López, y Felipe Molina. 2020. Criterios de calidad en la estimación de indicadores a partir de encuestas de hogares: una aplicación a la migración internacional.\n\n\nLumley, Thomas. 2010. Complex Surveys: A Guide to Analysis Using R: A Guide to Analysis Using R. John Wiley; Sons.\n\n\nNational Research Council; Division of Behavioral and Social Sciences and Education. 2015. Realizing the Potential of the American Community Survey: Challenges, Tradeoffs, and Opportunities. National Academies Press. https://doi.org/10.17226/21653.\n\n\nSakshaug, Joseph W., y Brady T. West. 2014. «Important Considerations When Analyzing Health Survey Data Collected Using a Complex Sample Design». American Journal of Public Health 104 (1): 15-16. https://doi.org/10.2105/AJPH.2013.301515.",
     "crumbs": [
       "Unidad 2",
       "<span class='chapter-number'>14</span>  <span class='chapter-title'>Intervalos de confianza en muestras complejas</span>"
@@ -1165,11 +1165,11 @@
     ]
   },
   {
-    "objectID": "unidad_3/01_est_ecologicos.html#referencias",
-    "href": "unidad_3/01_est_ecologicos.html#referencias",
+    "objectID": "unidad_3/01_est_ecologicos.html#section",
+    "href": "unidad_3/01_est_ecologicos.html#section",
     "title": "15  Estudios ecológicos",
-    "section": "Referencias",
-    "text": "Referencias\n\n\n\n\nBallester Díez, Ferrán, y José María Tenías Burillo. 2003. Estudios ecológicos. Valencia : Escola Valenciana d’Estudis per a la Salut, 2003.\n\n\nDaniel, Wayne W. 2002. Bioestadística: Base para el análisis de las ciencias de la salud. 4.ª ed. Limusa Wiley.\n\n\nHernández-Ávila, Mauricio. 2011. Epidemiología: diseño y análisis de estudios. Editorial Médica Panamericana.\n\n\nRoyo-Bordonada, Miguel Angel, Javier Damian, Beatriz Perez-Gomez, et al. 2009. Método epidemiológico. Instituto de Salud Carlos III (ISCIII). Escuela Nacional de Sanidad (ENS). http://hdl.handle.net/20.500.12105/5271.\n\n\nTriola, Mario F. 2018. ESTADÍSTICA Decimosegunda Edicion. Pearson Educación de México, SA de CV.\n\n\nWeisberg, Sanford. 2005. Applied linear regression. Vol. 528. John Wiley & Sons.",
+    "section": "",
+    "text": "Ballester Díez, Ferrán, y José María Tenías Burillo. 2003. Estudios ecológicos. Valencia : Escola Valenciana d’Estudis per a la Salut, 2003.\n\n\nDaniel, Wayne W. 2002. Bioestadística: Base para el análisis de las ciencias de la salud. 4.ª ed. Limusa Wiley.\n\n\nHernández-Ávila, Mauricio. 2011. Epidemiología: diseño y análisis de estudios. Editorial Médica Panamericana.\n\n\nRoyo-Bordonada, Miguel Angel, Javier Damian, Beatriz Perez-Gomez, et al. 2009. Método epidemiológico. Instituto de Salud Carlos III (ISCIII). Escuela Nacional de Sanidad (ENS). http://hdl.handle.net/20.500.12105/5271.\n\n\nTriola, Mario F. 2018. ESTADÍSTICA Decimosegunda Edicion. Pearson Educación de México, SA de CV.\n\n\nWeisberg, Sanford. 2005. Applied linear regression. Vol. 528. John Wiley & Sons.",
     "crumbs": [
       "Unidad 3",
       "<span class='chapter-number'>15</span>  <span class='chapter-title'>Estudios ecológicos</span>"
@@ -1220,11 +1220,11 @@
     ]
   },
   {
-    "objectID": "unidad_3/02_mod_estadistico.html#referencias",
-    "href": "unidad_3/02_mod_estadistico.html#referencias",
+    "objectID": "unidad_3/02_mod_estadistico.html#section",
+    "href": "unidad_3/02_mod_estadistico.html#section",
     "title": "16  Introducción al modelado estadístico",
-    "section": "Referencias",
-    "text": "Referencias\n\n\n\n\nAgresti, Alan. 2015. Foundations of Linear and Generalized Linear Models. Wiley Series en Probability y Statistics. John Wiley & Sons, Inc.\n\n\nTriola, Mario F. 2018. ESTADÍSTICA Decimosegunda Edicion. Pearson Educación de México, SA de CV.",
+    "section": "",
+    "text": "Agresti, Alan. 2015. Foundations of Linear and Generalized Linear Models. Wiley Series en Probability y Statistics. John Wiley & Sons, Inc.\n\n\nTriola, Mario F. 2018. ESTADÍSTICA Decimosegunda Edicion. Pearson Educación de México, SA de CV.",
     "crumbs": [
       "Unidad 3",
       "<span class='chapter-number'>16</span>  <span class='chapter-title'>Introducción al modelado estadístico</span>"
@@ -1286,11 +1286,11 @@
     ]
   },
   {
-    "objectID": "unidad_3/03_covarianza_correlacion.html#referencias",
-    "href": "unidad_3/03_covarianza_correlacion.html#referencias",
+    "objectID": "unidad_3/03_covarianza_correlacion.html#section",
+    "href": "unidad_3/03_covarianza_correlacion.html#section",
     "title": "17  Covarianza y correlación",
-    "section": "Referencias",
-    "text": "Referencias\n\n\n\n\nAgresti, Alan. 2015. Foundations of Linear and Generalized Linear Models. Wiley Series en Probability y Statistics. John Wiley & Sons, Inc.\n\n\nLüdecke, Daniel, Mattan S. Ben-Shachar, Indrajeet Patil, et al. 2022. «easystats: Framework for Easy Statistical Modeling, Visualization, and Reporting». CRAN, advance online publication. https://doi.org/10.32614/CRAN.package.easystats.\n\n\nSchloerke, Barret, Di Cook, Joseph Larmarange, et al. 2025. GGally: Extension to ’ggplot2’. https://doi.org/10.32614/CRAN.package.GGally.\n\n\nTriola, Mario F. 2018. ESTADÍSTICA Decimosegunda Edicion. Pearson Educación de México, SA de CV.\n\n\nWickham, Hadley, Mara Averick, Jennifer Bryan, et al. 2019. «Welcome to the tidyverse». Journal of Open Source Software 4 (43): 1686. https://doi.org/10.21105/joss.01686.",
+    "section": "",
+    "text": "Agresti, Alan. 2015. Foundations of Linear and Generalized Linear Models. Wiley Series en Probability y Statistics. John Wiley & Sons, Inc.\n\n\nLüdecke, Daniel, Mattan S. Ben-Shachar, Indrajeet Patil, et al. 2022. «easystats: Framework for Easy Statistical Modeling, Visualization, and Reporting». CRAN, advance online publication. https://doi.org/10.32614/CRAN.package.easystats.\n\n\nSchloerke, Barret, Di Cook, Joseph Larmarange, et al. 2025. GGally: Extension to ’ggplot2’. https://doi.org/10.32614/CRAN.package.GGally.\n\n\nTriola, Mario F. 2018. ESTADÍSTICA Decimosegunda Edicion. Pearson Educación de México, SA de CV.\n\n\nWickham, Hadley, Mara Averick, Jennifer Bryan, et al. 2019. «Welcome to the tidyverse». Journal of Open Source Software 4 (43): 1686. https://doi.org/10.21105/joss.01686.",
     "crumbs": [
       "Unidad 3",
       "<span class='chapter-number'>17</span>  <span class='chapter-title'>Covarianza y correlación</span>"
@@ -1341,11 +1341,11 @@
     ]
   },
   {
-    "objectID": "unidad_3/04_reg_lineal.html#referencias",
-    "href": "unidad_3/04_reg_lineal.html#referencias",
+    "objectID": "unidad_3/04_reg_lineal.html#section",
+    "href": "unidad_3/04_reg_lineal.html#section",
     "title": "18  Regresión lineal simple",
-    "section": "Referencias",
-    "text": "Referencias\n\n\n\n\nBallester Díez, Ferrán, y José María Tenías Burillo. 2003. Estudios ecológicos. Valencia : Escola Valenciana d’Estudis per a la Salut, 2003.\n\n\nDaniel, Wayne W. 2002. Bioestadística: Base para el análisis de las ciencias de la salud. 4.ª ed. Limusa Wiley.\n\n\nGross, Juergen, y Uwe Ligges. 2015. nortest: Tests for Normality. https://doi.org/10.32614/CRAN.package.nortest.\n\n\nHernández-Ávila, Mauricio. 2011. Epidemiología: diseño y análisis de estudios. Editorial Médica Panamericana.\n\n\nLüdecke, Daniel, Mattan S. Ben-Shachar, Indrajeet Patil, et al. 2022. «easystats: Framework for Easy Statistical Modeling, Visualization, and Reporting». CRAN, advance online publication. https://doi.org/10.32614/CRAN.package.easystats.\n\n\nRoyo-Bordonada, Miguel Angel, Javier Damian, Beatriz Perez-Gomez, et al. 2009. Método epidemiológico. Instituto de Salud Carlos III (ISCIII). Escuela Nacional de Sanidad (ENS). http://hdl.handle.net/20.500.12105/5271.\n\n\nSjoberg, Daniel D., Karissa Whiting, Michael Curry, Jessica A. Lavery, y Joseph Larmarange. 2021. «Reproducible Summary Tables with the gtsummary Package». The R Journal 13: 570-80. https://doi.org/10.32614/RJ-2021-053.\n\n\nWeisberg, Sanford. 2005. Applied linear regression. Vol. 528. John Wiley & Sons.\n\n\nZeileis, Achim, y Torsten Hothorn. 2002. «Diagnostic Checking in Regression Relationships». R News 2 (3): 7-10. https://CRAN.R-project.org/doc/Rnews/.",
+    "section": "",
+    "text": "Ballester Díez, Ferrán, y José María Tenías Burillo. 2003. Estudios ecológicos. Valencia : Escola Valenciana d’Estudis per a la Salut, 2003.\n\n\nDaniel, Wayne W. 2002. Bioestadística: Base para el análisis de las ciencias de la salud. 4.ª ed. Limusa Wiley.\n\n\nGross, Juergen, y Uwe Ligges. 2015. nortest: Tests for Normality. https://doi.org/10.32614/CRAN.package.nortest.\n\n\nHernández-Ávila, Mauricio. 2011. Epidemiología: diseño y análisis de estudios. Editorial Médica Panamericana.\n\n\nLüdecke, Daniel, Mattan S. Ben-Shachar, Indrajeet Patil, et al. 2022. «easystats: Framework for Easy Statistical Modeling, Visualization, and Reporting». CRAN, advance online publication. https://doi.org/10.32614/CRAN.package.easystats.\n\n\nRoyo-Bordonada, Miguel Angel, Javier Damian, Beatriz Perez-Gomez, et al. 2009. Método epidemiológico. Instituto de Salud Carlos III (ISCIII). Escuela Nacional de Sanidad (ENS). http://hdl.handle.net/20.500.12105/5271.\n\n\nSjoberg, Daniel D., Karissa Whiting, Michael Curry, Jessica A. Lavery, y Joseph Larmarange. 2021. «Reproducible Summary Tables with the gtsummary Package». The R Journal 13: 570-80. https://doi.org/10.32614/RJ-2021-053.\n\n\nWeisberg, Sanford. 2005. Applied linear regression. Vol. 528. John Wiley & Sons.\n\n\nZeileis, Achim, y Torsten Hothorn. 2002. «Diagnostic Checking in Regression Relationships». R News 2 (3): 7-10. https://CRAN.R-project.org/doc/Rnews/.",
     "crumbs": [
       "Unidad 3",
       "<span class='chapter-number'>18</span>  <span class='chapter-title'>Regresión lineal simple</span>"
@@ -1407,11 +1407,11 @@
     ]
   },
   {
-    "objectID": "unidad_3/05_anova.html#referencias",
-    "href": "unidad_3/05_anova.html#referencias",
+    "objectID": "unidad_3/05_anova.html#section",
+    "href": "unidad_3/05_anova.html#section",
     "title": "19  Análisis de la varianza (ANOVA)",
-    "section": "Referencias",
-    "text": "Referencias\n\n\n\n\nAgresti, Alan. 2015. Foundations of Linear and Generalized Linear Models. Wiley Series en Probability y Statistics. John Wiley & Sons, Inc.\n\n\nChampely, Stephane. 2020. pwr: Basic Functions for Power Analysis. https://doi.org/10.32614/CRAN.package.pwr.\n\n\nGross, Juergen, y Uwe Ligges. 2015. nortest: Tests for Normality. https://doi.org/10.32614/CRAN.package.nortest.\n\n\nLenth, Russell V., y Julia Piaskowski. 2026. emmeans: Estimated Marginal Means, aka Least-Squares Means. https://doi.org/10.32614/CRAN.package.emmeans.\n\n\nLüdecke, Daniel, Mattan S. Ben-Shachar, Indrajeet Patil, et al. 2022. «easystats: Framework for Easy Statistical Modeling, Visualization, and Reporting». CRAN, advance online publication. https://doi.org/10.32614/CRAN.package.easystats.\n\n\nRyu, Choonghyun. 2025. dlookr: Tools for Data Diagnosis, Exploration, Transformation. https://CRAN.R-project.org/package=dlookr.\n\n\nSjoberg, Daniel D., Karissa Whiting, Michael Curry, Jessica A. Lavery, y Joseph Larmarange. 2021. «Reproducible Summary Tables with the gtsummary Package». The R Journal 13: 570-80. https://doi.org/10.32614/RJ-2021-053.\n\n\nTriola, Mario F. 2018. ESTADÍSTICA Decimosegunda Edicion. Pearson Educación de México, SA de CV.\n\n\nWaring, Elin, Michael Quinn, Amelia McNamara, Eduardo Arino de la Rubia, Hao Zhu, y Shannon Ellis. 2026. skimr: Compact and Flexible Summaries of Data. https://doi.org/10.32614/CRAN.package.skimr.",
+    "section": "",
+    "text": "Agresti, Alan. 2015. Foundations of Linear and Generalized Linear Models. Wiley Series en Probability y Statistics. John Wiley & Sons, Inc.\n\n\nChampely, Stephane. 2020. pwr: Basic Functions for Power Analysis. https://doi.org/10.32614/CRAN.package.pwr.\n\n\nGross, Juergen, y Uwe Ligges. 2015. nortest: Tests for Normality. https://doi.org/10.32614/CRAN.package.nortest.\n\n\nLenth, Russell V., y Julia Piaskowski. 2026. emmeans: Estimated Marginal Means, aka Least-Squares Means. https://doi.org/10.32614/CRAN.package.emmeans.\n\n\nLüdecke, Daniel, Mattan S. Ben-Shachar, Indrajeet Patil, et al. 2022. «easystats: Framework for Easy Statistical Modeling, Visualization, and Reporting». CRAN, advance online publication. https://doi.org/10.32614/CRAN.package.easystats.\n\n\nRyu, Choonghyun. 2025. dlookr: Tools for Data Diagnosis, Exploration, Transformation. https://CRAN.R-project.org/package=dlookr.\n\n\nSjoberg, Daniel D., Karissa Whiting, Michael Curry, Jessica A. Lavery, y Joseph Larmarange. 2021. «Reproducible Summary Tables with the gtsummary Package». The R Journal 13: 570-80. https://doi.org/10.32614/RJ-2021-053.\n\n\nTriola, Mario F. 2018. ESTADÍSTICA Decimosegunda Edicion. Pearson Educación de México, SA de CV.\n\n\nWaring, Elin, Michael Quinn, Amelia McNamara, Eduardo Arino de la Rubia, Hao Zhu, y Shannon Ellis. 2026. skimr: Compact and Flexible Summaries of Data. https://doi.org/10.32614/CRAN.package.skimr.",
     "crumbs": [
       "Unidad 3",
       "<span class='chapter-number'>19</span>  <span class='chapter-title'>Análisis de la varianza (ANOVA)</span>"
@@ -1528,11 +1528,11 @@
     ]
   },
   {
-    "objectID": "unidad_3/06_rol_variables.html#referencias",
-    "href": "unidad_3/06_rol_variables.html#referencias",
+    "objectID": "unidad_3/06_rol_variables.html#section",
+    "href": "unidad_3/06_rol_variables.html#section",
     "title": "20  Rol de las variables",
-    "section": "Referencias",
-    "text": "Referencias\n\n\n\n\nAlmeida Filho, Naomar de, y Maurício Lima Barreto. 2011. Epidemiologia & Saúde: Fundamentos, Métodos e Aplicações. Guanabara Koogan.\n\n\nGordis, Leon. 2017. Epidemiologia. Thieme Revinter Publicações LTDA.\n\n\nHolmberg, Mathias J., y Lars W. Andersen. 2022. «Collider Bias». JAMA 327 (13): 1282-83. https://doi.org/10.1001/jama.2022.1820.\n\n\nLuque-Fernandez, Miguel Angel, Michael Schomaker, Daniel Redondo-Sanchez, Maria Jose Sanchez Perez, Anand Vaidya, y Mireille E. Schnitzer. 2019. «Educational Note: Paradoxical collider effect in the analysis of non-communicable disease epidemiological data: a reproducible illustration and web application». International Journal of Epidemiology 48 (2): 640-53. https://doi.org/10.1093/ije/dyy275.\n\n\nMacMahon, Brian. 1972. «Concepts of multiple factors». Multiple factors in the causation of environmentally induced disease. Academic Press, New York.",
+    "section": "",
+    "text": "Almeida Filho, Naomar de, y Maurício Lima Barreto. 2011. Epidemiologia & Saúde: Fundamentos, Métodos e Aplicações. Guanabara Koogan.\n\n\nGordis, Leon. 2017. Epidemiologia. Thieme Revinter Publicações LTDA.\n\n\nHolmberg, Mathias J., y Lars W. Andersen. 2022. «Collider Bias». JAMA 327 (13): 1282-83. https://doi.org/10.1001/jama.2022.1820.\n\n\nLuque-Fernandez, Miguel Angel, Michael Schomaker, Daniel Redondo-Sanchez, Maria Jose Sanchez Perez, Anand Vaidya, y Mireille E. Schnitzer. 2019. «Educational Note: Paradoxical collider effect in the analysis of non-communicable disease epidemiological data: a reproducible illustration and web application». International Journal of Epidemiology 48 (2): 640-53. https://doi.org/10.1093/ije/dyy275.\n\n\nMacMahon, Brian. 1972. «Concepts of multiple factors». Multiple factors in the causation of environmentally induced disease. Academic Press, New York.",
     "crumbs": [
       "Unidad 3",
       "<span class='chapter-number'>20</span>  <span class='chapter-title'>Rol de las variables</span>"
@@ -1649,11 +1649,11 @@
     ]
   },
   {
-    "objectID": "unidad_3/07_reg_lineal_multiple.html#referencias",
-    "href": "unidad_3/07_reg_lineal_multiple.html#referencias",
+    "objectID": "unidad_3/07_reg_lineal_multiple.html#section",
+    "href": "unidad_3/07_reg_lineal_multiple.html#section",
     "title": "21  Regresión lineal múltiple",
-    "section": "Referencias",
-    "text": "Referencias\n\n\n\n\nDe Irala, Jokin, Miguel Ángel Martínez-González, y Francisco Guillén Grima. 2001a. «¿Qué es una variable de confusión?» Medicina Clínica 117 (10): 377-85. https://doi.org/10.1016/S0025-7753(01)72121-5.\n\n\nDe Irala, Jokin, Miguel Ángel Martínez-González, y Francisco Guillén Grima. 2001b. «¿Qué es una variable modificadora del efecto?» Medicina Clínica 117 (8): 297-302. https://doi.org/10.1016/S0025-7753(01)72092-1.\n\n\nGordis, Leon. 2017. Epidemiologia. Thieme Revinter Publicações LTDA.\n\n\nKim, Jong Hae. 2019. «Multicollinearity and Misleading Statistical Results». Korean Journal of Anesthesiology 72 (6): 558-69. https://doi.org/10.4097/kja.19087.\n\n\nKleinbaum, David G, Lawrence L Kupper, Keith E Muller, y Azhar Nizam. 1988. Applied regression analysis and other multivariable methods. Vol. 601. Duxbury press Belmont, CA.\n\n\nMacMahon, Brian. 1972. «Concepts of multiple factors». Multiple factors in the causation of environmentally induced disease. Academic Press, New York.\n\n\nPena, Edsel A., y Elizabeth H. Slate. 2019. gvlma: Global Validation of Linear Models Assumptions. https://doi.org/10.32614/CRAN.package.gvlma.\n\n\nSchloerke, Barret, Di Cook, Joseph Larmarange, et al. 2025. GGally: Extension to ’ggplot2’. https://doi.org/10.32614/CRAN.package.GGally.\n\n\nZeileis, Achim, y Torsten Hothorn. 2002. «Diagnostic Checking in Regression Relationships». R News 2 (3): 7-10. https://CRAN.R-project.org/doc/Rnews/.",
+    "section": "",
+    "text": "De Irala, Jokin, Miguel Ángel Martínez-González, y Francisco Guillén Grima. 2001a. «¿Qué es una variable de confusión?» Medicina Clínica 117 (10): 377-85. https://doi.org/10.1016/S0025-7753(01)72121-5.\n\n\nDe Irala, Jokin, Miguel Ángel Martínez-González, y Francisco Guillén Grima. 2001b. «¿Qué es una variable modificadora del efecto?» Medicina Clínica 117 (8): 297-302. https://doi.org/10.1016/S0025-7753(01)72092-1.\n\n\nGordis, Leon. 2017. Epidemiologia. Thieme Revinter Publicações LTDA.\n\n\nKim, Jong Hae. 2019. «Multicollinearity and Misleading Statistical Results». Korean Journal of Anesthesiology 72 (6): 558-69. https://doi.org/10.4097/kja.19087.\n\n\nKleinbaum, David G, Lawrence L Kupper, Keith E Muller, y Azhar Nizam. 1988. Applied regression analysis and other multivariable methods. Vol. 601. Duxbury press Belmont, CA.\n\n\nMacMahon, Brian. 1972. «Concepts of multiple factors». Multiple factors in the causation of environmentally induced disease. Academic Press, New York.\n\n\nPena, Edsel A., y Elizabeth H. Slate. 2019. gvlma: Global Validation of Linear Models Assumptions. https://doi.org/10.32614/CRAN.package.gvlma.\n\n\nSchloerke, Barret, Di Cook, Joseph Larmarange, et al. 2025. GGally: Extension to ’ggplot2’. https://doi.org/10.32614/CRAN.package.GGally.\n\n\nZeileis, Achim, y Torsten Hothorn. 2002. «Diagnostic Checking in Regression Relationships». R News 2 (3): 7-10. https://CRAN.R-project.org/doc/Rnews/.",
     "crumbs": [
       "Unidad 3",
       "<span class='chapter-number'>21</span>  <span class='chapter-title'>Regresión lineal múltiple</span>"
@@ -1704,11 +1704,11 @@
     ]
   },
   {
-    "objectID": "unidad_4/01_est_caso_control.html#referencias",
-    "href": "unidad_4/01_est_caso_control.html#referencias",
+    "objectID": "unidad_4/01_est_caso_control.html#section",
+    "href": "unidad_4/01_est_caso_control.html#section",
     "title": "22  Estudios de casos y controles",
-    "section": "Referencias",
-    "text": "Referencias\n\n\n\n\nField, Andy, Jeremy Miles, y Zoë Field. 2014. Discovering statistics using R. Repr. Sage.\n\n\nHernández-Ávila, Mauricio. 2011. Epidemiología: diseño y análisis de estudios. Editorial Médica Panamericana.\n\n\nOrtega Calvo, Manuel, y Aurelio Cayuela Domínguez. 2002. «Regresión logística no condicionada y tamaño de muestra: una revisión bibliográfica». Revista Española de Salud Pública 76: 85-93.\n\n\nRothman, Kenneth J. 2012. Epidemiology: an introduction. 2. ed. Oxford Univ. Press.\n\n\nRoyo-Bordonada, Miguel Angel, Javier Damian, Beatriz Perez-Gomez, et al. 2009. Método epidemiológico. Instituto de Salud Carlos III (ISCIII). Escuela Nacional de Sanidad (ENS). http://hdl.handle.net/20.500.12105/5271.\n\n\nSilva Ayçaguer, Luis Carlos. 1995. «Excursión a la regresión logística en ciencias de la salud». Madrid: Díaz de Santos.\n\n\nThompson, W. D. 1994. «Statistical analysis of case-control studies». Epidemiologic Reviews 16 (1): 33-50. https://doi.org/10.1093/oxfordjournals.epirev.a036143.",
+    "section": "",
+    "text": "Field, Andy, Jeremy Miles, y Zoë Field. 2014. Discovering statistics using R. Repr. Sage.\n\n\nHernández-Ávila, Mauricio. 2011. Epidemiología: diseño y análisis de estudios. Editorial Médica Panamericana.\n\n\nOrtega Calvo, Manuel, y Aurelio Cayuela Domínguez. 2002. «Regresión logística no condicionada y tamaño de muestra: una revisión bibliográfica». Revista Española de Salud Pública 76: 85-93.\n\n\nRothman, Kenneth J. 2012. Epidemiology: an introduction. 2. ed. Oxford Univ. Press.\n\n\nRoyo-Bordonada, Miguel Angel, Javier Damian, Beatriz Perez-Gomez, et al. 2009. Método epidemiológico. Instituto de Salud Carlos III (ISCIII). Escuela Nacional de Sanidad (ENS). http://hdl.handle.net/20.500.12105/5271.\n\n\nSilva Ayçaguer, Luis Carlos. 1995. «Excursión a la regresión logística en ciencias de la salud». Madrid: Díaz de Santos.\n\n\nThompson, W. D. 1994. «Statistical analysis of case-control studies». Epidemiologic Reviews 16 (1): 33-50. https://doi.org/10.1093/oxfordjournals.epirev.a036143.",
     "crumbs": [
       "Unidad 4",
       "<span class='chapter-number'>22</span>  <span class='chapter-title'>Estudios de casos y controles</span>"
@@ -1781,11 +1781,11 @@
     ]
   },
   {
-    "objectID": "unidad_4/02_reg_logistica.html#referencias",
-    "href": "unidad_4/02_reg_logistica.html#referencias",
+    "objectID": "unidad_4/02_reg_logistica.html#section",
+    "href": "unidad_4/02_reg_logistica.html#section",
     "title": "23  Regresión logística",
-    "section": "Referencias",
-    "text": "Referencias\n\n\n\n\nEPIDAT 4.2 - Consellería de Sanidade - Servizo Galego de Saúde. s. f. Accedido 11 de junio de 2024. https://www.sergas.es/Saude-publica/EPIDAT-4-2.\n\n\nField, Andy, Jeremy Miles, y Zoë Field. 2014. Discovering statistics using R. Repr. Sage.\n\n\nFreeman, Daniel H. 1987. Applied categorical data analysis. M. Dekker.\n\n\nGohel, David, y Panagiotis Skintzos. 2026. flextable: Functions for Tabular Reporting. https://doi.org/10.32614/CRAN.package.flextable.\n\n\nHernández-Ávila, Mauricio. 2011. Epidemiología: diseño y análisis de estudios. Editorial Médica Panamericana.\n\n\nLüdecke, Daniel, Mattan S. Ben-Shachar, Indrajeet Patil, et al. 2022. «easystats: Framework for Easy Statistical Modeling, Visualization, and Reporting». CRAN, advance online publication. https://doi.org/10.32614/CRAN.package.easystats.\n\n\nOrtega Calvo, Manuel, y Aurelio Cayuela Domínguez. 2002. «Regresión logística no condicionada y tamaño de muestra: una revisión bibliográfica». Revista Española de Salud Pública 76: 85-93.\n\n\nRothman, Kenneth J. 2012. Epidemiology: an introduction. 2. ed. Oxford Univ. Press.\n\n\nRoyo-Bordonada, Miguel Angel, Javier Damian, Beatriz Perez-Gomez, et al. 2009. Método epidemiológico. Instituto de Salud Carlos III (ISCIII). Escuela Nacional de Sanidad (ENS). http://hdl.handle.net/20.500.12105/5271.\n\n\nSilva Ayçaguer, Luis Carlos. 1995. «Excursión a la regresión logística en ciencias de la salud». Madrid: Díaz de Santos.\n\n\nSjoberg, Daniel D., Karissa Whiting, Michael Curry, Jessica A. Lavery, y Joseph Larmarange. 2021. «Reproducible Summary Tables with the gtsummary Package». The R Journal 13: 570-80. https://doi.org/10.32614/RJ-2021-053.\n\n\nThompson, W. D. 1994. «Statistical analysis of case-control studies». Epidemiologic Reviews 16 (1): 33-50. https://doi.org/10.1093/oxfordjournals.epirev.a036143.\n\n\nWaring, Elin, Michael Quinn, Amelia McNamara, Eduardo Arino de la Rubia, Hao Zhu, y Shannon Ellis. 2026. skimr: Compact and Flexible Summaries of Data. https://doi.org/10.32614/CRAN.package.skimr.\n\n\nWickham, Hadley, Mara Averick, Jennifer Bryan, et al. 2019. «Welcome to the tidyverse». Journal of Open Source Software 4 (43): 1686. https://doi.org/10.21105/joss.01686.",
+    "section": "",
+    "text": "EPIDAT 4.2 - Consellería de Sanidade - Servizo Galego de Saúde. s. f. Accedido 11 de junio de 2024. https://www.sergas.es/Saude-publica/EPIDAT-4-2.\n\n\nField, Andy, Jeremy Miles, y Zoë Field. 2014. Discovering statistics using R. Repr. Sage.\n\n\nFreeman, Daniel H. 1987. Applied categorical data analysis. M. Dekker.\n\n\nGohel, David, y Panagiotis Skintzos. 2026. flextable: Functions for Tabular Reporting. https://doi.org/10.32614/CRAN.package.flextable.\n\n\nHernández-Ávila, Mauricio. 2011. Epidemiología: diseño y análisis de estudios. Editorial Médica Panamericana.\n\n\nLüdecke, Daniel, Mattan S. Ben-Shachar, Indrajeet Patil, et al. 2022. «easystats: Framework for Easy Statistical Modeling, Visualization, and Reporting». CRAN, advance online publication. https://doi.org/10.32614/CRAN.package.easystats.\n\n\nOrtega Calvo, Manuel, y Aurelio Cayuela Domínguez. 2002. «Regresión logística no condicionada y tamaño de muestra: una revisión bibliográfica». Revista Española de Salud Pública 76: 85-93.\n\n\nRothman, Kenneth J. 2012. Epidemiology: an introduction. 2. ed. Oxford Univ. Press.\n\n\nRoyo-Bordonada, Miguel Angel, Javier Damian, Beatriz Perez-Gomez, et al. 2009. Método epidemiológico. Instituto de Salud Carlos III (ISCIII). Escuela Nacional de Sanidad (ENS). http://hdl.handle.net/20.500.12105/5271.\n\n\nSilva Ayçaguer, Luis Carlos. 1995. «Excursión a la regresión logística en ciencias de la salud». Madrid: Díaz de Santos.\n\n\nSjoberg, Daniel D., Karissa Whiting, Michael Curry, Jessica A. Lavery, y Joseph Larmarange. 2021. «Reproducible Summary Tables with the gtsummary Package». The R Journal 13: 570-80. https://doi.org/10.32614/RJ-2021-053.\n\n\nThompson, W. D. 1994. «Statistical analysis of case-control studies». Epidemiologic Reviews 16 (1): 33-50. https://doi.org/10.1093/oxfordjournals.epirev.a036143.\n\n\nWaring, Elin, Michael Quinn, Amelia McNamara, Eduardo Arino de la Rubia, Hao Zhu, y Shannon Ellis. 2026. skimr: Compact and Flexible Summaries of Data. https://doi.org/10.32614/CRAN.package.skimr.\n\n\nWickham, Hadley, Mara Averick, Jennifer Bryan, et al. 2019. «Welcome to the tidyverse». Journal of Open Source Software 4 (43): 1686. https://doi.org/10.21105/joss.01686.",
     "crumbs": [
       "Unidad 4",
       "<span class='chapter-number'>23</span>  <span class='chapter-title'>Regresión logística</span>"
@@ -1825,11 +1825,11 @@
     ]
   },
   {
-    "objectID": "unidad_4/03_sep_datos.html#referencias",
-    "href": "unidad_4/03_sep_datos.html#referencias",
+    "objectID": "unidad_4/03_sep_datos.html#section",
+    "href": "unidad_4/03_sep_datos.html#section",
     "title": "24  Separación de datos binomiales",
-    "section": "Referencias",
-    "text": "Referencias\n\n\n\n\nAgresti, Alan. 2015. Foundations of Linear and Generalized Linear Models. Wiley Series en Probability y Statistics. John Wiley & Sons, Inc.\n\n\nFirke, Sam. 2024. janitor: Simple Tools for Examining and Cleaning Dirty Data. https://doi.org/10.32614/CRAN.package.janitor.\n\n\nKosmidis, Ioannis, Dirk Schumacher, y Florian Schwendinger. 2026. detectseparation: Detect and Check for Separation and Infinite Maximum Likelihood Estimates. https://doi.org/10.32614/CRAN.package.detectseparation.\n\n\nWickham, Hadley, Mara Averick, Jennifer Bryan, et al. 2019. «Welcome to the tidyverse». Journal of Open Source Software 4 (43): 1686. https://doi.org/10.21105/joss.01686.",
+    "section": "",
+    "text": "Agresti, Alan. 2015. Foundations of Linear and Generalized Linear Models. Wiley Series en Probability y Statistics. John Wiley & Sons, Inc.\n\n\nFirke, Sam. 2024. janitor: Simple Tools for Examining and Cleaning Dirty Data. https://doi.org/10.32614/CRAN.package.janitor.\n\n\nKosmidis, Ioannis, Dirk Schumacher, y Florian Schwendinger. 2026. detectseparation: Detect and Check for Separation and Infinite Maximum Likelihood Estimates. https://doi.org/10.32614/CRAN.package.detectseparation.\n\n\nWickham, Hadley, Mara Averick, Jennifer Bryan, et al. 2019. «Welcome to the tidyverse». Journal of Open Source Software 4 (43): 1686. https://doi.org/10.21105/joss.01686.",
     "crumbs": [
       "Unidad 4",
       "<span class='chapter-number'>24</span>  <span class='chapter-title'>Separación de datos binomiales</span>"
@@ -1880,11 +1880,11 @@
     ]
   },
   {
-    "objectID": "unidad_4/04_reg_logistica_cond.html#referencias",
-    "href": "unidad_4/04_reg_logistica_cond.html#referencias",
+    "objectID": "unidad_4/04_reg_logistica_cond.html#section",
+    "href": "unidad_4/04_reg_logistica_cond.html#section",
     "title": "25  Regresión logística condicional",
-    "section": "Referencias",
-    "text": "Referencias\n\n\n\n\nAgresti, Alan. 2015. Foundations of Linear and Generalized Linear Models. Wiley Series en Probability y Statistics. John Wiley & Sons, Inc.\n\n\nHo, Daniel E., Kosuke Imai, Gary King, y Elizabeth A. Stuart. 2011. «MatchIt: Nonparametric Preprocessing for Parametric Causal Inference». Journal of Statistical Software 42 (8): 1-28. https://doi.org/10.18637/jss.v042.i08.\n\n\nLüdecke, Daniel, Mattan S. Ben-Shachar, Indrajeet Patil, et al. 2022. «easystats: Framework for Easy Statistical Modeling, Visualization, and Reporting». CRAN, advance online publication. https://doi.org/10.32614/CRAN.package.easystats.\n\n\nTherneau, Terry M. 2026. A Package for Survival Analysis in R. https://CRAN.R-project.org/package=survival.\n\n\nWickham, Hadley, Mara Averick, Jennifer Bryan, et al. 2019. «Welcome to the tidyverse». Journal of Open Source Software 4 (43): 1686. https://doi.org/10.21105/joss.01686.",
+    "section": "",
+    "text": "Agresti, Alan. 2015. Foundations of Linear and Generalized Linear Models. Wiley Series en Probability y Statistics. John Wiley & Sons, Inc.\n\n\nHo, Daniel E., Kosuke Imai, Gary King, y Elizabeth A. Stuart. 2011. «MatchIt: Nonparametric Preprocessing for Parametric Causal Inference». Journal of Statistical Software 42 (8): 1-28. https://doi.org/10.18637/jss.v042.i08.\n\n\nLüdecke, Daniel, Mattan S. Ben-Shachar, Indrajeet Patil, et al. 2022. «easystats: Framework for Easy Statistical Modeling, Visualization, and Reporting». CRAN, advance online publication. https://doi.org/10.32614/CRAN.package.easystats.\n\n\nTherneau, Terry M. 2026. A Package for Survival Analysis in R. https://CRAN.R-project.org/package=survival.\n\n\nWickham, Hadley, Mara Averick, Jennifer Bryan, et al. 2019. «Welcome to the tidyverse». Journal of Open Source Software 4 (43): 1686. https://doi.org/10.21105/joss.01686.",
     "crumbs": [
       "Unidad 4",
       "<span class='chapter-number'>25</span>  <span class='chapter-title'>Regresión logística condicional</span>"
@@ -1935,11 +1935,11 @@
     ]
   },
   {
-    "objectID": "unidad_4/05_mod_predict.html#referencias",
-    "href": "unidad_4/05_mod_predict.html#referencias",
+    "objectID": "unidad_4/05_mod_predict.html#section",
+    "href": "unidad_4/05_mod_predict.html#section",
     "title": "26  Validación de modelos predictivos",
-    "section": "Referencias",
-    "text": "Referencias\n\n\n\n\nCollins, G. S., J. B. Reitsma, D. G. Altman, y K. G. M. Moons. 2015. «Transparent Reporting of a Multivariable Prediction Model for Individual Prognosis or Diagnosis (TRIPOD): The TRIPOD Statement». BMJ 350 (jan07 4): g7594-94. https://doi.org/10.1136/bmj.g7594.\n\n\nFernández Félix, Borja Manuel. 2018. Validación interna de modelos predictivos de regresión logı́stica. Comando Validation (Stata).\n\n\nHarrell , Frank E. 2015. Regression Modeling Strategies. Springer International Publishing. https://doi.org/10.1007/978-3-319-19425-7.\n\n\nSteyerberg, Ewout W, Frank E Harrell, Gerard J. J. M Borsboom, M. J. C Eijkemans, Yvonne Vergouwe, y J.Dik F Habbema. 2001. «Internal Validation of Predictive Models». Journal of Clinical Epidemiology 54 (8): 774-81. https://doi.org/10.1016/s0895-4356(01)00341-9.",
+    "section": "",
+    "text": "Collins, G. S., J. B. Reitsma, D. G. Altman, y K. G. M. Moons. 2015. «Transparent Reporting of a Multivariable Prediction Model for Individual Prognosis or Diagnosis (TRIPOD): The TRIPOD Statement». BMJ 350 (jan07 4): g7594-94. https://doi.org/10.1136/bmj.g7594.\n\n\nFernández Félix, Borja Manuel. 2018. Validación interna de modelos predictivos de regresión logı́stica. Comando Validation (Stata).\n\n\nHarrell , Frank E. 2015. Regression Modeling Strategies. Springer International Publishing. https://doi.org/10.1007/978-3-319-19425-7.\n\n\nSteyerberg, Ewout W, Frank E Harrell, Gerard J. J. M Borsboom, M. J. C Eijkemans, Yvonne Vergouwe, y J.Dik F Habbema. 2001. «Internal Validation of Predictive Models». Journal of Clinical Epidemiology 54 (8): 774-81. https://doi.org/10.1016/s0895-4356(01)00341-9.",
     "crumbs": [
       "Unidad 4",
       "<span class='chapter-number'>26</span>  <span class='chapter-title'>Validación de modelos predictivos</span>"
@@ -1968,11 +1968,11 @@
     ]
   },
   {
-    "objectID": "unidad_5/01_est_cohortes.html#referencias",
-    "href": "unidad_5/01_est_cohortes.html#referencias",
+    "objectID": "unidad_5/01_est_cohortes.html#section",
+    "href": "unidad_5/01_est_cohortes.html#section",
     "title": "27  Estudios de cohortes",
-    "section": "Referencias",
-    "text": "Referencias\n\n\n\n\nHernández-Ávila, Mauricio. 2011. Epidemiología: diseño y análisis de estudios. Editorial Médica Panamericana.\n\n\nNolasco, A. 2016. «Estadística avanzada en Ciencias de la Salud». Modelos lineales.\n\n\nPérez Hoyos, Santiago. 2001. Introducción a la regresión Poisson. 1a. ed. Escola Valenciana d’Estudis per a la Salut.\n\n\nSalinas-Rodríguez, Aarón, Betty Manrique-Espinoza, y Sandra G Sosa-Rubí. 2009. «Análisis estadístico para datos de conteo: aplicaciones para el uso de los servicios de salud». salud pública de méxico 51: 397-406.",
+    "section": "",
+    "text": "Hernández-Ávila, Mauricio. 2011. Epidemiología: diseño y análisis de estudios. Editorial Médica Panamericana.\n\n\nNolasco, A. 2016. «Estadística avanzada en Ciencias de la Salud». Modelos lineales.\n\n\nPérez Hoyos, Santiago. 2001. Introducción a la regresión Poisson. 1a. ed. Escola Valenciana d’Estudis per a la Salut.\n\n\nSalinas-Rodríguez, Aarón, Betty Manrique-Espinoza, y Sandra G Sosa-Rubí. 2009. «Análisis estadístico para datos de conteo: aplicaciones para el uso de los servicios de salud». salud pública de méxico 51: 397-406.",
     "crumbs": [
       "Unidad 5",
       "<span class='chapter-number'>27</span>  <span class='chapter-title'>Estudios de cohortes</span>"
@@ -2023,11 +2023,11 @@
     ]
   },
   {
-    "objectID": "unidad_5/02_reg_poisson.html#referencias",
-    "href": "unidad_5/02_reg_poisson.html#referencias",
+    "objectID": "unidad_5/02_reg_poisson.html#section",
+    "href": "unidad_5/02_reg_poisson.html#section",
     "title": "28  Regresión de Poisson",
-    "section": "Referencias",
-    "text": "Referencias\n\n\n\n\nDe Irala, Jokin, Miguel Ángel Martínez-González, y Francisco Guillén Grima. 2001. «¿Qué es una variable de confusión?» Medicina Clínica 117 (10): 377-85. https://doi.org/10.1016/S0025-7753(01)72121-5.\n\n\nGordis, Leon. 2017. Epidemiologia. Thieme Revinter Publicações LTDA.\n\n\nHernández-Ávila, Mauricio. 2011. Epidemiología: diseño y análisis de estudios. Editorial Médica Panamericana.\n\n\nKim, Jong Hae. 2019. «Multicollinearity and Misleading Statistical Results». Korean Journal of Anesthesiology 72 (6): 558-69. https://doi.org/10.4097/kja.19087.\n\n\nKleinbaum, David G, Lawrence L Kupper, Keith E Muller, y Azhar Nizam. 1988. Applied regression analysis and other multivariable methods. Vol. 601. Duxbury press Belmont, CA.\n\n\nLüdecke, Daniel, Mattan S. Ben-Shachar, Indrajeet Patil, et al. 2022. «easystats: Framework for Easy Statistical Modeling, Visualization, and Reporting». CRAN, advance online publication. https://doi.org/10.32614/CRAN.package.easystats.\n\n\nNolasco, A. 2016. «Estadística avanzada en Ciencias de la Salud». Modelos lineales.\n\n\nPérez Hoyos, Santiago. 2001. Introducción a la regresión Poisson. 1a. ed. Escola Valenciana d’Estudis per a la Salut.\n\n\nSalinas-Rodríguez, Aarón, Betty Manrique-Espinoza, y Sandra G Sosa-Rubí. 2009. «Análisis estadístico para datos de conteo: aplicaciones para el uso de los servicios de salud». salud pública de méxico 51: 397-406.\n\n\nSjoberg, Daniel D., Karissa Whiting, Michael Curry, Jessica A. Lavery, y Joseph Larmarange. 2021. «Reproducible Summary Tables with the gtsummary Package». The R Journal 13: 570-80. https://doi.org/10.32614/RJ-2021-053.\n\n\nWickham, Hadley, Mara Averick, Jennifer Bryan, et al. 2019. «Welcome to the tidyverse». Journal of Open Source Software 4 (43): 1686. https://doi.org/10.21105/joss.01686.",
+    "section": "",
+    "text": "De Irala, Jokin, Miguel Ángel Martínez-González, y Francisco Guillén Grima. 2001. «¿Qué es una variable de confusión?» Medicina Clínica 117 (10): 377-85. https://doi.org/10.1016/S0025-7753(01)72121-5.\n\n\nGordis, Leon. 2017. Epidemiologia. Thieme Revinter Publicações LTDA.\n\n\nHernández-Ávila, Mauricio. 2011. Epidemiología: diseño y análisis de estudios. Editorial Médica Panamericana.\n\n\nKim, Jong Hae. 2019. «Multicollinearity and Misleading Statistical Results». Korean Journal of Anesthesiology 72 (6): 558-69. https://doi.org/10.4097/kja.19087.\n\n\nKleinbaum, David G, Lawrence L Kupper, Keith E Muller, y Azhar Nizam. 1988. Applied regression analysis and other multivariable methods. Vol. 601. Duxbury press Belmont, CA.\n\n\nLüdecke, Daniel, Mattan S. Ben-Shachar, Indrajeet Patil, et al. 2022. «easystats: Framework for Easy Statistical Modeling, Visualization, and Reporting». CRAN, advance online publication. https://doi.org/10.32614/CRAN.package.easystats.\n\n\nNolasco, A. 2016. «Estadística avanzada en Ciencias de la Salud». Modelos lineales.\n\n\nPérez Hoyos, Santiago. 2001. Introducción a la regresión Poisson. 1a. ed. Escola Valenciana d’Estudis per a la Salut.\n\n\nSalinas-Rodríguez, Aarón, Betty Manrique-Espinoza, y Sandra G Sosa-Rubí. 2009. «Análisis estadístico para datos de conteo: aplicaciones para el uso de los servicios de salud». salud pública de méxico 51: 397-406.\n\n\nSjoberg, Daniel D., Karissa Whiting, Michael Curry, Jessica A. Lavery, y Joseph Larmarange. 2021. «Reproducible Summary Tables with the gtsummary Package». The R Journal 13: 570-80. https://doi.org/10.32614/RJ-2021-053.\n\n\nWickham, Hadley, Mara Averick, Jennifer Bryan, et al. 2019. «Welcome to the tidyverse». Journal of Open Source Software 4 (43): 1686. https://doi.org/10.21105/joss.01686.",
     "crumbs": [
       "Unidad 5",
       "<span class='chapter-number'>28</span>  <span class='chapter-title'>Regresión de Poisson</span>"
@@ -2100,11 +2100,11 @@
     ]
   },
   {
-    "objectID": "unidad_5/03_dispersion.html#referencias",
-    "href": "unidad_5/03_dispersion.html#referencias",
+    "objectID": "unidad_5/03_dispersion.html#section",
+    "href": "unidad_5/03_dispersion.html#section",
     "title": "29  Dispersión de datos",
-    "section": "Referencias",
-    "text": "Referencias\n\n\n\n\nAgresti, Alan. 2015. Foundations of Linear and Generalized Linear Models. Wiley Series en Probability y Statistics. John Wiley & Sons, Inc.\n\n\nFirke, Sam. 2024. janitor: Simple Tools for Examining and Cleaning Dirty Data. https://doi.org/10.32614/CRAN.package.janitor.\n\n\nHartig, Florian. 2026. DHARMa: Residual Diagnostics for Hierarchical (Multi-Level / Mixed) Regression Models. https://doi.org/10.32614/CRAN.package.DHARMa.\n\n\nLüdecke, Daniel, Mattan S. Ben-Shachar, Indrajeet Patil, et al. 2022. «easystats: Framework for Easy Statistical Modeling, Visualization, and Reporting». CRAN, advance online publication. https://doi.org/10.32614/CRAN.package.easystats.\n\n\nMcGillycuddy, Maeve, David I. Warton, Gordana Popovic, y Benjamin M. Bolker. 2025. «Parsimoniously Fitting Large Multivariate Random Effects in glmmTMB». Journal of Statistical Software 112 (1): 1-19. https://doi.org/10.18637/jss.v112.i01.\n\n\nSalinas-Rodríguez, Aarón, Betty Manrique-Espinoza, y Sandra G Sosa-Rubí. 2009. «Análisis estadístico para datos de conteo: aplicaciones para el uso de los servicios de salud». salud pública de méxico 51: 397-406.\n\n\nSjoberg, Daniel D., Karissa Whiting, Michael Curry, Jessica A. Lavery, y Joseph Larmarange. 2021. «Reproducible Summary Tables with the gtsummary Package». The R Journal 13: 570-80. https://doi.org/10.32614/RJ-2021-053.\n\n\nWickham, Hadley, Mara Averick, Jennifer Bryan, et al. 2019. «Welcome to the tidyverse». Journal of Open Source Software 4 (43): 1686. https://doi.org/10.21105/joss.01686.",
+    "section": "",
+    "text": "Agresti, Alan. 2015. Foundations of Linear and Generalized Linear Models. Wiley Series en Probability y Statistics. John Wiley & Sons, Inc.\n\n\nFirke, Sam. 2024. janitor: Simple Tools for Examining and Cleaning Dirty Data. https://doi.org/10.32614/CRAN.package.janitor.\n\n\nHartig, Florian. 2026. DHARMa: Residual Diagnostics for Hierarchical (Multi-Level / Mixed) Regression Models. https://doi.org/10.32614/CRAN.package.DHARMa.\n\n\nLüdecke, Daniel, Mattan S. Ben-Shachar, Indrajeet Patil, et al. 2022. «easystats: Framework for Easy Statistical Modeling, Visualization, and Reporting». CRAN, advance online publication. https://doi.org/10.32614/CRAN.package.easystats.\n\n\nMcGillycuddy, Maeve, David I. Warton, Gordana Popovic, y Benjamin M. Bolker. 2025. «Parsimoniously Fitting Large Multivariate Random Effects in glmmTMB». Journal of Statistical Software 112 (1): 1-19. https://doi.org/10.18637/jss.v112.i01.\n\n\nSalinas-Rodríguez, Aarón, Betty Manrique-Espinoza, y Sandra G Sosa-Rubí. 2009. «Análisis estadístico para datos de conteo: aplicaciones para el uso de los servicios de salud». salud pública de méxico 51: 397-406.\n\n\nSjoberg, Daniel D., Karissa Whiting, Michael Curry, Jessica A. Lavery, y Joseph Larmarange. 2021. «Reproducible Summary Tables with the gtsummary Package». The R Journal 13: 570-80. https://doi.org/10.32614/RJ-2021-053.\n\n\nWickham, Hadley, Mara Averick, Jennifer Bryan, et al. 2019. «Welcome to the tidyverse». Journal of Open Source Software 4 (43): 1686. https://doi.org/10.21105/joss.01686.",
     "crumbs": [
       "Unidad 5",
       "<span class='chapter-number'>29</span>  <span class='chapter-title'>Dispersión de datos</span>"
@@ -2166,11 +2166,11 @@
     ]
   },
   {
-    "objectID": "unidad_6/01_est_experimentales.html#referencias",
-    "href": "unidad_6/01_est_experimentales.html#referencias",
+    "objectID": "unidad_6/01_est_experimentales.html#section",
+    "href": "unidad_6/01_est_experimentales.html#section",
     "title": "30  Estudios Experimentales",
-    "section": "Referencias",
-    "text": "Referencias\n\n\n\n\nHernández-Ávila, Mauricio. 2011. Epidemiología: diseño y análisis de estudios. Editorial Médica Panamericana.\n\n\nRoyo-Bordonada, Miguel Angel, Javier Damian, Beatriz Perez-Gomez, et al. 2009. Método epidemiológico. Instituto de Salud Carlos III (ISCIII). Escuela Nacional de Sanidad (ENS). http://hdl.handle.net/20.500.12105/5271.\n\n\nWoodward, M. 2005. Epidemiology: Study Design and Data Analysis. Texts en statistical science. Chapman & Hall/CRC. https://books.google.com.ar/books?id=kcDHxgEACAAJ.",
+    "section": "",
+    "text": "Hernández-Ávila, Mauricio. 2011. Epidemiología: diseño y análisis de estudios. Editorial Médica Panamericana.\n\n\nRoyo-Bordonada, Miguel Angel, Javier Damian, Beatriz Perez-Gomez, et al. 2009. Método epidemiológico. Instituto de Salud Carlos III (ISCIII). Escuela Nacional de Sanidad (ENS). http://hdl.handle.net/20.500.12105/5271.\n\n\nWoodward, M. 2005. Epidemiology: Study Design and Data Analysis. Texts en statistical science. Chapman & Hall/CRC. https://books.google.com.ar/books?id=kcDHxgEACAAJ.",
     "crumbs": [
       "Unidad 6",
       "<span class='chapter-number'>30</span>  <span class='chapter-title'>Estudios Experimentales</span>"
@@ -2210,11 +2210,11 @@
     ]
   },
   {
-    "objectID": "unidad_6/02_analisis_superv.html#referencias",
-    "href": "unidad_6/02_analisis_superv.html#referencias",
+    "objectID": "unidad_6/02_analisis_superv.html#section",
+    "href": "unidad_6/02_analisis_superv.html#section",
     "title": "31  Análisis de supervivencia",
-    "section": "Referencias",
-    "text": "Referencias\n\n\n\n\nHernández-Ávila, Mauricio. 2011. Epidemiología: diseño y análisis de estudios. Editorial Médica Panamericana.\n\n\nRoyo-Bordonada, Miguel Angel, Javier Damian, Beatriz Perez-Gomez, et al. 2009. Método epidemiológico. Instituto de Salud Carlos III (ISCIII). Escuela Nacional de Sanidad (ENS). http://hdl.handle.net/20.500.12105/5271.\n\n\nWoodward, M. 2005. Epidemiology: Study Design and Data Analysis. Texts en statistical science. Chapman & Hall/CRC. https://books.google.com.ar/books?id=kcDHxgEACAAJ.",
+    "section": "",
+    "text": "Hernández-Ávila, Mauricio. 2011. Epidemiología: diseño y análisis de estudios. Editorial Médica Panamericana.\n\n\nRoyo-Bordonada, Miguel Angel, Javier Damian, Beatriz Perez-Gomez, et al. 2009. Método epidemiológico. Instituto de Salud Carlos III (ISCIII). Escuela Nacional de Sanidad (ENS). http://hdl.handle.net/20.500.12105/5271.\n\n\nWoodward, M. 2005. Epidemiology: Study Design and Data Analysis. Texts en statistical science. Chapman & Hall/CRC. https://books.google.com.ar/books?id=kcDHxgEACAAJ.",
     "crumbs": [
       "Unidad 6",
       "<span class='chapter-number'>31</span>  <span class='chapter-title'>Análisis de supervivencia</span>"
@@ -2320,11 +2320,11 @@
     ]
   },
   {
-    "objectID": "unidad_6/03_metodos_analisis.html#referencias",
-    "href": "unidad_6/03_metodos_analisis.html#referencias",
+    "objectID": "unidad_6/03_metodos_analisis.html#section",
+    "href": "unidad_6/03_metodos_analisis.html#section",
     "title": "32  Métodos para el análisis de supervivencia",
-    "section": "Referencias",
-    "text": "Referencias\n\n\n\n\nHernández-Ávila, Mauricio. 2011. Epidemiología: diseño y análisis de estudios. Editorial Médica Panamericana.\n\n\nKassambara, Alboukadel, Marcin Kosinski, y Przemyslaw Biecek. 2026. survminer: Drawing Survival Curves using ’ggplot2’. https://doi.org/10.32614/CRAN.package.survminer.\n\n\nRoyo-Bordonada, Miguel Angel, Javier Damian, Beatriz Perez-Gomez, et al. 2009. Método epidemiológico. Instituto de Salud Carlos III (ISCIII). Escuela Nacional de Sanidad (ENS). http://hdl.handle.net/20.500.12105/5271.\n\n\nTherneau, Terry M. 2026. A Package for Survival Analysis in R. https://CRAN.R-project.org/package=survival.\n\n\nWoodward, M. 2005. Epidemiology: Study Design and Data Analysis. Texts en statistical science. Chapman & Hall/CRC. https://books.google.com.ar/books?id=kcDHxgEACAAJ.",
+    "section": "",
+    "text": "Hernández-Ávila, Mauricio. 2011. Epidemiología: diseño y análisis de estudios. Editorial Médica Panamericana.\n\n\nKassambara, Alboukadel, Marcin Kosinski, y Przemyslaw Biecek. 2026. survminer: Drawing Survival Curves using ’ggplot2’. https://doi.org/10.32614/CRAN.package.survminer.\n\n\nRoyo-Bordonada, Miguel Angel, Javier Damian, Beatriz Perez-Gomez, et al. 2009. Método epidemiológico. Instituto de Salud Carlos III (ISCIII). Escuela Nacional de Sanidad (ENS). http://hdl.handle.net/20.500.12105/5271.\n\n\nTherneau, Terry M. 2026. A Package for Survival Analysis in R. https://CRAN.R-project.org/package=survival.\n\n\nWoodward, M. 2005. Epidemiology: Study Design and Data Analysis. Texts en statistical science. Chapman & Hall/CRC. https://books.google.com.ar/books?id=kcDHxgEACAAJ.",
     "crumbs": [
       "Unidad 6",
       "<span class='chapter-number'>32</span>  <span class='chapter-title'>Métodos para el análisis de supervivencia</span>"
@@ -2405,336 +2405,6 @@
     "crumbs": [
       "Unidad 6",
       "<span class='chapter-number'>33</span>  <span class='chapter-title'>Regresión de Cox</span>"
-    ]
-  },
-  {
-    "objectID": "unidad_6/04_reg_cox.html#referencias",
-    "href": "unidad_6/04_reg_cox.html#referencias",
-    "title": "33  Regresión de Cox",
-    "section": "Referencias",
-    "text": "Referencias\n\n\n\n\nCox, D. R. 1972. «Regression Models and Life-Tables». Journal of the Royal Statistical Society Series B: Statistical Methodology 34 (2): 187-202. https://doi.org/10.1111/j.2517-6161.1972.tb00899.x.\n\n\nHarrell, Frank E., Kerry L. Lee, y Daniel B. Mark. 1996. «MULTIVARIABLE PROGNOSTIC MODELS: ISSUES IN DEVELOPING MODELS, EVALUATING ASSUMPTIONS AND ADEQUACY, AND MEASURING AND REDUCING ERRORS». Statistics in Medicine 15 (4): 361-87. https://doi.org/10.1002/(SICI)1097-0258(19960229)15:4&lt;361::AID-SIM168&gt;3.0.CO;2-4.\n\n\nHernández-Ávila, Mauricio. 2011. Epidemiología: diseño y análisis de estudios. Editorial Médica Panamericana.\n\n\nKassambara, Alboukadel, Marcin Kosinski, y Przemyslaw Biecek. 2026. survminer: Drawing Survival Curves using ’ggplot2’. https://doi.org/10.32614/CRAN.package.survminer.\n\n\nLüdecke, Daniel, Mattan S. Ben-Shachar, Indrajeet Patil, et al. 2022. «easystats: Framework for Easy Statistical Modeling, Visualization, and Reporting». CRAN, advance online publication. https://doi.org/10.32614/CRAN.package.easystats.\n\n\nRoyo-Bordonada, Miguel Angel, Javier Damian, Beatriz Perez-Gomez, et al. 2009. Método epidemiológico. Instituto de Salud Carlos III (ISCIII). Escuela Nacional de Sanidad (ENS). http://hdl.handle.net/20.500.12105/5271.\n\n\nTherneau, Terry M., y Patricia M. Grambsch. 2000. Modeling Survival Data: Extending the Cox Model. Editado por K. Dietz, M. Gail, K. Krickeberg, J. Samet, y A. Tsiatis. Statistics for Biology y Health. Springer New York. https://doi.org/10.1007/978-1-4757-3294-8.\n\n\nWoodward, M. 2005. Epidemiology: Study Design and Data Analysis. Texts en statistical science. Chapman & Hall/CRC. https://books.google.com.ar/books?id=kcDHxgEACAAJ.",
-    "crumbs": [
-      "Unidad 6",
-      "<span class='chapter-number'>33</span>  <span class='chapter-title'>Regresión de Cox</span>"
-    ]
-  },
-  {
-    "objectID": "unidad_1/06_analisis_exploratorio.html#section",
-    "href": "unidad_1/06_analisis_exploratorio.html#section",
-    "title": "6  Análisis exploratorio de datos",
-    "section": "",
-    "text": "Firke, Sam. 2024. janitor: Simple Tools for Examining and Cleaning Dirty Data. https://doi.org/10.32614/CRAN.package.janitor.\n\n\nRyu, Choonghyun. 2025. dlookr: Tools for Data Diagnosis, Exploration, Transformation. https://CRAN.R-project.org/package=dlookr.\n\n\nWaring, Elin, Michael Quinn, Amelia McNamara, Eduardo Arino de la Rubia, Hao Zhu, y Shannon Ellis. 2026. skimr: Compact and Flexible Summaries of Data. https://doi.org/10.32614/CRAN.package.skimr.",
-    "crumbs": [
-      "Unidad 1",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Análisis exploratorio de datos</span>"
-    ]
-  },
-  {
-    "objectID": "unidad_1/03_intro_tidyverse.html#section",
-    "href": "unidad_1/03_intro_tidyverse.html#section",
-    "title": "3  Introducción a tidyverse",
-    "section": "",
-    "text": "Bache, Stefan Milton, y Hadley Wickham. 2026. magrittr: A Forward-Pipe Operator for R. https://doi.org/10.32614/CRAN.package.magrittr.\n\n\nMüller, Kirill, y Hadley Wickham. 2026. tibble: Simple Data Frames. https://doi.org/10.32614/CRAN.package.tibble.\n\n\nWickham, Hadley, Mara Averick, Jennifer Bryan, et al. 2019. «Welcome to the tidyverse». Journal of Open Source Software 4 (43): 1686. https://doi.org/10.21105/joss.01686.\n\n\nWickham, Hadley, y Jennifer Bryan. 2026. readxl: Read Excel Files. https://doi.org/10.32614/CRAN.package.readxl.\n\n\nWickham, Hadley, Jim Hester, y Jennifer Bryan. 2026. readr: Read Rectangular Text Data. https://doi.org/10.32614/CRAN.package.readr.",
-    "crumbs": [
-      "Unidad 1",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Introducción a `tidyverse`</span>"
-    ]
-  },
-  {
-    "objectID": "unidad_1/04_intro_dplyr.html#section",
-    "href": "unidad_1/04_intro_dplyr.html#section",
-    "title": "4  Gestión de datos con dplyr",
-    "section": "",
-    "text": "Wickham, Hadley. 2011. «The Split-Apply-Combine Strategy for Data Analysis». Journal of Statistical Software 40 (1): 1-29. https://www.jstatsoft.org/v40/i01/.\n\n\nWickham, Hadley, Romain François, Lionel Henry, Kirill Müller, y Davis Vaughan. 2026. dplyr: A Grammar of Data Manipulation. https://doi.org/10.32614/CRAN.package.dplyr.",
-    "crumbs": [
-      "Unidad 1",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Gestión de datos con `dplyr`</span>"
-    ]
-  },
-  {
-    "objectID": "unidad_1/05_intro_ggplot.html#section",
-    "href": "unidad_1/05_intro_ggplot.html#section",
-    "title": "5  Gráficos estadísticos con ggplot2",
-    "section": "",
-    "text": "Horikoshi, Masaaki, y Yuan Tang. 2018. ggfortify: Data Visualization Tools for Statistical Analysis Results. https://CRAN.R-project.org/package=ggfortify.\n\n\nKassambara, Alboukadel. 2026. ggpubr: ’ggplot2’ Based Publication Ready Plots. https://CRAN.R-project.org/package=ggpubr.\n\n\nKassambara, Alboukadel, Marcin Kosinski, y Przemyslaw Biecek. 2026. survminer: Drawing Survival Curves using ’ggplot2’. https://doi.org/10.32614/CRAN.package.survminer.\n\n\nLüdecke, Daniel, Indrajeet Patil, Mattan S. Ben-Shachar, Brenton M. Wiernik, Philip Waggoner, y Dominique Makowski. 2021. «see: An R Package for Visualizing Statistical Models». Journal of Open Source Software 6 (64): 3393. https://doi.org/10.21105/joss.03393.\n\n\nMeyer, Fanny, y Victor Perrier. 2025. esquisse: Explore and Visualize Your Data Interactively. https://doi.org/10.32614/CRAN.package.esquisse.\n\n\nPedersen, Thomas Lin. 2025. patchwork: The Composer of Plots. https://doi.org/10.32614/CRAN.package.patchwork.\n\n\nPedersen, Thomas Lin, y Fabio Crameri. 2023. scico: Colour Palettes Based on the Scientific Colour-Maps. https://doi.org/10.32614/CRAN.package.scico.\n\n\nSchloerke, Barret, Di Cook, Joseph Larmarange, et al. 2025. GGally: Extension to ’ggplot2’. https://doi.org/10.32614/CRAN.package.GGally.\n\n\nTennekes, Martijn, y Marco J. H. Puts. 2023. «cols4all: a color palette analysis tool». EuroVis (Short Papers). https://doi.org/10.2312/evs.20231040.\n\n\nWickham, Hadley. 2016. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York. https://ggplot2.tidyverse.org.",
-    "crumbs": [
-      "Unidad 1",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Gráficos estadísticos con `ggplot2`</span>"
-    ]
-  },
-  {
-    "objectID": "unidad_4/01_est_caso_control.html#section",
-    "href": "unidad_4/01_est_caso_control.html#section",
-    "title": "22  Estudios de casos y controles",
-    "section": "",
-    "text": "Field, Andy, Jeremy Miles, y Zoë Field. 2014. Discovering statistics using R. Repr. Sage.\n\n\nHernández-Ávila, Mauricio. 2011. Epidemiología: diseño y análisis de estudios. Editorial Médica Panamericana.\n\n\nOrtega Calvo, Manuel, y Aurelio Cayuela Domínguez. 2002. «Regresión logística no condicionada y tamaño de muestra: una revisión bibliográfica». Revista Española de Salud Pública 76: 85-93.\n\n\nRothman, Kenneth J. 2012. Epidemiology: an introduction. 2. ed. Oxford Univ. Press.\n\n\nRoyo-Bordonada, Miguel Angel, Javier Damian, Beatriz Perez-Gomez, et al. 2009. Método epidemiológico. Instituto de Salud Carlos III (ISCIII). Escuela Nacional de Sanidad (ENS). http://hdl.handle.net/20.500.12105/5271.\n\n\nSilva Ayçaguer, Luis Carlos. 1995. «Excursión a la regresión logística en ciencias de la salud». Madrid: Díaz de Santos.\n\n\nThompson, W. D. 1994. «Statistical analysis of case-control studies». Epidemiologic Reviews 16 (1): 33-50. https://doi.org/10.1093/oxfordjournals.epirev.a036143.",
-    "crumbs": [
-      "Unidad 4",
-      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Estudios de casos y controles</span>"
-    ]
-  },
-  {
-    "objectID": "unidad_2/01_est_epidemiologicos.html#section",
-    "href": "unidad_2/01_est_epidemiologicos.html#section",
-    "title": "8  Estudios epidemiológicos",
-    "section": "",
-    "text": "Elm, Erik von, Douglas G. Altman, Matthias Egger, Stuart J. Pocock, Peter C. Gøtzsche, y Jan P. Vandenbroucke. 2008. «The Strengthening the Reporting of Observational Studies in Epidemiology (STROBE) Statement: Guidelines for Reporting Observational Studies». Journal of Clinical Epidemiology 61 (4): 344-49. https://doi.org/10.1016/j.jclinepi.2007.11.008.\n\n\nHernández-Ávila, Mauricio. 2011. Epidemiología: diseño y análisis de estudios. Editorial Médica Panamericana.\n\n\nSchulz, K. F, D. G Altman, y D. Moher. 2010. «CONSORT 2010 Statement: Updated Guidelines for Reporting Parallel Group Randomised Trials». BMJ 340 (mar23 1): c332-32. https://doi.org/10.1136/bmj.c332.",
-    "crumbs": [
-      "Unidad 2",
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Estudios epidemiológicos</span>"
-    ]
-  },
-  {
-    "objectID": "unidad_2/02_est_transversales.html#section",
-    "href": "unidad_2/02_est_transversales.html#section",
-    "title": "9  Estudios de corte transversal",
-    "section": "",
-    "text": "Hernández-Ávila, Mauricio. 2011. Epidemiología: diseño y análisis de estudios. Editorial Médica Panamericana.\n\n\nRodríguez, Milena, y Fredy Mendivelso. 2018. «Diseño de investigación de corte transversal». Revista Médica Sanitas 21 (3): 141-47. https://revistas.unisanitas.edu.co/index.php/rms/article/view/368.",
-    "crumbs": [
-      "Unidad 2",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Estudios de corte transversal</span>"
-    ]
-  },
-  {
-    "objectID": "unidad_2/03_inferencia.html#section",
-    "href": "unidad_2/03_inferencia.html#section",
-    "title": "10  Inferencia estadística",
-    "section": "",
-    "text": "Álvarez Cáceres, Rafael. 2007. Estadística aplicada a las ciencias de la salud. Ediciones Díaz de Santos.\n\n\nChampely, Stephane. 2020. pwr: Basic Functions for Power Analysis. https://doi.org/10.32614/CRAN.package.pwr.\n\n\nDaniel, Wayne W. 2002. Bioestadística: Base para el análisis de las ciencias de la salud. 4.ª ed. Limusa Wiley.\n\n\nEPIDAT 4.2 - Consellería de Sanidade - Servizo Galego de Saúde. s. f. Accedido 11 de junio de 2024. https://www.sergas.es/Saude-publica/EPIDAT-4-2.\n\n\nGlantz, S. 2006. Bioestadística. 6.ª ed. McGraw Hill.\n\n\nHernández-Ávila, Mauricio. 2011. Epidemiología: diseño y análisis de estudios. Editorial Médica Panamericana.\n\n\nManitz, Juliane, Mark Hempelmann, Goeran Kauermann, et al. 2021. samplingbook: Survey Sampling Procedures. https://doi.org/10.32614/CRAN.package.samplingbook.\n\n\nNorman, GR, y Streiner, DL. 1996. Bioestadística. Mosby/Doyma Libros.\n\n\nRíus Díaz, Francisca, Francisco Javier Barón Lopez, Elisa Sánchez Font, y Luis Parras Guijosa. 2012. Bioestadística: Métodos y Aplicaciones. http://virtual.uptc.edu.co/ova/estadistica/docs/libros/ftp.bioestadistica.uma.es/libro/.\n\n\nRodríguez, Milena, y Fredy Mendivelso. 2018. «Diseño de investigación de corte transversal». Revista Médica Sanitas 21 (3): 141-47. https://revistas.unisanitas.edu.co/index.php/rms/article/view/368.\n\n\nRodríguez, VM, Verónica A Martínez Ordaz, José Roiz Hernández, Francisco Huazano García, y Armando Nieves Rentería. 2003. «Muestreo y tamaño de la muestra». Una guía práctica. Coahuila, México: El Cid Editor.\n\n\nRyu, Choonghyun. 2025. dlookr: Tools for Data Diagnosis, Exploration, Transformation. https://CRAN.R-project.org/package=dlookr.\n\n\nTriola, Mario F. 2018. ESTADÍSTICA Decimosegunda Edicion. Pearson Educación de México, SA de CV.",
-    "crumbs": [
-      "Unidad 2",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Inferencia estadística</span>"
-    ]
-  },
-  {
-    "objectID": "unidad_2/04_norm_het.html#section",
-    "href": "unidad_2/04_norm_het.html#section",
-    "title": "11  Análisis de normalidad y homocedasticidad",
-    "section": "",
-    "text": "Gross, Juergen, y Uwe Ligges. 2015. nortest: Tests for Normality. https://doi.org/10.32614/CRAN.package.nortest.\n\n\nKassambara, Alboukadel. 2026a. ggpubr: ’ggplot2’ Based Publication Ready Plots. https://CRAN.R-project.org/package=ggpubr.\n\n\nKassambara, Alboukadel. 2026b. rstatix: Pipe-Friendly Framework for Basic Statistical Tests. https://doi.org/10.32614/CRAN.package.rstatix.\n\n\nKomsta, Lukasz, y Frederick Novomestky. 2022. moments: Moments, Cumulants, Skewness, Kurtosis and Related Tests. https://doi.org/10.32614/CRAN.package.moments.\n\n\nVan Cauwenberghe, Lisbeth, y Colin R. Janssen. 2014. «Microplastics in Bivalves Cultured for Human Consumption». Environmental Pollution 193 (octubre): 65-70. https://doi.org/10.1016/j.envpol.2014.06.010.\n\n\nWickham, Hadley, Mara Averick, Jennifer Bryan, et al. 2019. «Welcome to the tidyverse». Journal of Open Source Software 4 (43): 1686. https://doi.org/10.21105/joss.01686.",
-    "crumbs": [
-      "Unidad 2",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Análisis de normalidad y homocedasticidad</span>"
-    ]
-  },
-  {
-    "objectID": "unidad_2/05_muestreo.html#section",
-    "href": "unidad_2/05_muestreo.html#section",
-    "title": "12  Selección de la muestra",
-    "section": "",
-    "text": "Álvarez Cáceres, Rafael. 2007. Estadística aplicada a las ciencias de la salud. Ediciones Díaz de Santos.\n\n\nChampely, Stephane. 2020. pwr: Basic Functions for Power Analysis. https://doi.org/10.32614/CRAN.package.pwr.\n\n\nDaniel, Wayne W. 2002. Bioestadística: Base para el análisis de las ciencias de la salud. 4.ª ed. Limusa Wiley.\n\n\nElm, Erik von, Douglas G. Altman, Matthias Egger, Stuart J. Pocock, Peter C. Gøtzsche, y Jan P. Vandenbroucke. 2008. «The Strengthening the Reporting of Observational Studies in Epidemiology (STROBE) Statement: Guidelines for Reporting Observational Studies». Journal of Clinical Epidemiology 61 (4): 344-49. https://doi.org/10.1016/j.jclinepi.2007.11.008.\n\n\nEPIDAT 4.2 - Consellería de Sanidade - Servizo Galego de Saúde. s. f. Accedido 11 de junio de 2024. https://www.sergas.es/Saude-publica/EPIDAT-4-2.\n\n\nField, Andy, Jeremy Miles, y Zoë Field. 2014. Discovering statistics using R. Repr. Sage.\n\n\nGlantz, S. 2006. Bioestadística. 6.ª ed. McGraw Hill.\n\n\nHernández-Ávila, Mauricio. 2011. Epidemiología: diseño y análisis de estudios. Editorial Médica Panamericana.\n\n\nManitz, Juliane, Mark Hempelmann, Goeran Kauermann, et al. 2021. samplingbook: Survey Sampling Procedures. https://doi.org/10.32614/CRAN.package.samplingbook.\n\n\nNorman, GR, y Streiner, DL. 1996. Bioestadística. Mosby/Doyma Libros.\n\n\nRíus Díaz, Francisca, Francisco Javier Barón Lopez, Elisa Sánchez Font, y Luis Parras Guijosa. 2012. Bioestadística: Métodos y Aplicaciones. http://virtual.uptc.edu.co/ova/estadistica/docs/libros/ftp.bioestadistica.uma.es/libro/.\n\n\nRodríguez, Milena, y Fredy Mendivelso. 2018. «Diseño de investigación de corte transversal». Revista Médica Sanitas 21 (3): 141-47. https://revistas.unisanitas.edu.co/index.php/rms/article/view/368.\n\n\nRodríguez, VM, Verónica A Martínez Ordaz, José Roiz Hernández, Francisco Huazano García, y Armando Nieves Rentería. 2003. «Muestreo y tamaño de la muestra». Una guía práctica. Coahuila, México: El Cid Editor.\n\n\nSchulz, K. F, D. G Altman, y D. Moher. 2010. «CONSORT 2010 Statement: Updated Guidelines for Reporting Parallel Group Randomised Trials». BMJ 340 (mar23 1): c332-32. https://doi.org/10.1136/bmj.c332.\n\n\nStevenson, Mark, y Evan Sergeant. 2026. epiR: Tools for the Analysis of Epidemiological Data. https://doi.org/10.32614/CRAN.package.epiR.\n\n\nTriola, Mario F. 2018. ESTADÍSTICA Decimosegunda Edicion. Pearson Educación de México, SA de CV.",
-    "crumbs": [
-      "Unidad 2",
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Selección de la muestra</span>"
-    ]
-  },
-  {
-    "objectID": "unidad_2/06_fun_condic.html#section",
-    "href": "unidad_2/06_fun_condic.html#section",
-    "title": "13  Funciones condicionales en R",
-    "section": "",
-    "text": "Spina, Alexander, Zhian N. Kamvar, y Dirk Schumacher. 2025. epikit: Miscellaneous Helper Tools for Epidemiologists. https://doi.org/10.32614/CRAN.package.epikit.",
-    "crumbs": [
-      "Unidad 2",
-      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Funciones condicionales en R</span>"
-    ]
-  },
-  {
-    "objectID": "unidad_2/07_IC_complejos.html#section",
-    "href": "unidad_2/07_IC_complejos.html#section",
-    "title": "14  Intervalos de confianza en muestras complejas",
-    "section": "",
-    "text": "Aycaguer, Luis Carlos Silva. 2000. Diseño razonado de muestras y captación de datos para la investigación sanitaria. Ediciones Díaz de Santos.\n\n\nBell, Bethany A., Anthony J. Onwuegbuzie, John M. Ferron, Qun G. Jiao, Susan T. Hibbard, y Jeffrey D. Kromrey. 2012. «Use of Design Effects and Sample Weights in Complex Health Survey Data: A Review of Published Articles Using Data From 3 Commonly Used Adolescent Health Surveys». American Journal of Public Health 102 (7): 1399-405. https://doi.org/10.2105/AJPH.2011.300398.\n\n\nEPIDAT 4.2 - Consellería de Sanidade - Servizo Galego de Saúde. s. f. Accedido 11 de junio de 2024. https://www.sergas.es/Saude-publica/EPIDAT-4-2.\n\n\nFreedman Ellis, Greg, y Ben Schneider. 2026. srvyr: ’dplyr’-Like Syntax for Summary Statistics of Survey Data. https://doi.org/10.32614/CRAN.package.srvyr.\n\n\nGutiérrez, Andrés, Xavier Mancero, Alvaro Fuentes, Felipe López, y Felipe Molina. 2020. Criterios de calidad en la estimación de indicadores a partir de encuestas de hogares: una aplicación a la migración internacional.\n\n\nLumley, Thomas. 2010. Complex Surveys: A Guide to Analysis Using R: A Guide to Analysis Using R. John Wiley; Sons.\n\n\nNational Research Council; Division of Behavioral and Social Sciences and Education. 2015. Realizing the Potential of the American Community Survey: Challenges, Tradeoffs, and Opportunities. National Academies Press. https://doi.org/10.17226/21653.\n\n\nSakshaug, Joseph W., y Brady T. West. 2014. «Important Considerations When Analyzing Health Survey Data Collected Using a Complex Sample Design». American Journal of Public Health 104 (1): 15-16. https://doi.org/10.2105/AJPH.2013.301515.",
-    "crumbs": [
-      "Unidad 2",
-      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Intervalos de confianza en muestras complejas</span>"
-    ]
-  },
-  {
-    "objectID": "unidad_3/01_est_ecologicos.html#section",
-    "href": "unidad_3/01_est_ecologicos.html#section",
-    "title": "15  Estudios ecológicos",
-    "section": "",
-    "text": "Ballester Díez, Ferrán, y José María Tenías Burillo. 2003. Estudios ecológicos. Valencia : Escola Valenciana d’Estudis per a la Salut, 2003.\n\n\nDaniel, Wayne W. 2002. Bioestadística: Base para el análisis de las ciencias de la salud. 4.ª ed. Limusa Wiley.\n\n\nHernández-Ávila, Mauricio. 2011. Epidemiología: diseño y análisis de estudios. Editorial Médica Panamericana.\n\n\nRoyo-Bordonada, Miguel Angel, Javier Damian, Beatriz Perez-Gomez, et al. 2009. Método epidemiológico. Instituto de Salud Carlos III (ISCIII). Escuela Nacional de Sanidad (ENS). http://hdl.handle.net/20.500.12105/5271.\n\n\nTriola, Mario F. 2018. ESTADÍSTICA Decimosegunda Edicion. Pearson Educación de México, SA de CV.\n\n\nWeisberg, Sanford. 2005. Applied linear regression. Vol. 528. John Wiley & Sons.",
-    "crumbs": [
-      "Unidad 3",
-      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Estudios ecológicos</span>"
-    ]
-  },
-  {
-    "objectID": "unidad_3/02_mod_estadistico.html#section",
-    "href": "unidad_3/02_mod_estadistico.html#section",
-    "title": "16  Introducción al modelado estadístico",
-    "section": "",
-    "text": "Agresti, Alan. 2015. Foundations of Linear and Generalized Linear Models. Wiley Series en Probability y Statistics. John Wiley & Sons, Inc.\n\n\nTriola, Mario F. 2018. ESTADÍSTICA Decimosegunda Edicion. Pearson Educación de México, SA de CV.",
-    "crumbs": [
-      "Unidad 3",
-      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Introducción al modelado estadístico</span>"
-    ]
-  },
-  {
-    "objectID": "unidad_3/03_covarianza_correlacion.html#section",
-    "href": "unidad_3/03_covarianza_correlacion.html#section",
-    "title": "17  Covarianza y correlación",
-    "section": "",
-    "text": "Agresti, Alan. 2015. Foundations of Linear and Generalized Linear Models. Wiley Series en Probability y Statistics. John Wiley & Sons, Inc.\n\n\nLüdecke, Daniel, Mattan S. Ben-Shachar, Indrajeet Patil, et al. 2022. «easystats: Framework for Easy Statistical Modeling, Visualization, and Reporting». CRAN, advance online publication. https://doi.org/10.32614/CRAN.package.easystats.\n\n\nSchloerke, Barret, Di Cook, Joseph Larmarange, et al. 2025. GGally: Extension to ’ggplot2’. https://doi.org/10.32614/CRAN.package.GGally.\n\n\nTriola, Mario F. 2018. ESTADÍSTICA Decimosegunda Edicion. Pearson Educación de México, SA de CV.\n\n\nWickham, Hadley, Mara Averick, Jennifer Bryan, et al. 2019. «Welcome to the tidyverse». Journal of Open Source Software 4 (43): 1686. https://doi.org/10.21105/joss.01686.",
-    "crumbs": [
-      "Unidad 3",
-      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Covarianza y correlación</span>"
-    ]
-  },
-  {
-    "objectID": "unidad_3/04_reg_lineal.html#section",
-    "href": "unidad_3/04_reg_lineal.html#section",
-    "title": "18  Regresión lineal simple",
-    "section": "",
-    "text": "Ballester Díez, Ferrán, y José María Tenías Burillo. 2003. Estudios ecológicos. Valencia : Escola Valenciana d’Estudis per a la Salut, 2003.\n\n\nDaniel, Wayne W. 2002. Bioestadística: Base para el análisis de las ciencias de la salud. 4.ª ed. Limusa Wiley.\n\n\nGross, Juergen, y Uwe Ligges. 2015. nortest: Tests for Normality. https://doi.org/10.32614/CRAN.package.nortest.\n\n\nHernández-Ávila, Mauricio. 2011. Epidemiología: diseño y análisis de estudios. Editorial Médica Panamericana.\n\n\nLüdecke, Daniel, Mattan S. Ben-Shachar, Indrajeet Patil, et al. 2022. «easystats: Framework for Easy Statistical Modeling, Visualization, and Reporting». CRAN, advance online publication. https://doi.org/10.32614/CRAN.package.easystats.\n\n\nRoyo-Bordonada, Miguel Angel, Javier Damian, Beatriz Perez-Gomez, et al. 2009. Método epidemiológico. Instituto de Salud Carlos III (ISCIII). Escuela Nacional de Sanidad (ENS). http://hdl.handle.net/20.500.12105/5271.\n\n\nSjoberg, Daniel D., Karissa Whiting, Michael Curry, Jessica A. Lavery, y Joseph Larmarange. 2021. «Reproducible Summary Tables with the gtsummary Package». The R Journal 13: 570-80. https://doi.org/10.32614/RJ-2021-053.\n\n\nWeisberg, Sanford. 2005. Applied linear regression. Vol. 528. John Wiley & Sons.\n\n\nZeileis, Achim, y Torsten Hothorn. 2002. «Diagnostic Checking in Regression Relationships». R News 2 (3): 7-10. https://CRAN.R-project.org/doc/Rnews/.",
-    "crumbs": [
-      "Unidad 3",
-      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Regresión lineal simple</span>"
-    ]
-  },
-  {
-    "objectID": "unidad_3/05_anova.html#section",
-    "href": "unidad_3/05_anova.html#section",
-    "title": "19  Análisis de la varianza (ANOVA)",
-    "section": "",
-    "text": "Agresti, Alan. 2015. Foundations of Linear and Generalized Linear Models. Wiley Series en Probability y Statistics. John Wiley & Sons, Inc.\n\n\nChampely, Stephane. 2020. pwr: Basic Functions for Power Analysis. https://doi.org/10.32614/CRAN.package.pwr.\n\n\nGross, Juergen, y Uwe Ligges. 2015. nortest: Tests for Normality. https://doi.org/10.32614/CRAN.package.nortest.\n\n\nLenth, Russell V., y Julia Piaskowski. 2026. emmeans: Estimated Marginal Means, aka Least-Squares Means. https://doi.org/10.32614/CRAN.package.emmeans.\n\n\nLüdecke, Daniel, Mattan S. Ben-Shachar, Indrajeet Patil, et al. 2022. «easystats: Framework for Easy Statistical Modeling, Visualization, and Reporting». CRAN, advance online publication. https://doi.org/10.32614/CRAN.package.easystats.\n\n\nRyu, Choonghyun. 2025. dlookr: Tools for Data Diagnosis, Exploration, Transformation. https://CRAN.R-project.org/package=dlookr.\n\n\nSjoberg, Daniel D., Karissa Whiting, Michael Curry, Jessica A. Lavery, y Joseph Larmarange. 2021. «Reproducible Summary Tables with the gtsummary Package». The R Journal 13: 570-80. https://doi.org/10.32614/RJ-2021-053.\n\n\nTriola, Mario F. 2018. ESTADÍSTICA Decimosegunda Edicion. Pearson Educación de México, SA de CV.\n\n\nWaring, Elin, Michael Quinn, Amelia McNamara, Eduardo Arino de la Rubia, Hao Zhu, y Shannon Ellis. 2026. skimr: Compact and Flexible Summaries of Data. https://doi.org/10.32614/CRAN.package.skimr.",
-    "crumbs": [
-      "Unidad 3",
-      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Análisis de la varianza (ANOVA)</span>"
-    ]
-  },
-  {
-    "objectID": "unidad_3/06_rol_variables.html#section",
-    "href": "unidad_3/06_rol_variables.html#section",
-    "title": "20  Rol de las variables",
-    "section": "",
-    "text": "Almeida Filho, Naomar de, y Maurício Lima Barreto. 2011. Epidemiologia & Saúde: Fundamentos, Métodos e Aplicações. Guanabara Koogan.\n\n\nGordis, Leon. 2017. Epidemiologia. Thieme Revinter Publicações LTDA.\n\n\nHolmberg, Mathias J., y Lars W. Andersen. 2022. «Collider Bias». JAMA 327 (13): 1282-83. https://doi.org/10.1001/jama.2022.1820.\n\n\nLuque-Fernandez, Miguel Angel, Michael Schomaker, Daniel Redondo-Sanchez, Maria Jose Sanchez Perez, Anand Vaidya, y Mireille E. Schnitzer. 2019. «Educational Note: Paradoxical collider effect in the analysis of non-communicable disease epidemiological data: a reproducible illustration and web application». International Journal of Epidemiology 48 (2): 640-53. https://doi.org/10.1093/ije/dyy275.\n\n\nMacMahon, Brian. 1972. «Concepts of multiple factors». Multiple factors in the causation of environmentally induced disease. Academic Press, New York.",
-    "crumbs": [
-      "Unidad 3",
-      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Rol de las variables</span>"
-    ]
-  },
-  {
-    "objectID": "unidad_3/07_reg_lineal_multiple.html#section",
-    "href": "unidad_3/07_reg_lineal_multiple.html#section",
-    "title": "21  Regresión lineal múltiple",
-    "section": "",
-    "text": "De Irala, Jokin, Miguel Ángel Martínez-González, y Francisco Guillén Grima. 2001a. «¿Qué es una variable de confusión?» Medicina Clínica 117 (10): 377-85. https://doi.org/10.1016/S0025-7753(01)72121-5.\n\n\nDe Irala, Jokin, Miguel Ángel Martínez-González, y Francisco Guillén Grima. 2001b. «¿Qué es una variable modificadora del efecto?» Medicina Clínica 117 (8): 297-302. https://doi.org/10.1016/S0025-7753(01)72092-1.\n\n\nGordis, Leon. 2017. Epidemiologia. Thieme Revinter Publicações LTDA.\n\n\nKim, Jong Hae. 2019. «Multicollinearity and Misleading Statistical Results». Korean Journal of Anesthesiology 72 (6): 558-69. https://doi.org/10.4097/kja.19087.\n\n\nKleinbaum, David G, Lawrence L Kupper, Keith E Muller, y Azhar Nizam. 1988. Applied regression analysis and other multivariable methods. Vol. 601. Duxbury press Belmont, CA.\n\n\nMacMahon, Brian. 1972. «Concepts of multiple factors». Multiple factors in the causation of environmentally induced disease. Academic Press, New York.\n\n\nPena, Edsel A., y Elizabeth H. Slate. 2019. gvlma: Global Validation of Linear Models Assumptions. https://doi.org/10.32614/CRAN.package.gvlma.\n\n\nSchloerke, Barret, Di Cook, Joseph Larmarange, et al. 2025. GGally: Extension to ’ggplot2’. https://doi.org/10.32614/CRAN.package.GGally.\n\n\nZeileis, Achim, y Torsten Hothorn. 2002. «Diagnostic Checking in Regression Relationships». R News 2 (3): 7-10. https://CRAN.R-project.org/doc/Rnews/.",
-    "crumbs": [
-      "Unidad 3",
-      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Regresión lineal múltiple</span>"
-    ]
-  },
-  {
-    "objectID": "unidad_4/02_reg_logistica.html#section",
-    "href": "unidad_4/02_reg_logistica.html#section",
-    "title": "23  Regresión logística",
-    "section": "",
-    "text": "EPIDAT 4.2 - Consellería de Sanidade - Servizo Galego de Saúde. s. f. Accedido 11 de junio de 2024. https://www.sergas.es/Saude-publica/EPIDAT-4-2.\n\n\nField, Andy, Jeremy Miles, y Zoë Field. 2014. Discovering statistics using R. Repr. Sage.\n\n\nFreeman, Daniel H. 1987. Applied categorical data analysis. M. Dekker.\n\n\nGohel, David, y Panagiotis Skintzos. 2026. flextable: Functions for Tabular Reporting. https://doi.org/10.32614/CRAN.package.flextable.\n\n\nHernández-Ávila, Mauricio. 2011. Epidemiología: diseño y análisis de estudios. Editorial Médica Panamericana.\n\n\nLüdecke, Daniel, Mattan S. Ben-Shachar, Indrajeet Patil, et al. 2022. «easystats: Framework for Easy Statistical Modeling, Visualization, and Reporting». CRAN, advance online publication. https://doi.org/10.32614/CRAN.package.easystats.\n\n\nOrtega Calvo, Manuel, y Aurelio Cayuela Domínguez. 2002. «Regresión logística no condicionada y tamaño de muestra: una revisión bibliográfica». Revista Española de Salud Pública 76: 85-93.\n\n\nRothman, Kenneth J. 2012. Epidemiology: an introduction. 2. ed. Oxford Univ. Press.\n\n\nRoyo-Bordonada, Miguel Angel, Javier Damian, Beatriz Perez-Gomez, et al. 2009. Método epidemiológico. Instituto de Salud Carlos III (ISCIII). Escuela Nacional de Sanidad (ENS). http://hdl.handle.net/20.500.12105/5271.\n\n\nSilva Ayçaguer, Luis Carlos. 1995. «Excursión a la regresión logística en ciencias de la salud». Madrid: Díaz de Santos.\n\n\nSjoberg, Daniel D., Karissa Whiting, Michael Curry, Jessica A. Lavery, y Joseph Larmarange. 2021. «Reproducible Summary Tables with the gtsummary Package». The R Journal 13: 570-80. https://doi.org/10.32614/RJ-2021-053.\n\n\nThompson, W. D. 1994. «Statistical analysis of case-control studies». Epidemiologic Reviews 16 (1): 33-50. https://doi.org/10.1093/oxfordjournals.epirev.a036143.\n\n\nWaring, Elin, Michael Quinn, Amelia McNamara, Eduardo Arino de la Rubia, Hao Zhu, y Shannon Ellis. 2026. skimr: Compact and Flexible Summaries of Data. https://doi.org/10.32614/CRAN.package.skimr.\n\n\nWickham, Hadley, Mara Averick, Jennifer Bryan, et al. 2019. «Welcome to the tidyverse». Journal of Open Source Software 4 (43): 1686. https://doi.org/10.21105/joss.01686.",
-    "crumbs": [
-      "Unidad 4",
-      "<span class='chapter-number'>23</span>  <span class='chapter-title'>Regresión logística</span>"
-    ]
-  },
-  {
-    "objectID": "unidad_4/03_sep_datos.html#section",
-    "href": "unidad_4/03_sep_datos.html#section",
-    "title": "24  Separación de datos binomiales",
-    "section": "",
-    "text": "Agresti, Alan. 2015. Foundations of Linear and Generalized Linear Models. Wiley Series en Probability y Statistics. John Wiley & Sons, Inc.\n\n\nFirke, Sam. 2024. janitor: Simple Tools for Examining and Cleaning Dirty Data. https://doi.org/10.32614/CRAN.package.janitor.\n\n\nKosmidis, Ioannis, Dirk Schumacher, y Florian Schwendinger. 2026. detectseparation: Detect and Check for Separation and Infinite Maximum Likelihood Estimates. https://doi.org/10.32614/CRAN.package.detectseparation.\n\n\nWickham, Hadley, Mara Averick, Jennifer Bryan, et al. 2019. «Welcome to the tidyverse». Journal of Open Source Software 4 (43): 1686. https://doi.org/10.21105/joss.01686.",
-    "crumbs": [
-      "Unidad 4",
-      "<span class='chapter-number'>24</span>  <span class='chapter-title'>Separación de datos binomiales</span>"
-    ]
-  },
-  {
-    "objectID": "unidad_4/04_reg_logistica_cond.html#section",
-    "href": "unidad_4/04_reg_logistica_cond.html#section",
-    "title": "25  Regresión logística condicional",
-    "section": "",
-    "text": "Agresti, Alan. 2015. Foundations of Linear and Generalized Linear Models. Wiley Series en Probability y Statistics. John Wiley & Sons, Inc.\n\n\nHo, Daniel E., Kosuke Imai, Gary King, y Elizabeth A. Stuart. 2011. «MatchIt: Nonparametric Preprocessing for Parametric Causal Inference». Journal of Statistical Software 42 (8): 1-28. https://doi.org/10.18637/jss.v042.i08.\n\n\nLüdecke, Daniel, Mattan S. Ben-Shachar, Indrajeet Patil, et al. 2022. «easystats: Framework for Easy Statistical Modeling, Visualization, and Reporting». CRAN, advance online publication. https://doi.org/10.32614/CRAN.package.easystats.\n\n\nTherneau, Terry M. 2026. A Package for Survival Analysis in R. https://CRAN.R-project.org/package=survival.\n\n\nWickham, Hadley, Mara Averick, Jennifer Bryan, et al. 2019. «Welcome to the tidyverse». Journal of Open Source Software 4 (43): 1686. https://doi.org/10.21105/joss.01686.",
-    "crumbs": [
-      "Unidad 4",
-      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Regresión logística condicional</span>"
-    ]
-  },
-  {
-    "objectID": "unidad_4/05_mod_predict.html#section",
-    "href": "unidad_4/05_mod_predict.html#section",
-    "title": "26  Validación de modelos predictivos",
-    "section": "",
-    "text": "Collins, G. S., J. B. Reitsma, D. G. Altman, y K. G. M. Moons. 2015. «Transparent Reporting of a Multivariable Prediction Model for Individual Prognosis or Diagnosis (TRIPOD): The TRIPOD Statement». BMJ 350 (jan07 4): g7594-94. https://doi.org/10.1136/bmj.g7594.\n\n\nFernández Félix, Borja Manuel. 2018. Validación interna de modelos predictivos de regresión logı́stica. Comando Validation (Stata).\n\n\nHarrell , Frank E. 2015. Regression Modeling Strategies. Springer International Publishing. https://doi.org/10.1007/978-3-319-19425-7.\n\n\nSteyerberg, Ewout W, Frank E Harrell, Gerard J. J. M Borsboom, M. J. C Eijkemans, Yvonne Vergouwe, y J.Dik F Habbema. 2001. «Internal Validation of Predictive Models». Journal of Clinical Epidemiology 54 (8): 774-81. https://doi.org/10.1016/s0895-4356(01)00341-9.",
-    "crumbs": [
-      "Unidad 4",
-      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Validación de modelos predictivos</span>"
-    ]
-  },
-  {
-    "objectID": "unidad_5/01_est_cohortes.html#section",
-    "href": "unidad_5/01_est_cohortes.html#section",
-    "title": "27  Estudios de cohortes",
-    "section": "",
-    "text": "Hernández-Ávila, Mauricio. 2011. Epidemiología: diseño y análisis de estudios. Editorial Médica Panamericana.\n\n\nNolasco, A. 2016. «Estadística avanzada en Ciencias de la Salud». Modelos lineales.\n\n\nPérez Hoyos, Santiago. 2001. Introducción a la regresión Poisson. 1a. ed. Escola Valenciana d’Estudis per a la Salut.\n\n\nSalinas-Rodríguez, Aarón, Betty Manrique-Espinoza, y Sandra G Sosa-Rubí. 2009. «Análisis estadístico para datos de conteo: aplicaciones para el uso de los servicios de salud». salud pública de méxico 51: 397-406.",
-    "crumbs": [
-      "Unidad 5",
-      "<span class='chapter-number'>27</span>  <span class='chapter-title'>Estudios de cohortes</span>"
-    ]
-  },
-  {
-    "objectID": "unidad_5/02_reg_poisson.html#section",
-    "href": "unidad_5/02_reg_poisson.html#section",
-    "title": "28  Regresión de Poisson",
-    "section": "",
-    "text": "De Irala, Jokin, Miguel Ángel Martínez-González, y Francisco Guillén Grima. 2001. «¿Qué es una variable de confusión?» Medicina Clínica 117 (10): 377-85. https://doi.org/10.1016/S0025-7753(01)72121-5.\n\n\nGordis, Leon. 2017. Epidemiologia. Thieme Revinter Publicações LTDA.\n\n\nHernández-Ávila, Mauricio. 2011. Epidemiología: diseño y análisis de estudios. Editorial Médica Panamericana.\n\n\nKim, Jong Hae. 2019. «Multicollinearity and Misleading Statistical Results». Korean Journal of Anesthesiology 72 (6): 558-69. https://doi.org/10.4097/kja.19087.\n\n\nKleinbaum, David G, Lawrence L Kupper, Keith E Muller, y Azhar Nizam. 1988. Applied regression analysis and other multivariable methods. Vol. 601. Duxbury press Belmont, CA.\n\n\nLüdecke, Daniel, Mattan S. Ben-Shachar, Indrajeet Patil, et al. 2022. «easystats: Framework for Easy Statistical Modeling, Visualization, and Reporting». CRAN, advance online publication. https://doi.org/10.32614/CRAN.package.easystats.\n\n\nNolasco, A. 2016. «Estadística avanzada en Ciencias de la Salud». Modelos lineales.\n\n\nPérez Hoyos, Santiago. 2001. Introducción a la regresión Poisson. 1a. ed. Escola Valenciana d’Estudis per a la Salut.\n\n\nSalinas-Rodríguez, Aarón, Betty Manrique-Espinoza, y Sandra G Sosa-Rubí. 2009. «Análisis estadístico para datos de conteo: aplicaciones para el uso de los servicios de salud». salud pública de méxico 51: 397-406.\n\n\nSjoberg, Daniel D., Karissa Whiting, Michael Curry, Jessica A. Lavery, y Joseph Larmarange. 2021. «Reproducible Summary Tables with the gtsummary Package». The R Journal 13: 570-80. https://doi.org/10.32614/RJ-2021-053.\n\n\nWickham, Hadley, Mara Averick, Jennifer Bryan, et al. 2019. «Welcome to the tidyverse». Journal of Open Source Software 4 (43): 1686. https://doi.org/10.21105/joss.01686.",
-    "crumbs": [
-      "Unidad 5",
-      "<span class='chapter-number'>28</span>  <span class='chapter-title'>Regresión de Poisson</span>"
-    ]
-  },
-  {
-    "objectID": "unidad_5/03_dispersion.html#section",
-    "href": "unidad_5/03_dispersion.html#section",
-    "title": "29  Dispersión de datos",
-    "section": "",
-    "text": "Agresti, Alan. 2015. Foundations of Linear and Generalized Linear Models. Wiley Series en Probability y Statistics. John Wiley & Sons, Inc.\n\n\nFirke, Sam. 2024. janitor: Simple Tools for Examining and Cleaning Dirty Data. https://doi.org/10.32614/CRAN.package.janitor.\n\n\nHartig, Florian. 2026. DHARMa: Residual Diagnostics for Hierarchical (Multi-Level / Mixed) Regression Models. https://doi.org/10.32614/CRAN.package.DHARMa.\n\n\nLüdecke, Daniel, Mattan S. Ben-Shachar, Indrajeet Patil, et al. 2022. «easystats: Framework for Easy Statistical Modeling, Visualization, and Reporting». CRAN, advance online publication. https://doi.org/10.32614/CRAN.package.easystats.\n\n\nMcGillycuddy, Maeve, David I. Warton, Gordana Popovic, y Benjamin M. Bolker. 2025. «Parsimoniously Fitting Large Multivariate Random Effects in glmmTMB». Journal of Statistical Software 112 (1): 1-19. https://doi.org/10.18637/jss.v112.i01.\n\n\nSalinas-Rodríguez, Aarón, Betty Manrique-Espinoza, y Sandra G Sosa-Rubí. 2009. «Análisis estadístico para datos de conteo: aplicaciones para el uso de los servicios de salud». salud pública de méxico 51: 397-406.\n\n\nSjoberg, Daniel D., Karissa Whiting, Michael Curry, Jessica A. Lavery, y Joseph Larmarange. 2021. «Reproducible Summary Tables with the gtsummary Package». The R Journal 13: 570-80. https://doi.org/10.32614/RJ-2021-053.\n\n\nWickham, Hadley, Mara Averick, Jennifer Bryan, et al. 2019. «Welcome to the tidyverse». Journal of Open Source Software 4 (43): 1686. https://doi.org/10.21105/joss.01686.",
-    "crumbs": [
-      "Unidad 5",
-      "<span class='chapter-number'>29</span>  <span class='chapter-title'>Dispersión de datos</span>"
-    ]
-  },
-  {
-    "objectID": "unidad_6/01_est_experimentales.html#section",
-    "href": "unidad_6/01_est_experimentales.html#section",
-    "title": "30  Estudios Experimentales",
-    "section": "",
-    "text": "Hernández-Ávila, Mauricio. 2011. Epidemiología: diseño y análisis de estudios. Editorial Médica Panamericana.\n\n\nRoyo-Bordonada, Miguel Angel, Javier Damian, Beatriz Perez-Gomez, et al. 2009. Método epidemiológico. Instituto de Salud Carlos III (ISCIII). Escuela Nacional de Sanidad (ENS). http://hdl.handle.net/20.500.12105/5271.\n\n\nWoodward, M. 2005. Epidemiology: Study Design and Data Analysis. Texts en statistical science. Chapman & Hall/CRC. https://books.google.com.ar/books?id=kcDHxgEACAAJ.",
-    "crumbs": [
-      "Unidad 6",
-      "<span class='chapter-number'>30</span>  <span class='chapter-title'>Estudios Experimentales</span>"
-    ]
-  },
-  {
-    "objectID": "unidad_6/02_analisis_superv.html#section",
-    "href": "unidad_6/02_analisis_superv.html#section",
-    "title": "31  Análisis de supervivencia",
-    "section": "",
-    "text": "Hernández-Ávila, Mauricio. 2011. Epidemiología: diseño y análisis de estudios. Editorial Médica Panamericana.\n\n\nRoyo-Bordonada, Miguel Angel, Javier Damian, Beatriz Perez-Gomez, et al. 2009. Método epidemiológico. Instituto de Salud Carlos III (ISCIII). Escuela Nacional de Sanidad (ENS). http://hdl.handle.net/20.500.12105/5271.\n\n\nWoodward, M. 2005. Epidemiology: Study Design and Data Analysis. Texts en statistical science. Chapman & Hall/CRC. https://books.google.com.ar/books?id=kcDHxgEACAAJ.",
-    "crumbs": [
-      "Unidad 6",
-      "<span class='chapter-number'>31</span>  <span class='chapter-title'>Análisis de supervivencia</span>"
-    ]
-  },
-  {
-    "objectID": "unidad_6/03_metodos_analisis.html#section",
-    "href": "unidad_6/03_metodos_analisis.html#section",
-    "title": "32  Métodos para el análisis de supervivencia",
-    "section": "",
-    "text": "Hernández-Ávila, Mauricio. 2011. Epidemiología: diseño y análisis de estudios. Editorial Médica Panamericana.\n\n\nKassambara, Alboukadel, Marcin Kosinski, y Przemyslaw Biecek. 2026. survminer: Drawing Survival Curves using ’ggplot2’. https://doi.org/10.32614/CRAN.package.survminer.\n\n\nRoyo-Bordonada, Miguel Angel, Javier Damian, Beatriz Perez-Gomez, et al. 2009. Método epidemiológico. Instituto de Salud Carlos III (ISCIII). Escuela Nacional de Sanidad (ENS). http://hdl.handle.net/20.500.12105/5271.\n\n\nTherneau, Terry M. 2026. A Package for Survival Analysis in R. https://CRAN.R-project.org/package=survival.\n\n\nWoodward, M. 2005. Epidemiology: Study Design and Data Analysis. Texts en statistical science. Chapman & Hall/CRC. https://books.google.com.ar/books?id=kcDHxgEACAAJ.",
-    "crumbs": [
-      "Unidad 6",
-      "<span class='chapter-number'>32</span>  <span class='chapter-title'>Métodos para el análisis de supervivencia</span>"
     ]
   },
   {

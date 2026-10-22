@@ -157,6 +157,9 @@ format:
       - left=20mm
       - heightrounded
     toc: true
+    toc-depth: 3
+    toc-title: "Índice"
+    biblio-title: "Referencias"
 
 # ---- Tipografía ----
 mainfont: "Calibri"
