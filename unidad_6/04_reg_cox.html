@@ -746,7 +746,7 @@ window.Quarto = {
   <li><a href="#modelo-de-cox-extendido" id="toc-modelo-de-cox-extendido" class="nav-link" data-scroll-target="#modelo-de-cox-extendido"><span class="header-section-number">33.5</span> Modelo de Cox extendido</a></li>
   <li><a href="#análisis-de-supervivencia-más-complejos" id="toc-análisis-de-supervivencia-más-complejos" class="nav-link" data-scroll-target="#análisis-de-supervivencia-más-complejos"><span class="header-section-number">33.6</span> Análisis de supervivencia más complejos</a></li>
   <li><a href="#consideraciones-sobre-el-tamaño-de-la-muestra" id="toc-consideraciones-sobre-el-tamaño-de-la-muestra" class="nav-link" data-scroll-target="#consideraciones-sobre-el-tamaño-de-la-muestra"><span class="header-section-number">33.7</span> Consideraciones sobre el tamaño de la muestra</a></li>
-  <li><a href="#referencias" id="toc-referencias" class="nav-link" data-scroll-target="#referencias">Referencias</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
   </ul>
 </nav>
     </div>
@@ -1095,7 +1095,7 @@ Score (logrank) test = 38.43  on 4 df,   p=9e-08</code></pre>
 <div class="cell" data-layout-align="center">
 <div class="cell-output cell-output-stdout">
 <pre><code>Surv(tiempo, status) ~ fase + decr + deag + sexo
-&lt;environment: 0x000002071e099ee0&gt;</code></pre>
+&lt;environment: 0x000001bf4a0b4e08&gt;</code></pre>
 </div>
 </div>
 <p>En general, el criterio que se utiliza para “sacar” variables del modelo, es sacar aquellas cuyo <span class="math inline">\(\beta\)</span> haya resultado no significativo. En el caso de <code>m3</code> serían los <span class="math inline">\(\beta\)</span> correspondientes a las variables <code>sexo</code> y <code>fase</code>.</p>
@@ -1182,7 +1182,7 @@ Score (logrank) test = 38.43  on 3 df,   p=2e-08</code></pre>
 <div class="cell" data-layout-align="center">
 <div class="cell-output cell-output-stdout">
 <pre><code>Surv(tiempo, status) ~ fase + decr + deag
-&lt;environment: 0x0000020719a881c8&gt;</code></pre>
+&lt;environment: 0x000001bf45a53890&gt;</code></pre>
 </div>
 </div>
 <p>Saco <code>fase</code>, dado que su coeficiente resultó no significativo.</p>
@@ -1869,18 +1869,10 @@ n= \frac{(z_{1-\alpha/2}+z_{1+\beta})^2}{(logHR)^2*(1-\%C)*(1-p)*p}*\frac {1}{1-
 <p>El término agregado se lo llama <strong>factor de inflación de la varianza</strong>, donde <span class="math inline">\(\rho\)</span> denota al coeficiente de correlación de Pearson entre el factor en estudio y aquella otra variable que incluiremos en el modelo. En el caso en el que se ajuste por más de otro factor en el modelo, lo más sencillo es considerar como el mayor coeficiente de correlación entre el factor de estudio y todas las variables incluidas. Este coeficiente de correlación, cuanto mayor sea, más incrementará el valor del factor de inflación de la varianza y, por tanto, se incrementará el tamaño de la muestra a estudiar.</p>
 <p>Siguiendo con el ejemplo, posiblemente el tratamiento aplicado a cada enfermo dependerá de las características clínicas particulares del mismo, y recibirá una u otra terapia en función, por ejemplo, del estadío del tumor. En términos estadísticos, podrá entonces decirse que el factor tratamiento se encuentra “<em>correlacionado</em>” con esta característica. Supongamos, por ejemplo, que la correlación existente entre el nuevo tratamiento y el estadío del tumor es de 0,25. Este dato lo podremos obtener a partir de un estudio piloto o de otros trabajos sobre el tema. En caso de desconocerse, deberemos asumir una correlación suficientemente alta para así asegurar un poder suficiente.</p>
 <p>El cálculo del tamaño muestral, por tanto, permite al investigador precisar el número de pacientes a estudiar para detectar como significativos efectos de una magnitud determinada. El no hacerlo, o el no conocer cuántos pacientes necesitamos para detectar un efecto como significativo podría llevarnos a cometer un error de tipo II, es decir, no encontrar diferencias cuando sí las hay.</p>
-<div class="hidden">
-<p><span class="citation" data-cites="harrell1996">Harrell et&nbsp;al. (<a href="#ref-harrell1996" role="doc-biblioref">1996</a>)</span></p>
-<p><span class="citation" data-cites="hernandez-avila2011">Hernández-Ávila (<a href="#ref-hernandez-avila2011" role="doc-biblioref">2011</a>)</span></p>
-<p><span class="citation" data-cites="royo-bordonada2009">Royo-Bordonada et&nbsp;al. (<a href="#ref-royo-bordonada2009" role="doc-biblioref">2009</a>)</span></p>
-<p><span class="citation" data-cites="woodward2005">Woodward (<a href="#ref-woodward2005" role="doc-biblioref">2005</a>)</span></p>
-<p><span class="citation" data-cites="therneau2000">Therneau y Grambsch (<a href="#ref-therneau2000" role="doc-biblioref">2000</a>)</span></p>
-<p><span class="citation" data-cites="survminer">Kassambara et&nbsp;al. (<a href="#ref-survminer" role="doc-biblioref">2026</a>)</span></p>
-</div>
 </section>
 </section>
-<section id="referencias" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="referencias">Referencias</h2>
+<section id="section" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="section"></h2>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list">
