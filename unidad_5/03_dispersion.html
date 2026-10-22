@@ -1,0 +1,2310 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Christian Ballejo, Andrea Silva y Tamara Ricardo">
+
+<title>29&nbsp; Dispersión de datos – Epidemiología: Nivel Avanzado</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../unidad_5/02_reg_poisson.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-7ee6e43050f6221742af855db1000407.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-019764fb716a006092dc2bed2899202b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-7ee6e43050f6221742af855db1000407.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../style.css">
+</head>
+
+<body class="nav-sidebar docked quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../unidad_5/01_est_cohortes.html">Unidad 5</a></li><li class="breadcrumb-item"><a href="../unidad_5/03_dispersion.html"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Dispersión de datos</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../logo_curso.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../logo_curso.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Epidemiología: Nivel Avanzado</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <div class="dropdown">
+      <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label=""><i class="bi bi-r-circle-fill"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://cran.rstudio.com/bin/windows/" target="_blank">
+              <i class="bi bi-windows pe-1"></i>
+            R para Windows
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://cran.rstudio.com/bin/macosx/" target="_blank">
+              <i class="bi bi-apple pe-1"></i>
+            R para macOS
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://cran.rstudio.com/bin/linux/" target="_blank">
+              <i class="bi bi-ubuntu pe-1"></i>
+            R para Linux
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://posit.co/download/rstudio-desktop/" target="_blank">
+              <i class="bi bi-terminal pe-1"></i>
+            RStudio Desktop
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://cran.r-project.org/bin/windows/Rtools/" target="_blank">
+              <i class="bi bi-terminal pe-1"></i>
+            RTools
+            </a>
+          </li>
+      </ul>
+    </div>
+    <div class="dropdown">
+      <a href="" title="" id="quarto-navigation-tool-dropdown-1" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label=""><i class="bi bi-file-zip"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-1">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="../files/paquetes_curso.zip" target="_blank">
+              <i class="bi bi-file-zip pe-1"></i>
+            Paquetes para el curso
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="../files/datos.zip">
+              <i class="bi bi-file-zip pe-1"></i>
+            Datos de ejemplo
+            </a>
+          </li>
+      </ul>
+    </div>
+    <div class="dropdown">
+      <a href="" title="Descargar" id="quarto-navigation-tool-dropdown-2" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Descargar"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-2">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="../epi_avanzada.pdf">
+              <i class="bi bi-file-pdf pe-1"></i>
+            Descargar PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="../epi_avanzada.epub">
+              <i class="bi bi-journal pe-1"></i>
+            Descargar ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link"><i class="bi bi-book" role="img">
+</i> 
+ <span class="menu-text">Prefacio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true"><i class="bi bi-file-earmark-bar-graph" role="img">
+</i> 
+ <span class="menu-text">Unidad 1</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unidad_1/01_intro_R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción a R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unidad_1/02_intro_RStudio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introducción a RStudio</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unidad_1/03_intro_tidyverse.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introducción a <code>tidyverse</code></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unidad_1/04_intro_dplyr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Gestión de datos con <code>dplyr</code></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unidad_1/05_intro_ggplot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Gráficos estadísticos con <code>ggplot2</code></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unidad_1/06_analisis_exploratorio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Análisis exploratorio de datos</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unidad_1/07_hoja_estilo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Hoja de Estilo del lenguaje R</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true"><i class="bi bi-file-earmark-bar-graph" role="img">
+</i> 
+ <span class="menu-text">Unidad 2</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unidad_2/01_est_epidemiologicos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Estudios epidemiológicos</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unidad_2/02_est_transversales.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Estudios de corte transversal</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unidad_2/03_inferencia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Inferencia estadística</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unidad_2/04_norm_het.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Análisis de normalidad y homocedasticidad</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unidad_2/05_muestreo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Selección de la muestra</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unidad_2/06_fun_condic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Funciones condicionales en R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unidad_2/07_IC_complejos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Intervalos de confianza en muestras complejas</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true"><i class="bi bi-file-earmark-bar-graph" role="img">
+</i> 
+ <span class="menu-text">Unidad 3</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unidad_3/01_est_ecologicos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Estudios ecológicos</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unidad_3/02_mod_estadistico.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Introducción al modelado estadístico</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unidad_3/03_covarianza_correlacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Covarianza y correlación</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unidad_3/04_reg_lineal.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Regresión lineal simple</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unidad_3/05_anova.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Análisis de la varianza (ANOVA)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unidad_3/06_rol_variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Rol de las variables</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unidad_3/07_reg_lineal_multiple.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Regresión lineal múltiple</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true"><i class="bi bi-file-earmark-bar-graph" role="img">
+</i> 
+ <span class="menu-text">Unidad 4</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unidad_4/01_est_caso_control.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Estudios de casos y controles</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unidad_4/02_reg_logistica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Regresión logística</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unidad_4/03_sep_datos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Separación de datos binomiales</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unidad_4/04_reg_logistica_cond.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Regresión logística condicional</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unidad_4/05_mod_predict.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Validación de modelos predictivos</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true"><i class="bi bi-file-earmark-bar-graph" role="img">
+</i> 
+ <span class="menu-text">Unidad 5</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unidad_5/01_est_cohortes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Estudios de cohortes</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unidad_5/02_reg_poisson.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Regresión de Poisson</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unidad_5/03_dispersion.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Dispersión de datos</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de contenidos</h2>
+   
+  <ul>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción"><span class="header-section-number">29.1</span> Introducción</a></li>
+  <li><a href="#sobredispersión" id="toc-sobredispersión" class="nav-link" data-scroll-target="#sobredispersión"><span class="header-section-number">29.2</span> Sobredispersión</a>
+  <ul class="collapse">
+  <li><a href="#ejemplo-en-r" id="toc-ejemplo-en-r" class="nav-link" data-scroll-target="#ejemplo-en-r">Ejemplo en R</a></li>
+  </ul></li>
+  <li><a href="#subdispersión" id="toc-subdispersión" class="nav-link" data-scroll-target="#subdispersión"><span class="header-section-number">29.3</span> Subdispersión</a></li>
+  <li><a href="#control-de-sobredispersión-y-subdispersión" id="toc-control-de-sobredispersión-y-subdispersión" class="nav-link" data-scroll-target="#control-de-sobredispersión-y-subdispersión"><span class="header-section-number">29.4</span> Control de sobredispersión y subdispersión</a>
+  <ul class="collapse">
+  <li><a href="#modelos-quasi-poisson" id="toc-modelos-quasi-poisson" class="nav-link" data-scroll-target="#modelos-quasi-poisson">Modelos <em>quasi</em>-Poisson</a></li>
+  <li><a href="#distribución-binomial-negativa" id="toc-distribución-binomial-negativa" class="nav-link" data-scroll-target="#distribución-binomial-negativa">Distribución binomial negativa</a></li>
+  <li><a href="#distribución-conway-maxwell-poisson" id="toc-distribución-conway-maxwell-poisson" class="nav-link" data-scroll-target="#distribución-conway-maxwell-poisson">Distribución Conway-Maxwell Poisson</a></li>
+  </ul></li>
+  <li><a href="#exceso-de-ceros-zero-inflation" id="toc-exceso-de-ceros-zero-inflation" class="nav-link" data-scroll-target="#exceso-de-ceros-zero-inflation"><span class="header-section-number">29.5</span> Exceso de ceros (<em>zero-inflation)</em></a></li>
+  <li><a href="#resumen" id="toc-resumen" class="nav-link" data-scroll-target="#resumen"><span class="header-section-number">29.6</span> Resumen</a></li>
+  <li><a href="#referencias" id="toc-referencias" class="nav-link" data-scroll-target="#referencias">Referencias</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../unidad_5/01_est_cohortes.html">Unidad 5</a></li><li class="breadcrumb-item"><a href="../unidad_5/03_dispersion.html"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Dispersión de datos</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Dispersión de datos</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>Tamara Ricardo <a href="https://orcid.org/0000-0002-0921-2611" class="quarto-title-author-orcid" aria-label="ORCID profile for Tamara Ricardo"> <img alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introducción" class="level2" data-number="29.1">
+<h2 data-number="29.1" class="anchored" data-anchor-id="introducción"><span class="header-section-number">29.1</span> Introducción</h2>
+<p>En modelos de regresión Poisson se parte del supuesto de <strong>equidispersión</strong>, lo cual implica que la varianza de la variable dependiente coincide con su media esperada:</p>
+<p><span class="math display">\[
+var(Y) =  \mu
+\]</span></p>
+<p>Para evaluar si un modelo cumple con este supuesto, se suele analizar el cociente entre la devianza residual y los grados de libertad residuales. Si el modelo ajusta adecuadamente con la distribución elegida, este valor debería rondar la unidad.</p>
+<p>Sin embargo, en la práctica, esta suposición frecuentemente no se cumple. Cuando la varianza observada supera a la media se habla de <strong>sobredispersión</strong>, mientras que si es menor se denomina <strong>subdispersión</strong>; esta relación se puede expresar formalmente incorporando un parámetro de dispersión (<span class="math inline">\(\theta\)</span>).</p>
+<p>Adicionalmente, los recuentos pueden contener un exceso de ceros estructurales que el modelo de Poisson tradicional no logra ajustar adecuadamente. Ignorar estos fenómenos subestima los errores estándar y conduce a inferencias incorrectas, por lo que resulta indispensable diagnosticarlos y controlarlos mediante alternativas analíticas robustas.</p>
+</section>
+<section id="sobredispersión" class="level2" data-number="29.2">
+<h2 data-number="29.2" class="anchored" data-anchor-id="sobredispersión"><span class="header-section-number">29.2</span> Sobredispersión</h2>
+<p>La sobredispersión es un fenómeno muy común en los datos de conteo que puede ser causado por diversos factores, tales como la heterogeneidad no observada, la correlación entre observaciones o una alta incidencia de valores extremos. Este problema tiende a inflar los errores estándar, lo que conduce sistemáticamente a una subestimación de la significancia estadística. Matemáticamente, la condición de sobredispersión se expresa como:</p>
+<p><span class="math display">\[
+Var(Y) &gt; \mu
+\]</span></p>
+<p>Para detectar si un modelo tiene sobredispersión, se puede calcular el <strong>ratio de dispersión</strong>, que es el cociente entre la devianza del modelo y los grados de libertad. Un ratio significativamente mayor que 1 indica sobredispersión.</p>
+<p>En el entorno de R, la función <code>check_overdispersion()</code> del paquete <code>performance</code> permite evaluar este cociente de forma directa en un modelo ajustado. Como se vió en el <a href="../unidad_5/02_reg_poisson.html"><strong>ejemplo de regresión Poisson</strong></a>, cuando el cociente del modelo final es cercano a 1, se descarta la sobredispersión y se concluye que la distribución seleccionada ajusta adecuadamente los datos.</p>
+<section id="ejemplo-en-r" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-en-r">Ejemplo en R</h3>
+<p>Analizaremos un caso práctico basado en los registros de casos de dengue reportados en los departamentos de la Costa Atlántica de la provincia de Buenos Aires (PBA)<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> entre las semanas epidemiológicas 1 y 20 de 2024<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. Estos registros se encuentran almacenados en el archivo “dengue_costa.txt”.</p>
+<p>Comenzaremos por cargar los paquetes necesarios para el análisis:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ajuste de modelos</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glmmTMB)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Chequeo de supuestos</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(easystats)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DHARMa)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Coeficientes</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gtsummary)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Manejo de datos</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Una vez cargadas las librerías, importamos los datos utilizando funciones del ecosistema <code>tidyverse</code> y exploramos su estructura general:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Carga datos</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">"datos/dengue_costa.txt"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Explora datos</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(datos)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 1,047
+Columns: 6
+$ provincia      &lt;chr&gt; "Buenos Aires", "Buenos Aires", "Buenos Aires", "Buenos…
+$ departamento   &lt;chr&gt; "BAHIA BLANCA", "BAHIA BLANCA", "BAHIA BLANCA", "BAHIA …
+$ periodo        &lt;dbl&gt; 2024, 2024, 2024, 2024, 2024, 2024, 2024, 2024, 2024, 2…
+$ semana_epi     &lt;dbl&gt; 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4…
+$ grupo_edad_cat &lt;chr&gt; "0-9 años", "10-19 años", "20-34 años", "35-65 años", "…
+$ casos          &lt;dbl&gt; 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0…</code></pre>
+</div>
+</div>
+<p>Las variables de interés incluidas en la base son las siguientes:</p>
+<ul>
+<li><p><code>semana_epi</code>: semana epidemiológica en la que se reportaron los casos.</p></li>
+<li><p><code>grupo_edad_cat</code>: grupo etario de los pacientes afectados.</p></li>
+<li><p><code>casos</code>: número de casos reportados por departamento, semana epidemiológica y grupo etario (variable dependiente).</p></li>
+</ul>
+<p>A continuación, ajustamos un modelo de regresión de Poisson incorporando todas las variables explicativas de interés:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>fit_pois <span class="ot">&lt;-</span> <span class="fu">glm</span>(</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  casos <span class="sc">~</span> semana_epi <span class="sc">+</span> grupo_edad_cat,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> datos,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">family =</span> poisson</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Salida del modelo</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit_pois)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+glm(formula = casos ~ semana_epi + grupo_edad_cat, family = poisson, 
+    data = datos)
+
+Coefficients:
+                          Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept)              -3.092154   0.279663 -11.057  &lt; 2e-16 ***
+semana_epi                0.044249   0.008993   4.920 8.65e-07 ***
+grupo_edad_cat10-19 años  1.172838   0.294392   3.984 6.78e-05 ***
+grupo_edad_cat20-34 años  2.195273   0.271054   8.099 5.54e-16 ***
+grupo_edad_cat35-65 años  2.312218   0.269545   8.578  &lt; 2e-16 ***
+grupo_edad_cat65+ años    0.730874   0.314523   2.324   0.0201 *  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for poisson family taken to be 1)
+
+    Null deviance: 1436.5  on 1046  degrees of freedom
+Residual deviance: 1187.9  on 1041  degrees of freedom
+AIC: 1735.1
+
+Number of Fisher Scoring iterations: 6</code></pre>
+</div>
+</div>
+<p>Cabe destacar que el modelo ajustado no incluye un término <em>offset</em>, ya que este recurso se utiliza en situaciones donde es necesario ajustar la tasa de eventos en función de una variable de tiempo o de tamaño poblacional. Para los datos del ejemplo, podemos asumir que la población de cada departamento permanece constante durante el período estudiado; además, dado que una misma persona puede contraer la infección por el virus del dengue en más de una ocasión, no se requiere un término de ajuste adicional por sujeto.</p>
+<p>Para finalizar, evaluamos de forma empírica la presencia de sobredispersión :</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check_overdispersion</span>(fit_pois)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># Overdispersion test
+
+       dispersion ratio =    1.955
+  Pearson's Chi-Squared = 2035.204
+                p-value =  &lt; 0.001</code></pre>
+</div>
+</div>
+<p>Otra forma de chequear sobredispersión es utilizando la función <code>testDispersion()</code> del paquete DHARMa <span class="citation" data-cites="dharma">(<a href="#ref-dharma" role="doc-biblioref">Hartig 2026</a>)</span>, que compara la varianza de los valores observados con la de residuales simulados por bootstrap:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">testDispersion</span>(fit_pois)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="03_dispersion_files/figure-html/disp-5-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    DHARMa nonparametric dispersion test via sd of residuals fitted vs.
+    simulated
+
+data:  simulationOutput
+dispersion = 2.3072, p-value &lt; 2.2e-16
+alternative hypothesis: two.sided</code></pre>
+</div>
+</div>
+<p>El cociente de dispersión alcanza un valor de 1.96. Dado que este valor supera ampliamente la unidad, se confirma la existencia de sobredispersión, lo que evidencia que el modelo de Poisson no resulta adecuado para representar la variabilidad de estos datos.</p>
+</section>
+</section>
+<section id="subdispersión" class="level2" data-number="29.3">
+<h2 data-number="29.3" class="anchored" data-anchor-id="subdispersión"><span class="header-section-number">29.3</span> Subdispersión</h2>
+<p>La subdispersión, aunque menos frecuente que la sobredispersión, puede ocurrir en conjuntos de datos de conteo donde las observaciones están fuertemente controladas o sujetas a restricciones estructurales. Este fenómeno provoca que la variabilidad observada sea menor que la esperada bajo el modelo teórico, lo que a su vez puede sesgar los errores estándar y llevar a una sobreestimación de la significancia estadística. Matemáticamente, esta condición se expresa de la siguiente manera:</p>
+<p><span class="math display">\[
+Var(Y) &lt; \mu
+\]</span></p>
+<p>De manera similar a lo que ocurre con la sobredispersión, para diagnosticar este comportamiento se emplea el <em>ratio</em> de dispersión. Un valor de este cociente que resulte significativamente menor que 1 constituye un indicador clave de la presencia de subdispersión en el modelo ajustado.</p>
+</section>
+<section id="control-de-sobredispersión-y-subdispersión" class="level2" data-number="29.4">
+<h2 data-number="29.4" class="anchored" data-anchor-id="control-de-sobredispersión-y-subdispersión"><span class="header-section-number">29.4</span> Control de sobredispersión y subdispersión</h2>
+<section id="modelos-quasi-poisson" class="level3">
+<h3 class="anchored" data-anchor-id="modelos-quasi-poisson">Modelos <em>quasi</em>-Poisson</h3>
+<p>Una forma común de manejar la sobredispersión en los datos de conteo consiste en el uso de modelos <em>quasi</em>-Poisson. Estos modelos ajustan los errores estándar de los coeficientes sin modificar la media predicha, incorporando un parámetro adicional que permite que la varianza difiera de la media. Aunque resultan útiles para corregir la subestimación de la variabilidad, presentan importantes limitaciones: no abordan las causas estructurales subyacentes de la sobredispersión, no son adecuados para manejar escenarios con subdispersión o un exceso de ceros, y su estimación de parámetros tiende a ser menos eficiente al asumir que la sobredispersión es constante en toda la muestra. Debido a estas restricciones metodológicas, no profundizaremos en su uso.</p>
+</section>
+<section id="distribución-binomial-negativa" class="level3">
+<h3 class="anchored" data-anchor-id="distribución-binomial-negativa">Distribución binomial negativa</h3>
+<p>Dentro del marco de los modelos lineales generalizados (GLM), la distribución binomial negativa representa una de las herramientas más robustas y difundidas para corregir la sobredispersión en datos discretos. Esta parametrización aporta una gran flexibilidad analítica, mejora las inferencias estadísticas mediante estimaciones más precisas de los errores estándar y permite su extensión hacia componentes avanzados como la inflación de ceros.</p>
+<p>Dado que la familia binomial negativa no está integrada por defecto en la función <code>glm()</code> del paquete <code>stats</code>, utilizaremos el paquete <code>glmmTMB</code> <span class="citation" data-cites="glmmTMB">(<a href="#ref-glmmTMB" role="doc-biblioref">McGillycuddy et&nbsp;al. 2025</a>)</span>. La función base <code>glmmTMB()</code> permite ajustar desde regresiones lineales y modelos lineales generalizados (GLMs) hasta modelos mucho más complejos, lo que lo convierte en una herramienta poderosa para manejar una amplia variedad de estructuras de datos.</p>
+<p>A modo de ejemplo, ajustaremos el modelo Poisson anterior con <code>glmmTMB()</code>:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>fit_pois_tmb <span class="ot">&lt;-</span> <span class="fu">glmmTMB</span>(</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  casos <span class="sc">~</span> semana_epi <span class="sc">+</span> grupo_edad_cat,</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> datos,</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">family =</span> poisson</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Salida modelo</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit_pois_tmb)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> Family: poisson  ( log )
+Formula:          casos ~ semana_epi + grupo_edad_cat
+Data: datos
+
+      AIC       BIC    logLik -2*log(L)  df.resid 
+   1735.1    1764.8    -861.5    1723.1      1041 
+
+
+Conditional model:
+                          Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept)              -3.092153   0.279663 -11.057  &lt; 2e-16 ***
+semana_epi                0.044249   0.008993   4.920 8.64e-07 ***
+grupo_edad_cat10-19 años  1.172837   0.294392   3.984 6.78e-05 ***
+grupo_edad_cat20-34 años  2.195272   0.271054   8.099 5.54e-16 ***
+grupo_edad_cat35-65 años  2.312217   0.269545   8.578  &lt; 2e-16 ***
+grupo_edad_cat65+ años    0.730874   0.314523   2.324   0.0201 *  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<p>Al cotejar la salida de glmmTMB con la obtenida previamente mediante el paquete stats, se observa que los coeficientes estimados y los valores de AIC son prácticamente idénticos. A continuación, procedemos a ajustar el modelo de regresión binomial negativa utilizando el argumento <code>family = nbinom2</code>, el cual emplea por defecto la función de enlace logarítmica <code>(link = "log")</code>:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Modelo binomial negativo</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>fit_nb <span class="ot">&lt;-</span> <span class="fu">glmmTMB</span>(</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  casos <span class="sc">~</span> semana_epi <span class="sc">+</span> grupo_edad_cat,</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> datos,</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">family =</span> nbinom2</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Salida del modelo</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit_nb)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> Family: nbinom2  ( log )
+Formula:          casos ~ semana_epi + grupo_edad_cat
+Data: datos
+
+      AIC       BIC    logLik -2*log(L)  df.resid 
+   1538.4    1573.0    -762.2    1524.4      1040 
+
+
+Dispersion parameter for nbinom2 family (): 0.467 
+
+Conditional model:
+                         Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept)              -3.27950    0.33522  -9.783  &lt; 2e-16 ***
+semana_epi                0.06159    0.01570   3.923 8.73e-05 ***
+grupo_edad_cat10-19 años  1.16315    0.33067   3.518 0.000435 ***
+grupo_edad_cat20-34 años  2.18318    0.30879   7.070 1.55e-12 ***
+grupo_edad_cat35-65 años  2.30095    0.30722   7.490 6.90e-14 ***
+grupo_edad_cat65+ años    0.71124    0.34949   2.035 0.041842 *  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<p>Si comparamos los coeficientes de ambos modelos, veremos que presentan trayectorias similares, aunque los intervalos de confianza se ajustan de manera más realista gracias a la flexibilidad de la binomial negativa:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="bjryrbmjvh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#bjryrbmjvh table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#bjryrbmjvh thead, #bjryrbmjvh tbody, #bjryrbmjvh tfoot, #bjryrbmjvh tr, #bjryrbmjvh td, #bjryrbmjvh th {
+  border-style: none;
+}
+
+#bjryrbmjvh p {
+  margin: 0;
+  padding: 0;
+}
+
+#bjryrbmjvh .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#bjryrbmjvh .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#bjryrbmjvh .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#bjryrbmjvh .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#bjryrbmjvh .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#bjryrbmjvh .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#bjryrbmjvh .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#bjryrbmjvh .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#bjryrbmjvh .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#bjryrbmjvh .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#bjryrbmjvh .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#bjryrbmjvh .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#bjryrbmjvh .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#bjryrbmjvh .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#bjryrbmjvh .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#bjryrbmjvh .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#bjryrbmjvh .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#bjryrbmjvh .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#bjryrbmjvh .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bjryrbmjvh .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#bjryrbmjvh .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#bjryrbmjvh .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#bjryrbmjvh .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bjryrbmjvh .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#bjryrbmjvh .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#bjryrbmjvh .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#bjryrbmjvh .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bjryrbmjvh .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#bjryrbmjvh .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#bjryrbmjvh .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#bjryrbmjvh .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#bjryrbmjvh .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#bjryrbmjvh .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bjryrbmjvh .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#bjryrbmjvh .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bjryrbmjvh .gt_left {
+  text-align: left;
+}
+
+#bjryrbmjvh .gt_center {
+  text-align: center;
+}
+
+#bjryrbmjvh .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#bjryrbmjvh .gt_font_normal {
+  font-weight: normal;
+}
+
+#bjryrbmjvh .gt_font_bold {
+  font-weight: bold;
+}
+
+#bjryrbmjvh .gt_font_italic {
+  font-style: italic;
+}
+
+#bjryrbmjvh .gt_super {
+  font-size: 65%;
+}
+
+#bjryrbmjvh .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#bjryrbmjvh .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#bjryrbmjvh .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#bjryrbmjvh .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#bjryrbmjvh .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#bjryrbmjvh .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#bjryrbmjvh .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#bjryrbmjvh .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#bjryrbmjvh div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="gt_col_headings gt_spanner_row header">
+<th rowspan="2" id="label" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"><strong>Characteristic</strong></th>
+<th colspan="4" id="level 1; groupname_col_1" class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" scope="colgroup"><div class="gt_column_spanner">
+Poisson
+</div></th>
+<th colspan="4" id="level 1; groupname_col_2" class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" scope="colgroup"><div class="gt_column_spanner">
+Binomial negativa
+</div></th>
+</tr>
+<tr class="gt_col_headings even">
+<th id="groupname_col_1" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"><strong>Group</strong></th>
+<th id="estimate_1" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>exp(Beta)</strong></th>
+<th id="conf.low_1" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>95% CI</strong></th>
+<th id="p.value_1" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>p-value</strong></th>
+<th id="groupname_col_2" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"><strong>Group</strong></th>
+<th id="estimate_2" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>exp(Beta)</strong></th>
+<th id="conf.low_2" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>95% CI</strong></th>
+<th id="p.value_2" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>p-value</strong></th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="label">semana_epi</td>
+<td class="gt_row gt_left" headers="groupname_col_1">cond</td>
+<td class="gt_row gt_center" headers="estimate_1">1.05</td>
+<td class="gt_row gt_center" headers="conf.low_1">1.03, 1.06</td>
+<td class="gt_row gt_center" headers="p.value_1">&lt;0.001</td>
+<td class="gt_row gt_left" headers="groupname_col_2">cond</td>
+<td class="gt_row gt_center" headers="estimate_2">1.06</td>
+<td class="gt_row gt_center" headers="conf.low_2">1.03, 1.10</td>
+<td class="gt_row gt_center" headers="p.value_2">&lt;0.001</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label">grupo_edad_cat</td>
+<td class="gt_row gt_left" headers="groupname_col_1">cond</td>
+<td class="gt_row gt_center" headers="estimate_1"><br>
+</td>
+<td class="gt_row gt_center" headers="conf.low_1"><br>
+</td>
+<td class="gt_row gt_center" headers="p.value_1"><br>
+</td>
+<td class="gt_row gt_left" headers="groupname_col_2">cond</td>
+<td class="gt_row gt_center" headers="estimate_2"><br>
+</td>
+<td class="gt_row gt_center" headers="conf.low_2"><br>
+</td>
+<td class="gt_row gt_center" headers="p.value_2"><br>
+</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;grupo_edad_cat10-19 años</td>
+<td class="gt_row gt_left" headers="groupname_col_1">cond</td>
+<td class="gt_row gt_center" headers="estimate_1">3.23</td>
+<td class="gt_row gt_center" headers="conf.low_1">1.81, 5.75</td>
+<td class="gt_row gt_center" headers="p.value_1">&lt;0.001</td>
+<td class="gt_row gt_left" headers="groupname_col_2">cond</td>
+<td class="gt_row gt_center" headers="estimate_2">3.20</td>
+<td class="gt_row gt_center" headers="conf.low_2">1.67, 6.12</td>
+<td class="gt_row gt_center" headers="p.value_2">&lt;0.001</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;grupo_edad_cat20-34 años</td>
+<td class="gt_row gt_left" headers="groupname_col_1">cond</td>
+<td class="gt_row gt_center" headers="estimate_1">8.98</td>
+<td class="gt_row gt_center" headers="conf.low_1">5.28, 15.3</td>
+<td class="gt_row gt_center" headers="p.value_1">&lt;0.001</td>
+<td class="gt_row gt_left" headers="groupname_col_2">cond</td>
+<td class="gt_row gt_center" headers="estimate_2">8.87</td>
+<td class="gt_row gt_center" headers="conf.low_2">4.85, 16.3</td>
+<td class="gt_row gt_center" headers="p.value_2">&lt;0.001</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;grupo_edad_cat35-65 años</td>
+<td class="gt_row gt_left" headers="groupname_col_1">cond</td>
+<td class="gt_row gt_center" headers="estimate_1">10.1</td>
+<td class="gt_row gt_center" headers="conf.low_1">5.95, 17.1</td>
+<td class="gt_row gt_center" headers="p.value_1">&lt;0.001</td>
+<td class="gt_row gt_left" headers="groupname_col_2">cond</td>
+<td class="gt_row gt_center" headers="estimate_2">9.98</td>
+<td class="gt_row gt_center" headers="conf.low_2">5.47, 18.2</td>
+<td class="gt_row gt_center" headers="p.value_2">&lt;0.001</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;grupo_edad_cat65+ años</td>
+<td class="gt_row gt_left" headers="groupname_col_1">cond</td>
+<td class="gt_row gt_center" headers="estimate_1">2.08</td>
+<td class="gt_row gt_center" headers="conf.low_1">1.12, 3.85</td>
+<td class="gt_row gt_center" headers="p.value_1">0.020</td>
+<td class="gt_row gt_left" headers="groupname_col_2">cond</td>
+<td class="gt_row gt_center" headers="estimate_2">2.04</td>
+<td class="gt_row gt_center" headers="conf.low_2">1.03, 4.04</td>
+<td class="gt_row gt_center" headers="p.value_2">0.042</td>
+</tr>
+</tbody><tfoot>
+<tr class="gt_sourcenotes odd">
+<td colspan="9" class="gt_sourcenote">Abbreviation: CI = Confidence Interval</td>
+</tr>
+</tfoot>
+
+</table>
+
+</div>
+</div>
+</div>
+<p>A pesar de sus múltiples ventajas, la regresión binomial negativa comparte la limitación de no ser adecuada para escenarios con subdispersión. Asimismo, su complejidad computacional exige precaución frente a estructuras de datos muy específicas que puedan comprometer la estabilidad numérica de las estimaciones.</p>
+<div class="callout callout-style-simple callout-warning no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>La distribución <code>"nbinom1</code> del paquete <code>glmmTMB</code> tiene la particularidad de que la varianza es un múltiplo de la media:</p>
+<p><span class="math display">\[
+Var(Y) = \mu(1+\theta)
+\]</span></p>
+<p>Al igual que los modelos quasi-Poisson no forma parte de la familia exponencial. Sin embargo, a diferencia de aquellos, se fundamenta en una función de verosimilitud completa, lo que permite calcular criterios de información como el AIC y realizar comparaciones de modelos robustas.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="distribución-conway-maxwell-poisson" class="level3">
+<h3 class="anchored" data-anchor-id="distribución-conway-maxwell-poisson">Distribución Conway-Maxwell Poisson</h3>
+<p>Otra alternativa a la regresión de Poisson, que permite controlar tanto sobredispersión como subdispersión y exceso de ceros es el modelo Conway-Maxwell Poisson (COM-Poisson). El mismo ofrece una generalización del modelo Poisson estándar, introduciendo un parámetro adicional que permite ajustar de forma independiente la media y la varianza.</p>
+<p>Podemos ajustar estos modelos con la función <code>glmmTMB()</code> especificando el argumento <code>family = compois()</code>, que tiene como función de enlace por defecto el logaritmo <code>(link = "log")</code>:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Modelo COMPOIS</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>fit_compois <span class="ot">&lt;-</span> <span class="fu">glmmTMB</span>(</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  casos <span class="sc">~</span> semana_epi <span class="sc">+</span> grupo_edad_cat,</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> datos,</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">family =</span> compois</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Salida del modelo</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit_compois)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Una desventaja de estos modelos es que son computacionalmente complejos y están implementados en pocos programas estadísticos y paquetes de R. Por otro lado, los parámetros son menos intuitivos de interpretar, y pueden presentar dificultades en el proceso de estimación, especialmente en casos de datos limitados o de baja calidad.</p>
+</section>
+</section>
+<section id="exceso-de-ceros-zero-inflation" class="level2" data-number="29.5">
+<h2 data-number="29.5" class="anchored" data-anchor-id="exceso-de-ceros-zero-inflation"><span class="header-section-number">29.5</span> Exceso de ceros (<em>zero-inflation)</em></h2>
+<p>El exceso de ceros ocurre cuando se observa una cantidad de ceros en los datos de conteo sustancialmente mayor a la que predecirían teóricamente los modelos de Poisson o binomial negativa. Este fenómeno es muy frecuente en la investigación epidemiológica y sanitaria debido a la propia naturaleza de los registros de vigilancia.</p>
+<p>Para identificar un exceso de ceros, se puede utilizar la función <code>check_zeroinflation()</code> del paquete <code>performance</code>:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check_zeroinflation</span>(fit_pois_tmb)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># Check for zero-inflation
+
+   Observed zeros: 821
+  Predicted zeros: 739
+            Ratio: 0.90</code></pre>
+</div>
+</div>
+<p>Como alternativa complementaria, la función <code>testZeroInflation()</code> del paquete <code>DHARMa</code> permite evaluar el mismo supuesto mediante la simulación de residuos normalizados:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">testZeroInflation</span>(fit_pois_tmb)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="03_dispersion_files/figure-html/z1-2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    DHARMa zero-inflation test via comparison to expected zeros with
+    simulation under H0 = fitted model
+
+data:  simulationOutput
+ratioObsSim = 1.1105, p-value &lt; 2.2e-16
+alternative hypothesis: two.sided</code></pre>
+</div>
+</div>
+<p>Cuando los resultados de estas pruebas indican un desajuste significativo, es necesario implementar modelos de regresión con inflación de ceros (<em>zero-inflated</em>). Estos modelos asumen que los ceros observados pueden provenir de dos fuentes diferentes:</p>
+<ul>
+<li><p>Ceros estructurales: generados por una condición intrínseca que impide por completo la ocurrencia del evento</p></li>
+<li><p>Ceros muestrales: generados por azar en unidades que, bajo otras circunstancias, habrían tenido la posibilidad de presentar el evento.</p></li>
+</ul>
+<p>Para explorar el origen de este comportamiento en nuestro ejemplo práctico, comenzamos examinando la distribución de los casos agregados por semana epidemiológica:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>datos <span class="sc">|&gt;</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(semana_epi) <span class="sc">|&gt;</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">casos =</span> <span class="fu">sum</span>(casos))</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 20 × 2
+   semana_epi casos
+        &lt;dbl&gt; &lt;dbl&gt;
+ 1          1     4
+ 2          2     2
+ 3          3     4
+ 4          4     6
+ 5          5     3
+ 6          6     6
+ 7          7     9
+ 8          8    11
+ 9          9    20
+10         10    48
+11         11    51
+12         12    59
+13         13    63
+14         14    49
+15         15    31
+16         16    11
+17         17    12
+18         18     9
+19         19    11
+20         20     1</code></pre>
+</div>
+</div>
+<p>Como se puede observar, se reportaron casos de dengue en todas las semanas epidemiológicas analizadas. A continuación, evaluamos la distribución de los casos agrupados por departamento:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>datos <span class="sc">|&gt;</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(departamento) <span class="sc">|&gt;</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">casos =</span> <span class="fu">sum</span>(casos))</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 2
+   departamento       casos
+   &lt;chr&gt;              &lt;dbl&gt;
+ 1 BAHIA BLANCA         117
+ 2 CORONEL DORREGO        2
+ 3 GENERAL ALVARADO       6
+ 4 GENERAL PUEYRREDON    75
+ 5 LA COSTA             150
+ 6 LOBERIA                2
+ 7 MAR CHIQUITA           8
+ 8 NECOCHEA              14
+ 9 PINAMAR               28
+10 TRES ARROYOS           8</code></pre>
+</div>
+</div>
+<p>Nuevamente, todos los departamentos de la región reportaron al menos un caso de dengue durante el período de estudio. Para comprender mejor el origen de los ceros, procedemos a cruzar ambas dimensiones espaciales y temporales:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>datos <span class="sc">|&gt;</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(semana_epi, departamento) <span class="sc">|&gt;</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">casos =</span> <span class="fu">sum</span>(casos)) <span class="sc">|&gt;</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">20</span>) <span class="co"># Muestra las primeras 20 observaciones</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 200 × 3
+# Groups:   semana_epi [20]
+   semana_epi departamento       casos
+        &lt;dbl&gt; &lt;chr&gt;              &lt;dbl&gt;
+ 1          1 BAHIA BLANCA           1
+ 2          1 CORONEL DORREGO        0
+ 3          1 GENERAL ALVARADO       0
+ 4          1 GENERAL PUEYRREDON     2
+ 5          1 LA COSTA               1
+ 6          1 LOBERIA                0
+ 7          1 MAR CHIQUITA           0
+ 8          1 NECOCHEA               0
+ 9          1 PINAMAR                0
+10          1 TRES ARROYOS           0
+11          2 BAHIA BLANCA           0
+12          2 CORONEL DORREGO        0
+13          2 GENERAL ALVARADO       0
+14          2 GENERAL PUEYRREDON     1
+15          2 LA COSTA               0
+16          2 LOBERIA                0
+17          2 MAR CHIQUITA           0
+18          2 NECOCHEA               0
+19          2 PINAMAR                1
+20          2 TRES ARROYOS           0
+# ℹ 180 more rows</code></pre>
+</div>
+</div>
+<p>Al analizar esta tabla detallada, se advierte que no todos los departamentos reportaron casos en todas las semanas epidemiológicas. Adicionalmente, dado que los datos se encuentran desagregados por grupo etario, es completamente esperable encontrar una alta proporción de combinaciones sin eventos registrados.</p>
+<p>Para cuantificar con precisión este fenómeno, generamos una tabla de frecuencias absolutas y relativas para los valores de la variable dependiente:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tabyl</span>(datos<span class="sc">$</span>casos) <span class="sc">|&gt;</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adorn_pct_formatting</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> datos$casos   n percent
+           0 821   78.4%
+           1 136   13.0%
+           2  44    4.2%
+           3  23    2.2%
+           4  13    1.2%
+           5   5    0.5%
+           6   2    0.2%
+           7   1    0.1%
+           9   1    0.1%
+          12   1    0.1%</code></pre>
+</div>
+</div>
+<p>Los resultados indican que un porcentaje elevado de las observaciones (78.4%) corresponden a recuentos de cero casos, un comportamiento habitual en contextos de vigilancia epidemiológica donde muchas unidades espaciales o temporales no registran eventos activos en períodos específicos.</p>
+<p>Para incorporar este comportamiento en el modelado estadístico, podemos emplear la regresión binomial negativa con inflación de ceros mediante la función <code>glmmTMB()</code>. Añadiendo el argumento <code>zi = ~ 1</code>, especificamos un modelo donde la probabilidad de ceros adicionales se rige por un intercepto único, sin incluir predictores adicionales en la componente de ceros:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Modelo zero-inflated</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>fit_zi_nb <span class="ot">&lt;-</span> <span class="fu">glmmTMB</span>(</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  casos <span class="sc">~</span> semana_epi <span class="sc">+</span> grupo_edad_cat,</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">zi =</span> <span class="sc">~</span><span class="dv">1</span>,</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> datos,</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">family =</span> nbinom2</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Salida del modelo</span></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit_zi_nb)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> Family: nbinom2  ( log )
+Formula:          casos ~ semana_epi + grupo_edad_cat
+Zero inflation:         ~1
+Data: datos
+
+      AIC       BIC    logLik -2*log(L)  df.resid 
+   1540.4    1580.0    -762.2    1524.4      1039 
+
+
+Dispersion parameter for nbinom2 family (): 0.467 
+
+Conditional model:
+                         Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept)              -3.27950    0.33522  -9.783  &lt; 2e-16 ***
+semana_epi                0.06159    0.01570   3.923 8.73e-05 ***
+grupo_edad_cat10-19 años  1.16315    0.33067   3.518 0.000435 ***
+grupo_edad_cat20-34 años  2.18318    0.30879   7.070 1.55e-12 ***
+grupo_edad_cat35-65 años  2.30095    0.30722   7.490 6.90e-14 ***
+grupo_edad_cat65+ años    0.71124    0.34949   2.035 0.041842 *  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Zero-inflation model:
+            Estimate Std. Error z value Pr(&gt;|z|)
+(Intercept)   -16.69    3025.54  -0.006    0.996</code></pre>
+</div>
+</div>
+<p>La salida de estos modelos se divide en tres partes que incluyen:</p>
+<ul>
+<li><p><code>Conditional model</code>: contiene los coeficientes, errores estándar, estadísticos z y valores de significancia correspondientes al modelo de recuento de la familia binomial negativa.</p></li>
+<li><p><code>Zero-inflation model</code>: detalla los coeficientes asociados a la probabilidad de observar un cero estructural adicional, incluyendo sus respectivos errores estándar y pruebas de significancia. En este caso, si el intercepto no resulta estadísticamente significativo, sugiere que la probabilidad de ceros adicionales no es uniforme y requiere una parametrización más compleja.</p></li>
+<li><p>Estadísticas globales del modelo: incluye los criterios de información (AIC, BIC), la devianza, el logaritmo de verosimilitud y los grados de libertad residuales.</p></li>
+</ul>
+<p>Para flexibilizar el componente de inflación de ceros y capturar de manera más realista la estructura de los datos, por lo general resulta conveniente incorporar las variables independientes también en la fórmula de la componente <code>zi</code>:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Modelo zero-inflated</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>fit_zi_nb2 <span class="ot">&lt;-</span> <span class="fu">glmmTMB</span>(</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  casos <span class="sc">~</span> semana_epi <span class="sc">+</span> grupo_edad_cat,</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">zi =</span> <span class="sc">~</span> semana_epi <span class="sc">+</span> grupo_edad_cat,</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> datos,</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">family =</span> nbinom2</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparar con modelo intercepto</span></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="fu">compare_performance</span>(</span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>  fit_nb,</span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>  fit_zi_nb,</span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>  fit_zi_nb2,</span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">metrics =</span> <span class="st">"common"</span>,</span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">rank =</span> <span class="cn">TRUE</span></span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># Comparison of Model Performance Indices
+
+Name       |   Model |    R2 | R2 (adj.) |  RMSE | AIC weights | BIC weights | Performance-Score
+------------------------------------------------------------------------------------------------
+fit_zi_nb2 | glmmTMB | 0.124 |     0.119 | 0.912 |       1.000 |       1.000 |           100.00%
+fit_zi_nb  | glmmTMB | 0.091 |     0.085 | 0.957 |    8.93e-12 |    2.14e-06 |            12.42%
+fit_nb     | glmmTMB | 0.077 |     0.068 | 0.957 |    2.43e-11 |    6.91e-05 |         1.34e-03%</code></pre>
+</div>
+</div>
+<p>En este caso, el modelo que incorpora las variables independientes a la fórmula de <em>zero inflation</em> tiene mejor <em>performance</em> que el modelo que solo incorpora el intercepto y el modelo binomial negativo sin inflación de ceros.</p>
+<div class="callout callout-style-simple callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Advertencia</span>Modelos <em>hurdle</em>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Como alternativa , los <strong>modelos <em>hurdle</em></strong> dividen el análisis en dos etapas independientes: un modelo binario para evaluar la probabilidad de que ocurra el evento (cero frente a positivo) y un modelo de conteo truncado en cero para analizar la frecuencia de los casos en las observaciones positivas. No desarrollaremos ejemplos prácticos de esta aproximación por exceder los objetivos y alcances de este curso.</p>
+</div>
+</div>
+</section>
+<section id="resumen" class="level2" data-number="29.6">
+<h2 data-number="29.6" class="anchored" data-anchor-id="resumen"><span class="header-section-number">29.6</span> Resumen</h2>
+<p>Existen diversas soluciones para tratar la sobredispersión, subdispersión y exceso de ceros en modelos de conteo. En este documento, nos enfocamos en las estrategias más comunes que pueden ser abordadas mediante modelos lineales generalizados utilizando el paquete <code>glmmTMB</code>.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Problema</th>
+<th>Modelo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Sobredispersión</td>
+<td><code>glmmTMB(formula, family = nbinom2)</code></td>
+</tr>
+<tr class="even">
+<td>Subdispersión</td>
+<td><code>glmmTMB(formula, family = compois)</code></td>
+</tr>
+<tr class="odd">
+<td>Sobredispersión + Exceso de Ceros</td>
+<td><code>glmmTMB(formula, family = nbinom2, zi = ~1)</code></td>
+</tr>
+</tbody>
+</table>
+<div class="hidden">
+<p><span class="citation" data-cites="tidyverse">Wickham et&nbsp;al. (<a href="#ref-tidyverse" role="doc-biblioref">2019</a>)</span></p>
+<p><span class="citation" data-cites="easystats">Lüdecke et&nbsp;al. (<a href="#ref-easystats" role="doc-biblioref">2022</a>)</span></p>
+<p><span class="citation" data-cites="janitor">Firke (<a href="#ref-janitor" role="doc-biblioref">2024</a>)</span></p>
+<p><span class="citation" data-cites="gtsummary">Sjoberg et&nbsp;al. (<a href="#ref-gtsummary" role="doc-biblioref">2021</a>)</span></p>
+<p><span class="citation" data-cites="agresti2015">Agresti (<a href="#ref-agresti2015" role="doc-biblioref">2015</a>)</span></p>
+<p><span class="citation" data-cites="salinas-rodriguez2009">Salinas-Rodríguez et&nbsp;al. (<a href="#ref-salinas-rodriguez2009" role="doc-biblioref">2009</a>)</span></p>
+</div>
+</section>
+<section id="referencias" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="referencias">Referencias</h2>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-agresti2015" class="csl-entry" role="listitem">
+Agresti, Alan. 2015. <em>Foundations of <span>Linear</span> and <span>Generalized</span> <span>Linear</span> <span>Models</span></em>. Wiley <span>Series</span> en <span>Probability</span> y <span>Statistics</span>. John Wiley &amp; Sons, Inc.
+</div>
+<div id="ref-janitor" class="csl-entry" role="listitem">
+Firke, Sam. 2024. <em>janitor: Simple Tools for Examining and Cleaning Dirty Data</em>. <a href="https://doi.org/10.32614/CRAN.package.janitor">https://doi.org/10.32614/CRAN.package.janitor</a>.
+</div>
+<div id="ref-dharma" class="csl-entry" role="listitem">
+Hartig, Florian. 2026. <em>DHARMa: Residual Diagnostics for Hierarchical (Multi-Level / Mixed) Regression Models</em>. <a href="https://doi.org/10.32614/CRAN.package.DHARMa">https://doi.org/10.32614/CRAN.package.DHARMa</a>.
+</div>
+<div id="ref-easystats" class="csl-entry" role="listitem">
+Lüdecke, Daniel, Mattan S. Ben-Shachar, Indrajeet Patil, et&nbsp;al. 2022. <span>«easystats: Framework for Easy Statistical Modeling, Visualization, and Reporting»</span>. <em>CRAN</em>, advance online publication. <a href="https://doi.org/10.32614/CRAN.package.easystats">https://doi.org/10.32614/CRAN.package.easystats</a>.
+</div>
+<div id="ref-glmmTMB" class="csl-entry" role="listitem">
+McGillycuddy, Maeve, David I. Warton, Gordana Popovic, y Benjamin M. Bolker. 2025. <span>«Parsimoniously Fitting Large Multivariate Random Effects in <span>glmmTMB</span>»</span>. <em>Journal of Statistical Software</em> 112 (1): 1-19. <a href="https://doi.org/10.18637/jss.v112.i01">https://doi.org/10.18637/jss.v112.i01</a>.
+</div>
+<div id="ref-salinas-rodriguez2009" class="csl-entry" role="listitem">
+Salinas-Rodríguez, Aarón, Betty Manrique-Espinoza, y Sandra G Sosa-Rubí. 2009. <span>«Análisis estadístico para datos de conteo: aplicaciones para el uso de los servicios de salud»</span>. <em>salud pública de méxico</em> 51: 397-406.
+</div>
+<div id="ref-gtsummary" class="csl-entry" role="listitem">
+Sjoberg, Daniel D., Karissa Whiting, Michael Curry, Jessica A. Lavery, y Joseph Larmarange. 2021. <span>«Reproducible Summary Tables with the gtsummary Package»</span>. <em><span>The R Journal</span></em> 13: 570-80. <a href="https://doi.org/10.32614/RJ-2021-053">https://doi.org/10.32614/RJ-2021-053</a>.
+</div>
+<div id="ref-tidyverse" class="csl-entry" role="listitem">
+Wickham, Hadley, Mara Averick, Jennifer Bryan, et&nbsp;al. 2019. <span>«Welcome to the <span>tidyverse</span>»</span>. <em>Journal of Open Source Software</em> 4 (43): 1686. <a href="https://doi.org/10.21105/joss.01686">https://doi.org/10.21105/joss.01686</a>.
+</div>
+</div>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Fuente: <a href="https://es.wikipedia.org/wiki/Localidades_balnearias_del_mar_Argentino" class="uri">https://es.wikipedia.org/wiki/Localidades_balnearias_del_mar_Argentino</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Fuente: Vigilancia de las enfermedades por virus del Dengue y Zika. Datos Abiertos del Ministerio de Salud. Disponible en: <a href="http://datos.salud.gob.ar/dataset/vigilancia-de-dengue-y-zika" class="uri">http://datos.salud.gob.ar/dataset/vigilancia-de-dengue-y-zika</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../unidad_5/02_reg_poisson.html" class="pagination-link" aria-label="Regresión de Poisson">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Regresión de Poisson</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>Este material fue creado en <a href="https://quarto.org/">Quarto</a> y forma parte del curso de Epidemiología - Nivel Avanzado © 2026 Instituto Nacional de Epidemiología “Dr.&nbsp;Juan H. Jara” (ANLIS)</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
