@@ -1,5 +1,11 @@
 ---
 title: "Regresión lineal simple"
+nocite: |
+  @ballester-diez2003
+  @daniel2002
+  @hernandez-avila2011
+  @weisberg2005
+  @royo-bordonada2009
 ---
 
 ```{r}
@@ -683,16 +689,5 @@ El coeficiente de pendiente para la mediana de ingresos fue de\
 
 Finalmente, la gráfica de dispersión de los valores pronosticados estandarizados frente a los residuos estandarizados evidenció que se cumplen los supuestos de homogeneidad de varianza y linealidad, y que los residuos se distribuyen de forma aproximadamente normal. Se cumplieron todos los presupuestos necesarios para validar la regresión y no se encontraron valores atípicos influyentes.
 
-::: hidden
-@ballester-diez2003
 
-@daniel2002
-
-@hernandez-avila2011
-
-@weisberg2005
-
-@royo-bordonada2009
-:::
-
-## Referencias {.unnumbered}
+## {.unnumbered}

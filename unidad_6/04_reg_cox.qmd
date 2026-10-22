@@ -5,6 +5,13 @@ author:
     orcid: 0000-0002-4791-9706
   - name: Micaela Gauto
     orcid: 0000-0003-3288-1108
+nocite: |
+  @harrell1996
+  @hernandez-avila2011
+  @royo-bordonada2009
+  @woodward2005
+  @therneau2000
+  @survminer
 ---
 
 ```{r}
@@ -782,18 +789,5 @@ Siguiendo con el ejemplo, posiblemente el tratamiento aplicado a cada enfermo de
 
 El cálculo del tamaño muestral, por tanto, permite al investigador precisar el número de pacientes a estudiar para detectar como significativos efectos de una magnitud determinada. El no hacerlo, o el no conocer cuántos pacientes necesitamos para detectar un efecto como significativo podría llevarnos a cometer un error de tipo II, es decir, no encontrar diferencias cuando sí las hay.
 
-::: hidden
-@harrell1996
 
-@hernandez-avila2011
-
-@royo-bordonada2009
-
-@woodward2005
-
-@therneau2000
-
-@survminer
-:::
-
-## Referencias {.unnumbered}
+## {.unnumbered}

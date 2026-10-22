@@ -3,6 +3,9 @@ title: "Estudios Experimentales"
 author:
   - name: Andrea Silva
     orcid: 0000-0002-4791-9706
+nocite: |
+  @royo-bordonada2009
+  @woodward2005
 ---
 
 ```{r}
@@ -137,10 +140,5 @@ En un estudio experimental, se realiza un seguimiento de una cohorte. Lo más ha
 
 Una metodología frecuentemente utilizada es el [**análisis de supervivencia**](02_analisis_superv.qmd), donde el tiempo hasta la ocurrencia del evento cobra un rol central. Como ya se vio en la [**unidad anterior**](/unidad_5/01_est_cohortes.qmd), esta técnica también puede aplicarse a estudios de cohortes. A continuación avanzaremos en su comprensión.
 
-::: hidden
-@royo-bordonada2009
 
-@woodward2005
-:::
-
-## Referencias {.unnumbered}
+## {.unnumbered}

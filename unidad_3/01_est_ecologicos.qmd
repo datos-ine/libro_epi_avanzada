@@ -1,5 +1,12 @@
 ---
 title: "Estudios ecológicos"
+nocite: |
+  @daniel2002
+  @hernandez-avila2011
+  @triola2018
+  @ballester-diez2003
+  @weisberg2005
+  @royo-bordonada2009
 ---
 
 ```{r}
@@ -114,18 +121,4 @@ La manera usual de evaluación de la asociación en estudios de grupos múltiple
 
 En este capítulo abordaremos a modo de introducción el [**modelo lineal general**](02_mod_estadistico.qmd), la [**covarianza y correlación**](03_covarianza_correlacion.qmd)(03_covarianza_correlacion.qmd) para luego entender los modelos de [**regresión lineal simple**](04_reg_lineal.qmd)**, [análisis de la varianza](05_anova.qmd)** y [**regresión lineal múltiple**](07_reg_lineal_multiple.qmd), ampliamente usados en el análisis de los estudios ecológicos, aunque no exclusivos de ellos.
 
-::: hidden
-@daniel2002
-
-@hernandez-avila2011
-
-@triola2018
-
-@ballester-diez2003
-
-@weisberg2005
-
-@royo-bordonada2009
-:::
-
-## Referencias {.unnumbered}
+## {.unnumbered}

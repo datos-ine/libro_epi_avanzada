@@ -436,4 +436,4 @@ Además de los argumentos generales de `read_xl()`, podemos mencionar estos otro
 En los siguientes capítulos se abordarán dos componentes fundamentales del ecosistema `tidyverse`: `dplyr`, para la manipulación de datos y la construcción de tablas de resumen, y `ggplot2`, para la elaboración de gráficos estadísticos.
 :::
 
-## Referencias
+## {.unnumbered}

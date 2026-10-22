@@ -3,6 +3,10 @@ title: "Regresión logística condicional"
 author:
   - name: Tamara Ricardo
     orcid: 0000-0002-0921-2611
+nocite: |
+  @agresti2015
+  @tidyverse
+  @easystats
 ---
 
 ```{r}
@@ -257,10 +261,5 @@ tbl_regression(mod_cond1c, exponentiate = T)
 
 En el modelo final, las personas con alto riesgo de fibrosis hepática presentan 3,7 veces más probabilidades de morir (95% IC: 2,45-5,57) que aquellas sin la condición.
 
-::: hidden
-@agresti2015
-@tidyverse
-@easystats
-:::
 
-## Referencias {.unnumbered}
+## {.unnumbered}

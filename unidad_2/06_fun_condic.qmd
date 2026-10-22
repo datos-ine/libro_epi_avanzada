@@ -518,4 +518,4 @@ datos |>
 
 En este caso se genera una variable de tipo factor con los grupos de edad ordenados de mayor a menor.
 
-## Referencias {.unnumbered}
+## {.unnumbered}

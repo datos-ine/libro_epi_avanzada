@@ -3,6 +3,13 @@ title: "Intervalos de confianza en muestras complejas"
 author: 
   - name: Christian Ballejo
     orcid: 0000-0002-7346-5701
+nocite: |
+  @epidat
+  @bell2012
+  @sakshaug2014
+  @aycaguer2000
+  @gutierrez2020
+  @national_research2015
 ---
 
 ```{r}
@@ -624,18 +631,5 @@ Este criterio se encuentra generalmente relacionado al anterior y es relevante a
 
 Cuando la incidencia de un fenómeno es muy baja y el diseño de la encuesta no lo tuvo en cuenta, entonces es posible que las estimaciones asociadas a tamaños, totales y proporciones sobre este fenómeno no sean confiables. Por ejemplo, *National Research Council (2015)* plantea que si el número de casos no ponderados es menor a 50 unidades entonces la estimación no sería publicable.
 
-::: hidden
-@epidat
 
-@bell2012
-
-@sakshaug2014
-
-@aycaguer2000
-
-@gutierrez2020
-
-@national_research2015
-:::
-
-## Referencias
+## {.unnumbered}

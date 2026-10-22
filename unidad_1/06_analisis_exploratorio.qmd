@@ -635,4 +635,4 @@ datos |>
 
 En este ejemplo, mostramos resultados de variables numéricas menos de `id` agrupados por `sexo` (sin considerar valores `NA` en las categorías de sexo).
 
-## Referencias {.unnumbered}
+## {.unnumbered}

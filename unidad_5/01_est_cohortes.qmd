@@ -5,6 +5,10 @@ author:
     orcid: 0000-0002-7346-5701
   - name: Andrea Silva
     orcid: 0000-0002-4791-9706
+nocite: |
+  @nolasco2016
+  @perez-hoyos2001
+  @salinas-rodriguez2009
 ---
 
 ```{r}
@@ -122,12 +126,4 @@ tibble(
   kbl_format()
 ```
 
-::: hidden
-@nolasco2016
-
-@perez-hoyos2001
-
-@salinas-rodriguez2009
-:::
-
-## Referencias {.unnumbered}
+## {.unnumbered}

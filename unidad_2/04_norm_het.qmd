@@ -3,6 +3,8 @@ title: "Análisis de normalidad y homocedasticidad"
 author: 
   - name: Christian Ballejo
     orcid: 0000-0002-7346-5701
+nocite: |
+  @tidyverse
 ---
 
 ```{r}
@@ -492,8 +494,4 @@ Las dos funciones estan representadas en **rstatix**, con `prop_test()` y `binom
 
 Apredimos con este ejercicio que el lenguaje R siempre ofrece múltiples caminos, pero nuestro criterio es el que decide cuál usar y reportar.
 
-::: hidden
-@tidyverse
-:::
-
-## Referencias
+## {.unnumbered}

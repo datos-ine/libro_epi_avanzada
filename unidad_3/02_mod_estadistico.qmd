@@ -3,6 +3,9 @@ title: "Introducción al modelado estadístico"
 author: 
   - name: Tamara Ricardo
     orcid: 0000-0002-0921-2611
+nocite: |
+  @triola2018
+  @agresti2015
 ---
 
 ```{r}
@@ -224,10 +227,4 @@ Los elementos de la lista también pueden llamarse de forma independiente, siend
   confint(modelo, level = 0.99)
   ```
 
-::: hidden
-@triola2018
-
-@agresti2015
-:::
-
-## Referencias {.unnumbered}
+## {.unnumbered}

@@ -3,6 +3,20 @@ title: "Selección de la muestra"
 author: 
   - name: Andrea Silva
     orcid: 0000-0002-4791-9706
+nocite: |
+  @hernandez-avila2011
+  @daniel2002
+  @rodriguez2018
+  @rius_diaz2012
+  @triola2018
+  @norman1996
+  @rodriguez2003
+  @epidat
+  @vonelm2008
+  @schulz2010
+  @alvarez_caceres2007
+  @glantz2006
+  @field2014
 ---
 
 ```{r}
@@ -349,33 +363,4 @@ Por ejemplo, en el conglomerado 5.1, cada alumno seleccionado representa aproxim
 
 Este proceso es fundamental en estudios basados en muestreos complejos, ya que permite corregir posibles diferencias en las probabilidades de selección y garantizar que las estimaciones sean válidas y precisas para toda la población.
 
-::: hidden
-@hernandez-avila2011
-
-@daniel2002
-
-@rodriguez2018
-
-@rius_diaz2012
-
-@triola2018
-
-@norman1996
-
-@rodriguez2003
-
-@epidat
-
-@vonelm2008
-
-@schulz2010
-
-@alvarez_caceres2007
-
-@glantz2006
-
-@field2014
-
-:::
-
-## Referencias
+## {.unnumbered}

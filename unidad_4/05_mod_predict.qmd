@@ -3,6 +3,11 @@ title: "Validación de modelos predictivos"
 author: 
   - name: Andrea Silva
     orcid: 0000-0002-4791-9706
+nocite: |
+  @steyerberg2001
+  @collins2015
+  @fernandez2018
+  @harrell2015
 ---
 
 ```{r}
@@ -104,14 +109,5 @@ Las técnicas de validación *bootstrap* incluyen los siguientes pasos:
 
 La parte práctica la encontrarán en la video clase correspondiente a validación: allí realizaremos la validación del modelo que obtuvimos para el dataset de Titanic, usando un set de datos de testeo.
 
-::: hidden
-@steyerberg2001
 
-@collins2015
-
-@fernandez2018
-
-@harrell2015
-:::
-
-## Referencias {.unnumbered}
+## {.unnumbered}

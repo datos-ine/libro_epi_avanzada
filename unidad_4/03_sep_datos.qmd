@@ -3,6 +3,10 @@ title: "Separación de datos binomiales"
 author: 
   - name: Tamara Ricardo
     orcid: 0000-0002-0921-2611
+nocite: |
+  @agresti2015
+  @tidyverse
+  @janitor
 ---
 
 ```{r}
@@ -236,12 +240,4 @@ En casos de separación parcial, una opción es simplificar el modelo eliminando
 
 Los **modelos de** ***pseudo-likelihood***, como la regresión logística condicional y la máxima verosimilitud penalizada, permiten ajustar el modelo incluso cuando la separación de datos impide la convergencia con métodos tradicionales. Los **modelos penalizados**, que incluyen las regresiones Ridge, Lasso y Elastic Net, añaden un término de penalización que controla el crecimiento excesivo de los coeficientes en casos de separación parcial, facilitando la convergencia y mejorando la estabilidad del modelo. Por otro lado, los **modelos bayesianos** introducen distribuciones previas sobre los coeficientes, permitiendo una mayor flexibilidad para manejar la separación de datos y ofreciendo estimaciones más estables y confiables. Sin embargo, el ajuste e interpretación de estos modelos es complejo y escapa al alcance de este curso, por lo que no serán abordados en detalle.
 
-::: hidden
-@agresti2015
-
-@tidyverse
-
-@janitor
-:::
-
-## Referencias {.unnumbered}
+## {.unnumbered}

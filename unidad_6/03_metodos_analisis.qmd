@@ -5,6 +5,10 @@ author:
     orcid: 0000-0002-4791-9706
   - name: Tamara Ricardo
     orcid: 0000-0002-0921-2611
+nocite: |
+  @hernandez-avila2011
+  @woodward2005
+  @royo-bordonada2009
 ---
 
 ```{r}
@@ -1200,12 +1204,5 @@ ggsurvplot(
 
 Con el argumento `fun="cumhaz"` le indicamos a `ggsurvplot()` que grafique la función de riesgo acumulado. Este mismo procedimiento puede aplicarse a todos los objetos de supervivencia creados previamente.
 
-::: hidden
-@hernandez-avila2011
 
-@woodward2005
-
-@royo-bordonada2009
-:::
-
-## Referencias {.unnumbered}
+## {.unnumbered}

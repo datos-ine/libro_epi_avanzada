@@ -5,6 +5,13 @@ author:
     orcid: 0000-0002-7346-5701
   - name: Andrea Silva
     orcid: 0000-0002-4791-9706
+nocite: |
+  @royo-bordonada2009
+  @field2014
+  @ortega-calvo2002
+  @rothman2012
+  @silva-aycaguer1995
+  @thompson1994
 ---
 
 ```{r}
@@ -82,18 +89,5 @@ $$
 
 El modelo multivariado a utilizar para estudios de casos y controles no apareados es la [**regresión logística**](02_reg_logistica.qmd), que desarrollaremos a continuación. Por otro lado, los estudios de casos y controles apareados se analizan mediante modelos de [**regresión logística condicional**](04_reg_logistica_cond.qmd), los cuales abordaremos brevemente al final de la unidad.
 
-::: hidden
-@royo-bordonada2009
 
-@field2014
-
-@ortega-calvo2002
-
-@rothman2012
-
-@silva-aycaguer1995
-
-@thompson1994
-:::
-
-## Referencias {.unnumbered}
+## {.unnumbered}

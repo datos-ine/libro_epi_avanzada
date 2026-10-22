@@ -1,6 +1,19 @@
 ---
 title: "Regresión logística"
 prefer-html: true
+nocite: |
+  @epidat
+  @royo-bordonada2009
+  @field2014
+  @hernandez-avila2011
+  @ortega-calvo2002
+  @rothman2012
+  @silva-aycaguer1995
+  @thompson1994
+  @tidyverse
+  @easystats
+  @gtsummary
+  @skimr
 ---
 
 ```{r}
@@ -1055,27 +1068,5 @@ datos |>
 
 La base de datos tiene 419 casos donde la variable de respuesta es 1 y 381 casos donde es 0. Esto cumple con la recomendación de tener al menos 10 casos para cada valor de la variable dicotómica de respuesta, garantizando que las estimaciones sean confiables.
 
-::: hidden
-@epidat
 
-@royo-bordonada2009
-
-@field2014
-
-@hernandez-avila2011
-
-@ortega-calvo2002
-
-@rothman2012
-
-@silva-aycaguer1995
-
-@thompson1994
-
-@tidyverse
-@easystats
-@gtsummary
-@skimr
-:::
-
-## Referencias {.unnumbered}
+## {.unnumbered}

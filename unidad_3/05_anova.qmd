@@ -1,5 +1,13 @@
 ---
 title: "Análisis de la varianza (ANOVA)"
+nocite: |
+  @agresti2015
+  @triola2018
+  @gtsummary
+  @easystats
+  @nortest
+  @dlookr
+  @skimr
 ---
 
 ```{r}
@@ -415,20 +423,5 @@ Se ha realizado un ANOVA de una vía para comparar la tasa de mortalidad por cá
 
 Se realizó la prueba post hoc de Tukey HSD y se encontró que media de mortalidad para el estado de Maine fue estadísticamente superiror respecto de los estados de Massachusetts, New York y New Jersey (p < 0.05).
 
-::: {.hidden}
-@agresti2015
 
-@triola2018
-
-@gtsummary
-
-@easystats
-
-@nortest
-
-@dlookr
-
-@skimr
-:::
-
-## Referencias {.unnumbered}
+## {.unnumbered}

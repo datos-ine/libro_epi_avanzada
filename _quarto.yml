@@ -157,9 +157,6 @@ format:
       - left=20mm
       - heightrounded
     toc: true
-    cite-method: biblatex
-    biblatexoptions:
-      - refsection=chapter
 
 # ---- Tipografía ----
 mainfont: "Calibri"

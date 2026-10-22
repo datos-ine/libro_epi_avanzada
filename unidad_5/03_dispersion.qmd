@@ -3,6 +3,13 @@ title: "Dispersión de datos"
 author:
   - name: Tamara Ricardo
     orcid: 0000-0002-0921-2611
+nocite: |
+  @tidyverse
+  @easystats
+  @janitor
+  @gtsummary
+  @agresti2015
+  @salinas-rodriguez2009
 ---
 
 ```{r}
@@ -347,18 +354,5 @@ Existen diversas soluciones para tratar la sobredispersión, subdispersión y ex
 | Subdispersión | `glmmTMB(formula, family = compois)` |
 | Sobredispersión + Exceso de Ceros | `glmmTMB(formula, family = nbinom2, zi = ~1)` |
 
-::: hidden
-@tidyverse
 
-@easystats
-
-@janitor
-
-@gtsummary
-
-@agresti2015
-
-@salinas-rodriguez2009
-:::
-
-## Referencias {.unnumbered}
+## {.unnumbered}

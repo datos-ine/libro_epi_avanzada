@@ -3,6 +3,10 @@ title: "Análisis de supervivencia"
 author:
   - name: Andrea Silva
     orcid: 0000-0002-4791-9706
+nocite: |
+  @hernandez-avila2011
+  @woodward2005
+  @royo-bordonada2009
 ---
 
 ```{r}
@@ -403,12 +407,5 @@ Al considerar la posibilidad de adoptar una distribución teórica para los tiem
 
 Nos centraremos en los *abordajes no paramétricos*, que parten de la construcción de las llamadas **Tablas de supervivencia**, y tienen como objetivo central la estimación de dos medidas: la probabilidad de morir en un momento dado y la probabilidad de sobrevivir hasta un determinado tiempo. Existen dos métodos: el **método actuarial** y el método de **Kaplan Meier**, que describiremos en el siguiente capítulo.
 
-::: hidden
-@hernandez-avila2011
 
-@woodward2005
-
-@royo-bordonada2009
-:::
-
-## Referencias {.unnumbered}
+## {.unnumbered}

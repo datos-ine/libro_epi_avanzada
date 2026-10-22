@@ -5,6 +5,19 @@ author:
     orcid: 0000-0002-4791-9706
   - name: Tamara Ricardo
     orcid: 0000-0002-0921-2611
+nocite: |
+  @rodriguez2018
+  @hernandez-avila2011
+  @alvarez_caceres2007
+  @triola2018
+  @rodriguez2003
+  @norman1996
+  @rius_diaz2012
+  @daniel2002
+  @glantz2006
+  @dlookr
+  @samplingbook
+  @epidat
 ---
 
 ```{r}
@@ -1246,30 +1259,5 @@ t.test(x = enfermos$V1, alternative = "less", mu = 165, conf.level = 0.95)
 
 Dado que $p < 0.05$, rechazamos la hipótesis nula y concluimos que, con un nivel de confianza del 95%, el nuevo fármaco **reduce significativamente la presión arterial** en estos pacientes.
 
-::: {.hidden}
-@rodriguez2018
 
-@hernandez-avila2011
-
-@alvarez_caceres2007
-
-@triola2018
-
-@rodriguez2003
-
-@norman1996
-
-@rius_diaz2012
-
-@daniel2002
-
-@glantz2006
-
-@dlookr
-
-@samplingbook
-
-@epidat
-:::
-
-## Referencias {.unnumbered}
+## {.unnumbered}

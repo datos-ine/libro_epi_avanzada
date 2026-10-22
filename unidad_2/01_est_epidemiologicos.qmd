@@ -5,6 +5,8 @@ author:
     orcid: 0000-0002-4791-9706
   - name: Tamara Ricardo
     orcid: 0000-0002-0921-2611
+nocite: |
+  @hernandez-avila2011
 ---
 
 ```{r}
@@ -46,7 +48,7 @@ tibble(
 ) |>
 
   # Tabla
-  kbl_format() 
+  kbl_format()
 ```
 
 Toda investigación debe partir de una revisión actualizada del conocimiento sobre el tema a abordar. Esto implica delimitar el problema de investigación de forma precisa, definiendo objetivos, propósito, justificación e hipótesis. Para ello, es fundamental conocer las características y ventajas de cada tipo de estudio epidemiológico, evaluar su adecuación a los objetivos planteados y considerar los recursos disponibles en términos de tiempo, personal y presupuesto.
@@ -166,8 +168,5 @@ Puede descargarse desde el sitio oficial de CONSORT:
 En este curso nos centraremos en los aspectos metodológicos y en el análisis de datos según el diseño del estudio. Para ello, utilizaremos el [**lenguaje R**](../unidad_1/01_intro_R.qmd), un entorno especializado en análisis estadístico que permitirá explorar diferentes enfoques adaptados a cada tipo de diseño epidemiológico. Partiremos de cada diseño y discutiremos posibles caminos de análisis, reconociendo que dichos caminos no siempre son únicos y que ciertos elementos del análisis pueden ser comunes a varios diseños.
 :::
 
-::: hidden
-[@hernandez-avila2011]
-:::
 
-## Referencias
+## {.unnumbered}

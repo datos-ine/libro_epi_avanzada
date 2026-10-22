@@ -3,6 +3,9 @@ title: "Estudios de corte transversal"
 author: 
   - name: Andrea Silva
     orcid: 0000-0002-4791-9706
+nocite: |
+  @hernandez-avila2011
+  @rodriguez2018
 ---
 
 ```{r}
@@ -70,10 +73,4 @@ Una vez obtenidos los datos, éstos pueden representarse gráficamente, resumirs
 
 - Si se busca **extrapolar a la población general,** es necesario aplicar métodos de **inferencia estadística**, fundamentados en la teoría de la probabilidad.
 
-::: hidden
-@rodriguez2018
-
-@hernandez-avila2011
-:::
-
-## Referencias
+## {.unnumbered}

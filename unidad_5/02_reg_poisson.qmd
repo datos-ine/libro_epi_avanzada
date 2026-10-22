@@ -1,5 +1,17 @@
 ---
 title: "Regresión de Poisson"
+nocite: |
+  @de_irala2001a
+  @gordis2017
+  @hernandez-avila2011
+  @kim2019
+  @kleinbaum1988
+  @nolasco2016
+  @perez-hoyos2001
+  @salinas-rodriguez2009
+  @tidyverse
+  @easystats
+  @gtsummary
 ---
 
 ```{r}
@@ -557,28 +569,4 @@ model_parameters(mod5, exponentiate = T) |>
   plot()
 ```
 
-::: hidden
-@de_irala2001a
-
-@gordis2017
-
-@hernandez-avila2011
-
-@kim2019
-
-@kleinbaum1988
-
-@nolasco2016
-
-@perez-hoyos2001
-
-@salinas-rodriguez2009
-
-@tidyverse
-
-@easystats
-
-@gtsummary
-:::
-
-## Referencias {.unnumbered}
+## {.unnumbered}

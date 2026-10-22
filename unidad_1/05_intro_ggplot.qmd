@@ -705,4 +705,4 @@ Algunas de las extensiones que utilizaremos durante el curso son:
 
 Estas extensiones permiten ampliar la flexibilidad y expresividad gráfica de `ggplot2` sin perder la estructura gramatical que lo caracteriza.
 
-## Referencias {.unnumbered}
+## {.unnumbered}

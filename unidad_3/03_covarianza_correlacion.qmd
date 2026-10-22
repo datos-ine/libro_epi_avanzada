@@ -3,6 +3,10 @@ title: "Covarianza y correlación"
 author:
   - name: Tamara Ricardo
     orcid: 0000-0002-0921-2611
+nocite: |
+  @triola2018
+  @agresti2015
+  @tidyverse
 ---
 
 ```{r}
@@ -729,12 +733,5 @@ datos |>
 
 Para explicar la forma de esta correlación e incluso predecir los valores que puede alcanzar una variable dependiente numérica en función de una variable independiente también numérica podemos utilizar la [**regresión lineal simple**](04_reg_lineal.qmd).
 
-::: hidden
-@triola2018
 
-@agresti2015
-
-@tidyverse
-:::
-
-## Referencias {.unnumbered}
+## {.unnumbered}

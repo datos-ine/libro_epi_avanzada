@@ -607,4 +607,4 @@ Ante las preguntas, ¿Por qué en estos casos el criterio estadístico puede fal
 
 Según @almeidafilho2011, *"Es verdad que las técnicas utilizadas para la atribución de valores numéricos al grado de certeza de que las variables se encuentran asociadas son eminentemente estadísticas. Sin embargo, en el campo de la Epidemiología, la estadística no habla por sí sola. Le corresponde al epidemiólogo analizar los resultados obtenidos a la luz del conocimiento epidemiológico acumulado, el contexto en el cual el fenómeno analizado es parte y las características propias, cualitativas, asumidas por el fenómeno en su especificidad temporal y espacial. Es decir, más que significancia estadística, la interpretación de los datos debe buscar establecer la "significancia epidemiológica" de los hallazgos. Esa es la esencia del análisis epidemiológico."*
 
-## Referencias {.unnumbered}
+## {.unnumbered}

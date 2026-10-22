@@ -1,5 +1,14 @@
 ---
 title: "Regresión lineal múltiple"
+nocite: |
+  @de_irala2001a
+  @de_irala2001b
+  @gordis2017
+  @kim2019
+  @kleinbaum1988
+  @macmahon1972
+  @GGally
+  @lmtest
 ---
 
 ```{r}
@@ -836,22 +845,5 @@ Para evitar estos inconvenientes, es recomendable usar métodos alternativos de 
 
 Estos dos últimos métodos escapan al alcance del curso. Sin embargo, invitamos a quienes tengan interés a explorar las múltiples posibilidades que ofrecen, en particular al momento de analizar datasets grandes y con múltiples variables explicativas.
 
-::: hidden
-@de_irala2001a
 
-@de_irala2001b
-
-@gordis2017
-
-@kim2019
-
-@kleinbaum1988
-
-@macmahon1972
-
-@GGally
-
-@lmtest
-:::
-
-## Referencias {.unnumbered}
+## {.unnumbered}
