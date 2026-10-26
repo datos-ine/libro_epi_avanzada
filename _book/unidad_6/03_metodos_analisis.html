@@ -979,7 +979,7 @@ T_{mediano}=\frac{ln(2)^{1/\gamma}}{\alpha}
 <p>En este método, los tiempos de supervivencia se agrupan en intervalos, cuya duración puede variar según la frecuencia del evento de interés y puede no ser de la misma longitud. Una limitación de este enfoque es la menor precisión en muestras pequeñas. Sin embargo, en muestras grandes, su influencia sobre las estimaciones es reducida y permite estimar también la función de riesgo. Se asume que las observaciones censuradas se distribuyen homogéneamente dentro de cada intervalo.</p>
 <p>Antes de continuar con el ejemplo se sugiere ver la siguiente videoclase:</p>
 <p>➡️ <a href="https://www.youtube.com/watch?v=PZaWezVTgO4">Método Actuarial</a></p>
-<p>Consideremos el ejemplo de un estudio de supervivencia pos trasplante hepático en una cohorte de 300 pacientes, seguidos durante cinco años (2009-2014). La siguiente tabla (<a href="#tbl-tab1" class="quarto-xref">Tabla&nbsp;<span>32.1</span></a>) presenta los datos iniciales:</p>
+<p>Consideremos el ejemplo de un estudio de supervivencia pos trasplante hepático en una cohorte de 300 pacientes, seguidos durante cinco años (2009-2014). La siguiente tabla (<a href="#tbl-tab1" class="quarto-xref">Tabla&nbsp;<span class="quarto-unresolved-ref">tbl-tab1</span></a>) presenta los datos iniciales:</p>
 <div class="cell" data-layout-align="center">
 <div id="tbl-tab1" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure">
@@ -1247,7 +1247,7 @@ Tabla&nbsp;32.2: Tabla de supervivencia construida por el método actuarial.
 </figure>
 </div>
 </div>
-<p>Puede luego graficarse <span class="math inline">\(S(t)\)</span> vs periodo (<a href="#fig-fig4" class="quarto-xref">Figura&nbsp;<span>32.4</span></a>). Sobre el gráfico se pueden ubicar los cuartiles y en particular, la mediana de los tiempos de supervivencia, que indica el momento donde la supervivencia es del 50%.</p>
+<p>Puede luego graficarse <span class="math inline">\(S(t)\)</span> vs periodo (<a href="#fig-fig4" class="quarto-xref">Figura&nbsp;<span class="quarto-unresolved-ref">fig-fig4</span></a>). Sobre el gráfico se pueden ubicar los cuartiles y en particular, la mediana de los tiempos de supervivencia, que indica el momento donde la supervivencia es del 50%.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-fig4" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
@@ -1288,7 +1288,7 @@ Figura&nbsp;32.5: Cohorte cerrada de 10 pacientes en seguimiento.
 </div>
 </div>
 </div>
-<p>La información de esta figura se resume en la <a href="#tbl-tab3" class="quarto-xref">Tabla&nbsp;<span>32.3</span></a>. Es importante señalar que la base de datos para análisis de supervivencia debe tener la siguiente estructura: cada fila es un individuo en seguimiento, debe consignarse el tiempo inicial y el tiempo final del seguimiento (en este caso, el tiempo inicial es el mismo para todos porque se trata de una cohorte cerrada, pero esto no es lo más frecuente), el tiempo de seguimiento <span class="math inline">\(t\)</span> (se obtiene de la diferencia tiempo final y tiempo inicial) y la variable <code>status</code>, que indica si el paciente sufrió el evento (<code>status:1</code>) o es un paciente censurado (<code>status:0</code>).</p>
+<p>La información de esta figura se resume en la <a href="#tbl-tab3" class="quarto-xref">Tabla&nbsp;<span class="quarto-unresolved-ref">tbl-tab3</span></a>. Es importante señalar que la base de datos para análisis de supervivencia debe tener la siguiente estructura: cada fila es un individuo en seguimiento, debe consignarse el tiempo inicial y el tiempo final del seguimiento (en este caso, el tiempo inicial es el mismo para todos porque se trata de una cohorte cerrada, pero esto no es lo más frecuente), el tiempo de seguimiento <span class="math inline">\(t\)</span> (se obtiene de la diferencia tiempo final y tiempo inicial) y la variable <code>status</code>, que indica si el paciente sufrió el evento (<code>status:1</code>) o es un paciente censurado (<code>status:0</code>).</p>
 <div class="cell" data-layout-align="center">
 <div id="tbl-tab3" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure">
@@ -1386,7 +1386,7 @@ Tabla&nbsp;32.3: Datos de 10 pacientes en seguimiento para ECV.
 </div>
 </div>
 <p>Para la construcción de la tabla de supervivencia, lo primero que debemos hacer es ordenar los pacientes de acuerdo a su tiempo.</p>
-<p>Entonces, la <a href="#tbl-tab3" class="quarto-xref">Tabla&nbsp;<span>32.3</span></a>, se transforma en la <a href="#tbl-tab4" class="quarto-xref">Tabla&nbsp;<span>32.4</span></a>:</p>
+<p>Entonces, la <a href="#tbl-tab3" class="quarto-xref">Tabla&nbsp;<span class="quarto-unresolved-ref">tbl-tab3</span></a>, se transforma en la <a href="#tbl-tab4" class="quarto-xref">Tabla&nbsp;<span class="quarto-unresolved-ref">tbl-tab4</span></a>:</p>
 <div class="cell" data-layout-align="center">
 <div id="tbl-tab4" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure">
@@ -1461,7 +1461,7 @@ Tabla&nbsp;32.4: Pacientes en seguimientos por ECV, ordenados según tiempo de s
 </figure>
 </div>
 </div>
-<p>Comencemos con la construcción de la tabla de supervivencia (<a href="#tbl-tab5" class="quarto-xref">Tabla&nbsp;<span>32.5</span></a>), teniendo en cuenta que aquí conocemos exactamente el tiempo en el que un individuo estuvo en riesgo de morir por ECV. Esta tabla se construye a partir de los individuos que tuvieron el evento.</p>
+<p>Comencemos con la construcción de la tabla de supervivencia (<a href="#tbl-tab5" class="quarto-xref">Tabla&nbsp;<span class="quarto-unresolved-ref">tbl-tab5</span></a>), teniendo en cuenta que aquí conocemos exactamente el tiempo en el que un individuo estuvo en riesgo de morir por ECV. Esta tabla se construye a partir de los individuos que tuvieron el evento.</p>
 <div class="cell" data-layout-align="center">
 <div id="tbl-tab5" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure">
@@ -1560,7 +1560,7 @@ Tabla&nbsp;32.5: Tabla de supervivencia según KM para pacientes con ECV.
 <li><p>Obtener la supervivencia acumulada, multiplicando en cada periodo de tiempo los cocientes de supervivencia (<span class="math inline">\(s_i\)</span>/<span class="math inline">\(n_i\)</span>) por los productos acumulados de los tiempos anteriores.</p></li>
 <li><p>Representar gráficamente la curva. La línea comienza en 1 (100% de supervivencia) y se mantiene constante hasta que ocurre el primer evento, momento en el que desciende un escalón. Este patrón se repite a medida que ocurren nuevos eventos. Por ejemplo, si la supervivencia cae a 0,90 tras el primer evento, ese valor se mantendrá hasta el siguiente.</p></li>
 </ol>
-<p>Algunos investigadores optan por representar también <strong>curvas de incidencia acumulada</strong>, que refleja la probabilidad de experimentar el evento a lo largo del tiempo. Esta también puede calcularse a partir de la tabla de vida generada mediante el método de Kaplan-Meier. Por ejemplo, en la <a href="#tbl-tab5" class="quarto-xref">Tabla&nbsp;<span>32.5</span></a>, bastaría con usar la columna “Probabilidad del evento” y obtener la probabilidad acumulada multiplicando las probabilidades de distintos tiempos.</p>
+<p>Algunos investigadores optan por representar también <strong>curvas de incidencia acumulada</strong>, que refleja la probabilidad de experimentar el evento a lo largo del tiempo. Esta también puede calcularse a partir de la tabla de vida generada mediante el método de Kaplan-Meier. Por ejemplo, en la <a href="#tbl-tab5" class="quarto-xref">Tabla&nbsp;<span class="quarto-unresolved-ref">tbl-tab5</span></a>, bastaría con usar la columna “Probabilidad del evento” y obtener la probabilidad acumulada multiplicando las probabilidades de distintos tiempos.</p>
 <p>Hasta aquí aprendimos a calcular la <span class="math inline">\(S(t)\)</span> a partir de nuestros datos, ya sea por el método actuarial o por el de KM. Todo esto que hicimos “a mano” aquí, las funciones del lenguaje R lo hacen y nos facilitan el trabajo.</p>
 <p>Ahora podríamos plantearnos distintos interrogantes, según el estudio, como por ejemplo:</p>
 <ul>
@@ -1597,7 +1597,7 @@ Figura&nbsp;32.6: Curvas de KM estratificadas por tipo de tratamiento.
 </ul>
 <p>El estadístico de contraste utilizado es la <strong>chi-cuadrado</strong> (<span class="math inline">\(\chi^2\)</span>) con <span class="math inline">\(k-1\)</span> grados de libertad, donde <span class="math inline">\(k\)</span> representa la cantidad de grupos (es decir, el número de curvas que se comparan). Esta prueba evalúa si la incidencia de eventos es similar en los distintos estratos.</p>
 <p>La interpretación del valor <span class="math inline">\(p\)</span> es similar a la de otros tests de hipótesis: típicamente, un valor <span class="math inline">\(p &lt; 0,05\)</span> se considera evidencia suficiente para rechazar la hipótesis nula, indicando diferencias estadísticamente significativas entre los grupos.</p>
-<p>En la práctica médica, es frecuente comparar tratamientos o cohortes utilizando como criterio la supervivencia a cinco años. Sin embargo, esta estrategia puede ser engañosa. Es posible que dos curvas muy diferentes reflejen la misma supervivencia en ese único punto temporal. La <a href="#fig-fig8" class="quarto-xref">Figura&nbsp;<span>32.7</span></a> ilustra claramente este problema.</p>
+<p>En la práctica médica, es frecuente comparar tratamientos o cohortes utilizando como criterio la supervivencia a cinco años. Sin embargo, esta estrategia puede ser engañosa. Es posible que dos curvas muy diferentes reflejen la misma supervivencia en ese único punto temporal. La <a href="#fig-fig8" class="quarto-xref">Figura&nbsp;<span class="quarto-unresolved-ref">fig-fig8</span></a> ilustra claramente este problema.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-fig8" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
@@ -1612,7 +1612,7 @@ Figura&nbsp;32.7: Curvas de supervivencia que exhiben la misma supervivencia a c
 </div>
 </div>
 </div>
-<p>En la <a href="#fig-fig8" class="quarto-xref">Figura&nbsp;<span>32.7</span></a>, ambos grupos presentan una supervivencia del 50% a los 5 años. No obstante, se advierte que el grupo B experimenta una caída más temprana en la probabilidad de supervivencia, lo que indica un peor pronóstico desde los primeros momentos del seguimiento.</p>
+<p>En la <a href="#fig-fig8" class="quarto-xref">Figura&nbsp;<span class="quarto-unresolved-ref">fig-fig8</span></a>, ambos grupos presentan una supervivencia del 50% a los 5 años. No obstante, se advierte que el grupo B experimenta una caída más temprana en la probabilidad de supervivencia, lo que indica un peor pronóstico desde los primeros momentos del seguimiento.</p>
 <p>Los tests diseñados específicamente para comparar curvas de supervivencia, como el log-rank, consideran todo el trayecto temporal de las curvas, y no únicamente un punto aislado. Esto permite detectar diferencias persistentes en el tiempo.</p>
 <p>El test de log-rank (también conocido como test de <strong>Mantel-Haenszel</strong>) es el más adecuado cuando el evento es poco frecuente o cuando las curvas son aproximadamente paralelas.</p>
 <p>Si las curvas se cruzan en el tiempo —por ejemplo, si un grupo presenta mejor supervivencia inicialmente, pero luego el otro lo supera— conviene emplear el <strong>test de Wilcoxon (o de Breslow)</strong>, que otorga mayor peso a las diferencias tempranas. Un tercer método menos utilizado es el <strong>test de Tarone-Ware</strong>, que aplica una ponderación intermedia donde se le da distinto peso a las diferencias según ocurran más precoz o más tardíamente a lo largo del seguimiento.</p>
@@ -1625,7 +1625,7 @@ Figura&nbsp;32.7: Curvas de supervivencia que exhiben la misma supervivencia a c
 <p><span class="math display">\[
 \lambda(t)=\frac{Número \; de \; \;eventos\;observados\;en\;cada\;intervalo}{personas\;en\;riesgo\;al\;inicio*amplitud\;intervalo}
 \]</span></p>
-<p>De la misma forma que construimos <span class="math inline">\(S(t)\)</span>, podemos estimar <span class="math inline">\(h(t)\)</span> (o un software puede hacerlo por nosotros). La <a href="#tbl-tab6" class="quarto-xref">Tabla&nbsp;<span>32.6</span></a>, nos muestra las estimaciones para el ejemplo utilizado para KM.</p>
+<p>De la misma forma que construimos <span class="math inline">\(S(t)\)</span>, podemos estimar <span class="math inline">\(h(t)\)</span> (o un software puede hacerlo por nosotros). La <a href="#tbl-tab6" class="quarto-xref">Tabla&nbsp;<span class="quarto-unresolved-ref">tbl-tab6</span></a>, nos muestra las estimaciones para el ejemplo utilizado para KM.</p>
 <div class="cell" data-layout-align="center">
 <div id="tbl-tab6" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure">
