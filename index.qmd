@@ -10,10 +10,12 @@ A lo largo del curso, abordaremos herramientas analíticas avanzadas que nos per
 
 Esperamos que este espacio sea una experiencia formativa enriquecedora y un nuevo impulso en su desarrollo como investigadoras e investigadores en salud.
 
+```{=html}
 <!-- :::: {style="text-align: center;"}
 ::: {style="font-size: 1.5em"} -->
-**El equipo docente**
-<!-- ::: -->
+```
+
+**El equipo docente** <!-- ::: -->
 
 Christian Ballejo [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-7346-5701)
 
@@ -21,16 +23,24 @@ Andrea Silva [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)]
 
 Tamara Ricardo [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-0921-2611)
 
-Ramiro Dana Smith [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0009-0001-2243-3419) 
+Ramiro Dana Smith [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0009-0001-2243-3419)
 
 Julia Maxwell [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0009-0004-7410-1661)
 
 <!-- Micaela Gauto [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0003-3288-1108) -->
-<!-- :::: -->
 
+<!-- :::: -->
 
 ::: {.callout-warning appearance="simple"}
 ## Declaración de uso de IA generativa
 
 Se utilizaron herramientas de inteligencia artificial generativa (ChatGPT, versión GPT-5.3) para la revisión gramatical y ortográfica del manuscrito. El contenido final fue evaluado, validado y editado manualmente por los/as autores/as, quienes asumen la responsabilidad por su integridad.
 :::
+
+## Citar como
+
+Ballejo, C., Silva, A., Ricardo, T., & Gauto, M. A. (2026). Epidemiología: Nivel Avanzado (Version v1.0.0). Zenodo. https://doi.org/10.5281/zenodo.23669104 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://zenodo.org/badge/DOI/10.5281/zenodo.23669104.svg)
+
+## Licencia
+
+Este trabajo está distribuido bajo la licencia **Creative Commons Attribution 4.0 International** [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
