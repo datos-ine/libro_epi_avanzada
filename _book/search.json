@@ -4,7 +4,27 @@
     "href": "index.html",
     "title": "Epidemiología: Nivel Avanzado",
     "section": "",
-    "text": "¡Les damos la bienvenida al curso!\nEs un gusto recibirles en esta nueva edición del curso, diseñado para profundizar en el análisis de datos provenientes de distintos diseños de estudio mediante el uso de modelos estadísticos.\nA lo largo del curso, abordaremos herramientas analíticas avanzadas que nos permitirán modelar adecuadamente la relación entre exposiciones y desenlaces en estudios transversales, de casos y controles, de cohortes y experimentales. Nos enfocaremos en la aplicación práctica de estos modelos, en la interpretación de resultados y en los supuestos que los sustentan, promoviendo una mirada crítica sobre su uso en la investigación epidemiológica.\nEsperamos que este espacio sea una experiencia formativa enriquecedora y un nuevo impulso en su desarrollo como investigadoras e investigadores en salud.\n\nEl equipo docente \nChristian Ballejo \nAndrea Silva \nTamara Ricardo \nRamiro Dana Smith \nJulia Maxwell \n\n\n\n\n\n\n\n\nAdvertenciaDeclaración de uso de IA generativa\n\n\n\nSe utilizaron herramientas de inteligencia artificial generativa (ChatGPT, versión GPT-5.3) para la revisión gramatical y ortográfica del manuscrito. El contenido final fue evaluado, validado y editado manualmente por los/as autores/as, quienes asumen la responsabilidad por su integridad.",
+    "text": "¡Les damos la bienvenida al curso!\nEs un gusto recibirles en esta nueva edición del curso, diseñado para profundizar en el análisis de datos provenientes de distintos diseños de estudio mediante el uso de modelos estadísticos.\nA lo largo del curso, abordaremos herramientas analíticas avanzadas que nos permitirán modelar adecuadamente la relación entre exposiciones y desenlaces en estudios transversales, de casos y controles, de cohortes y experimentales. Nos enfocaremos en la aplicación práctica de estos modelos, en la interpretación de resultados y en los supuestos que los sustentan, promoviendo una mirada crítica sobre su uso en la investigación epidemiológica.\nEsperamos que este espacio sea una experiencia formativa enriquecedora y un nuevo impulso en su desarrollo como investigadoras e investigadores en salud.\nEl equipo docente\nChristian Ballejo\nAndrea Silva\nTamara Ricardo\nRamiro Dana Smith\nJulia Maxwell",
+    "crumbs": [
+      "Prefacio"
+    ]
+  },
+  {
+    "objectID": "index.html#citar-como",
+    "href": "index.html#citar-como",
+    "title": "Epidemiología: Nivel Avanzado",
+    "section": "Citar como",
+    "text": "Citar como\nBallejo, C., Silva, A., Ricardo, T., & Gauto, M. A. (2026). Epidemiología: Nivel Avanzado (Version v1.0.0). Zenodo. https://doi.org/10.5281/zenodo.23669104",
+    "crumbs": [
+      "Prefacio"
+    ]
+  },
+  {
+    "objectID": "index.html#licencia",
+    "href": "index.html#licencia",
+    "title": "Epidemiología: Nivel Avanzado",
+    "section": "Licencia",
+    "text": "Licencia\nEste trabajo está distribuido bajo la licencia Creative Commons Attribution 4.0 International.",
     "crumbs": [
       "Prefacio"
     ]

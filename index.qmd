@@ -43,4 +43,4 @@ Ballejo, C., Silva, A., Ricardo, T., & Gauto, M. A. (2026). Epidemiología: Nive
 
 ## Licencia
 
-Este trabajo está distribuido bajo la licencia **Creative Commons Attribution 4.0 International.**
+Este trabajo está distribuido bajo la licencia [**Creative Commons Attribution 4.0 International (CC BY 4.0)**](https://creativecommons.org/licenses/by/4.0/).
