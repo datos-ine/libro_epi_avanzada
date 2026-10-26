@@ -9,3 +9,7 @@ El propósito de este manual es proveer el material teórico y ejemplos práctic
 Ballejo, C., Silva, A., Ricardo, T., & Gauto, M. A. (2026). Epidemiología: Nivel Avanzado (Version v1.0.0). Zenodo.
 
 ![](https://zenodo.org/badge/DOI/10.5281/zenodo.23669104.svg)
+
+## Licencia
+
+![](https://zenodo.org/static/icons/licenses/cc-by-icon.svg){width="15%"} Creative Commons Attribution 4.0 International
