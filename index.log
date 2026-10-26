@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.24.0 (TeX Live 2026)  (format=lualatex 2026.10.19)  26 OCT 2026 12:39
+This is LuaHBTeX, Version 1.24.0 (TeX Live 2026)  (format=lualatex 2026.10.19)  26 OCT 2026 12:47
  restricted system commands enabled.
 **index.tex
 (./index.tex
@@ -1743,25 +1743,25 @@ File: mt-TU-empty.cfg 2021/06/22 v1.1 microtype config. file: fonts with nonstan
 
 Package svg Warning: You didn't enable `shell escape' (or `write18')
 (svg)                so it wasn't possible to launch the Inkscape export
-(svg)                for `index_files/mediabag/zenodo.XXXXXXX.svg' on input line 372.
+(svg)                for `index_files/mediabag/License-CC-BY-4.0-li.svg' on input line 380.
 
 
-! Package svg Error: File `zenodo.XXXXXXX_svg-tex.pdf' is missing.
+! Package svg Error: File `License-CC-BY-4.0-li_svg-tex.pdf' is missing.
 
 See the svg package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.372 ...{index_files/mediabag/zenodo.XXXXXXX.svg}}}
+l.380 ..._files/mediabag/License-CC-BY-4.0-li.svg}}}
                                                   
 
 Here is how much of LuaTeX's memory you used:
- 45069 strings out of 475604
+ 45070 strings out of 475604
  100000,1977958 words of node,token memory allocated
- 34919 words of node memory still in use:
-   102 hlist, 7 vlist, 7 rule, 5 mark, 245 disc, 17 local_par, 8 dir, 342 glue, 212 kern, 41 penalty, 9 margin_kern, 1492 glyph, 5968 attribute, 69 glue_spec, 2034 attribute_list, 2 temp, 5 if_stack, 6 write, 1 user_defined, 103 pdf_literal, 6 pdf_start_link, 5 pdf_end_link, 1 pdf_dest, 6 pdf_action, 23 pdf_colorstack nodes
-   avail lists: 2:22,3:1,5:14,10:13
- 67060 multiletter control sequences out of 65536+600000
- 77 fonts using 43833743 bytes
+ 38214 words of node memory still in use:
+   107 hlist, 7 vlist, 7 rule, 7 mark, 265 disc, 19 local_par, 8 dir, 369 glue, 238 kern, 54 penalty, 11 margin_kern, 1605 glyph, 6650 attribute, 69 glue_spec, 2268 attribute_list, 2 temp, 5 if_stack, 8 write, 1 user_defined, 103 pdf_literal, 6 pdf_start_link, 5 pdf_end_link, 2 pdf_dest, 6 pdf_action, 25 pdf_colorstack nodes
+   avail lists: 2:22,3:1,5:7,10:13
+ 67061 multiletter control sequences out of 65536+600000
+ 77 fonts using 43833703 bytes
  108i,7n,122p,11226b,1116s stack positions out of 10000i,1000n,20000p,200000b,200000s
 !  ==> Fatal error occurred, no output PDF file produced!
