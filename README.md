@@ -10,7 +10,7 @@ El propósito de este manual es proveer el material teórico y los ejemplos prá
 
 ## 🔖 Citar como
 
-Ballejo, C., Silva, A., Ricardo, T., & Gauto, M. A. (2026). \*Epidemiología: Nivel Avanzado\* (Version v1.0.0). Zenodo. https://doi.org/10.5281/zenodo.23669104
+Ballejo, C., Silva, A., Ricardo, T., & Gauto, M. A. (2026). *Epidemiología: Nivel Avanzado* (Version v1.0.0). Zenodo. https://doi.org/10.5281/zenodo.23669104
 
 ## 📄 Licencia
 
