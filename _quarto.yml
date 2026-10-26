@@ -19,6 +19,8 @@ book:
     logo: logo_curso.png
     pinned: true
     tools: 
+      - icon: github
+        target: https://github.com/datos-ine/libro_epi_avanzada
       - icon: r-circle-fill
         menu: 
           - text: R para Windows
