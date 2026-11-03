@@ -45,10 +45,10 @@ book:
             href: https://cran.r-project.org/bin/windows/Rtools/
       - icon: file-zip
         menu: 
-          # - text: Paquetes para el curso
-          #   icon: file-zip
-          #   target: _blank
-          #   href: files/paquetes_curso.zip
+          - text: Paquetes para el curso
+            icon: file-zip
+            target: _blank
+            href: files/paquetes_curso.R
           - text: Datos de ejemplo
             icon: file-zip
             href: files/datos.zip
